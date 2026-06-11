@@ -191,6 +191,7 @@ const IMGS = {
   sprite: 'https://lh3.googleusercontent.com/pw/AP1GczPWh19m-VMlBuQzF6teK19dgVOGfZtaKsv-BcTN1-iiyMQR5KCmjTuWWElguffqp1AspfwKV1H5AfM5qakZIqhEXO-Q7ml2bETxSndbPouVClOLdWUo=w1200',
   rrCorniche: 'https://lh3.googleusercontent.com/pw/AP1GczOAOX5bjzmqOjLX-I4w_6V5do4tnIOa4pidQVUBXr_TAPuv_od_FzDQD5ntRjhnORG-TIHB7puvKAG4aJ2egagnDN9_pO8Cl37G-7jlpUpxTvhV5TZQ=w1200',
   bentleyT: 'https://lh3.googleusercontent.com/pw/AP1GczPav2IHw0fAU_DhL7mgRCEmamU-nPp0xEBL5y_AQGU9jPpecrt0ioq8nmlX43tbjhNeXpFZ2Yb_oaCc-54eKyqzygZyXTNUErcEGT2odF6zLinUTAsH=w1200',
+  rrPhantom: 'https://lh3.googleusercontent.com/pw/AP1GczMtph8_nYWrZui49ZuB-cSDRGMqAG93-1pZWLLWL4c5AlzSN8cHPhJyZrCCepifVDoJm2hEvURuLL81jDRfDvG0N8hcmhBUQgvv9H5iOyYubKsicgH8=w1200',
   logo_austin_healey: 'https://lh3.googleusercontent.com/pw/AP1GczPbS4AElZMz_a1W1M049odlBQmnXvze3RG9vutWs13wXAfRbwxkOx-M8r9JqOWZ9Vtj_gXHGzgdLJLRQKIBKinubAgnOzgxiYmek2Os-j85QV8EAz8N=s250-k-no',
   logo_jaguar:        'https://lh3.googleusercontent.com/pw/AP1GczMSR2NmlMhU3P6sL5BljuR0ShFWI__GV8-u2ichf-ADuielKc5it7OeizGNkfgiWbst8UtNCq_6YZBVpk_2z9WQDfBhS33Wdmct82pnYPxyE56Ykqia=s250-k-no',
   logo_rolls_royce:   'https://lh3.googleusercontent.com/pw/AP1GczPALaBpE9jKhtt520vPO4-j8QdwHnUJVC-TbVB9VHRCmCxdsNob4wcjBCnZ7Y1ZVyh8FFgCKB31Lj2YX7F7dWomQjf96XwJikaFRJTUZzT_RmJxu8Rp=s250-k-no',
@@ -305,6 +306,13 @@ const EVENTS={
       hp:225,topSpeed:"193 km/h",zero:"10.9 s",priceCAD:"$25,000–$60,000 CAD",badge:"",badgeLabel:"",imgKey:"bentleyT",
       specs:{"Motor":"V8 6.75L L-Series OHV","Potencia":"225 hp / 350 Nm","Transmisión":"Automática 3 vel. GM","Tracción":"RWD","0–100 km/h":"10.9 seg","Vel. máxima":"193 km/h (120 mph)","Carrocería":"Sedán 4 puertas","Producción total":"2,436 unidades (T1+T2 saloon)","Años de prod.":"1965–1980","Precio CA (usado)":"$25,000–$60,000"},
       highlights:["Primer Bentley en usar construcción monocasco — abandonó el bastidor separado que usó desde 1919","Mecánicamente idéntico al Rolls-Royce Silver Shadow — diferenciado solo por la parrilla más simple","La parrilla Bentley costaba menos que la RR — lo que permitía venderlo $50 GBP más barato en 1966","Solo 41 convertibles T1 fueron construidos — uno de los Bentleys más raros de la era moderna","El motor V8 6.75L de este auto siguió en producción en Bentley hasta 2020 — 55 años ininterrumpidos"]
+    },{
+      id:"rrPhantom",make:"Rolls-Royce",model:"Phantom VII",years:"2003–2017",
+      photoDate:"16 de mayo, 2026",photoTimestamp:20260516,featured:false,
+      featuredReason:"",review:"",
+      hp:453,topSpeed:"240 km/h",zero:"5.9 s",priceCAD:"$100,000–$400,000 CAD",badge:"",badgeLabel:"",imgKey:"rrPhantom",
+      specs:{"Motor":"V12 6.75L N73B68 BMW","Potencia":"453 hp / 531 lb-ft","Transmisión":"Automática 6/8 vel. ZF","Tracción":"RWD","0–100 km/h":"5.9 seg","Vel. máxima":"240 km/h (electrónica)","Carrocería":"Sedán 4 puertas coach","Peso":"2,550 kg","Años de prod.":"2003–2017","Precio CA (usado)":"$100,000–$400,000+"},
+      highlights:["Primer Phantom desarrollado bajo propiedad de BMW — renació la marca en Goodwood, West Sussex en 2003","Placa personalizada 'LWR-1' — posiblemente el propietario original del número de placa en BC","Las puertas traseras se abren al revés (coach doors) — sin pilar B para entrada cinematográfica","Cada Phantom toma ~6 meses en construirse a mano — el cliente puede especificar prácticamente cualquier detalle","El Spirit of Ecstasy se retrae automáticamente en 3 segundos para evitar robos o vandalismo"]
     }]
   }
 };
@@ -436,8 +444,8 @@ function topStats(cars){
   function parseZero(s){return parseFloat(s)||999;}
   function parseYear(s){return parseInt((s||'').split('–')[0])||9999;}
   function parsePrice(s){
-    const m=(s||'').match(/\$([\d,]+)/);
-    return m?parseInt(m[1].replace(/,/g,'')):0;
+    const matches=[...(s||'').matchAll(/\$([\d,]+)/g)].map(m=>parseInt(m[1].replace(/,/g,'')));
+    return matches.length?Math.max(...matches):0;
   }
   const fastest = best(cars,c=>parseSpeed(c.topSpeed),c=>c.topSpeed,'🏎️','Mayor velocidad');
   const power   = best(cars,c=>c.hp||0,c=>`${c.hp} hp`,'⚡','Mayor potencia');
