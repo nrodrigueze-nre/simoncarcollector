@@ -17,7 +17,8 @@
 .count-pill{background:#ddd;color:#333;font-size:0.75rem;padding:1px 7px;border-radius:10px;margin-left:4px;font-weight:700;}
 .hw-tab.active .count-pill{background:#fde0e4;color:#C8102E;}
 .hw-body{padding:1.25rem 1rem;}
-.month-hdr{display:flex;align-items:center;gap:10px;margin-bottom:1rem;flex-wrap:wrap;}
+.section-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:1.9rem;letter-spacing:3px;color:#C8102E;margin:1.2rem 0 .6rem;}
+.month-hdr+.section-title{margin-top:0;}
 .month-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:1.9rem;letter-spacing:3px;color:#C8102E;}
 .feat-badge{background:#FFD700;color:#3a0000;font-size:0.76rem;font-weight:700;letter-spacing:1.5px;padding:4px 11px;border-radius:3px;text-transform:uppercase;}
 .cars-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1rem;}
@@ -32,8 +33,11 @@
 .photo-date{position:absolute;bottom:7px;left:8px;background:rgba(0,0,0,0.5);color:#FFD700;font-size:0.68rem;letter-spacing:1px;padding:3px 7px;border-radius:3px;font-weight:700;pointer-events:none;}
 .car-stripe{height:4px;background:linear-gradient(90deg,#C8102E,#FF6B00,#FFD700);}
 .car-info{padding:0.85rem 1rem 0.55rem;}
+.car-make-row{display:flex;align-items:center;gap:12px;margin-bottom:4px;}
+.brand-logo{width:48px;height:48px;object-fit:contain;flex-shrink:0;}
+.car-make-model{display:flex;flex-direction:column;justify-content:center;min-width:0;}
 .car-make{font-size:0.78rem;letter-spacing:3px;color:#222;text-transform:uppercase;font-weight:700;}
-.car-model{font-family:'Bebas Neue',Impact,sans-serif;font-size:1.6rem;letter-spacing:2px;color:#111;line-height:1.1;}
+.car-model{font-family:'Bebas Neue',Impact,sans-serif;font-size:1.6rem;letter-spacing:2px;color:#111;line-height:1.05;}
 .car-year{font-size:0.88rem;color:#C8102E;font-weight:700;margin-top:2px;}
 .mod-badge{display:inline-block;font-size:0.7rem;font-weight:700;padding:2px 8px;border-radius:3px;letter-spacing:1px;margin-left:6px;vertical-align:middle;}
 .badge-stance{background:#1a1a2e;color:#a0c4ff;}
@@ -85,11 +89,11 @@
 .hw-tab-event:hover:not(.active){background:linear-gradient(135deg,#2a2a3e,#3d2a00) !important;color:#FFD700 !important;}
 .hw-tab-event .count-pill{background:rgba(255,215,0,0.2);color:#FFD700;}
 .stats-bar{display:grid;grid-template-columns:repeat(5,1fr);gap:.6rem;margin-bottom:1.4rem;}
-.stat-card{background:#111;border-radius:8px;padding:.7rem .75rem;display:flex;flex-direction:column;gap:.2rem;min-width:0;}
+.stat-card{background:#FFD700;border-radius:8px;padding:.7rem .75rem;display:flex;flex-direction:column;gap:.2rem;min-width:0;}
 .stat-icon{font-size:1.1rem;line-height:1;}
-.stat-label{font-size:0.8rem;letter-spacing:2px;color:#aaa;text-transform:uppercase;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.stat-value{font-family:'Bebas Neue',Impact,sans-serif;font-size:1.27rem;color:#FFD700;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.stat-car{font-size:0.82rem;color:#ccc;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.stat-label{font-size:0.8rem;letter-spacing:2px;color:#111;text-transform:uppercase;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.stat-value{font-family:'Bebas Neue',Impact,sans-serif;font-size:1.27rem;color:#C8102E;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.stat-car{font-size:0.82rem;color:#333;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 @media(max-width:600px){.stats-bar{grid-template-columns:1fr 1fr;}.stats-bar .stat-card:last-child{grid-column:1/-1;}}
 .event-name{font-family:'Bebas Neue',Impact,sans-serif;font-size:2rem;letter-spacing:3px;color:#111;line-height:1;}
 .event-meta{display:flex;gap:.6rem 1rem;flex-wrap:wrap;margin-top:.4rem;align-items:center;}
@@ -186,7 +190,15 @@ const IMGS = {
   ah3000: 'https://lh3.googleusercontent.com/pw/AP1GczOQAj1I2U10yDWpG_w_1_Y9Mtau10rT7Kp5DwClNU3ycFK-TWNVkGt__uiE3hSdpqaWneKa-OpjhqtyYuCnbr8Nv6w3OTdFVhnGtK665L6ikjwI5POl=w1200',
   sprite: 'https://lh3.googleusercontent.com/pw/AP1GczPWh19m-VMlBuQzF6teK19dgVOGfZtaKsv-BcTN1-iiyMQR5KCmjTuWWElguffqp1AspfwKV1H5AfM5qakZIqhEXO-Q7ml2bETxSndbPouVClOLdWUo=w1200',
   rrCorniche: 'https://lh3.googleusercontent.com/pw/AP1GczOAOX5bjzmqOjLX-I4w_6V5do4tnIOa4pidQVUBXr_TAPuv_od_FzDQD5ntRjhnORG-TIHB7puvKAG4aJ2egagnDN9_pO8Cl37G-7jlpUpxTvhV5TZQ=w1200',
-  bentleyT: 'https://lh3.googleusercontent.com/pw/AP1GczPav2IHw0fAU_DhL7mgRCEmamU-nPp0xEBL5y_AQGU9jPpecrt0ioq8nmlX43tbjhNeXpFZ2Yb_oaCc-54eKyqzygZyXTNUErcEGT2odF6zLinUTAsH=w1200'
+  bentleyT: 'https://lh3.googleusercontent.com/pw/AP1GczPav2IHw0fAU_DhL7mgRCEmamU-nPp0xEBL5y_AQGU9jPpecrt0ioq8nmlX43tbjhNeXpFZ2Yb_oaCc-54eKyqzygZyXTNUErcEGT2odF6zLinUTAsH=w1200',
+  logo_austin_healey: 'https://lh3.googleusercontent.com/pw/AP1GczPbS4AElZMz_a1W1M049odlBQmnXvze3RG9vutWs13wXAfRbwxkOx-M8r9JqOWZ9Vtj_gXHGzgdLJLRQKIBKinubAgnOzgxiYmek2Os-j85QV8EAz8N=s250-k-no',
+  logo_jaguar:        'https://lh3.googleusercontent.com/pw/AP1GczMSR2NmlMhU3P6sL5BljuR0ShFWI__GV8-u2ichf-ADuielKc5it7OeizGNkfgiWbst8UtNCq_6YZBVpk_2z9WQDfBhS33Wdmct82pnYPxyE56Ykqia=s250-k-no',
+  logo_rolls_royce:   'https://lh3.googleusercontent.com/pw/AP1GczPALaBpE9jKhtt520vPO4-j8QdwHnUJVC-TbVB9VHRCmCxdsNob4wcjBCnZ7Y1ZVyh8FFgCKB31Lj2YX7F7dWomQjf96XwJikaFRJTUZzT_RmJxu8Rp=s250-k-no',
+  logo_bentley:       'https://lh3.googleusercontent.com/pw/AP1GczNgg841KEpmmZYJQVekQ2o_eiD4-Ix6Vr6JcFwdpWQeKx4Wz7FjptHDFBw8ONZ4J5l4UgFlRrHtmi2gZH39gBCXek_3iLilU1WkJ9RtG15X2QYhWGUD=s250-k-no',
+  logo_dodge:         'https://lh3.googleusercontent.com/pw/AP1GczO0_7l7PnfsnytS_HGmfwXkB1czzgpH7wHb6srd0Dg5Inw4xGGpYN4EpYPWUykfSP1f1oIWfZ2Q9-rb5-DXXmQRNGUvCP_YaMnWNb4qPgxkhp6_vSzM=s250-k-no',
+  logo_saab:          'https://lh3.googleusercontent.com/pw/AP1GczOFoZ0MAYhRFKeLv4sOYU8tZ72FpnrbDqsZoVICdIIazWkXtAiMXYg8KVk__Atdr9Tk36R-nfybyRdMwHkW3BUORQtOeKNZ0olUsXUZxZOiOQdcxeMs=s250-k-no',
+  logo_lexus:         'https://lh3.googleusercontent.com/pw/AP1GczPDHkjkhyQOBLEpoEv6E9RbmdfpdhigCipAaiNWiAZ34cGNe1hw5kqwwEeBKMNRfCXsfskcMQjS1gY1l7xnBRiSLgL9sIujNNND4CBhPoniwm-p5xUH=s250-k-no',
+  logo_pontiac:       'https://lh3.googleusercontent.com/pw/AP1GczNIV7n0IhuyNpQoJxljv-oVRM1WNn8GicDlIU5sCEQsQ3tnqDAT6XIcOoNGSEJDoK1-YPHJahdWg1TbAsmSx5PFYEtQIDlnp0HkX124WTCYZO8Z9MtF=s250-k-no'
 };
 
 let rendered = false;
@@ -323,6 +335,24 @@ function badgeHtml(c){
   return `<span class="mod-badge ${cls}">${c.badgeLabel}</span>`;
 }
 
+const BRAND_LOGOS={
+  'Jaguar':'logo_jaguar',
+  'Austin-Healey':'logo_austin_healey',
+  'Rolls-Royce':'logo_rolls_royce',
+  'Bentley':'logo_bentley',
+  'Dodge':'logo_dodge',
+  'Saab':'logo_saab',
+  'Lexus':'logo_lexus',
+  'Pontiac':'logo_pontiac'
+};
+
+function brandLogoHtml(make){
+  const key=BRAND_LOGOS[make];
+  const src=key&&IMGS[key];
+  if(!src) return '';
+  return `<img src="${src}" alt="${make} logo" class="brand-logo" />`;
+}
+
 function carCard(c){
   const src=IMGS[c.imgKey]||'';
   const imgHtml=src
@@ -338,8 +368,7 @@ function carCard(c){
     </div>
     <div class="car-stripe"></div>
     <div class="car-info">
-      <div class="car-make">${c.make}${badgeHtml(c)}</div>
-      <div class="car-model">${c.model}</div>
+      <div class="car-make-row">${brandLogoHtml(c.make)}<div class="car-make-model"><span class="car-make">${c.make}${badgeHtml(c)}</span><div class="car-model">${c.model}</div></div></div>
       <div class="car-year">${c.years}</div>
       <div class="qs-grid">
         <div class="qs"><div class="qs-val">${c.hp}</div><div class="qs-lbl">HP</div></div>
@@ -428,9 +457,9 @@ function renderMonth(key){
   });
   document.getElementById('body').innerHTML=
     `<div class="month-hdr"><div class="month-title">${m.label}</div></div>`+
-    (feat?featHero(feat):'')+
-    (sorted.length>=2?topStats(m.cars):'')+
-    (sorted.length?`<div class="cars-grid">${sorted.map(carCard).join('')}</div>`:
+    (feat?`<div class="section-title">Destacado</div>`+featHero(feat):'')+
+    (sorted.length>=2?`<div class="section-title">Top Estadísticas</div>`+topStats(m.cars):'')+
+    (sorted.length?`<div class="section-title">Hallazgos</div><div class="cars-grid">${sorted.map(carCard).join('')}</div>`:
     `<div class="empty-msg"><i class="ti ti-car" aria-hidden="true"></i><p>Sin hallazgos este mes</p></div>`)+
     `<div class="add-box"><div class="add-lbl">Nuevo hallazgo</div>
     <button class="add-btn" onclick="sendPrompt('Quiero agregar un auto al dashboard. Aquí va la foto:')"><i class="ti ti-plus" aria-hidden="true"></i> AGREGAR AUTO</button>
@@ -479,9 +508,9 @@ function renderEvent(key){
       </div>
       <div class="event-desc">${ev.description}</div>
     </div>`+
-    (feat?featHero(feat):'')+
-    (sorted.length>=2?topStats(ev.cars):'')+
-    (sorted.length?`<div class="cars-grid">${sorted.map(carCard).join('')}</div>`:
+    (feat?`<div class="section-title">Destacado</div>`+featHero(feat):'')+
+    (sorted.length>=2?`<div class="section-title">Top Estadísticas</div>`+topStats(ev.cars):'')+
+    (sorted.length?`<div class="section-title">Hallazgos</div><div class="cars-grid">${sorted.map(carCard).join('')}</div>`:
     `<div class="empty-msg"><i class="ti ti-car" aria-hidden="true"></i><p>Sin hallazgos en este evento</p></div>`)+
     `<div class="add-box"><div class="add-lbl">Agregar auto de este evento</div>
     <button class="add-btn" onclick="sendPrompt('Quiero agregar un auto al evento ${ev.label}. Aquí va la foto:')"><i class="ti ti-plus" aria-hidden="true"></i> AGREGAR AUTO</button>
