@@ -84,7 +84,10 @@
 .coll-name{font-family:'Bebas Neue',Impact,sans-serif;font-size:1rem;letter-spacing:1.5px;color:#111;margin:.6rem .6rem .2rem;line-height:1.2;}
 .coll-bio{font-size:0.78rem;color:#111;line-height:1.5;padding:0 .75rem;font-weight:500;font-style:italic;}
 .coll-bio-ph{font-size:0.76rem;color:#888;line-height:1.4;padding:0 .75rem;font-weight:500;}
-.hw-tab-event{background:linear-gradient(135deg,#1a1a2e,#2d1a00);color:#FFD700;border-color:#FFD700 !important;}
+.hw-tab-special{background:linear-gradient(135deg,#1a3a1a,#003a00);color:#90ee90;border-color:#4caf50 !important;}
+.hw-tab-special.active{background:linear-gradient(135deg,#1f4f1f,#004a00);color:#90ee90;border-bottom-color:#fff !important;}
+.hw-tab-special:hover:not(.active){background:linear-gradient(135deg,#254525,#005000) !important;color:#90ee90 !important;}
+.hw-tab-special .count-pill{background:rgba(76,175,80,0.2);color:#90ee90;}color:#FFD700;border-color:#FFD700 !important;}
 .hw-tab-event.active{background:linear-gradient(135deg,#2d2d00,#3a1a00);color:#FFD700;border-bottom-color:#fff !important;}
 .hw-tab-event:hover:not(.active){background:linear-gradient(135deg,#2a2a3e,#3d2a00) !important;color:#FFD700 !important;}
 .hw-tab-event .count-pill{background:rgba(255,215,0,0.2);color:#FFD700;}
@@ -199,7 +202,9 @@ const IMGS = {
   logo_dodge:         'https://lh3.googleusercontent.com/pw/AP1GczO0_7l7PnfsnytS_HGmfwXkB1czzgpH7wHb6srd0Dg5Inw4xGGpYN4EpYPWUykfSP1f1oIWfZ2Q9-rb5-DXXmQRNGUvCP_YaMnWNb4qPgxkhp6_vSzM=s250-k-no',
   logo_saab:          'https://lh3.googleusercontent.com/pw/AP1GczOFoZ0MAYhRFKeLv4sOYU8tZ72FpnrbDqsZoVICdIIazWkXtAiMXYg8KVk__Atdr9Tk36R-nfybyRdMwHkW3BUORQtOeKNZ0olUsXUZxZOiOQdcxeMs=s250-k-no',
   logo_lexus:         'https://lh3.googleusercontent.com/pw/AP1GczPDHkjkhyQOBLEpoEv6E9RbmdfpdhigCipAaiNWiAZ34cGNe1hw5kqwwEeBKMNRfCXsfskcMQjS1gY1l7xnBRiSLgL9sIujNNND4CBhPoniwm-p5xUH=s250-k-no',
-  logo_pontiac:       'https://lh3.googleusercontent.com/pw/AP1GczNIV7n0IhuyNpQoJxljv-oVRM1WNn8GicDlIU5sCEQsQ3tnqDAT6XIcOoNGSEJDoK1-YPHJahdWg1TbAsmSx5PFYEtQIDlnp0HkX124WTCYZO8Z9MtF=s250-k-no'
+  logo_pontiac:       'https://lh3.googleusercontent.com/pw/AP1GczNIV7n0IhuyNpQoJxljv-oVRM1WNn8GicDlIU5sCEQsQ3tnqDAT6XIcOoNGSEJDoK1-YPHJahdWg1TbAsmSx5PFYEtQIDlnp0HkX124WTCYZO8Z9MtF=s250-k-no',
+  mazda2_2014:        'https://lh3.googleusercontent.com/pw/AP1GczOrVZWMQZ39QgHx1jFZTD131ZvxRQxsK9shdLbUxs73uZ8JfzA8Di9DEotViYF3Pqsp-H-4HINaZpBbpCCaIXoO2O1I7jbKQLfOjmpwe9zEC9k9JKGn=w1200',
+  logo_mazda:         'https://lh3.googleusercontent.com/pw/AP1GczO2yxZ5cgkBKE40hoEG9erTrBg-rdXn2sgpBO9z82d3YNv1pk_dfysDhdhAYoV9FJNs4XKpiTgh0KhJhi6ccLB14IowK4EBP5b_7fQAUjSiciz4Q3yo=s250-k-no'
 };
 
 let rendered = false;
@@ -246,7 +251,16 @@ const CARS={
     specs:{"Motor":"I4 2.0L Turbo","Potencia":"175 hp / 195 lb-ft","Transmisión":"Manual 6 vel. / Auto 5 vel.","Tracción":"FWD","0–100 km/h":"8.5 seg","Vel. máxima":"220 km/h","Carrocería":"Station Wagon 5 puertas","Producción total":"~700,000 unidades (9-3 total)","Años de prod.":"2005–2011","Precio CA (usado)":"$4,000–$12,000"},
     highlights:["Saab quebró en 2012 — cada 9-3 en circulación es una pieza de historia automotriz","La llave de ignición está entre los asientos delanteros, tradición única de Saab desde los años 70","La parrilla frontal imita la vista de un avión Saab desde abajo — herencia aeronáutica directa","5 estrellas EuroNCAP desde 2003 — fue uno de los autos más seguros de su segmento","El SportCombi fue el único wagon de Saab basado en la plataforma GM Epsilon compartida con el Opel Vectra"]
   }]},
-  "2026-04":{label:"Abril 2026",cars:[]}
+  "2026-04":{label:"Abril 2026",cars:[]},
+  "nuestros-autos":{label:"Nuestros Autos",cars:[{
+    id:"mazda2_2014",make:"Mazda",model:"2 Sport",years:"2012–2014",
+    photoDate:"25 de marzo, 2014",photoTimestamp:20140325,featured:true,
+    featuredReason:"El primer Mazda 2 de la familia — recogido en el concesionario en Bogotá en 2014.",
+    review:"Rojo brillante, recién salido del concesionario Mazda en Bogotá. El Mazda 2 fue el primer auto propio de la familia — pequeño, ágil y confiable. En una ciudad como Bogotá, con su tráfico denso y sus calles estrechas, el tamaño compacto y el volante liviano lo hacían perfectamente en casa. El filosofía 'Zoom-Zoom' de Mazda nunca sonó tan sincera como en este hatchback rojo que se deslizaba entre el caos bogotano con una sonrisa.",
+    hp:100,topSpeed:"193 km/h",zero:"11.5 s",priceCAD:"$15,500–$17,000 CAD (nuevo 2014)","badge":"",badgeLabel:"",imgKey:"mazda2_2014",
+    specs:{"Motor":"I4 1.5L MZR DOHC","Potencia":"100 hp / 98 lb-ft","Transmisión":"Manual 5 vel.","Tracción":"FWD","0–100 km/h":"11.5 seg","Vel. máxima":"193 km/h","Carrocería":"Hatchback 5 puertas","Peso":"1,045 kg","Años de prod.":"2007–2014","Ciudad de compra":"Bogotá, Colombia"},
+    highlights:["Primer auto propio de la familia — entregado en concesionario Mazda Bogotá el 25 de marzo de 2014","Solo pesa 1,045 kg — uno de los hatchbacks más livianos de su generación","El diseño 'Nagare' de flujo de agua fue el último antes del lenguaje KODO de Mazda","A pesar de sus 100hp, el chasis ágil lo hacía sentir más rápido de lo que era — diversión pura","El Mazda 2 ganó el premio 'World Car of the Year' en 2008 en su primera generación"]
+  }]}
 };
 
 const EVENTS={
@@ -351,7 +365,8 @@ const BRAND_LOGOS={
   'Dodge':'logo_dodge',
   'Saab':'logo_saab',
   'Lexus':'logo_lexus',
-  'Pontiac':'logo_pontiac'
+  'Pontiac':'logo_pontiac',
+  'Mazda':'logo_mazda'
 };
 
 function brandLogoHtml(make){
@@ -465,7 +480,7 @@ function renderMonth(key){
   });
   document.getElementById('body').innerHTML=
     `<div class="month-hdr"><div class="month-title">${m.label}</div></div>`+
-    (feat?`<div class="section-title">Destacado</div>`+featHero(feat):'')+
+    (feat&&key==='nuestros-autos'?`<div class="section-title">Destacado</div>`+featHero(feat):'')+
     (sorted.length>=2?`<div class="section-title">Top Estadísticas</div>`+topStats(m.cars):'')+
     (sorted.length?`<div class="section-title">Hallazgos</div><div class="cars-grid">${sorted.map(carCard).join('')}</div>`:
     `<div class="empty-msg"><i class="ti ti-car" aria-hidden="true"></i><p>Sin hallazgos este mes</p></div>`)+
@@ -476,18 +491,25 @@ function renderMonth(key){
 }
 
 function renderTabs(){
-  const months = Object.entries(CARS).map(([k,v])=>({
-    key:k, label:v.label, count:v.cars.length, type:'month', ts:parseInt(k.replace('-',''))
-  }));
+  const SPECIAL=['nuestros-autos'];
+  const months = Object.entries(CARS)
+    .filter(([k])=>!SPECIAL.includes(k))
+    .map(([k,v])=>({key:k,label:v.label,count:v.cars.length,type:'month',ts:parseInt(k.replace('-',''))||0}));
   const events = Object.entries(EVENTS).map(([k,v])=>({
-    key:k, label:v.label, count:v.cars.length, type:'event', ts:v.timestamp
+    key:k,label:v.label,count:v.cars.length,type:'event',ts:v.timestamp
   }));
-  const all = [...months,...events].sort((a,b)=>b.ts-a.ts);
-  document.getElementById('tabs').innerHTML = all.map(t=>
-    t.type==='event'
-      ? `<div class="hw-tab hw-tab-event${t.key===active?' active':''}" data-m="${t.key}" onclick="setActive('${t.key}','event')">⚑ ${t.label}<span class="count-pill">${t.count}</span></div>`
-      : `<div class="hw-tab${t.key===active?' active':''}" data-m="${t.key}" onclick="setActive('${t.key}','month')">${t.label}<span class="count-pill">${t.count}</span></div>`
-  ).join('');
+  const special = SPECIAL.filter(k=>CARS[k]).map(k=>({
+    key:k,label:CARS[k].label,count:CARS[k].cars.length,type:'special',ts:-1
+  }));
+  const all=[...months,...events].sort((a,b)=>b.ts-a.ts);
+  const allWithSpecial=[...all,...special];
+  document.getElementById('tabs').innerHTML=allWithSpecial.map(t=>{
+    if(t.type==='event')
+      return `<div class="hw-tab hw-tab-event${t.key===active?' active':''}" data-m="${t.key}" onclick="setActive('${t.key}','event')">⚑ ${t.label}<span class="count-pill">${t.count}</span></div>`;
+    if(t.type==='special')
+      return `<div class="hw-tab hw-tab-special${t.key===active?' active':''}" data-m="${t.key}" onclick="setActive('${t.key}','month')">🚗 ${t.label}<span class="count-pill">${t.count}</span></div>`;
+    return `<div class="hw-tab${t.key===active?' active':''}" data-m="${t.key}" onclick="setActive('${t.key}','month')">${t.label}<span class="count-pill">${t.count}</span></div>`;
+  }).join('');
 }
 
 function setActive(key, type){
