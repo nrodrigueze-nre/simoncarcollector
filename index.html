@@ -1,0 +1,388 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@500;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+.hw{background:#fff;color:#111;font-family:'Rajdhani',Arial,sans-serif;width:100%;}
+.hw-header{background:#C8102E;padding:1rem 1.5rem 1.1rem;}
+.hw-header::after{content:'';display:block;height:5px;background:repeating-linear-gradient(90deg,#FFD700 0 28px,#C8102E 28px 36px);margin-top:0.6rem;}
+.hw-logo{font-family:'Bebas Neue',Impact,sans-serif;font-size:2.8rem;letter-spacing:3px;color:#FFD700;line-height:1;}
+.hw-logo em{color:#fff;font-style:normal;}
+.hw-sub{font-size:0.88rem;letter-spacing:4px;color:rgba(255,255,255,0.95);text-transform:uppercase;margin-top:3px;}
+.hw-tabs{display:flex;gap:3px;padding:0.7rem 1.5rem 0;background:#f5f5f5;border-bottom:2px solid #C8102E;overflow-x:auto;}
+.hw-tab{padding:7px 18px;border-radius:6px 6px 0 0;border:1px solid #ccc;border-bottom:none;font-size:0.9rem;font-weight:700;letter-spacing:1px;cursor:pointer;text-transform:uppercase;background:#e8e8e8;color:#222;transition:all .15s;white-space:nowrap;}
+.hw-tab.active{background:#fff;color:#C8102E;border-color:#C8102E;border-bottom-color:#fff;}
+.hw-tab:hover:not(.active){background:#ddd;color:#111;}
+.count-pill{background:#ddd;color:#333;font-size:0.75rem;padding:1px 7px;border-radius:10px;margin-left:4px;font-weight:700;}
+.hw-tab.active .count-pill{background:#fde0e4;color:#C8102E;}
+.hw-body{padding:1.25rem 1.5rem;}
+.month-hdr{display:flex;align-items:center;gap:10px;margin-bottom:1rem;flex-wrap:wrap;}
+.month-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:1.9rem;letter-spacing:3px;color:#C8102E;}
+.feat-badge{background:#FFD700;color:#3a0000;font-size:0.76rem;font-weight:700;letter-spacing:1.5px;padding:4px 11px;border-radius:3px;text-transform:uppercase;}
+.cars-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1rem;}
+.car-card{background:#fff;border:1.5px solid #ddd;border-radius:10px;overflow:hidden;transition:transform .2s;position:relative;}
+.car-card:hover{transform:translateY(-3px);border-color:#C8102E;}
+.car-card.featured{border-color:#FFD700;border-width:2px;}
+.car-card.featured::before{content:'DESTACADO';position:absolute;top:8px;right:8px;background:#FFD700;color:#3a0000;font-size:0.7rem;font-weight:700;letter-spacing:1.5px;padding:4px 9px;border-radius:3px;z-index:10;}
+.car-img-wrap{width:100%;height:185px;overflow:hidden;background:#e8e8e8;display:flex;align-items:center;justify-content:center;cursor:zoom-in;position:relative;}
+.car-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;transition:transform .3s;}
+.car-card:hover .car-img-wrap img{transform:scale(1.04);}
+.zoom-hint{position:absolute;bottom:7px;right:8px;background:rgba(0,0,0,0.5);color:#fff;font-size:0.7rem;letter-spacing:1px;padding:3px 8px;border-radius:3px;font-weight:700;text-transform:uppercase;pointer-events:none;}
+.photo-date{position:absolute;bottom:7px;left:8px;background:rgba(0,0,0,0.5);color:#FFD700;font-size:0.68rem;letter-spacing:1px;padding:3px 7px;border-radius:3px;font-weight:700;pointer-events:none;}
+.car-stripe{height:4px;background:linear-gradient(90deg,#C8102E,#FF6B00,#FFD700);}
+.car-info{padding:0.85rem 1rem 0.55rem;}
+.car-make{font-size:0.78rem;letter-spacing:3px;color:#222;text-transform:uppercase;font-weight:700;}
+.car-model{font-family:'Bebas Neue',Impact,sans-serif;font-size:1.6rem;letter-spacing:2px;color:#111;line-height:1.1;}
+.car-year{font-size:0.88rem;color:#C8102E;font-weight:700;margin-top:2px;}
+.mod-badge{display:inline-block;font-size:0.7rem;font-weight:700;padding:2px 8px;border-radius:3px;letter-spacing:1px;margin-left:6px;vertical-align:middle;}
+.badge-stance{background:#1a1a2e;color:#a0c4ff;}
+.badge-chrome{background:#7a5c00;color:#fff3c0;}
+.qs-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;margin:0.7rem 0 0.55rem;}
+.qs{background:#f5f5f5;border:1px solid #e0e0e0;border-radius:5px;padding:7px 4px;text-align:center;}
+.qs-val{font-size:1.05rem;font-weight:700;color:#C8102E;line-height:1;}
+.qs-lbl{font-size:0.72rem;color:#111;text-transform:uppercase;letter-spacing:.5px;margin-top:3px;font-weight:700;}
+.price-wrap{display:flex;align-items:center;gap:8px;margin-top:6px;padding-top:6px;border-top:1px solid #eee;}
+.price-tag{font-size:0.8rem;color:#111;text-transform:uppercase;letter-spacing:1px;font-weight:700;}
+.price-val{font-weight:700;color:#111;font-size:0.95rem;}
+.expand-btn{width:100%;background:#f5f5f5;border:none;border-top:1px solid #e8e8e8;color:#111;font-size:0.82rem;font-weight:700;letter-spacing:2px;padding:9px;cursor:pointer;text-transform:uppercase;transition:background .15s,color .15s;font-family:'Rajdhani',sans-serif;display:flex;align-items:center;justify-content:center;gap:6px;}
+.expand-btn:hover,.expand-btn.open{background:#fde0e4;color:#C8102E;}
+.car-details{display:none;padding:.9rem 1rem;background:#fafafa;border-top:1px solid #eee;}
+.car-details.open{display:block;}
+.dtl-title{font-size:0.73rem;letter-spacing:3px;color:#C8102E;text-transform:uppercase;margin-bottom:7px;padding-bottom:5px;border-bottom:1.5px solid #fdd;font-weight:700;}
+.spec-row{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #f0f0f0;}
+.spec-key{font-size:0.84rem;color:#111;font-weight:700;}
+.spec-val{font-size:0.84rem;color:#111;font-weight:700;}
+.hl-list{list-style:none;}
+.hl-list li{font-size:0.84rem;color:#111;padding:5px 0 5px 16px;position:relative;border-bottom:1px solid #f5f5f5;line-height:1.4;font-weight:500;}
+.hl-list li::before{content:'▸';position:absolute;left:0;color:#FF6B00;}
+.feat-reason{background:#fffbe6;border-left:3px solid #FFD700;padding:9px 11px;border-radius:0 5px 5px 0;font-size:0.84rem;color:#111;line-height:1.5;font-weight:500;}
+.dtl-sec{margin-bottom:.85rem;}
+.add-box{margin-top:1.5rem;border:2px dashed #ddd;border-radius:10px;padding:1.5rem;text-align:center;background:#fafafa;}
+.add-lbl{font-size:0.84rem;color:#222;letter-spacing:3px;text-transform:uppercase;font-weight:700;margin-bottom:.5rem;}
+.add-btn{background:#C8102E;color:#fff;border:none;padding:11px 30px;border-radius:5px;font-family:'Bebas Neue',Impact,sans-serif;font-size:1.2rem;letter-spacing:2px;cursor:pointer;}
+.add-btn:hover{background:#a00020;}
+.add-note{font-size:0.84rem;color:#333;margin-top:.5rem;font-weight:500;}
+.empty-msg{text-align:center;padding:3rem 1rem;}
+.empty-msg i{font-size:3rem;color:#ddd;display:block;margin-bottom:.75rem;}
+.empty-msg p{font-size:0.9rem;letter-spacing:3px;text-transform:uppercase;color:#333;font-weight:700;}
+.hw-divider{height:5px;background:repeating-linear-gradient(90deg,#C8102E 0 28px,#FFD700 28px 36px);}
+.coll-sec{padding:1.5rem;}
+.coll-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:1.9rem;letter-spacing:3px;color:#C8102E;margin-bottom:.15rem;}
+.coll-sub{font-size:0.88rem;letter-spacing:3px;color:#111;text-transform:uppercase;font-weight:700;margin-bottom:1.25rem;}
+.coll-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:1rem;}
+.coll-card{background:#fff;border:1.5px solid #e0e0e0;border-radius:10px;overflow:hidden;text-align:center;padding-bottom:.9rem;transition:border-color .15s;}
+.coll-card:hover{border-color:#C8102E;}
+.coll-photo{width:100%;height:105px;background:#f0f0f0;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.coll-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
+.coll-initials{width:62px;height:62px;border-radius:50%;background:#C8102E;color:#fff;font-family:'Bebas Neue',Impact,sans-serif;font-size:1.4rem;letter-spacing:2px;display:flex;align-items:center;justify-content:center;}
+.coll-stripe{height:3px;background:linear-gradient(90deg,#C8102E,#FF6B00,#FFD700);}
+.coll-name{font-family:'Bebas Neue',Impact,sans-serif;font-size:1rem;letter-spacing:1.5px;color:#111;margin:.6rem .6rem .2rem;line-height:1.2;}
+.coll-bio{font-size:0.78rem;color:#111;line-height:1.5;padding:0 .75rem;font-weight:500;font-style:italic;}
+.coll-bio-ph{font-size:0.76rem;color:#888;line-height:1.4;padding:0 .75rem;font-weight:500;}
+.hw-tab-event{background:linear-gradient(135deg,#1a1a2e,#2d1a00);color:#FFD700;border-color:#FFD700 !important;}
+.hw-tab-event.active{background:linear-gradient(135deg,#2d2d00,#3a1a00);color:#FFD700;border-bottom-color:#fff !important;}
+.hw-tab-event:hover:not(.active){background:linear-gradient(135deg,#2a2a3e,#3d2a00) !important;color:#FFD700 !important;}
+.hw-tab-event .count-pill{background:rgba(255,215,0,0.2);color:#FFD700;}
+.event-hdr{margin-bottom:1.2rem;}
+.event-name{font-family:'Bebas Neue',Impact,sans-serif;font-size:2rem;letter-spacing:3px;color:#111;line-height:1;}
+.event-meta{display:flex;gap:1rem;flex-wrap:wrap;margin-top:.4rem;align-items:center;}
+.event-meta-item{font-size:0.78rem;font-weight:700;letter-spacing:1px;color:#555;text-transform:uppercase;display:flex;align-items:center;gap:5px;}
+.event-desc{font-size:0.88rem;color:#333;line-height:1.6;border-left:3px solid #FFD700;padding-left:12px;margin:.75rem 0 1.2rem;font-style:italic;}
+.event-trophy{display:inline-block;background:#FFD700;color:#3a0000;font-size:0.65rem;font-weight:700;letter-spacing:2px;padding:3px 10px;border-radius:3px;text-transform:uppercase;margin-bottom:.6rem;}
+.feat-hero{display:flex;width:100%;border-radius:10px;overflow:hidden;border:2px solid #FFD700;margin-bottom:1.5rem;background:#111;height:240px;position:relative;}
+.feat-hero-img{width:40%;height:240px;flex-shrink:0;overflow:hidden;position:relative;cursor:zoom-in;}
+.feat-hero-img img{width:100%;height:100%;object-fit:contain;object-position:center center;display:block;transition:transform .4s;background:#111;}
+.feat-hero-img:hover img{transform:scale(1.04);}
+.feat-hero-img .photo-date{bottom:6px;left:7px;font-size:0.62rem;padding:2px 6px;}
+.feat-hero-img .zoom-hint{bottom:6px;right:7px;font-size:0.62rem;padding:2px 6px;}
+.feat-hero-info{flex:1;padding:0.9rem 1.2rem;display:flex;flex-direction:column;justify-content:center;gap:0.25rem;}
+.feat-hero-label{font-size:0.65rem;letter-spacing:3px;color:#FFD700;text-transform:uppercase;font-weight:700;}
+.feat-hero-make{font-size:0.75rem;letter-spacing:3px;color:#aaa;text-transform:uppercase;font-weight:700;}
+.feat-hero-model{font-family:'Bebas Neue',Impact,sans-serif;font-size:1.9rem;letter-spacing:2px;color:#fff;line-height:1;}
+.feat-hero-years{font-size:0.8rem;color:#C8102E;font-weight:700;}
+.feat-hero-stats{display:flex;gap:1rem;margin:.15rem 0;}
+.feat-hero-stat{text-align:center;}
+.feat-hero-stat-val{font-family:'Bebas Neue',Impact,sans-serif;font-size:1.2rem;color:#FFD700;line-height:1;}
+.feat-hero-stat-lbl{font-size:0.62rem;letter-spacing:1px;color:#aaa;text-transform:uppercase;font-weight:700;}
+.feat-hero-review{font-size:0.82rem;color:#ddd;line-height:1.55;border-left:3px solid #C8102E;padding-left:10px;font-style:italic;overflow:hidden;}
+.feat-hero-price{font-size:0.75rem;color:#aaa;font-weight:700;letter-spacing:1px;}
+.feat-hero-price span{color:#fff;}
+@media(max-width:640px){.feat-hero{flex-direction:column;height:auto;}.feat-hero-img{width:100%;height:150px;}}
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.93);z-index:9999;align-items:center;justify-content:center;flex-direction:column;gap:12px;}
+.lightbox.open{display:flex;}
+.lightbox img{max-width:92vw;max-height:82vh;object-fit:contain;border-radius:6px;display:block;}
+.lightbox-caption{color:#fff;font-size:0.9rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;}
+.lightbox-date{color:#FFD700;font-size:0.78rem;letter-spacing:2px;font-weight:700;}
+.lightbox-close{position:absolute;top:16px;right:20px;background:none;border:none;color:#fff;font-size:2.2rem;cursor:pointer;line-height:1;}
+.lightbox-close:hover{opacity:.7;}
+</style>
+
+<div class="hw">
+<div class="hw-header">
+  <div class="hw-logo">HOT<em>FINDS</em> <em style="font-size:1.6rem">⚡</em></div>
+  <div class="hw-sub">Daily Car Spotting Dashboard · Vancouver BC</div>
+</div>
+<div class="hw-tabs" id="tabs"></div>
+<div class="hw-body" id="body"></div>
+<div class="hw-divider"></div>
+<div class="coll-sec">
+  <div class="coll-title">Los Coleccionistas</div>
+  <div class="coll-sub">Equipo HotFinds · Vancouver BC</div>
+  <div class="coll-grid" id="collGrid"></div>
+</div>
+</div>
+
+<div class="lightbox" id="lightbox" onclick="closeLB()">
+  <button class="lightbox-close" onclick="closeLB()" aria-label="Cerrar"><i class="ti ti-x"></i></button>
+  <img id="lbImg" src="" alt="" onclick="event.stopPropagation()" />
+  <div class="lightbox-caption" id="lbCap"></div>
+  <div class="lightbox-date" id="lbDate"></div>
+</div>
+
+<script>
+const IMGS = {
+  gs350: 'https://lh3.googleusercontent.com/pw/AP1GczPPF3SxLHeiBIVVHHzdLittuxInDper0VxutOqTdHAgrBGX66wtjEBZYVV2Ltxrw7N4cUQRQ1YltqdGcHct_Pav122WXehOrO21T2e90lSvolXDnsqp=w1200',
+  sc430: 'https://lh3.googleusercontent.com/pw/AP1GczNIGKN0ijPR-ZAPEURKw6NCqQhTl5ulbuuiEoy5vUgHIWFSHqLIiX4GkPvI0mh6QaH0pwC7o-YDuZ56aFJlN28XuAzaPHbNmArThBVPdV_kO5ULouUO=w1200',
+  saab93: 'https://lh3.googleusercontent.com/pw/AP1GczMeGIDO9EHhREZ9xJBT1F4NgOFEESfW3ZrIdMfmBRB1tUj_AXas9WVTMjArbRD3K2iAndtdfqfIuUnR55qhKFufwdD650E8FRgbfQGvkxm6aW1xog3u=w1200',
+  charger: 'https://lh3.googleusercontent.com/pw/AP1GczN7qtl1Mqs0_Ts9OL-OvurGyJoyW6GoLCxNMHf9PIa6jtzealuj3QXVRKrqOMssR1unzrTVQ_sFEhW2urAT71siSOuXlJDrNcL4QMnoHKgMY4pzrQkN=w1200',
+  aztek: 'https://lh3.googleusercontent.com/pw/AP1GczPpG1LQDjVqhuPobQpOapidB55K1VWN50uuNeZZVpysdwwFN6ZNphExM3UU6VSQE5GRDVGXCPa2wYxMhF0B5BhKvswoGNdH7R9iv9h-OvzMtuQH-NjL=w1200',
+  xk120: 'https://lh3.googleusercontent.com/pw/AP1GczOiWAXz2qe_VURUyNg_Mjeee6xFOxLpY7SCGoaU8rEAqkKl2PVSp7MqxKJ02XOY0iqB2G4ixDJIXHtsvydlkQcuKvUnxeHiG2_acCjr-bm7CtHF4up7=w1200'
+};
+
+let rendered = false;
+function renderIfReady(){ if(!rendered){ rendered=true; init(); } }
+document.addEventListener('DOMContentLoaded', renderIfReady);
+
+const CARS={
+  "2026-06":{label:"Junio 2026",cars:[{
+    id:"gs350",make:"Lexus",model:"GS 350",years:"2006–2011",
+    photoDate:"7 de junio, 2026",photoTimestamp:20260607,featured:true,
+    featuredReason:"Stance radical a ras del suelo con rines cromados multirayos — modificación extrema que convierte un sedán de lujo en una declaración del movimiento VIP/Stance.",
+    review:"Un Lexus GS 350 convertido en obra de arte rodante. La suspensión tocando casi el asfalto y esos rines cromados multirayos no son accidente — son el resultado de miles de dólares en modificaciones inspiradas en la cultura VIP japonesa. Lo que hace especial este hallazgo es ver ese contraste: una plataforma de lujo discreta transformada en una declaración visual imposible de ignorar. Vancouver rara vez muestra estas builds con tanta autenticidad.",
+    hp:303,topSpeed:"230 km/h",zero:"6.5 s",priceCAD:"$8,000–$18,000 CAD",badge:"stance",badgeLabel:"Stance Build",imgKey:"gs350",
+    specs:{"Motor":"V6 3.5L 2GR-FSE","Potencia":"303 hp / 274 lb-ft","Transmisión":"Automática 6 vel.","Tracción":"RWD","0–100 km/h":"6.5 seg","Vel. máxima":"230 km/h","Carrocería":"Sedán 4 puertas","Producción total":"~150,000 unidades","Años de prod.":"2006–2011","Precio CA (usado)":"$8,000–$18,000"},
+    highlights:["Primera generación GS en abandonar el motor inline-6 2JZ — pasó a V6 y V8","Primer sedán de lujo Lexus en usar el lenguaje de diseño L-Finesse","El GS 450h de esta generación fue el primer sedán de lujo híbrido del mundo (2007)","Comparte plataforma Toyota N con el Toyota Crown japonés de la misma época","Este ejemplar: suspensión muy baja y rines cromados multirayos — estilo VIP japonés"]
+  },{
+    id:"charger",make:"Dodge",model:"Charger LX",years:"2006–2010",
+    photoDate:"8 de junio, 2026",photoTimestamp:20260608,featured:false,
+    featuredReason:"",review:"",
+    hp:368,topSpeed:"250 km/h",zero:"6.0 s",priceCAD:"$5,000–$15,000 CAD",badge:"",badgeLabel:"",imgKey:"charger",
+    specs:{"Motor":"V8 5.7L HEMI","Potencia":"368 hp / 395 lb-ft","Transmisión":"Automática 5 vel.","Tracción":"RWD","0–100 km/h":"6.0 seg","Vel. máxima":"250 km/h","Carrocería":"Sedán 4 puertas","Producción total":"~500,000 unidades","Años de prod.":"2006–2010","Precio CA (usado)":"$5,000–$15,000"},
+    highlights:["Este ejemplar tiene push bar frontal — accesorio típico de patrulleros policiales norteamericanos","El motor HEMI 5.7L fue el mismo usado en las versiones Police Pursuit del Charger","Plataforma LX compartida con Chrysler 300 y Dodge Magnum — chassis de origen Mercedes-Benz","El Charger fue elegido por decenas de agencias policiales de EE.UU. y Canadá por su potencia y tamaño","Versión SRT8 con 425hp fue uno de los sedanes americanos más rápidos de su época"]
+  },{
+    id:"aztek",make:"Pontiac",model:"Aztek",years:"2001–2005",
+    photoDate:"7 de junio, 2026",photoTimestamp:20260607,featured:false,
+    featuredReason:"",review:"",
+    hp:185,topSpeed:"185 km/h",zero:"9.5 s",priceCAD:"$2,000–$6,000 CAD",badge:"",badgeLabel:"",imgKey:"aztek",
+    specs:{"Motor":"V6 3.4L LA1","Potencia":"185 hp / 210 lb-ft","Transmisión":"Automática 4 vel.","Tracción":"FWD / AWD","0–100 km/h":"9.5 seg","Vel. máxima":"185 km/h","Carrocería":"Crossover 5 puertas","Producción total":"~119,000 unidades (total 5 años)","Años de prod.":"2001–2005","Precio CA (usado)":"$2,000–$6,000"},
+    highlights:["Considerado uno de los autos más feos jamás fabricados — ganó múltiples premios a peor diseño","Pontiac esperaba vender 75,000 unidades/año; apenas vendió ~119,000 en 5 años totales","Walter White lo condujo en Breaking Bad — eso disparó su culto popular y su precio usado","Fue el primer crossover completamente diseñado con herramientas de prototipado digital 3D","Traía carpa de campaña acoplable en el maletero y colchón de aire — paquete camping oficial de fábrica"]
+  }]},
+  "2026-05":{label:"Mayo 2026",cars:[{
+    id:"sc430",make:"Lexus",model:"SC 430",years:"2001–2010",
+    photoDate:"24 de mayo, 2026",photoTimestamp:20260524,featured:false,
+    featuredReason:"",
+    hp:288,topSpeed:"250 km/h",zero:"7.2 s",priceCAD:"$15,000–$35,000 CAD",badge:"chrome",badgeLabel:"Rose Gold Chrome",imgKey:"sc430",
+    specs:{"Motor":"V8 4.3L 3UZ-FE","Potencia":"288 hp / 316 lb-ft","Transmisión":"Automática 5 vel.","Tracción":"RWD","0–100 km/h":"7.2 seg","Vel. máxima":"250 km/h","Carrocería":"Convertible hardtop","Producción total":"~72,000 unidades","Años de prod.":"2001–2010","Precio CA (usado)":"$15,000–$35,000"},
+    highlights:["Primer auto de lujo con techo retráctil de aluminio — abre en solo 25 segundos","2.º lugar en J.D. Power IQS 2002 en categoría premium de lujo","Edición «Eternal Jewel» 2010: solo 200 unidades exclusivas para Japón","Compitió en Super GT 500 japonés con motor V8 3UZ-FE modificado","Pebble Beach Edition 2007: 400 unidades, color Starfire Pearl exclusivo"]
+  },{
+    id:"saab93",make:"Saab",model:"9-3 SportCombi",years:"2005–2011",
+    photoDate:"23 de mayo, 2026",photoTimestamp:20260523,featured:true,
+    featuredReason:"Saab dejó de producir autos en 2012 — encontrar un 9-3 SportCombi en buen estado en Vancouver es un hallazgo genuinamente raro. Una reliquia sueca con alma de avión.",
+    review:"Saab murió en 2012 y cada uno de sus autos que sigue rodando es un pequeño milagro mecánico. Este 9-3 SportCombi en gris oscuro luce sorprendentemente digno para su edad — limpio, funcional, sin pretensiones. Hay algo poético en ver una marca que nació haciendo aviones convertida en un wagon familiar que pasea por Vancouver sin que casi nadie lo note. Los que saben, saben: esto es historia automotriz sueca en movimiento.",
+    hp:175,topSpeed:"220 km/h",zero:"8.5 s",priceCAD:"$4,000–$12,000 CAD",badge:"",badgeLabel:"",imgKey:"saab93",
+    specs:{"Motor":"I4 2.0L Turbo","Potencia":"175 hp / 195 lb-ft","Transmisión":"Manual 6 vel. / Auto 5 vel.","Tracción":"FWD","0–100 km/h":"8.5 seg","Vel. máxima":"220 km/h","Carrocería":"Station Wagon 5 puertas","Producción total":"~700,000 unidades (9-3 total)","Años de prod.":"2005–2011","Precio CA (usado)":"$4,000–$12,000"},
+    highlights:["Saab quebró en 2012 — cada 9-3 en circulación es una pieza de historia automotriz","La llave de ignición está entre los asientos delanteros, tradición única de Saab desde los años 70","La parrilla frontal imita la vista de un avión Saab desde abajo — herencia aeronáutica directa","5 estrellas EuroNCAP desde 2003 — fue uno de los autos más seguros de su segmento","El SportCombi fue el único wagon de Saab basado en la plataforma GM Epsilon compartida con el Opel Vectra"]
+  }]},
+  "2026-04":{label:"Abril 2026",cars:[]}
+};
+
+const EVENTS={
+  "abfm-2026":{
+    label:"All British Field Meet",
+    date:"16 de mayo, 2026",
+    timestamp:202605,
+    location:"VanDusen Botanical Garden · Vancouver BC",
+    description:"El Vancouver All British Field Meet es uno de los concursos de autos clásicos británicos más importantes de Norteamérica. Cada mayo, VanDusen se llena de Jaguars, Bentleys, Triumphs, MGs y Austins impecablemente restaurados.",
+    cars:[{
+      id:"xk120",make:"Jaguar",model:"XK120 Roadster",years:"1948–1954",
+      photoDate:"16 de mayo, 2026",photoTimestamp:20260516,featured:true,
+      featuredReason:"Auto de producción más rápido del mundo en 1949 — una pieza de historia viva en VanDusen.",
+      review:"Ver un Jaguar XK120 en persona es entender por qué el diseño automotriz importa. Esas curvas diseñadas por William Lyons en solo tres meses tienen más alma que la mayoría de los autos modernos. Este ejemplar en gris oscuro con interior de cuero café luce impecable — claramente restaurado con devoción. En el contexto del All British Field Meet en VanDusen, rodeado de pasto verde y otros clásicos, es una escena difícil de superar.",
+      hp:160,topSpeed:"193 km/h",zero:"10.0 s",priceCAD:"$80,000–$200,000 CAD",badge:"",badgeLabel:"",imgKey:"xk120",
+      specs:{"Motor":"I6 3.4L DOHC XK","Potencia":"160 hp / 195 lb-ft","Transmisión":"Manual 4 vel. Moss","Tracción":"RWD","0–100 km/h":"~10.0 seg","Vel. máxima":"193 km/h (120 mph)","Carrocería":"Roadster 2 plazas","Producción total":"~12,000 unidades (todas versiones)","Años de prod.":"1948–1954","Precio CA (usado)":"$80,000–$200,000+"},
+      highlights:["Auto de producción más rápido del mundo en 1949 — alcanzó 213 km/h en la autopista Jabbeke en Bélgica","El motor XK I6 ganó Le Mans 5 veces y siguió usándose en Jaguars hasta 1992","Los primeros 242 ejemplares tenían carrocería de aluminio sobre estructura de madera de fresno","Diseñado en solo 3 meses por William Lyons como show car — la demanda pública lo convirtió en producción","Compitió en las Mille Miglia, Le Mans y Carrera Panamericana — ganando múltiples clases"]
+    }]
+  }
+};
+
+const COLLECTORS=[
+  {id:"sr",name:"Simon Rodriguez Lemus",initials:"SR",bio:""},
+  {id:"nr",name:"Nelson Rodriguez Esmeral",initials:"NR",bio:""},
+  {id:"da",name:"Dayana Lemus Acosta",initials:"DL",bio:""},
+  {id:"lr",name:"Lucas Rodriguez Lemus",initials:"LR",bio:""}
+];
+
+let active="2026-06";
+
+function openLB(imgKey,cap,date){
+  const src=IMGS[imgKey]||'';
+  if(!src) return;
+  document.getElementById('lbImg').src=src;
+  document.getElementById('lbCap').textContent=cap;
+  document.getElementById('lbDate').textContent=date?'Fotografiado el '+date:'';
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLB(){document.getElementById('lightbox').classList.remove('open');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB();});
+
+function badgeHtml(c){
+  if(!c.badge) return '';
+  const cls=c.badge==='stance'?'badge-stance':'badge-chrome';
+  return `<span class="mod-badge ${cls}">${c.badgeLabel}</span>`;
+}
+
+function carCard(c){
+  const src=IMGS[c.imgKey]||'';
+  const imgHtml=src
+    ?`<img src="${src}" alt="${c.make} ${c.model}" style="opacity:1;" />`
+    :`<div style="display:flex;flex-direction:column;align-items:center;gap:8px;"><i class="ti ti-car" style="font-size:2.8rem;color:#bbb;"></i><span style="font-size:0.8rem;letter-spacing:2px;color:#555;text-transform:uppercase;font-weight:700;">${c.make} ${c.model}</span></div>`;
+  const specs=Object.entries(c.specs).map(([k,v])=>`<div class="spec-row"><span class="spec-key">${k}</span><span class="spec-val">${v}</span></div>`).join('');
+  const hls=c.highlights.map(h=>`<li>${h}</li>`).join('');
+  return `<div class="car-card${c.featured?' featured':''}" id="card-${c.id}">
+    <div class="car-img-wrap" onclick="openLB('${c.imgKey}','${c.make} ${c.model} · ${c.years}','${c.photoDate||''}')" title="Clic para ver foto completa">
+      ${imgHtml}
+      ${c.photoDate?`<span class="photo-date"><i class="ti ti-calendar" aria-hidden="true"></i> ${c.photoDate}</span>`:''}
+      ${src?`<span class="zoom-hint"><i class="ti ti-zoom-in" aria-hidden="true"></i> Ver foto</span>`:''}
+    </div>
+    <div class="car-stripe"></div>
+    <div class="car-info">
+      <div class="car-make">${c.make}${badgeHtml(c)}</div>
+      <div class="car-model">${c.model}</div>
+      <div class="car-year">${c.years}</div>
+      <div class="qs-grid">
+        <div class="qs"><div class="qs-val">${c.hp}</div><div class="qs-lbl">HP</div></div>
+        <div class="qs"><div class="qs-val">${c.topSpeed}</div><div class="qs-lbl">V-Max</div></div>
+        <div class="qs"><div class="qs-val">${c.zero}</div><div class="qs-lbl">0–100</div></div>
+      </div>
+      <div class="price-wrap"><span class="price-tag">Precio CA:</span><span class="price-val">${c.priceCAD}</span></div>
+    </div>
+    <button class="expand-btn" id="btn-${c.id}" onclick="toggle('${c.id}')">
+      <i class="ti ti-chevron-down" aria-hidden="true"></i> Ver especificaciones
+    </button>
+    <div class="car-details" id="det-${c.id}">
+      <div class="dtl-sec"><div class="dtl-title">Especificaciones técnicas</div>${specs}</div>
+      <div class="dtl-sec"><div class="dtl-title">Datos destacados</div><ul class="hl-list">${hls}</ul></div>
+      ${c.featured?`<div class="dtl-sec"><div class="dtl-title">¿Por qué es el destacado?</div><div class="feat-reason">${c.featuredReason}</div></div>`:''}
+    </div>
+  </div>`;
+}
+
+function toggle(id){
+  const d=document.getElementById('det-'+id),b=document.getElementById('btn-'+id),o=d.classList.contains('open');
+  d.classList.toggle('open',!o);b.classList.toggle('open',!o);
+  b.innerHTML=o?'<i class="ti ti-chevron-down" aria-hidden="true"></i> Ver especificaciones':'<i class="ti ti-chevron-up" aria-hidden="true"></i> Cerrar especificaciones';
+}
+
+function featHero(c){
+  const src=IMGS[c.imgKey]||'';
+  const imgHtml=src
+    ?`<img src="${src}" alt="${c.make} ${c.model}" />`
+    :`<div style="display:flex;align-items:center;justify-content:center;height:100%;"><i class="ti ti-car" style="font-size:3rem;color:#555;"></i></div>`;
+  return `<div class="feat-hero">
+    <div class="feat-hero-img" onclick="openLB('${c.imgKey}','${c.make} ${c.model} · ${c.years}','${c.photoDate||''}')" title="Clic para ver foto completa">
+      ${imgHtml}
+      ${c.photoDate?`<span class="photo-date"><i class="ti ti-calendar" aria-hidden="true"></i> ${c.photoDate}</span>`:''}
+      ${src?`<span class="zoom-hint"><i class="ti ti-zoom-in" aria-hidden="true"></i> Ver foto</span>`:''}
+    </div>
+    <div class="feat-hero-info">
+      <div class="feat-hero-label">⭐ Destacado del mes</div>
+      <div class="feat-hero-make">${c.make}</div>
+      <div class="feat-hero-model">${c.model}</div>
+      <div class="feat-hero-years">${c.years}</div>
+      <div class="feat-hero-stats">
+        <div class="feat-hero-stat"><div class="feat-hero-stat-val">${c.hp}</div><div class="feat-hero-stat-lbl">HP</div></div>
+        <div class="feat-hero-stat"><div class="feat-hero-stat-val">${c.topSpeed}</div><div class="feat-hero-stat-lbl">V-Max</div></div>
+        <div class="feat-hero-stat"><div class="feat-hero-stat-val">${c.zero}</div><div class="feat-hero-stat-lbl">0–100</div></div>
+      </div>
+      <div class="feat-hero-review">${c.review||c.featuredReason}</div>
+      <div class="feat-hero-price">Precio CA: <span>${c.priceCAD}</span></div>
+    </div>
+  </div>`;
+}
+
+function renderMonth(key){
+  active=key;
+  const m=CARS[key],feat=m.cars.find(c=>c.featured);
+  const sorted=[...m.cars].sort((a,b)=>(b.photoTimestamp||0)-(a.photoTimestamp||0));
+  document.getElementById('body').innerHTML=
+    `<div class="month-hdr"><div class="month-title">${m.label}</div></div>`+
+    (feat?featHero(feat):'')+
+    (sorted.length?`<div class="cars-grid">${sorted.map(carCard).join('')}</div>`:
+    `<div class="empty-msg"><i class="ti ti-car" aria-hidden="true"></i><p>Sin hallazgos este mes</p></div>`)+
+    `<div class="add-box"><div class="add-lbl">Nuevo hallazgo</div>
+    <button class="add-btn" onclick="sendPrompt('Quiero agregar un auto al dashboard. Aquí va la foto:')"><i class="ti ti-plus" aria-hidden="true"></i> AGREGAR AUTO</button>
+    <div class="add-note">Sube la foto directamente al chat y Claude detecta la fecha y el modelo</div></div>`;
+  document.querySelectorAll('.hw-tab').forEach(t=>t.classList.toggle('active',t.dataset.m===key));
+}
+
+function renderTabs(){
+  const months = Object.entries(CARS).map(([k,v])=>({
+    key:k, label:v.label, count:v.cars.length, type:'month', ts:parseInt(k.replace('-',''))
+  }));
+  const events = Object.entries(EVENTS).map(([k,v])=>({
+    key:k, label:v.label, count:v.cars.length, type:'event', ts:v.timestamp
+  }));
+  const all = [...months,...events].sort((a,b)=>b.ts-a.ts);
+  document.getElementById('tabs').innerHTML = all.map(t=>
+    t.type==='event'
+      ? `<div class="hw-tab hw-tab-event${t.key===active?' active':''}" data-m="${t.key}" onclick="setActive('${t.key}','event')">⚑ ${t.label}<span class="count-pill">${t.count}</span></div>`
+      : `<div class="hw-tab${t.key===active?' active':''}" data-m="${t.key}" onclick="setActive('${t.key}','month')">${t.label}<span class="count-pill">${t.count}</span></div>`
+  ).join('');
+}
+
+function setActive(key, type){
+  active = key;
+  if(type==='event') renderEvent(key);
+  else renderMonth(key);
+}
+
+function renderEvent(key){
+  active=key;
+  const ev=EVENTS[key];
+  const sorted=[...ev.cars].sort((a,b)=>(b.photoTimestamp||0)-(a.photoTimestamp||0));
+  const feat=sorted[0];
+  document.getElementById('body').innerHTML=
+    `<div class="month-hdr">
+      <div class="event-trophy">⭐ Evento Especial</div>
+      <div class="month-title">${ev.label}</div>
+      <div class="event-meta" style="margin-top:.3rem;">
+        <span class="event-meta-item">📅 ${ev.date}</span>
+        <span class="event-meta-item">📍 ${ev.location}</span>
+        <span class="event-meta-item">🚗 ${ev.cars.length} hallazgo${ev.cars.length!==1?'s':''}</span>
+      </div>
+      <div class="event-desc">${ev.description}</div>
+    </div>`+
+    (feat?featHero(feat):'')+
+    (sorted.length?`<div class="cars-grid">${sorted.map(carCard).join('')}</div>`:
+    `<div class="empty-msg"><i class="ti ti-car" aria-hidden="true"></i><p>Sin hallazgos en este evento</p></div>`)+
+    `<div class="add-box"><div class="add-lbl">Agregar auto de este evento</div>
+    <button class="add-btn" onclick="sendPrompt('Quiero agregar un auto al evento ${ev.label}. Aquí va la foto:')"><i class="ti ti-plus" aria-hidden="true"></i> AGREGAR AUTO</button>
+    <div class="add-note">Sube la foto directamente al chat y Claude detecta el modelo</div></div>`;
+  document.querySelectorAll('.hw-tab').forEach(t=>t.classList.toggle('active',t.dataset.m===key));
+}
+
+function renderCollectors(){
+  document.getElementById('collGrid').innerHTML=COLLECTORS.map(c=>`
+    <div class="coll-card">
+      <div class="coll-photo"><div class="coll-initials">${c.initials}</div></div>
+      <div class="coll-stripe"></div>
+      <div class="coll-name">${c.name}</div>
+      ${c.bio?`<div class="coll-bio">${c.bio}</div>`:`<div class="coll-bio-ph">Perfil pendiente...</div>`}
+    </div>`).join('');
+}
+
+function init(){
+  renderTabs();
+  renderMonth(active);
+  renderCollectors();
+}
+</script>
