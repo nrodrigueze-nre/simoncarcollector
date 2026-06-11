@@ -466,7 +466,11 @@ function topStats(cars){
   const power   = best(cars,c=>c.hp||0,c=>`${c.hp} hp`,'⚡','Mayor potencia');
   const accel   = best(cars,c=>-parseZero(c.zero),c=>c.zero,'🚀','Mejor aceleración');
   const oldest  = best(cars,c=>-parseYear(c.years),c=>c.years.split('–')[0],'📅','Más antiguo');
-  const pricey  = best(cars,c=>parsePrice(c.priceCAD),c=>c.priceCAD.split('–')[0]+'+','💰','Más costoso');
+  function maxPriceDisplay(s){
+    const matches=[...(s||'').matchAll(/\$([\d,]+)/g)].map(m=>m[1]);
+    return matches.length?'$'+matches[matches.length-1]:'';
+  }
+  const pricey  = best(cars,c=>parsePrice(c.priceCAD),c=>maxPriceDisplay(c.priceCAD),'💰','Más costoso');
   return `<div class="stats-bar">${fastest}${power}${accel}${oldest}${pricey}</div>`;
 }
 
@@ -480,7 +484,7 @@ function renderMonth(key){
   });
   document.getElementById('body').innerHTML=
     `<div class="month-hdr"><div class="month-title">${m.label}</div></div>`+
-    (feat&&key==='nuestros-autos'?`<div class="section-title">Destacado</div>`+featHero(feat):'')+
+    (feat?`<div class="section-title">Destacado</div>`+featHero(feat):'')+
     (sorted.length>=2?`<div class="section-title">Top Estadísticas</div>`+topStats(m.cars):'')+
     (sorted.length?`<div class="section-title">Hallazgos</div><div class="cars-grid">${sorted.map(carCard).join('')}</div>`:
     `<div class="empty-msg"><i class="ti ti-car" aria-hidden="true"></i><p>Sin hallazgos este mes</p></div>`)+
