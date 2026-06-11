@@ -25,7 +25,7 @@
 .car-card:hover{transform:translateY(-3px);border-color:#C8102E;}
 .car-card.featured{border-color:#FFD700;border-width:2px;}
 .car-card.featured::before{content:'DESTACADO';position:absolute;top:8px;right:8px;background:#FFD700;color:#3a0000;font-size:0.7rem;font-weight:700;letter-spacing:1.5px;padding:4px 9px;border-radius:3px;z-index:10;}
-.car-img-wrap{width:100%;height:185px;overflow:hidden;background:#e8e8e8;display:flex;align-items:center;justify-content:center;cursor:zoom-in;position:relative;}
+.car-img-wrap{width:100%;height:278px;overflow:hidden;background:#e8e8e8;display:flex;align-items:center;justify-content:center;cursor:zoom-in;position:relative;}
 .car-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;transition:transform .3s;}
 .car-card:hover .car-img-wrap img{transform:scale(1.04);}
 .zoom-hint{position:absolute;bottom:7px;right:8px;background:rgba(0,0,0,0.5);color:#fff;font-size:0.7rem;letter-spacing:1px;padding:3px 8px;border-radius:3px;font-weight:700;text-transform:uppercase;pointer-events:none;}
@@ -84,7 +84,13 @@
 .hw-tab-event.active{background:linear-gradient(135deg,#2d2d00,#3a1a00);color:#FFD700;border-bottom-color:#fff !important;}
 .hw-tab-event:hover:not(.active){background:linear-gradient(135deg,#2a2a3e,#3d2a00) !important;color:#FFD700 !important;}
 .hw-tab-event .count-pill{background:rgba(255,215,0,0.2);color:#FFD700;}
-.event-hdr{margin-bottom:1.2rem;}
+.stats-bar{display:grid;grid-template-columns:repeat(5,1fr);gap:.6rem;margin-bottom:1.4rem;}
+.stat-card{background:#111;border-radius:8px;padding:.7rem .75rem;display:flex;flex-direction:column;gap:.2rem;min-width:0;}
+.stat-icon{font-size:1.1rem;line-height:1;}
+.stat-label{font-size:0.8rem;letter-spacing:2px;color:#aaa;text-transform:uppercase;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.stat-value{font-family:'Bebas Neue',Impact,sans-serif;font-size:1.27rem;color:#FFD700;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.stat-car{font-size:0.82rem;color:#ccc;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+@media(max-width:600px){.stats-bar{grid-template-columns:1fr 1fr;}.stats-bar .stat-card:last-child{grid-column:1/-1;}}
 .event-name{font-family:'Bebas Neue',Impact,sans-serif;font-size:2rem;letter-spacing:3px;color:#111;line-height:1;}
 .event-meta{display:flex;gap:.6rem 1rem;flex-wrap:wrap;margin-top:.4rem;align-items:center;}
 .event-meta-item{font-size:0.78rem;font-weight:700;letter-spacing:1px;color:#555;text-transform:uppercase;display:flex;align-items:center;gap:5px;}
@@ -126,7 +132,7 @@
   .hw-body{padding:1rem .75rem;}
   .month-title{font-size:1.5rem;}
   .cars-grid{grid-template-columns:1fr;}
-  .car-img-wrap{height:220px;}
+  .car-img-wrap{height:260px;}
   .feat-hero{flex-direction:column;height:auto;}
   .feat-hero-img{width:100%;height:200px;}
   .feat-hero-info{padding:.85rem .9rem;}
@@ -178,7 +184,9 @@ const IMGS = {
   ftype: 'https://lh3.googleusercontent.com/pw/AP1GczOWExVQyUnnEkLkt7XUnhcOM3cCXNFTw-g2QD_9dzBipNKscobT6FKEqpgBYXIWyOUU56cV5UITSGCfTWt9TptLuRRCijY1U383XrsmDN0C7nVGT13O=w1200',
   jmk2: 'https://lh3.googleusercontent.com/pw/AP1GczOEmNPYL_krzH5D5NBdyQJSp24Kzb3l0rXtlrew8mBkoBRVBHVPA7kVpcH1N14bEVGRu6o7gnxvP7AnUSdNhuNMZsgg4Lu6TL7X96rrAcsDqdMIW5R4=w1200',
   ah3000: 'https://lh3.googleusercontent.com/pw/AP1GczOQAj1I2U10yDWpG_w_1_Y9Mtau10rT7Kp5DwClNU3ycFK-TWNVkGt__uiE3hSdpqaWneKa-OpjhqtyYuCnbr8Nv6w3OTdFVhnGtK665L6ikjwI5POl=w1200',
-  sprite: 'https://lh3.googleusercontent.com/pw/AP1GczPWh19m-VMlBuQzF6teK19dgVOGfZtaKsv-BcTN1-iiyMQR5KCmjTuWWElguffqp1AspfwKV1H5AfM5qakZIqhEXO-Q7ml2bETxSndbPouVClOLdWUo=w1200'
+  sprite: 'https://lh3.googleusercontent.com/pw/AP1GczPWh19m-VMlBuQzF6teK19dgVOGfZtaKsv-BcTN1-iiyMQR5KCmjTuWWElguffqp1AspfwKV1H5AfM5qakZIqhEXO-Q7ml2bETxSndbPouVClOLdWUo=w1200',
+  rrCorniche: 'https://lh3.googleusercontent.com/pw/AP1GczOAOX5bjzmqOjLX-I4w_6V5do4tnIOa4pidQVUBXr_TAPuv_od_FzDQD5ntRjhnORG-TIHB7puvKAG4aJ2egagnDN9_pO8Cl37G-7jlpUpxTvhV5TZQ=w1200',
+  bentleyT: 'https://lh3.googleusercontent.com/pw/AP1GczPav2IHw0fAU_DhL7mgRCEmamU-nPp0xEBL5y_AQGU9jPpecrt0ioq8nmlX43tbjhNeXpFZ2Yb_oaCc-54eKyqzygZyXTNUErcEGT2odF6zLinUTAsH=w1200'
 };
 
 let rendered = false;
@@ -271,6 +279,20 @@ const EVENTS={
       hp:45,topSpeed:"129 km/h",zero:"20.8 s",priceCAD:"$15,000–$35,000 CAD",badge:"",badgeLabel:"",imgKey:"sprite",
       specs:{"Motor":"I4 948cc OHV A-Series","Potencia":"45 hp / 52 lb-ft","Transmisión":"Manual 4 vel.","Tracción":"RWD","0–100 km/h":"~20 seg","Vel. máxima":"129 km/h (80 mph)","Carrocería":"Roadster 2 plazas","Producción total":"49,616 unidades (solo Mk I Frogeye)","Años de prod.":"1958–1961","Precio CA (usado)":"$15,000–$35,000"},
       highlights:["Apodado 'Frogeye' en UK y 'Bugeye' en USA por sus faros fijos e inamovibles sobre el capó","Los faros no podían girar hacia adentro como se planeó originalmente — quedaron fijos por costos","Solo 664 kg de peso — más ligero que muchas motos modernas, lo que compensaba sus 45hp","No tiene manijas exteriores de puerta, baúl, parabrisas fijo ni ventanas — máxima austeridad","Costaba $1,795 USD en 1958 — el auto deportivo británico más barato del mercado en su época"]
+    },{
+      id:"rrCorniche",make:"Rolls-Royce",model:"Corniche Convertible",years:"1971–1995",
+      photoDate:"16 de mayo, 2026",photoTimestamp:20260516,featured:false,
+      featuredReason:"",review:"",
+      hp:237,topSpeed:"190 km/h",zero:"10.5 s",priceCAD:"$60,000–$200,000 CAD",badge:"",badgeLabel:"",imgKey:"rrCorniche",
+      specs:{"Motor":"V8 6.75L L410 OHV","Potencia":"237 hp / 450 lb-ft","Transmisión":"Automática 3 vel. GM Turbo-Hydramatic","Tracción":"RWD","0–100 km/h":"~10.5 seg","Vel. máxima":"190 km/h (118 mph)","Carrocería":"Convertible 2 puertas","Producción total":"3,239 unidades (solo Convertible)","Años de prod.":"1971–1995","Precio CA (usado)":"$60,000–$200,000+"},
+      highlights:["Solo 3,239 Corniche Convertibles fabricados en 24 años — cada uno tomaba 4 meses en construirse","El capó del convertible tardaba 2 semanas solo en su confección artesanal en Mulliner Park Ward","El Spirit of Ecstasy de cada Corniche era fundido y pulido a mano — no hay dos idénticos","Rolls-Royce nunca publicaba las cifras de potencia oficialmente — 'suficiente', era su única respuesta","Este ejemplar en marrón con interior crema es la combinación más clásica y codiciada del modelo"]
+    },{
+      id:"bentleyT",make:"Bentley",model:"T-Series T1/T2",years:"1965–1980",
+      photoDate:"16 de mayo, 2026",photoTimestamp:20260516,featured:false,
+      featuredReason:"",review:"",
+      hp:225,topSpeed:"193 km/h",zero:"10.9 s",priceCAD:"$25,000–$60,000 CAD",badge:"",badgeLabel:"",imgKey:"bentleyT",
+      specs:{"Motor":"V8 6.75L L-Series OHV","Potencia":"225 hp / 350 Nm","Transmisión":"Automática 3 vel. GM","Tracción":"RWD","0–100 km/h":"10.9 seg","Vel. máxima":"193 km/h (120 mph)","Carrocería":"Sedán 4 puertas","Producción total":"2,436 unidades (T1+T2 saloon)","Años de prod.":"1965–1980","Precio CA (usado)":"$25,000–$60,000"},
+      highlights:["Primer Bentley en usar construcción monocasco — abandonó el bastidor separado que usó desde 1919","Mecánicamente idéntico al Rolls-Royce Silver Shadow — diferenciado solo por la parrilla más simple","La parrilla Bentley costaba menos que la RR — lo que permitía venderlo $50 GBP más barato en 1966","Solo 41 convertibles T1 fueron construidos — uno de los Bentleys más raros de la era moderna","El motor V8 6.75L de este auto siguió en producción en Bentley hasta 2020 — 55 años ininterrumpidos"]
     }]
   }
 };
@@ -370,13 +392,44 @@ function featHero(c){
   </div>`;
 }
 
+function topStats(cars){
+  if(!cars||cars.length<2) return '';
+  function best(arr,fn,fmt,icon,label){
+    const w=arr.reduce((a,b)=>fn(a)>=fn(b)?a:b);
+    return `<div class="stat-card">
+      <div class="stat-icon">${icon}</div>
+      <div class="stat-label">${label}</div>
+      <div class="stat-value">${fmt(w)}</div>
+      <div class="stat-car">${w.make} ${w.model}</div>
+    </div>`;
+  }
+  function parseSpeed(s){return parseFloat(s)||0;}
+  function parseZero(s){return parseFloat(s)||999;}
+  function parseYear(s){return parseInt((s||'').split('–')[0])||9999;}
+  function parsePrice(s){
+    const m=(s||'').match(/\$([\d,]+)/);
+    return m?parseInt(m[1].replace(/,/g,'')):0;
+  }
+  const fastest = best(cars,c=>parseSpeed(c.topSpeed),c=>c.topSpeed,'🏎️','Mayor velocidad');
+  const power   = best(cars,c=>c.hp||0,c=>`${c.hp} hp`,'⚡','Mayor potencia');
+  const accel   = best(cars,c=>-parseZero(c.zero),c=>c.zero,'🚀','Mejor aceleración');
+  const oldest  = best(cars,c=>-parseYear(c.years),c=>c.years.split('–')[0],'📅','Más antiguo');
+  const pricey  = best(cars,c=>parsePrice(c.priceCAD),c=>c.priceCAD.split('–')[0]+'+','💰','Más costoso');
+  return `<div class="stats-bar">${fastest}${power}${accel}${oldest}${pricey}</div>`;
+}
+
 function renderMonth(key){
   active=key;
   const m=CARS[key],feat=m.cars.find(c=>c.featured);
-  const sorted=[...m.cars].sort((a,b)=>(b.photoTimestamp||0)-(a.photoTimestamp||0));
+  const sorted=[...m.cars].sort((a,b)=>{
+    const dt=(b.photoTimestamp||0)-(a.photoTimestamp||0);
+    if(dt!==0) return dt;
+    return (b.featured?1:0)-(a.featured?1:0);
+  });
   document.getElementById('body').innerHTML=
     `<div class="month-hdr"><div class="month-title">${m.label}</div></div>`+
     (feat?featHero(feat):'')+
+    (sorted.length>=2?topStats(m.cars):'')+
     (sorted.length?`<div class="cars-grid">${sorted.map(carCard).join('')}</div>`:
     `<div class="empty-msg"><i class="ti ti-car" aria-hidden="true"></i><p>Sin hallazgos este mes</p></div>`)+
     `<div class="add-box"><div class="add-lbl">Nuevo hallazgo</div>
@@ -409,7 +462,11 @@ function setActive(key, type){
 function renderEvent(key){
   active=key;
   const ev=EVENTS[key];
-  const sorted=[...ev.cars].sort((a,b)=>(b.photoTimestamp||0)-(a.photoTimestamp||0));
+  const sorted=[...ev.cars].sort((a,b)=>{
+    const dt=(b.photoTimestamp||0)-(a.photoTimestamp||0);
+    if(dt!==0) return dt;
+    return (b.featured?1:0)-(a.featured?1:0);
+  });
   const feat=sorted[0];
   document.getElementById('body').innerHTML=
     `<div class="month-hdr">
@@ -423,6 +480,7 @@ function renderEvent(key){
       <div class="event-desc">${ev.description}</div>
     </div>`+
     (feat?featHero(feat):'')+
+    (sorted.length>=2?topStats(ev.cars):'')+
     (sorted.length?`<div class="cars-grid">${sorted.map(carCard).join('')}</div>`:
     `<div class="empty-msg"><i class="ti ti-car" aria-hidden="true"></i><p>Sin hallazgos en este evento</p></div>`)+
     `<div class="add-box"><div class="add-lbl">Agregar auto de este evento</div>
