@@ -210,7 +210,11 @@ const IMGS = {
   logo_chevrolet:     'https://lh3.googleusercontent.com/pw/AP1GczOpLyqiK5AOrOv7mtolzY6Bbkn_uTOxHO-c42rrsIz_VOcC4g2WNLBdXB-tS7AKR6Kg0KnU07YOO8RKPlHl6DjZHwBMWl_Q9kd0KIN903PJ6dUvCcua=s250-k-no',
   logo_mclaren:       'https://lh3.googleusercontent.com/pw/AP1GczONJhof3pPMqPXYYPkwWre3RofUNxcS3KnhDu_QrX4orykDDWSY7W_-CiOaDqnwOoBZZxFdW5Wz52nEWxobH2ve5Fd_77nSwPKHBssfdTGWO6DOehaE=s250-k-no',
   db7:                'https://lh3.googleusercontent.com/pw/AP1GczPEhlx8ZLwNmMSvJayG_nauVAe0pv_kdRqJHsBAK2gRoCtRw7LS32FLLQNkgbpMMmJsCduZzzyPPAtTmesX78JsI42_fbrF2oOAG8vkQs7mmV-kyjTU=w1200',
-  logo_aston_martin:  'https://lh3.googleusercontent.com/pw/AP1GczN824SXTlJ4-fEYDMo0x_yDJRQ5499acqfr_Z16vwqc3ED_Fo1OTrndzbRKo0lkntpunKtMOwUnWGmVfTfPgoRuJ9TPW7kDWWs02F1588ojVxQHFs62=s250-k-no'
+  logo_aston_martin:  'https://lh3.googleusercontent.com/pw/AP1GczN824SXTlJ4-fEYDMo0x_yDJRQ5499acqfr_Z16vwqc3ED_Fo1OTrndzbRKo0lkntpunKtMOwUnWGmVfTfPgoRuJ9TPW7kDWWs02F1588ojVxQHFs62=s250-k-no',
+  amV8Volante:        'https://lh3.googleusercontent.com/pw/AP1GczPsKtfJSxci2RlCPvK0yWA87Ns0GEGgEKRigucHlNWEeiHQ1fkQ92vNn4TL2CirDuLjNJuJKqnP_3n6WI_SpMokkiMh9gjdK4rVDGF0qCwfa-vmoS_i=w1200',
+  amLagonda:          'https://lh3.googleusercontent.com/pw/AP1GczMZOkRpCZd601cYJzIFmwoAHDpmqaCUuNsKY7U6CF1KWdo_pFRZjWdXEUVyzfW0r6mChv59XCuy36iCs4eYJu4YLCLH-OEnUrEXk4WtwEeaywBTdmzc=w1200',
+  lagondaM45:         'https://lh3.googleusercontent.com/pw/AP1GczO9nOvSsTl-mA_CLHFh7vJ2EyV4jmwlgNsZRpVlvTawXXSu9gl18NU3DNfmGyzFNl0GU-lbnJZdTA2jG4AD3c4YmWnlSqq9wNM5ejN85aulcNM34-97=w1200',
+  logo_lagonda:       'https://lh3.googleusercontent.com/pw/AP1GczOf5IGgW5aFMsgYhXCXMAWk4Xu8gJtVsk_dZ7XgT35_upOCO-8SCgGbZszbEPuIQr7p3ppyqPj1NCDFitH7316HzLXH0FYDMAbcOsWqDhgGN-e_x6Kq=s250-k-no'
 };
 
 let rendered = false;
@@ -220,7 +224,7 @@ document.addEventListener('DOMContentLoaded', renderIfReady);
 const CARS={
   "2026-06":{label:"Junio 2026",cars:[{
     id:"gs350",make:"Lexus",model:"GS 350",years:"2006–2011",
-    photoDate:"7 de junio, 2026",photoTimestamp:20260607,featured:true,
+    photoDate:"7 de junio, 2026",photoTimestamp:20260607,featured:false,
     featuredReason:"Stance radical a ras del suelo con rines cromados multirayos — modificación extrema que convierte un sedán de lujo en una declaración del movimiento VIP/Stance.",
     review:"Un Lexus GS 350 convertido en obra de arte rodante. La suspensión tocando casi el asfalto y esos rines cromados multirayos no son accidente — son el resultado de miles de dólares en modificaciones inspiradas en la cultura VIP japonesa. Lo que hace especial este hallazgo es ver ese contraste: una plataforma de lujo discreta transformada en una declaración visual imposible de ignorar. Vancouver rara vez muestra estas builds con tanta autenticidad.",
     hp:303,topSpeed:"230 km/h",zero:"6.5 s",priceCAD:"$8,000–$18,000 CAD",badge:"stance",badgeLabel:"Stance Build",imgKey:"gs350",
@@ -242,8 +246,9 @@ const CARS={
     highlights:["Considerado uno de los autos más feos jamás fabricados — ganó múltiples premios a peor diseño","Pontiac esperaba vender 75,000 unidades/año; apenas vendió ~119,000 en 5 años totales","Walter White lo condujo en Breaking Bad — eso disparó su culto popular y su precio usado","Fue el primer crossover completamente diseñado con herramientas de prototipado digital 3D","Traía carpa de campaña acoplable en el maletero y colchón de aire — paquete camping oficial de fábrica"]
   },{
     id:"corvetteC6",make:"Chevrolet",model:"Corvette C6",years:"2005–2013",
-    photoDate:"11 de junio, 2026",photoTimestamp:20260611,featured:false,
-    featuredReason:"",review:"",
+    photoDate:"11 de junio, 2026",photoTimestamp:20260611,featured:true,
+    featuredReason:"430 caballos en naranja Torch Red escondidos en un parqueadero de Vancouver — el hallazgo más impactante del mes.",
+    review:"Había que estar en el lugar correcto para ver esto. Un Corvette C6 en naranja Torch Red estacionado sin aspavientos en un parqueadero cubierto, como si fuera cualquier auto. Con 430hp de V8 LS3 y capaz de llegar a 300 km/h, este es el tipo de hallazgo que recuerdas: una supercar americana de primer nivel que no necesita pedestal para impresionar.",
     hp:430,topSpeed:"300 km/h",zero:"4.5 s",priceCAD:"$20,000–$50,000 CAD",badge:"",badgeLabel:"",imgKey:"corvetteC6",
     specs:{"Motor":"V8 6.2L LS3 OHV","Potencia":"430 hp / 424 lb-ft","Transmisión":"Manual 6 vel. TR-6060","Tracción":"RWD","0–100 km/h":"4.5 seg","Vel. máxima":"300 km/h (186 mph)","Carrocería":"Coupé targa 2 plazas","Peso":"1,551 kg","Años de prod.":"2005–2013","Precio CA (usado)":"$20,000–$50,000"},
     highlights:["El C6 fue el primer Corvette con faros expuestos desde el modelo 1962 — abandono de los faros retráctiles","Carrocería completamente de fibra de vidrio y composites — tradición Corvette desde 1953","Este ejemplar en naranja Torch Red escondido en parqueadero — uno de los mejores colores del C6","El LS3 6.2L produce 430hp de una arquitectura pushrod de bajo costo — eficiencia americana pura","La versión ZR1 del mismo año usaba un LS9 supercharged de 638hp — el Corvette más rápido de la historia hasta ese momento"]
@@ -285,8 +290,8 @@ const EVENTS={
     description:"El Vancouver All British Field Meet es uno de los concursos de autos clásicos británicos más importantes de Norteamérica. Cada mayo, VanDusen se llena de Jaguars, Bentleys, Triumphs, MGs y Austins impecablemente restaurados.",
     cars:[{
       id:"xk120",make:"Jaguar",model:"XK120 Roadster",years:"1948–1954",
-      photoDate:"16 de mayo, 2026",photoTimestamp:20260516,featured:true,
-      featuredReason:"Auto de producción más rápido del mundo en 1949 — una pieza de historia viva en VanDusen.",
+      photoDate:"16 de mayo, 2026",photoTimestamp:20260516,featured:false,
+      featuredReason:"",
       review:"Ver un Jaguar XK120 en persona es entender por qué el diseño automotriz importa. Esas curvas diseñadas por William Lyons en solo tres meses tienen más alma que la mayoría de los autos modernos. Este ejemplar en gris oscuro con interior de cuero café luce impecable — claramente restaurado con devoción. En el contexto del All British Field Meet en VanDusen, rodeado de pasto verde y otros clásicos, es una escena difícil de superar.",
       hp:160,topSpeed:"193 km/h",zero:"10.0 s",priceCAD:"$80,000–$200,000 CAD",badge:"",badgeLabel:"",imgKey:"xk120",
       specs:{"Motor":"I6 3.4L DOHC XK","Potencia":"160 hp / 195 lb-ft","Transmisión":"Manual 4 vel. Moss","Tracción":"RWD","0–100 km/h":"~10.0 seg","Vel. máxima":"193 km/h (120 mph)","Carrocería":"Roadster 2 plazas","Producción total":"~12,000 unidades (todas versiones)","Años de prod.":"1948–1954","Precio CA (usado)":"$80,000–$200,000+"},
@@ -354,6 +359,28 @@ const EVENTS={
       hp:420,topSpeed:"290 km/h",zero:"5.0 s",priceCAD:"$20,000–$60,000 CAD",badge:"",badgeLabel:"",imgKey:"db7",
       specs:{"Motor":"V12 5.9L DOHC 48v","Potencia":"420 hp / 400 lb-ft","Transmisión":"Manual 6 vel. Tremec / Auto 5 vel. ZF","Tracción":"RWD","0–100 km/h":"5.0 seg","Vel. máxima":"290 km/h (180 mph)","Carrocería":"Coupé 2+2","Producción total":"~7,000 unidades (todas versiones)","Años de prod.":"1994–2004","Precio CA (usado)":"$20,000–$60,000"},
       highlights:["El DB7 salvó a Aston Martin de la quiebra — fue el modelo más vendido en la historia de la marca hasta ese momento","Diseñado por Ian Callum, quien después diseñó el Jaguar XK8 y el Jaguar F-Type","Basado en la plataforma del Jaguar XJS — relación directa con el Jaguar en el fondo del diseño","Al fondo de la foto se ve un Aston Martin rojo moderno — dos generaciones de la misma marca cara a cara","Más de 1 de cada 3 Aston Martins fabricados hasta 2003 era un DB7 — su impacto en la marca fue enorme"]
+    },{
+      id:"amV8Volante",make:"Aston Martin",model:"V8 Vantage Volante",years:"1977–1989",
+      photoDate:"16 de mayo, 2026",photoTimestamp:20260516,featured:false,
+      featuredReason:"",review:"",
+      hp:390,topSpeed:"274 km/h",zero:"5.3 s",priceCAD:"$150,000–$350,000 CAD",badge:"",badgeLabel:"",imgKey:"amV8Volante",
+      specs:{"Motor":"V8 5.3L DOHC Weber","Potencia":"390 hp / 406 lb-ft","Transmisión":"Manual 5 vel. ZF","Tracción":"RWD","0–100 km/h":"5.3 seg","Vel. máxima":"274 km/h (170 mph)","Carrocería":"Convertible 2 puertas","Producción Volante":"Solo 192 unidades","Años de prod.":"1977–1989","Precio CA (usado)":"$150,000–$350,000+"},
+      highlights:["Apodado 'La primera supercar británica' en 1977 — superaba en velocidad a la Ferrari Daytona y Lamborghini Miura","Solo 192 Volantes (convertibles) fabricados en 12 años — uno de los Aston Martin más raros de colección","Protagonista en 'The Living Daylights' (James Bond 1987) — el clásico vínculo AM-Bond en su forma más pura","Cada auto tomaba 4 meses en construirse a mano en Newport Pagnell — ninguno idéntico al otro","El V8 5.3L con carburadores Weber produce un sonido único que ningún motor moderno puede replicar"]
+    },{
+      id:"amLagonda",make:"Aston Martin",model:"Lagonda Series 2",years:"1976–1990",
+      photoDate:"16 de mayo, 2026",photoTimestamp:20260516,featured:false,
+      featuredReason:"",review:"",
+      hp:280,topSpeed:"225 km/h",zero:"7.2 s",priceCAD:"$80,000–$200,000 CAD",badge:"",badgeLabel:"",imgKey:"amLagonda",
+      specs:{"Motor":"V8 5.3L DOHC","Potencia":"280 hp / 369 lb-ft","Transmisión":"Manual 5 vel. / Auto 3 vel.","Tracción":"RWD","0–100 km/h":"7.2 seg","Vel. máxima":"225 km/h (140 mph)","Carrocería":"Sedán 4 puertas","Producción total":"Solo 645 unidades (1974–1990)","Años de prod.":"1976–1990","Precio CA (usado)":"$80,000–$200,000+"},
+      highlights:["Placa '1 AML' — 1 Aston Martin Lagonda — posiblemente el propietario más devoto del modelo en BC","Diseño de cuña radical de William Towns que causó sensación mundial en 1976 — nada igual existía","Panel de instrumentos digital con pantalla de CRT — tecnología futurista en un auto de 1976","Solo 645 unidades en 16 años de producción — uno por semana en los mejores momentos","El color verde menta de este ejemplar es extraordinariamente raro — la mayoría son negros o plateados"]
+    },{
+      id:"lagondaM45",make:"Lagonda",model:"M45 / LG45 Tourer",years:"1933–1937",
+      photoDate:"16 de mayo, 2026",photoTimestamp:20260516,featured:true,
+      featuredReason:"El auto más antiguo del ABFM 2026 — más de 90 años, ganador de Le Mans, y presente en VanDusen como si nada.",
+      review:"De todos los autos en el ABFM 2026, este Lagonda M45 en azul cobalto es el que más detiene el tiempo. Más de 90 años de historia en ese capó largo, esos guardabarros separados y esos faros auxiliares cromados. Ganó Le Mans en 1935, compitió cuando las carreteras no eran asfalto, y hoy sigue rodando por Vancouver. No hay nada en el evento que se acerque a su historia.",
+      hp:130,topSpeed:"174 km/h",zero:"13.5 s",priceCAD:"$200,000–$600,000 CAD",badge:"",badgeLabel:"",imgKey:"lagondaM45",
+      specs:{"Motor":"I6 4.5L Meadows OHV","Potencia":"130 hp","Transmisión":"Manual 4 vel. Meadows","Tracción":"RWD","0–100 km/h":"~13.5 seg","Vel. máxima":"174 km/h (108 mph)","Carrocería":"Tourer abierto 4 plazas","Producción total":"~278 unidades (M45+LG45)","Años de prod.":"1933–1937","Precio CA (colección)":"$200,000–$600,000+"},
+      highlights:["El auto más antiguo del ABFM 2026 — más de 90 años rodando y sigue impecable","Ganó las 24 Horas de Le Mans en 1935 en su versión M45R Rapide — victoria histórica para Lagonda","El motor Meadows I6 4.5L data de 1928 y fue usado por múltiples fabricantes británicos de la era","Faros auxiliares cromados externos y guardabarros separados — construcción pre-guerra auténtica","Aston Martin compró Lagonda en 1947 — este auto es técnicamente un antepasado directo del Lagonda moderno"]
     }]
   }
 };
@@ -396,7 +423,8 @@ const BRAND_LOGOS={
   'Mazda':'logo_mazda',
   'Chevrolet':'logo_chevrolet',
   'McLaren':'logo_mclaren',
-  'Aston Martin':'logo_aston_martin'
+  'Aston Martin':'logo_aston_martin',
+  'Lagonda':'logo_lagonda'
 };
 
 function brandLogoHtml(make){
