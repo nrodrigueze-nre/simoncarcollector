@@ -204,7 +204,13 @@ const IMGS = {
   logo_lexus:         'https://lh3.googleusercontent.com/pw/AP1GczPDHkjkhyQOBLEpoEv6E9RbmdfpdhigCipAaiNWiAZ34cGNe1hw5kqwwEeBKMNRfCXsfskcMQjS1gY1l7xnBRiSLgL9sIujNNND4CBhPoniwm-p5xUH=s250-k-no',
   logo_pontiac:       'https://lh3.googleusercontent.com/pw/AP1GczNIV7n0IhuyNpQoJxljv-oVRM1WNn8GicDlIU5sCEQsQ3tnqDAT6XIcOoNGSEJDoK1-YPHJahdWg1TbAsmSx5PFYEtQIDlnp0HkX124WTCYZO8Z9MtF=s250-k-no',
   mazda2_2014:        'https://lh3.googleusercontent.com/pw/AP1GczOrVZWMQZ39QgHx1jFZTD131ZvxRQxsK9shdLbUxs73uZ8JfzA8Di9DEotViYF3Pqsp-H-4HINaZpBbpCCaIXoO2O1I7jbKQLfOjmpwe9zEC9k9JKGn=w1200',
-  logo_mazda:         'https://lh3.googleusercontent.com/pw/AP1GczO2yxZ5cgkBKE40hoEG9erTrBg-rdXn2sgpBO9z82d3YNv1pk_dfysDhdhAYoV9FJNs4XKpiTgh0KhJhi6ccLB14IowK4EBP5b_7fQAUjSiciz4Q3yo=s250-k-no'
+  corvetteC6:         'https://lh3.googleusercontent.com/pw/AP1GczMAh9FVP0j6mnsRsHAb6cI24ZAo-O6WwqE92eadO0Li8QncMZQj9fJS5_i5u32g9Ym7ScQmz5JMy0ijQ_sNmHirnVAvEWcxgQkrufy_vTON4V1wWSGR=w1200',
+  mp412c:             'https://lh3.googleusercontent.com/pw/AP1GczPPDEovLe53_eyQmN6Xnde2U1j_3hacDONaj49LWQjjvUdUiyxM4nyQgiW-GUP0FoJF1Msqlbg8vZCByakp2oMII0jpPjOAZAD3IrIJhi6Xg1u0FOof=w1200',
+  logo_mazda:         'https://lh3.googleusercontent.com/pw/AP1GczO2yxZ5cgkBKE40hoEG9erTrBg-rdXn2sgpBO9z82d3YNv1pk_dfysDhdhAYoV9FJNs4XKpiTgh0KhJhi6ccLB14IowK4EBP5b_7fQAUjSiciz4Q3yo=s250-k-no',
+  logo_chevrolet:     'https://lh3.googleusercontent.com/pw/AP1GczOpLyqiK5AOrOv7mtolzY6Bbkn_uTOxHO-c42rrsIz_VOcC4g2WNLBdXB-tS7AKR6Kg0KnU07YOO8RKPlHl6DjZHwBMWl_Q9kd0KIN903PJ6dUvCcua=s250-k-no',
+  logo_mclaren:       'https://lh3.googleusercontent.com/pw/AP1GczONJhof3pPMqPXYYPkwWre3RofUNxcS3KnhDu_QrX4orykDDWSY7W_-CiOaDqnwOoBZZxFdW5Wz52nEWxobH2ve5Fd_77nSwPKHBssfdTGWO6DOehaE=s250-k-no',
+  db7:                'https://lh3.googleusercontent.com/pw/AP1GczPEhlx8ZLwNmMSvJayG_nauVAe0pv_kdRqJHsBAK2gRoCtRw7LS32FLLQNkgbpMMmJsCduZzzyPPAtTmesX78JsI42_fbrF2oOAG8vkQs7mmV-kyjTU=w1200',
+  logo_aston_martin:  'https://lh3.googleusercontent.com/pw/AP1GczN824SXTlJ4-fEYDMo0x_yDJRQ5499acqfr_Z16vwqc3ED_Fo1OTrndzbRKo0lkntpunKtMOwUnWGmVfTfPgoRuJ9TPW7kDWWs02F1588ojVxQHFs62=s250-k-no'
 };
 
 let rendered = false;
@@ -234,6 +240,13 @@ const CARS={
     hp:185,topSpeed:"185 km/h",zero:"9.5 s",priceCAD:"$2,000–$6,000 CAD",badge:"",badgeLabel:"",imgKey:"aztek",
     specs:{"Motor":"V6 3.4L LA1","Potencia":"185 hp / 210 lb-ft","Transmisión":"Automática 4 vel.","Tracción":"FWD / AWD","0–100 km/h":"9.5 seg","Vel. máxima":"185 km/h","Carrocería":"Crossover 5 puertas","Producción total":"~119,000 unidades (total 5 años)","Años de prod.":"2001–2005","Precio CA (usado)":"$2,000–$6,000"},
     highlights:["Considerado uno de los autos más feos jamás fabricados — ganó múltiples premios a peor diseño","Pontiac esperaba vender 75,000 unidades/año; apenas vendió ~119,000 en 5 años totales","Walter White lo condujo en Breaking Bad — eso disparó su culto popular y su precio usado","Fue el primer crossover completamente diseñado con herramientas de prototipado digital 3D","Traía carpa de campaña acoplable en el maletero y colchón de aire — paquete camping oficial de fábrica"]
+  },{
+    id:"corvetteC6",make:"Chevrolet",model:"Corvette C6",years:"2005–2013",
+    photoDate:"11 de junio, 2026",photoTimestamp:20260611,featured:false,
+    featuredReason:"",review:"",
+    hp:430,topSpeed:"300 km/h",zero:"4.5 s",priceCAD:"$20,000–$50,000 CAD",badge:"",badgeLabel:"",imgKey:"corvetteC6",
+    specs:{"Motor":"V8 6.2L LS3 OHV","Potencia":"430 hp / 424 lb-ft","Transmisión":"Manual 6 vel. TR-6060","Tracción":"RWD","0–100 km/h":"4.5 seg","Vel. máxima":"300 km/h (186 mph)","Carrocería":"Coupé targa 2 plazas","Peso":"1,551 kg","Años de prod.":"2005–2013","Precio CA (usado)":"$20,000–$50,000"},
+    highlights:["El C6 fue el primer Corvette con faros expuestos desde el modelo 1962 — abandono de los faros retráctiles","Carrocería completamente de fibra de vidrio y composites — tradición Corvette desde 1953","Este ejemplar en naranja Torch Red escondido en parqueadero — uno de los mejores colores del C6","El LS3 6.2L produce 430hp de una arquitectura pushrod de bajo costo — eficiencia americana pura","La versión ZR1 del mismo año usaba un LS9 supercharged de 638hp — el Corvette más rápido de la historia hasta ese momento"]
   }]},
   "2026-05":{label:"Mayo 2026",cars:[{
     id:"sc430",make:"Lexus",model:"SC 430",years:"2001–2010",
@@ -258,7 +271,7 @@ const CARS={
     featuredReason:"El primer Mazda 2 de la familia — recogido en el concesionario en Bogotá en 2014.",
     review:"Rojo brillante, recién salido del concesionario Mazda en Bogotá. El Mazda 2 fue el primer auto propio de la familia — pequeño, ágil y confiable. En una ciudad como Bogotá, con su tráfico denso y sus calles estrechas, el tamaño compacto y el volante liviano lo hacían perfectamente en casa. El filosofía 'Zoom-Zoom' de Mazda nunca sonó tan sincera como en este hatchback rojo que se deslizaba entre el caos bogotano con una sonrisa.",
     hp:100,topSpeed:"193 km/h",zero:"11.5 s",priceCAD:"$15,500–$17,000 CAD (nuevo 2014)","badge":"",badgeLabel:"",imgKey:"mazda2_2014",
-    specs:{"Motor":"I4 1.5L MZR DOHC","Potencia":"100 hp / 98 lb-ft","Transmisión":"Manual 5 vel.","Tracción":"FWD","0–100 km/h":"11.5 seg","Vel. máxima":"193 km/h","Carrocería":"Hatchback 5 puertas","Peso":"1,045 kg","Años de prod.":"2007–2014","Ciudad de compra":"Bogotá, Colombia"},
+    specs:{"Motor":"I4 1.5L MZR DOHC","Potencia":"100 hp / 98 lb-ft","Transmisión":"Automática 4 vel.","Tracción":"FWD","0–100 km/h":"11.5 seg","Vel. máxima":"193 km/h","Carrocería":"Hatchback 5 puertas","Peso":"1,045 kg","Años de prod.":"2007–2014","Ciudad de compra":"Bogotá, Colombia"},
     highlights:["Primer auto propio de la familia — entregado en concesionario Mazda Bogotá el 25 de marzo de 2014","Solo pesa 1,045 kg — uno de los hatchbacks más livianos de su generación","El diseño 'Nagare' de flujo de agua fue el último antes del lenguaje KODO de Mazda","A pesar de sus 100hp, el chasis ágil lo hacía sentir más rápido de lo que era — diversión pura","El Mazda 2 ganó el premio 'World Car of the Year' en 2008 en su primera generación"]
   }]}
 };
@@ -327,6 +340,20 @@ const EVENTS={
       hp:453,topSpeed:"240 km/h",zero:"5.9 s",priceCAD:"$100,000–$400,000 CAD",badge:"",badgeLabel:"",imgKey:"rrPhantom",
       specs:{"Motor":"V12 6.75L N73B68 BMW","Potencia":"453 hp / 531 lb-ft","Transmisión":"Automática 6/8 vel. ZF","Tracción":"RWD","0–100 km/h":"5.9 seg","Vel. máxima":"240 km/h (electrónica)","Carrocería":"Sedán 4 puertas coach","Peso":"2,550 kg","Años de prod.":"2003–2017","Precio CA (usado)":"$100,000–$400,000+"},
       highlights:["Primer Phantom desarrollado bajo propiedad de BMW — renació la marca en Goodwood, West Sussex en 2003","Placa personalizada 'LWR-1' — posiblemente el propietario original del número de placa en BC","Las puertas traseras se abren al revés (coach doors) — sin pilar B para entrada cinematográfica","Cada Phantom toma ~6 meses en construirse a mano — el cliente puede especificar prácticamente cualquier detalle","El Spirit of Ecstasy se retrae automáticamente en 3 segundos para evitar robos o vandalismo"]
+    },{
+      id:"mp412c",make:"McLaren",model:"MP4-12C",years:"2011–2014",
+      photoDate:"16 de mayo, 2026",photoTimestamp:20260516,featured:false,
+      featuredReason:"",review:"",
+      hp:616,topSpeed:"333 km/h",zero:"3.1 s",priceCAD:"$130,000–$200,000 CAD",badge:"",badgeLabel:"",imgKey:"mp412c",
+      specs:{"Motor":"V8 3.8L Twin-Turbo M838T","Potencia":"616 hp / 443 lb-ft","Transmisión":"Automática 7 vel. SSG","Tracción":"RWD","0–100 km/h":"3.1 seg","Vel. máxima":"333 km/h (207 mph)","Carrocería":"Coupé 2 plazas","Peso":"1,435 kg","Años de prod.":"2011–2014","Precio CA (usado)":"$130,000–$200,000"},
+      highlights:["Primer auto de producción con chasis monocasco de fibra de carbono de una sola pieza — tecnología F1 pura","Las puertas diedro se abren hacia arriba y adelante — no son mariposa, giran en dos ejes simultáneamente","Expuesto por Pfaff Reserve Vancouver — uno de los dealers de autos de alto valor más prestigiosos de BC","El motor M838T fue diseñado completamente desde cero por McLaren y Ricardo Engineering — sin partes compartidas","Solo 4 años de producción antes de ser reemplazado por el 650S — apenas ~3,500 unidades fabricadas"]
+    },{
+      id:"db7",make:"Aston Martin",model:"DB7 Vantage",years:"1994–2004",
+      photoDate:"16 de mayo, 2026",photoTimestamp:20260516,featured:false,
+      featuredReason:"",review:"",
+      hp:420,topSpeed:"290 km/h",zero:"5.0 s",priceCAD:"$20,000–$60,000 CAD",badge:"",badgeLabel:"",imgKey:"db7",
+      specs:{"Motor":"V12 5.9L DOHC 48v","Potencia":"420 hp / 400 lb-ft","Transmisión":"Manual 6 vel. Tremec / Auto 5 vel. ZF","Tracción":"RWD","0–100 km/h":"5.0 seg","Vel. máxima":"290 km/h (180 mph)","Carrocería":"Coupé 2+2","Producción total":"~7,000 unidades (todas versiones)","Años de prod.":"1994–2004","Precio CA (usado)":"$20,000–$60,000"},
+      highlights:["El DB7 salvó a Aston Martin de la quiebra — fue el modelo más vendido en la historia de la marca hasta ese momento","Diseñado por Ian Callum, quien después diseñó el Jaguar XK8 y el Jaguar F-Type","Basado en la plataforma del Jaguar XJS — relación directa con el Jaguar en el fondo del diseño","Al fondo de la foto se ve un Aston Martin rojo moderno — dos generaciones de la misma marca cara a cara","Más de 1 de cada 3 Aston Martins fabricados hasta 2003 era un DB7 — su impacto en la marca fue enorme"]
     }]
   }
 };
@@ -366,7 +393,10 @@ const BRAND_LOGOS={
   'Saab':'logo_saab',
   'Lexus':'logo_lexus',
   'Pontiac':'logo_pontiac',
-  'Mazda':'logo_mazda'
+  'Mazda':'logo_mazda',
+  'Chevrolet':'logo_chevrolet',
+  'McLaren':'logo_mclaren',
+  'Aston Martin':'logo_aston_martin'
 };
 
 function brandLogoHtml(make){
