@@ -84,7 +84,10 @@
 .coll-name{font-family:'Bebas Neue',Impact,sans-serif;font-size:1rem;letter-spacing:1.5px;color:#111;margin:.6rem .6rem .2rem;line-height:1.2;}
 .coll-bio{font-size:0.78rem;color:#111;line-height:1.5;padding:0 .75rem;font-weight:500;font-style:italic;}
 .coll-bio-ph{font-size:0.76rem;color:#888;line-height:1.4;padding:0 .75rem;font-weight:500;}
-.hw-tab-special{background:linear-gradient(135deg,#1a3a1a,#003a00);color:#90ee90;border-color:#4caf50 !important;}
+.hw-tab-fun{background:linear-gradient(135deg,#2d1a00,#3a2800);color:#FFB347;border-color:#FF8C00 !important;}
+.hw-tab-fun.active{background:linear-gradient(135deg,#3a2200,#4a3000);color:#FFB347;border-bottom-color:#fff !important;}
+.hw-tab-fun:hover:not(.active){background:linear-gradient(135deg,#3d2500,#503500) !important;color:#FFB347 !important;}
+.hw-tab-fun .count-pill{background:rgba(255,140,0,0.2);color:#FFB347;}color:#90ee90;border-color:#4caf50 !important;}
 .hw-tab-special.active{background:linear-gradient(135deg,#1f4f1f,#004a00);color:#90ee90;border-bottom-color:#fff !important;}
 .hw-tab-special:hover:not(.active){background:linear-gradient(135deg,#254525,#005000) !important;color:#90ee90 !important;}
 .hw-tab-special .count-pill{background:rgba(76,175,80,0.2);color:#90ee90;}color:#FFD700;border-color:#FFD700 !important;}
@@ -103,13 +106,17 @@
 .event-meta-item{font-size:0.78rem;font-weight:700;letter-spacing:1px;color:#555;text-transform:uppercase;display:flex;align-items:center;gap:5px;}
 .event-desc{font-size:0.88rem;color:#333;line-height:1.6;border-left:3px solid #FFD700;padding-left:12px;margin:.75rem 0 1.2rem;font-style:italic;}
 .event-trophy{display:inline-block;background:#FFD700;color:#3a0000;font-size:0.65rem;font-weight:700;letter-spacing:2px;padding:3px 10px;border-radius:3px;text-transform:uppercase;margin-bottom:.6rem;}
-.feat-hero{display:flex;width:100%;border-radius:10px;overflow:hidden;border:2px solid #FFD700;margin-bottom:1.5rem;background:#111;height:240px;position:relative;}
-.feat-hero-img{width:40%;height:240px;flex-shrink:0;overflow:hidden;position:relative;cursor:zoom-in;}
-.feat-hero-img img{width:100%;height:100%;object-fit:contain;object-position:center center;display:block;transition:transform .4s;background:#111;}
+.feat-hero{display:grid;grid-template-columns:270px 270px 1fr;gap:1rem;margin-bottom:1.5rem;align-items:stretch;}
+.feat-hero-card{background:#fff;border:2px solid #FFD700;border-radius:10px;overflow:hidden;}
+.feat-hero-img{width:100%;height:278px;overflow:hidden;background:#e8e8e8;cursor:zoom-in;position:relative;}
+.feat-hero-img img{width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;transition:transform .3s;}
+.feat-hero-img:hover img{transform:scale(1.04);}
+.feat-hero-data{background:#fff;border:2px solid #FFD700;border-radius:10px;padding:1rem;display:flex;flex-direction:column;justify-content:center;gap:.5rem;}
+.feat-hero-info{background:#111;border:2px solid #FFD700;border-radius:10px;padding:1.25rem;display:flex;flex-direction:column;gap:.6rem;}
+@media(max-width:700px){.feat-hero{grid-template-columns:1fr;}}
 .feat-hero-img:hover img{transform:scale(1.04);}
 .feat-hero-img .photo-date{bottom:6px;left:7px;font-size:0.62rem;padding:2px 6px;}
 .feat-hero-img .zoom-hint{bottom:6px;right:7px;font-size:0.62rem;padding:2px 6px;}
-.feat-hero-info{flex:1;padding:0.9rem 1rem;display:flex;flex-direction:column;justify-content:center;gap:0.25rem;min-width:0;}
 .feat-hero-label{font-size:0.65rem;letter-spacing:3px;color:#FFD700;text-transform:uppercase;font-weight:700;}
 .feat-hero-make{font-size:0.75rem;letter-spacing:3px;color:#aaa;text-transform:uppercase;font-weight:700;}
 .feat-hero-model{font-family:'Bebas Neue',Impact,sans-serif;font-size:1.9rem;letter-spacing:2px;color:#fff;line-height:1;}
@@ -118,7 +125,7 @@
 .feat-hero-stat{text-align:center;}
 .feat-hero-stat-val{font-family:'Bebas Neue',Impact,sans-serif;font-size:1.2rem;color:#FFD700;line-height:1;}
 .feat-hero-stat-lbl{font-size:0.62rem;letter-spacing:1px;color:#aaa;text-transform:uppercase;font-weight:700;}
-.feat-hero-review{font-size:0.82rem;color:#ddd;line-height:1.55;border-left:3px solid #C8102E;padding-left:10px;font-style:italic;overflow:hidden;}
+.feat-hero-review{font-size:0.82rem;color:#ddd;line-height:1.55;border-left:3px solid #C8102E;padding-left:10px;font-style:italic;}
 .feat-hero-price{font-size:0.75rem;color:#aaa;font-weight:700;letter-spacing:1px;}
 .feat-hero-price span{color:#fff;}
 .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.93);z-index:9999;align-items:center;justify-content:center;flex-direction:column;gap:12px;}
@@ -144,7 +151,7 @@
   .feat-hero-img{width:100%;height:200px;}
   .feat-hero-info{padding:.85rem .9rem;}
   .feat-hero-model{font-size:1.6rem;}
-  .feat-hero-review{display:none;}
+  .feat-hero-review{display:block;font-size:0.78rem;}
   .coll-sec{padding:1rem .75rem;}
   .coll-grid{grid-template-columns:1fr 1fr;}
   .event-meta{gap:.4rem;}
@@ -214,7 +221,19 @@ const IMGS = {
   amV8Volante:        'https://lh3.googleusercontent.com/pw/AP1GczPsKtfJSxci2RlCPvK0yWA87Ns0GEGgEKRigucHlNWEeiHQ1fkQ92vNn4TL2CirDuLjNJuJKqnP_3n6WI_SpMokkiMh9gjdK4rVDGF0qCwfa-vmoS_i=w1200',
   amLagonda:          'https://lh3.googleusercontent.com/pw/AP1GczMZOkRpCZd601cYJzIFmwoAHDpmqaCUuNsKY7U6CF1KWdo_pFRZjWdXEUVyzfW0r6mChv59XCuy36iCs4eYJu4YLCLH-OEnUrEXk4WtwEeaywBTdmzc=w1200',
   lagondaM45:         'https://lh3.googleusercontent.com/pw/AP1GczO9nOvSsTl-mA_CLHFh7vJ2EyV4jmwlgNsZRpVlvTawXXSu9gl18NU3DNfmGyzFNl0GU-lbnJZdTA2jG4AD3c4YmWnlSqq9wNM5ejN85aulcNM34-97=w1200',
-  logo_lagonda:       'https://lh3.googleusercontent.com/pw/AP1GczOf5IGgW5aFMsgYhXCXMAWk4Xu8gJtVsk_dZ7XgT35_upOCO-8SCgGbZszbEPuIQr7p3ppyqPj1NCDFitH7316HzLXH0FYDMAbcOsWqDhgGN-e_x6Kq=s250-k-no'
+  bentley45:          'https://lh3.googleusercontent.com/pw/AP1GczONCqjpSvHuhx44uYGZL7oGVpvfZLg3tAJIfFf3YCVYeYOK7wdF2MWQBw2hJUw-3CMZU3YI6o8eo9o9keG87_Yctg_U9EmzZjtRIGGGIo0tEHBODC-Q=w1200',
+  mgJ2:               'https://lh3.googleusercontent.com/pw/AP1GczO7n4Pz74jr_Map8BaLWu4V7BJYqGpJ1GwTndlMORmxs2c-EFFsQxk7FKifPlGpA_l3gc_4hRhnA0X_r4p0Yn71rNQNqLpc7ihS6egrVy2QpesWJvz6=w1200',
+  db5:                'https://lh3.googleusercontent.com/pw/AP1GczNTS1mlIhh31SnEphgXi6lrpBfRf8guLS_3b0vKs08JMxPc8cwrk5bOY-nKxQ-TFb6rPnKHD6h0ibjpvX_rBjdlvTMwWDNUdyjUicDvJBDUG4LWZ-o9=w1200',
+  logo_lagonda:       'https://lh3.googleusercontent.com/pw/AP1GczOf5IGgW5aFMsgYhXCXMAWk4Xu8gJtVsk_dZ7XgT35_upOCO-8SCgGbZszbEPuIQr7p3ppyqPj1NCDFitH7316HzLXH0FYDMAbcOsWqDhgGN-e_x6Kq=s250-k-no',
+  wrxsti:             'https://lh3.googleusercontent.com/pw/AP1GczOvOPH23RH6hqoYp2h9vr1mtJaqj_l9VJEOVMOR0hkgWCbML296TNI4M3Z-3epOAeTXGQRVKL1ve7VdOJ6wq_WSZMD-wOZbKKImnMlG8eBgwLWniKvQ=w1200',
+  wrx:                'https://lh3.googleusercontent.com/pw/AP1GczPosw8oQ0nLFjjpU0w0HBSatIL-co8cOoLIervqgjKag3HtyaI_DgUt8jrg3hn8l97NpkWls--M17R13BvyCf9gn91Ypn4QCvc2rLivlYsrwWxbUX49=w1200',
+  rrSport:            'https://lh3.googleusercontent.com/pw/AP1GczNDeKaEbdxzFd6aRMOZtZU8ASjp_OYrN7lQUKNjxaglGiQiNfnCQI321wneQHIMRL2NQLZPRLvjPvIVrkrOjIPUjlXQFpZw3isNOly_8oJ_ixDvkQgM=w1200',
+  logo_subaru:        'https://lh3.googleusercontent.com/pw/AP1GczOzwgfLASd-AKjaTEtctd3SX5xONIgwd5JWWbpVljGd5-wYZGrz3uxMUUXvf6bjskN-_yvf_YZHCPy7TBrtf7GdrHOe8hXRaQYVVv6Diok3cBPougE8=s250-k-no',
+  logo_land_rover:    'https://lh3.googleusercontent.com/pw/AP1GczNFk0XtMKDBAloltAtwvQNxBTPTgIXMYHTD3YhR0GbW5Cw4JUYNUU0uUMUW87Hrb0f4dy0ZRbJcyN3XmosYjkkb2SvKzrKIH0rL5PIMCRGelk5FwTp6=s250-k-no',
+  kia_cerato:         'https://lh3.googleusercontent.com/pw/AP1GczMjHrT8QVTwQo2bQl-N9AIxVyO8sd70vVlQ4asnZ-G4nZ2nqfTt1IF5wpo4LfIHgFLnv3o9u2czTvIGSBIW0TWvmv6dkV43Ba7eqYxBpfpf-TdjrSVd=w1200',
+  bmwE38:             'https://lh3.googleusercontent.com/pw/AP1GczOAFlYtS34sHhuoWtLiHT-P4PySZEno5Ibf72EUhSxfgBHZ8G2kmUENiruCHbeD5WuvNbJ_Sx6mirxLmImMwvwb0pUYRM7bSMoeg7bifgs385VeCrCI=w1200',
+  logo_kia:           'https://lh3.googleusercontent.com/pw/AP1GczNIMlhlES0EcZ9iXv8a80f9lj4IxzA4oLAdt3eKcG3ljzz8w8sobG23FRkIJ3C7S0qIFbhyZPCTK_2_aTXlVnfJbcSVfNU2x5MZa7_IOlSuezu49y9U=s250-k-no',
+  logo_bmw:           'https://lh3.googleusercontent.com/pw/AP1GczNk8O8zYrH-OSZiF3jNGlwCESiy1bWioXoKWT7kq9v2QzZIXzzQ4UuIS5aIDLpHWhuZwEdrtGbZa6ITGcVNbQeuUyF_ZKeAxyE6amIXBNf0qtTGgyrd=s250-k-no'
 };
 
 let rendered = false;
@@ -240,18 +259,41 @@ const CARS={
   },{
     id:"aztek",make:"Pontiac",model:"Aztek",years:"2001–2005",
     photoDate:"7 de junio, 2026",photoTimestamp:20260607,featured:false,
-    featuredReason:"",review:"",
+    featuredReason:"El auto que ganó el premio a peor diseño de la historia — y que Walter White inmortalizó en Breaking Bad.",
+    review:"Nadie puede ver un Pontiac Aztek sin reaccionar. Es el único auto del mundo que genera unanimidad: todos opinan lo mismo, aunque no coincidan en por qué. En Vancouver sigue rodando uno de estos, aparentemente indiferente a su reputación. Lo más divertido del Aztek es que por dentro es perfectamente funcional — incluía carpa de camping de fábrica. Un auto que fracasó siendo honesto consigo mismo.",
     hp:185,topSpeed:"185 km/h",zero:"9.5 s",priceCAD:"$2,000–$6,000 CAD",badge:"",badgeLabel:"",imgKey:"aztek",
     specs:{"Motor":"V6 3.4L LA1","Potencia":"185 hp / 210 lb-ft","Transmisión":"Automática 4 vel.","Tracción":"FWD / AWD","0–100 km/h":"9.5 seg","Vel. máxima":"185 km/h","Carrocería":"Crossover 5 puertas","Producción total":"~119,000 unidades (total 5 años)","Años de prod.":"2001–2005","Precio CA (usado)":"$2,000–$6,000"},
     highlights:["Considerado uno de los autos más feos jamás fabricados — ganó múltiples premios a peor diseño","Pontiac esperaba vender 75,000 unidades/año; apenas vendió ~119,000 en 5 años totales","Walter White lo condujo en Breaking Bad — eso disparó su culto popular y su precio usado","Fue el primer crossover completamente diseñado con herramientas de prototipado digital 3D","Traía carpa de campaña acoplable en el maletero y colchón de aire — paquete camping oficial de fábrica"]
   },{
     id:"corvetteC6",make:"Chevrolet",model:"Corvette C6",years:"2005–2013",
+    heroPosition:"center 60%",
     photoDate:"11 de junio, 2026",photoTimestamp:20260611,featured:true,
     featuredReason:"430 caballos en naranja Torch Red escondidos en un parqueadero de Vancouver — el hallazgo más impactante del mes.",
     review:"Había que estar en el lugar correcto para ver esto. Un Corvette C6 en naranja Torch Red estacionado sin aspavientos en un parqueadero cubierto, como si fuera cualquier auto. Con 430hp de V8 LS3 y capaz de llegar a 300 km/h, este es el tipo de hallazgo que recuerdas: una supercar americana de primer nivel que no necesita pedestal para impresionar.",
     hp:430,topSpeed:"300 km/h",zero:"4.5 s",priceCAD:"$20,000–$50,000 CAD",badge:"",badgeLabel:"",imgKey:"corvetteC6",
     specs:{"Motor":"V8 6.2L LS3 OHV","Potencia":"430 hp / 424 lb-ft","Transmisión":"Manual 6 vel. TR-6060","Tracción":"RWD","0–100 km/h":"4.5 seg","Vel. máxima":"300 km/h (186 mph)","Carrocería":"Coupé targa 2 plazas","Peso":"1,551 kg","Años de prod.":"2005–2013","Precio CA (usado)":"$20,000–$50,000"},
     highlights:["El C6 fue el primer Corvette con faros expuestos desde el modelo 1962 — abandono de los faros retráctiles","Carrocería completamente de fibra de vidrio y composites — tradición Corvette desde 1953","Este ejemplar en naranja Torch Red escondido en parqueadero — uno de los mejores colores del C6","El LS3 6.2L produce 430hp de una arquitectura pushrod de bajo costo — eficiencia americana pura","La versión ZR1 del mismo año usaba un LS9 supercharged de 638hp — el Corvette más rápido de la historia hasta ese momento"]
+  },{
+    id:"wrxsti",make:"Subaru",model:"WRX STI",years:"2015–2021",
+    photoDate:"12 de junio, 2026",photoTimestamp:20260612,featured:false,
+    featuredReason:"",review:"",
+    hp:310,topSpeed:"255 km/h",zero:"4.9 s",priceCAD:"$20,000–$45,000 CAD",badge:"",badgeLabel:"",imgKey:"wrxsti",
+    specs:{"Motor":"Boxer-4 2.5L DOHC Turbo EJ257","Potencia":"310 hp / 290 lb-ft","Transmisión":"Manual 6 vel. STI Close-Ratio","Tracción":"AWD DCCD","0–100 km/h":"4.9 seg","Vel. máxima":"255 km/h","Carrocería":"Sedán 4 puertas","Peso":"1,502 kg","Años de prod.":"2015–2021","Precio CA (usado)":"$20,000–$45,000"},
+    highlights:["El EJ257 Boxer-4 es uno de los motores turbo más amados de la cultura JDM — sonido y respuesta únicos","Sistema DCCD (Driver Controlled Centre Differential) — el AWD más ajustable de la historia del STI","Este ejemplar en WR Blue Pearl con capó negro y frenos Brembo rojos — especificación de fábrica premium","2021 fue el último año del WRX STI con motor EJ — Subaru lo discontinuó sin anunciar un sucesor STI","Ganó 4 campeonatos mundiales de rally consecutivos con Petter Solberg y Colin McRae"]
+  },{
+    id:"wrx",make:"Subaru",model:"WRX",years:"2015–2021",
+    photoDate:"12 de junio, 2026",photoTimestamp:20260612,featured:false,
+    featuredReason:"",review:"",
+    hp:268,topSpeed:"240 km/h",zero:"5.5 s",priceCAD:"$15,000–$35,000 CAD",badge:"",badgeLabel:"",imgKey:"wrx",
+    specs:{"Motor":"Boxer-4 2.0L DOHC Turbo FA20DIT","Potencia":"268 hp / 258 lb-ft","Transmisión":"Manual 6 vel. / CVT","Tracción":"AWD simétrico","0–100 km/h":"5.5 seg","Vel. máxima":"240 km/h","Carrocería":"Sedán 4 puertas","Peso":"1,464 kg","Años de prod.":"2015–2021","Precio CA (usado)":"$15,000–$35,000"},
+    highlights:["Build street completo: lip frontal, barras de techo, rines negros, faros amarillos JDM y calcomanía 'Boost Barn'","El FA20DIT es el primer motor horizontalmente opuesto de inyección directa de Subaru","Los faros amarillos son una tradición de la cultura rally japonesa — mejoran visibilidad en lluvia y niebla","Hallado en parqueadero cubierto — el mismo día que el Corvette C6, los parqueaderos de Vancouver no decepcionan","El WRX y STI compartieron generación VA pero con motores completamente distintos: FA20 vs EJ257"]
+  },{
+    id:"rrSport",make:"Land Rover",model:"Range Rover Sport",years:"2005–2013",
+    photoDate:"12 de junio, 2026",photoTimestamp:20260612,featured:false,
+    featuredReason:"",review:"",
+    hp:305,topSpeed:"225 km/h",zero:"7.8 s",priceCAD:"$8,000–$22,000 CAD",badge:"",badgeLabel:"",imgKey:"rrSport",
+    specs:{"Motor":"V8 4.4L AJ-V8 / V6 3.0L TDV6","Potencia":"305 hp / 325 lb-ft (V8)","Transmisión":"Automática 6 vel. ZF","Tracción":"4WD Terrain Response","0–100 km/h":"7.8 seg","Vel. máxima":"225 km/h","Carrocería":"SUV 5 puertas","Peso":"2,385 kg","Años de prod.":"2005–2013","Precio CA (usado)":"$8,000–$22,000"},
+    highlights:["Hallado frente al Rogers Arena de Vancouver — fondo icónico de la ciudad","Plataforma compartida con el Discovery 3/4 — chassis body-on-frame con suspensión neumática","Sistema Terrain Response de primera generación — selección de terreno con dial central, pionero en su época","El Sport fue el primer Range Rover diseñado explícitamente como SUV deportivo, no utilitario","Usado como vehículo oficial en múltiples producciones cinematográficas por su presencia y tamaño"]
   }]},
   "2026-05":{label:"Mayo 2026",cars:[{
     id:"sc430",make:"Lexus",model:"SC 430",years:"2001–2010",
@@ -270,15 +312,44 @@ const CARS={
     highlights:["Saab quebró en 2012 — cada 9-3 en circulación es una pieza de historia automotriz","La llave de ignición está entre los asientos delanteros, tradición única de Saab desde los años 70","La parrilla frontal imita la vista de un avión Saab desde abajo — herencia aeronáutica directa","5 estrellas EuroNCAP desde 2003 — fue uno de los autos más seguros de su segmento","El SportCombi fue el único wagon de Saab basado en la plataforma GM Epsilon compartida con el Opel Vectra"]
   }]},
   "2026-04":{label:"Abril 2026",cars:[]},
+  "2026-03":{label:"Marzo 2026",cars:[{
+    id:"bmwE38",make:"BMW",model:"Serie 7 740i (E38)",years:"1994–2001",
+    heroPosition:"center 60%",
+    photoDate:"29 de marzo, 2026",photoTimestamp:20260329,featured:true,
+    featuredReason:"El E38 es considerado por muchos la mejor Serie 7 jamás fabricada — diseño atemporal, ingeniería alemana de primera y rines de 3 piezas que lo elevan a otro nivel.",
+    review:"Hay algo en el BMW E38 que los sedanes modernos no pueden replicar — una presencia sobria pero indiscutible. Este ejemplar en negro con rines multirayos de 3 piezas y una stance perfecta parece recién salido de un garaje europeo de los 90s. El E38 fue el 7 Series que protagonizó El Quinto Elemento, que transportó a James Bond, y que hoy sigue siendo referencia de diseño en foros de entusiastas de todo el mundo. Verlo estacionado frente a una casa de Vancouver es uno de esos hallazgos tranquilos pero memorables.",
+    hp:282,topSpeed:"250 km/h",zero:"6.9 s",priceCAD:"$8,000–$20,000 CAD",badge:"",badgeLabel:"",imgKey:"bmwE38",
+    specs:{"Motor":"V8 4.0L M60B40 / 4.4L M62B44","Potencia":"282–286 hp / 295 lb-ft","Transmisión":"Automática 5 vel. ZF Steptronic","Tracción":"RWD","0–100 km/h":"6.9 seg","Vel. máxima":"250 km/h (limitada)","Carrocería":"Sedán 4 puertas","Peso":"1,790 kg","Años de prod.":"1994–2001","Precio CA (usado)":"$8,000–$20,000"},
+    highlights:["Protagonista de 'El Quinto Elemento' (1997) — el taxi volador futurista era un E38 modificado","Considerado por Top Gear y Car & Driver el mejor 7 Series de la historia de BMW","Los rines de 3 piezas de este ejemplar son aftermarket BBS o similar — elevación visual notable","Fue el primer 7 Series con sistema de navegación por GPS de serie — tecnología pionera en 1994","James Bond condujo un E38 telecomandado desde el asiento trasero en 'Tomorrow Never Dies' (1997)"]
+  }]},
   "nuestros-autos":{label:"Nuestros Autos",cars:[{
     id:"mazda2_2014",make:"Mazda",model:"2 Sport",years:"2012–2014",
+    modelYear:2014,
     photoDate:"25 de marzo, 2014",photoTimestamp:20140325,featured:true,
     featuredReason:"El primer Mazda 2 de la familia — recogido en el concesionario en Bogotá en 2014.",
     review:"Rojo brillante, recién salido del concesionario Mazda en Bogotá. El Mazda 2 fue el primer auto propio de la familia — pequeño, ágil y confiable. En una ciudad como Bogotá, con su tráfico denso y sus calles estrechas, el tamaño compacto y el volante liviano lo hacían perfectamente en casa. El filosofía 'Zoom-Zoom' de Mazda nunca sonó tan sincera como en este hatchback rojo que se deslizaba entre el caos bogotano con una sonrisa.",
     hp:100,topSpeed:"193 km/h",zero:"11.5 s",priceCAD:"$15,500–$17,000 CAD (nuevo 2014)","badge":"",badgeLabel:"",imgKey:"mazda2_2014",
     specs:{"Motor":"I4 1.5L MZR DOHC","Potencia":"100 hp / 98 lb-ft","Transmisión":"Automática 4 vel.","Tracción":"FWD","0–100 km/h":"11.5 seg","Vel. máxima":"193 km/h","Carrocería":"Hatchback 5 puertas","Peso":"1,045 kg","Años de prod.":"2007–2014","Ciudad de compra":"Bogotá, Colombia"},
     highlights:["Primer auto propio de la familia — entregado en concesionario Mazda Bogotá el 25 de marzo de 2014","Solo pesa 1,045 kg — uno de los hatchbacks más livianos de su generación","El diseño 'Nagare' de flujo de agua fue el último antes del lenguaje KODO de Mazda","A pesar de sus 100hp, el chasis ágil lo hacía sentir más rápido de lo que era — diversión pura","El Mazda 2 ganó el premio 'World Car of the Year' en 2008 en su primera generación"]
+  },{
+    id:"kia_cerato",make:"Kia",model:"Cerato / Forte",years:"2012–2018",
+    modelYear:2013,
+    photoDate:"15 de marzo, 2013",photoTimestamp:20130315,featured:false,
+    featuredReason:"",review:"",
+    hp:148,topSpeed:"195 km/h",zero:"9.4 s",priceCAD:"$16,000–$22,000 CAD (nuevo)",badge:"",badgeLabel:"",imgKey:"kia_cerato",
+    specs:{"Motor":"I4 1.8L Nu MPI / 2.0L Nu MPI","Potencia":"148 hp / 131 lb-ft","Transmisión":"Automática 6 vel.","Tracción":"FWD","0–100 km/h":"9.4 seg","Vel. máxima":"195 km/h","Carrocería":"Sedán 4 puertas","Peso":"1,285 kg","Años de prod.":"2012–2018","Ciudad de compra":"Bogotá, Colombia"},
+    highlights:["Adquirido en Elite Cars Bogotá el 15 de marzo de 2013 — uno de los primeros de la familia en Colombia","La segunda generación Cerato/Forte fue el Kia más vendido globalmente en su año de lanzamiento","Diseño influenciado por Peter Schreyer, ex-diseñador de Audi — el lenguaje 'tiger nose' en su mejor momento","Compartía plataforma con el Hyundai Elantra de la misma generación — base técnica sólida","Kia pasó de marca económica a referente de diseño en esta generación — cambio total de imagen"]
   }]}
+};
+
+// Secciones especiales de colección (referencian autos por ID desde CARS)
+const COLLECTIONS={
+  "autos-divertidos":{
+    label:"Autos Divertidos",
+    description:"Los hallazgos más extravagantes, raros o simplemente imposibles de ignorar. Estos autos hacen sonreír.",
+    carIds:["aztek","sprite","sc430"],
+    featuredId:"aztek"
+  }
 };
 
 const EVENTS={
@@ -381,6 +452,27 @@ const EVENTS={
       hp:130,topSpeed:"174 km/h",zero:"13.5 s",priceCAD:"$200,000–$600,000 CAD",badge:"",badgeLabel:"",imgKey:"lagondaM45",
       specs:{"Motor":"I6 4.5L Meadows OHV","Potencia":"130 hp","Transmisión":"Manual 4 vel. Meadows","Tracción":"RWD","0–100 km/h":"~13.5 seg","Vel. máxima":"174 km/h (108 mph)","Carrocería":"Tourer abierto 4 plazas","Producción total":"~278 unidades (M45+LG45)","Años de prod.":"1933–1937","Precio CA (colección)":"$200,000–$600,000+"},
       highlights:["El auto más antiguo del ABFM 2026 — más de 90 años rodando y sigue impecable","Ganó las 24 Horas de Le Mans en 1935 en su versión M45R Rapide — victoria histórica para Lagonda","El motor Meadows I6 4.5L data de 1928 y fue usado por múltiples fabricantes británicos de la era","Faros auxiliares cromados externos y guardabarros separados — construcción pre-guerra auténtica","Aston Martin compró Lagonda en 1947 — este auto es técnicamente un antepasado directo del Lagonda moderno"]
+    },{
+      id:"bentley45",make:"Bentley",model:"4½ Litre Tourer",years:"1927–1931",
+      photoDate:"16 de mayo, 2026",photoTimestamp:20260516,featured:false,
+      featuredReason:"",review:"",
+      hp:110,topSpeed:"160 km/h",zero:"13.0 s",priceCAD:"$300,000–$800,000 CAD",badge:"",badgeLabel:"",imgKey:"bentley45",
+      specs:{"Motor":"I4 4.4L SOHC (110hp) / Supercharged (240hp)","Potencia":"110 hp (240 hp Blower) / 220 lb-ft","Transmisión":"Manual 4 vel.","Tracción":"RWD","0–100 km/h":"~13 seg","Vel. máxima":"160 km/h (200+ km/h Blower)","Carrocería":"Tourer abierto","Producción total":"720 unidades (55 Blower)","Años de prod.":"1927–1931","Precio CA (colección)":"$300,000–$800,000+"},
+      highlights:["James Bond conduce un Bentley 4½ Blower en Casino Royale, Live and Let Die y Moonraker — el auto favorito del espía","Solo 720 unidades fabricadas — 55 de ellas con supercharger Blower, ahora valoradas en más de $1.5M USD","Ganó Le Mans en 1928 — y compitió en 1929 y 1930 con el Blower superchargado","WO Bentley se negó a usar el supercharger — lo llamó 'meter un embudo por la garganta al motor'","Verlo en el ABFM 2026 frente al Lagonda M45 es como ver dos leyendas del mismo paddock de Le Mans"]
+    },{
+      id:"mgJ2",make:"MG",model:"J2 Midget",years:"1932–1934",
+      photoDate:"16 de mayo, 2026",photoTimestamp:20260516,featured:false,
+      featuredReason:"",review:"",
+      hp:36,topSpeed:"134 km/h",zero:"25.0 s",priceCAD:"$20,000–$45,000 CAD",badge:"",badgeLabel:"",imgKey:"mgJ2",
+      specs:{"Motor":"I4 847cc SOHC OHC","Potencia":"36 hp / 45 lb-ft","Transmisión":"Manual 4 vel. sin sincronizador","Tracción":"RWD","0–100 km/h":"~25 seg","Vel. máxima":"134 km/h (83 mph)","Carrocería":"Roadster 2 plazas","Producción total":"2,083 unidades","Años de prod.":"1932–1934","Precio CA (usado)":"$20,000–$45,000"},
+      highlights:["Costaba solo £199 en 1932 — el roadster deportivo más asequible de la era en Gran Bretaña","Peso de solo 495 kg — un auto que hacía sentir cada caballo de sus 36hp al máximo","El logo octagonal MG y el diseño de guardabarros tipo ciclo definieron el look MG para los próximos 20 años","Diseñado por Sid Enever y Hubert Charles — los mismos ingenieros que después crearon el MGA y MGB","Estableció la fórmula del roadster británico asequible que inspiró a Triumph, Austin-Healey y Lotus"]
+    },{
+      id:"db5",make:"Aston Martin",model:"DB5",years:"1963–1965",
+      photoDate:"16 de mayo, 2026",photoTimestamp:20260516,featured:false,
+      featuredReason:"",review:"",
+      hp:282,topSpeed:"233 km/h",zero:"7.1 s",priceCAD:"$700,000–$1,500,000 CAD",badge:"",badgeLabel:"",imgKey:"db5",
+      specs:{"Motor":"I6 3.9L DOHC Straight-6","Potencia":"282 hp / 280 lb-ft","Transmisión":"Manual 5 vel. ZF / Auto 3 vel.","Tracción":"RWD","0–100 km/h":"7.1 seg","Vel. máxima":"233 km/h (145 mph)","Carrocería":"Coupé 2+2 Grand Tourer","Producción total":"1,059 unidades","Años de prod.":"1963–1965","Precio CA (colección)":"$700,000–$1,500,000+"},
+      highlights:["El auto de James Bond por excelencia — Sean Connery lo condujo en Goldfinger (1964) y Thunderball (1965)","Solo 1,059 unidades fabricadas — verlo en libertad en Vancouver es extraordinariamente raro","Este ejemplar en Silver Birch — el color original del DB5 de James Bond en Goldfinger","La carrocería fue diseñada por Carrozzeria Touring de Milán usando la técnica Superleggera de aluminio","El DB5 de Bond venía equipado con ametralladoras, asiento eyectable, placas giratorias y cortinas de humo"]
     }]
   }
 };
@@ -424,7 +516,12 @@ const BRAND_LOGOS={
   'Chevrolet':'logo_chevrolet',
   'McLaren':'logo_mclaren',
   'Aston Martin':'logo_aston_martin',
-  'Lagonda':'logo_lagonda'
+  'Lagonda':'logo_lagonda',
+  'Subaru':'logo_subaru',
+  'Land Rover':'logo_land_rover',
+  'Kia':'logo_kia',
+  'BMW':'logo_bmw',
+  'MG':'logo_mg'
 };
 
 function brandLogoHtml(make){
@@ -477,27 +574,28 @@ function toggle(id){
 
 function featHero(c){
   const src=IMGS[c.imgKey]||'';
-  const imgHtml=src
-    ?`<img src="${src}" alt="${c.make} ${c.model}" />`
-    :`<div style="display:flex;align-items:center;justify-content:center;height:100%;"><i class="ti ti-car" style="font-size:3rem;color:#555;"></i></div>`;
   return `<div class="feat-hero">
-    <div class="feat-hero-img" onclick="openLB('${c.imgKey}','${c.make} ${c.model} · ${c.years}','${c.photoDate||''}')" title="Clic para ver foto completa">
-      ${imgHtml}
-      ${c.photoDate?`<span class="photo-date"><i class="ti ti-calendar" aria-hidden="true"></i> ${c.photoDate}</span>`:''}
-      ${src?`<span class="zoom-hint"><i class="ti ti-zoom-in" aria-hidden="true"></i> Ver foto</span>`:''}
+    <div class="feat-hero-card">
+      <div class="feat-hero-img" onclick="openLB('${c.imgKey}','${c.make} ${c.model} · ${c.years}','${c.photoDate||''}')" title="Ver foto completa">
+        ${src?`<img src="${src}" alt="${c.make} ${c.model}" style="object-position:${c.heroPosition||'center 35%'};" />`:`<div style="display:flex;align-items:center;justify-content:center;height:100%;"><i class="ti ti-car" style="font-size:2.8rem;color:#bbb;"></i></div>`}
+        ${c.photoDate?`<span class="photo-date"><i class="ti ti-calendar"></i> ${c.photoDate}</span>`:''}
+        ${src?`<span class="zoom-hint"><i class="ti ti-zoom-in"></i> Ver foto</span>`:''}
+      </div>
+    </div>
+    <div class="feat-hero-data">
+      <div class="car-stripe" style="margin:-1rem -1rem .75rem;"></div>
+      <div class="car-make-row">${brandLogoHtml(c.make)}<div class="car-make-model"><span class="car-make">${c.make}</span><div class="car-model">${c.model}</div></div></div>
+      <div class="car-year">${c.years}</div>
+      <div class="qs-grid">
+        <div class="qs"><div class="qs-val">${c.hp}</div><div class="qs-lbl">HP</div></div>
+        <div class="qs"><div class="qs-val">${c.topSpeed}</div><div class="qs-lbl">V-Max</div></div>
+        <div class="qs"><div class="qs-val">${c.zero}</div><div class="qs-lbl">0–100</div></div>
+      </div>
+      <div class="price-wrap"><span class="price-tag">Precio CA:</span><span class="price-val">${c.priceCAD}</span></div>
     </div>
     <div class="feat-hero-info">
       <div class="feat-hero-label">⭐ Destacado del mes</div>
-      <div class="feat-hero-make">${c.make}</div>
-      <div class="feat-hero-model">${c.model}</div>
-      <div class="feat-hero-years">${c.years}</div>
-      <div class="feat-hero-stats">
-        <div class="feat-hero-stat"><div class="feat-hero-stat-val">${c.hp}</div><div class="feat-hero-stat-lbl">HP</div></div>
-        <div class="feat-hero-stat"><div class="feat-hero-stat-val">${c.topSpeed}</div><div class="feat-hero-stat-lbl">V-Max</div></div>
-        <div class="feat-hero-stat"><div class="feat-hero-stat-val">${c.zero}</div><div class="feat-hero-stat-lbl">0–100</div></div>
-      </div>
       <div class="feat-hero-review">${c.review||c.featuredReason}</div>
-      <div class="feat-hero-price">Precio CA: <span>${c.priceCAD}</span></div>
     </div>
   </div>`;
 }
@@ -515,7 +613,7 @@ function topStats(cars){
   }
   function parseSpeed(s){return parseFloat(s)||0;}
   function parseZero(s){return parseFloat(s)||999;}
-  function parseYear(s){return parseInt((s||'').split('–')[0])||9999;}
+  function parseYear(c){return c.modelYear||parseInt((c.years||'').split('–')[0])||9999;}
   function parsePrice(s){
     const matches=[...(s||'').matchAll(/\$([\d,]+)/g)].map(m=>parseInt(m[1].replace(/,/g,'')));
     return matches.length?Math.max(...matches):0;
@@ -523,7 +621,7 @@ function topStats(cars){
   const fastest = best(cars,c=>parseSpeed(c.topSpeed),c=>c.topSpeed,'🏎️','Mayor velocidad');
   const power   = best(cars,c=>c.hp||0,c=>`${c.hp} hp`,'⚡','Mayor potencia');
   const accel   = best(cars,c=>-parseZero(c.zero),c=>c.zero,'🚀','Mejor aceleración');
-  const oldest  = best(cars,c=>-parseYear(c.years),c=>c.years.split('–')[0],'📅','Más antiguo');
+  const oldest  = best(cars,c=>-parseYear(c),c=>parseYear(c),'📅','Más antiguo');
   function maxPriceDisplay(s){
     const matches=[...(s||'').matchAll(/\$([\d,]+)/g)].map(m=>m[1]);
     return matches.length?'$'+matches[matches.length-1]:'';
@@ -552,6 +650,38 @@ function renderMonth(key){
   document.querySelectorAll('.hw-tab').forEach(t=>t.classList.toggle('active',t.dataset.m===key));
 }
 
+function findCarById(id){
+  for(const m of Object.values(CARS)){
+    const c=m.cars.find(c=>c.id===id);
+    if(c) return c;
+  }
+  for(const ev of Object.values(EVENTS)){
+    const c=ev.cars.find(c=>c.id===id);
+    if(c) return c;
+  }
+  return null;
+}
+
+function renderCollection(key){
+  active=key;
+  const col=COLLECTIONS[key];
+  const cars=col.carIds.map(findCarById).filter(Boolean);
+  const sorted=[...cars].sort((a,b)=>{
+    const dt=(b.photoTimestamp||0)-(a.photoTimestamp||0);
+    if(dt!==0) return dt;
+    return (b.featured?1:0)-(a.featured?1:0);
+  });
+  const feat=col.featuredId?cars.find(c=>c.id===col.featuredId):sorted.find(c=>c.featured)||sorted[0];
+  document.getElementById('body').innerHTML=
+    `<div class="month-hdr"><div class="month-title">${col.label}</div></div>`+
+    `<div class="event-desc" style="margin-bottom:1.2rem;">${col.description}</div>`+
+    (feat?`<div class="section-title">Destacado</div>`+featHero(feat):'')+
+    (sorted.length>=2?`<div class="section-title">Top Estadísticas</div>`+topStats(sorted):'')+
+    (sorted.length?`<div class="section-title">Hallazgos</div><div class="cars-grid">${sorted.map(carCard).join('')}</div>`:
+    `<div class="empty-msg"><i class="ti ti-car" aria-hidden="true"></i><p>Sin autos aún</p></div>`);
+  document.querySelectorAll('.hw-tab').forEach(t=>t.classList.toggle('active',t.dataset.m===key));
+}
+
 function renderTabs(){
   const SPECIAL=['nuestros-autos'];
   const months = Object.entries(CARS)
@@ -560,16 +690,18 @@ function renderTabs(){
   const events = Object.entries(EVENTS).map(([k,v])=>({
     key:k,label:v.label,count:v.cars.length,type:'event',ts:v.timestamp
   }));
-  const special = SPECIAL.filter(k=>CARS[k]).map(k=>({
-    key:k,label:CARS[k].label,count:CARS[k].cars.length,type:'special',ts:-1
-  }));
+  const specials = [
+    ...SPECIAL.filter(k=>CARS[k]).map(k=>({key:k,label:CARS[k].label,count:CARS[k].cars.length,type:'special',ts:-1})),
+    ...Object.entries(COLLECTIONS).map(([k,v])=>({key:k,label:v.label,count:v.carIds.length,type:'collection',ts:-2}))
+  ];
   const all=[...months,...events].sort((a,b)=>b.ts-a.ts);
-  const allWithSpecial=[...all,...special];
-  document.getElementById('tabs').innerHTML=allWithSpecial.map(t=>{
+  document.getElementById('tabs').innerHTML=[...all,...specials].map(t=>{
     if(t.type==='event')
       return `<div class="hw-tab hw-tab-event${t.key===active?' active':''}" data-m="${t.key}" onclick="setActive('${t.key}','event')">⚑ ${t.label}<span class="count-pill">${t.count}</span></div>`;
     if(t.type==='special')
       return `<div class="hw-tab hw-tab-special${t.key===active?' active':''}" data-m="${t.key}" onclick="setActive('${t.key}','month')">🚗 ${t.label}<span class="count-pill">${t.count}</span></div>`;
+    if(t.type==='collection')
+      return `<div class="hw-tab hw-tab-fun${t.key===active?' active':''}" data-m="${t.key}" onclick="setActive('${t.key}','collection')">😄 ${t.label}<span class="count-pill">${t.count}</span></div>`;
     return `<div class="hw-tab${t.key===active?' active':''}" data-m="${t.key}" onclick="setActive('${t.key}','month')">${t.label}<span class="count-pill">${t.count}</span></div>`;
   }).join('');
 }
@@ -577,6 +709,7 @@ function renderTabs(){
 function setActive(key, type){
   active = key;
   if(type==='event') renderEvent(key);
+  else if(type==='collection') renderCollection(key);
   else renderMonth(key);
 }
 
