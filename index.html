@@ -2,156 +2,160 @@
 <title>HotFinds · Vancouver BC</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 *{box-sizing:border-box;margin:0;padding:0;}
-.hw{background:#fff;color:#111;font-family:'Rajdhani',Arial,sans-serif;width:100%;}
-.hw-header{background:#C8102E;padding:1rem 1.5rem 1.1rem;}
-.hw-header::after{content:'';display:block;height:5px;background:repeating-linear-gradient(90deg,#FFD700 0 28px,#C8102E 28px 36px);margin-top:0.6rem;}
-.hw-logo{font-family:'Bebas Neue',Impact,sans-serif;font-size:2.8rem;letter-spacing:3px;color:#FFD700;line-height:1;}
-.hw-logo em{color:#fff;font-style:normal;}
-.hw-sub{font-size:0.88rem;letter-spacing:4px;color:rgba(255,255,255,0.95);text-transform:uppercase;margin-top:3px;}
-.hw-tabs{display:flex;gap:3px;padding:0.7rem 1rem 0;background:#f5f5f5;border-bottom:2px solid #C8102E;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.hw{background:#fff;color:#1A1A1A;font-family:'Poppins',Arial,sans-serif;width:100%;}
+.hw-header{background:#fff;padding:1.1rem 1.5rem 1.2rem;border-bottom:1px solid #eee;}
+.hw-header::after{content:'';display:block;height:4px;background:#F5F200;margin-top:0.7rem;}
+.hw-logo{font-family:'Poppins',Arial,sans-serif;font-weight:800;font-size:2.6rem;letter-spacing:-1px;color:#1A1A1A;line-height:1;}
+.hw-logo em{color:#1A1A1A;font-style:normal;background:#F5F200;padding:0 6px;border-radius:3px;}
+.hw-sub{font-size:0.78rem;letter-spacing:2px;color:#777;text-transform:uppercase;margin-top:6px;font-weight:600;}
+.hw-tabs{display:flex;gap:3px;padding:0.7rem 1rem 0;background:#fff;border-bottom:1px solid #eee;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
 .hw-tabs::-webkit-scrollbar{display:none;}
-.hw-tab{padding:7px 18px;border-radius:6px 6px 0 0;border:1px solid #ccc;border-bottom:none;font-size:0.9rem;font-weight:700;letter-spacing:1px;cursor:pointer;text-transform:uppercase;background:#e8e8e8;color:#222;transition:all .15s;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
-.hw-tab.active{background:#fff;color:#C8102E;border-color:#C8102E;border-bottom-color:#fff;}
-.hw-tab:hover:not(.active){background:#ddd;color:#111;}
-.count-pill{background:#ddd;color:#333;font-size:0.75rem;padding:1px 7px;border-radius:10px;margin-left:4px;font-weight:700;}
-.hw-tab.active .count-pill{background:#fde0e4;color:#C8102E;}
-.hw-body{padding:1.25rem 1rem;}
-.section-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:1.9rem;letter-spacing:3px;color:#C8102E;margin:1.2rem 0 .6rem;}
+.hw-tab{padding:8px 18px;border-radius:20px;border:1.5px solid #e0e0e0;font-size:0.84rem;font-weight:600;letter-spacing:0px;cursor:pointer;text-transform:none;background:#f7f7f7;color:#555;transition:all .15s;white-space:nowrap;-webkit-tap-highlight-color:transparent;font-family:'Poppins',sans-serif;margin-bottom:.6rem;}
+.hw-tab.active{background:#F5F200;color:#1A1A1A;border-color:#F5F200;}
+.hw-tab:hover:not(.active){background:#ececec;color:#1A1A1A;}
+.count-pill{background:#e0e0e0;color:#555;font-size:0.72rem;padding:1px 7px;border-radius:10px;margin-left:4px;font-weight:700;}
+.hw-tab.active .count-pill{background:#1A1A1A;color:#F5F200;}
+.hw-body{padding:1.25rem 1rem;background:#fff;}
+.section-title{font-family:'Poppins',sans-serif;font-weight:700;font-size:1.55rem;letter-spacing:-0.5px;color:#1A1A1A;margin:1.2rem 0 .6rem;}
 .month-hdr+.section-title{margin-top:0;}
-.month-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:1.9rem;letter-spacing:3px;color:#C8102E;}
-.feat-badge{background:#FFD700;color:#3a0000;font-size:0.76rem;font-weight:700;letter-spacing:1.5px;padding:4px 11px;border-radius:3px;text-transform:uppercase;}
+.month-title{font-family:'Poppins',sans-serif;font-weight:700;font-size:1.55rem;letter-spacing:-0.5px;color:#1A1A1A;}
+.feat-badge{background:#1A1A1A;color:#F5F200;font-size:0.7rem;font-weight:700;letter-spacing:1px;padding:4px 11px;border-radius:20px;text-transform:uppercase;}
 .cars-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1rem;}
-.car-card{background:#fff;border:1.5px solid #ddd;border-radius:10px;overflow:hidden;transition:transform .2s;position:relative;}
-.car-card:hover{transform:translateY(-3px);border-color:#C8102E;}
-.car-card.featured{border-color:#FFD700;border-width:2px;}
-.car-card.featured::before{content:'DESTACADO';position:absolute;top:8px;right:8px;background:#FFD700;color:#3a0000;font-size:0.7rem;font-weight:700;letter-spacing:1.5px;padding:4px 9px;border-radius:3px;z-index:10;}
-.car-img-wrap{width:100%;height:278px;overflow:hidden;background:#e8e8e8;display:flex;align-items:center;justify-content:center;cursor:zoom-in;position:relative;}
+.car-card{background:#fff;border:1.5px solid #ececec;border-radius:14px;overflow:hidden;transition:transform .2s,box-shadow .2s;position:relative;}
+.car-card:hover{transform:translateY(-3px);border-color:#F5F200;box-shadow:0 8px 20px rgba(0,0,0,0.08);}
+.car-card.featured{border-color:#F5F200;border-width:2px;}
+.car-card.featured::before{content:'DESTACADO';position:absolute;top:8px;right:8px;background:#F5F200;color:#1A1A1A;font-size:0.66rem;font-weight:700;letter-spacing:1px;padding:4px 10px;border-radius:20px;z-index:10;}
+.car-img-wrap{width:100%;height:278px;overflow:hidden;background:#f2f2f2;display:flex;align-items:center;justify-content:center;cursor:zoom-in;position:relative;}
 .car-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;transition:transform .3s;}
 .car-card:hover .car-img-wrap img{transform:scale(1.04);}
-.zoom-hint{position:absolute;bottom:7px;right:8px;background:rgba(0,0,0,0.5);color:#fff;font-size:0.7rem;letter-spacing:1px;padding:3px 8px;border-radius:3px;font-weight:700;text-transform:uppercase;pointer-events:none;}
-.photo-date{position:absolute;bottom:7px;left:8px;background:rgba(0,0,0,0.5);color:#FFD700;font-size:0.68rem;letter-spacing:1px;padding:3px 7px;border-radius:3px;font-weight:700;pointer-events:none;}
-.car-stripe{height:4px;background:linear-gradient(90deg,#C8102E,#FF6B00,#FFD700);}
+.zoom-hint{position:absolute;bottom:7px;right:8px;background:rgba(26,26,26,0.7);color:#fff;font-size:0.7rem;letter-spacing:0.5px;padding:3px 8px;border-radius:12px;font-weight:600;text-transform:none;pointer-events:none;}
+.photo-date{position:absolute;bottom:7px;left:8px;background:rgba(245,242,0,0.95);color:#1A1A1A;font-size:0.68rem;letter-spacing:0.5px;padding:3px 7px;border-radius:12px;font-weight:700;pointer-events:none;}
+.car-stripe{height:4px;background:#F5F200;}
 .car-info{padding:0.85rem 1rem 0.55rem;}
 .car-make-row{display:flex;align-items:center;gap:12px;margin-bottom:4px;}
 .brand-logo{width:48px;height:48px;object-fit:contain;flex-shrink:0;}
 .car-make-model{display:flex;flex-direction:column;justify-content:center;min-width:0;}
-.car-make{font-size:0.78rem;letter-spacing:3px;color:#222;text-transform:uppercase;font-weight:700;}
-.car-model{font-family:'Bebas Neue',Impact,sans-serif;font-size:1.6rem;letter-spacing:2px;color:#111;line-height:1.05;}
-.car-year{font-size:0.88rem;color:#C8102E;font-weight:700;margin-top:2px;}
-.mod-badge{display:inline-block;font-size:0.7rem;font-weight:700;padding:2px 8px;border-radius:3px;letter-spacing:1px;margin-left:6px;vertical-align:middle;}
-.badge-stance{background:#1a1a2e;color:#a0c4ff;}
-.badge-chrome{background:#7a5c00;color:#fff3c0;}
+.car-make{font-size:0.74rem;letter-spacing:1.5px;color:#888;text-transform:uppercase;font-weight:600;}
+.car-model{font-family:'Poppins',sans-serif;font-weight:700;font-size:1.4rem;letter-spacing:-0.3px;color:#1A1A1A;line-height:1.15;}
+.car-year{font-size:0.85rem;color:#8d5000;font-weight:600;margin-top:2px;}
+.mod-badge{display:inline-block;font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:10px;letter-spacing:0.5px;margin-left:6px;vertical-align:middle;}
+.badge-stance{background:#e3f6f6;color:#1f7a7a;}
+.badge-chrome{background:#fdf3d6;color:#8d5000;}
 .qs-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;margin:0.7rem 0 0.55rem;}
-.qs{background:#f5f5f5;border:1px solid #e0e0e0;border-radius:5px;padding:7px 4px;text-align:center;}
-.qs-val{font-size:1.05rem;font-weight:700;color:#C8102E;line-height:1;}
-.qs-lbl{font-size:0.72rem;color:#111;text-transform:uppercase;letter-spacing:.5px;margin-top:3px;font-weight:700;}
-.price-wrap{display:flex;align-items:center;gap:8px;margin-top:6px;padding-top:6px;border-top:1px solid #eee;}
-.price-tag{font-size:0.8rem;color:#111;text-transform:uppercase;letter-spacing:1px;font-weight:700;}
-.price-val{font-weight:700;color:#111;font-size:0.95rem;}
-.expand-btn{width:100%;background:#f5f5f5;border:none;border-top:1px solid #e8e8e8;color:#111;font-size:0.82rem;font-weight:700;letter-spacing:2px;padding:12px;cursor:pointer;text-transform:uppercase;transition:background .15s,color .15s;font-family:'Rajdhani',sans-serif;display:flex;align-items:center;justify-content:center;gap:6px;-webkit-tap-highlight-color:transparent;}
-.expand-btn:hover,.expand-btn.open{background:#fde0e4;color:#C8102E;}
-.car-details{display:none;padding:.9rem 1rem;background:#fafafa;border-top:1px solid #eee;}
+.qs{background:#f7f7f7;border:1px solid #ececec;border-radius:10px;padding:7px 4px;text-align:center;}
+.qs-val{font-size:1.02rem;font-weight:700;color:#1A1A1A;line-height:1;font-family:'Poppins',sans-serif;}
+.qs-lbl{font-size:0.68rem;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-top:3px;font-weight:600;}
+.price-wrap{display:flex;align-items:center;gap:8px;margin-top:6px;padding-top:6px;border-top:1px solid #f0f0f0;}
+.price-tag{font-size:0.78rem;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;}
+.price-val{font-weight:700;color:#1A1A1A;font-size:0.97rem;}
+.expand-btn{width:100%;background:#f7f7f7;border:none;border-top:1px solid #ececec;color:#1A1A1A;font-size:0.8rem;font-weight:600;letter-spacing:0.5px;padding:12px;cursor:pointer;text-transform:none;transition:background .15s,color .15s;font-family:'Poppins',sans-serif;display:flex;align-items:center;justify-content:center;gap:6px;-webkit-tap-highlight-color:transparent;}
+.expand-btn:hover,.expand-btn.open{background:#F5F200;color:#1A1A1A;}
+.car-details{display:none;padding:.9rem 1rem;background:#fafafa;border-top:1px solid #ececec;}
 .car-details.open{display:block;}
-.dtl-title{font-size:0.73rem;letter-spacing:3px;color:#C8102E;text-transform:uppercase;margin-bottom:7px;padding-bottom:5px;border-bottom:1.5px solid #fdd;font-weight:700;}
-.spec-row{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #f0f0f0;gap:8px;}
-.spec-key{font-size:0.84rem;color:#111;font-weight:700;}
-.spec-val{font-size:0.84rem;color:#111;font-weight:700;text-align:right;}
+.dtl-title{font-size:0.7rem;letter-spacing:1.5px;color:#8d5000;text-transform:uppercase;margin-bottom:7px;padding-bottom:5px;border-bottom:1.5px solid #fdf3d6;font-weight:700;}
+.spec-row{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #f2f2f2;gap:8px;}
+.spec-key{font-size:0.83rem;color:#777;font-weight:500;}
+.spec-val{font-size:0.83rem;color:#1A1A1A;font-weight:600;text-align:right;}
 .hl-list{list-style:none;}
-.hl-list li{font-size:0.84rem;color:#111;padding:5px 0 5px 16px;position:relative;border-bottom:1px solid #f5f5f5;line-height:1.4;font-weight:500;}
-.hl-list li::before{content:'▸';position:absolute;left:0;color:#FF6B00;}
-.feat-reason{background:#fffbe6;border-left:3px solid #FFD700;padding:9px 11px;border-radius:0 5px 5px 0;font-size:0.84rem;color:#111;line-height:1.5;font-weight:500;}
+.hl-list li{font-size:0.83rem;color:#333;padding:5px 0 5px 16px;position:relative;border-bottom:1px solid #f5f5f5;line-height:1.45;font-weight:400;}
+.hl-list li::before{content:'✓';position:absolute;left:0;color:#1f9d6e;font-weight:700;}
+.feat-reason{background:#fffde6;border-left:3px solid #F5F200;padding:9px 11px;border-radius:0 10px 10px 0;font-size:0.83rem;color:#333;line-height:1.55;font-weight:400;}
 .dtl-sec{margin-bottom:.85rem;}
-.add-box{margin-top:1.5rem;border:2px dashed #ddd;border-radius:10px;padding:1.5rem 1rem;text-align:center;background:#fafafa;}
-.add-lbl{font-size:0.84rem;color:#222;letter-spacing:3px;text-transform:uppercase;font-weight:700;margin-bottom:.5rem;}
-.add-btn{background:#C8102E;color:#fff;border:none;padding:12px 30px;border-radius:5px;font-family:'Bebas Neue',Impact,sans-serif;font-size:1.2rem;letter-spacing:2px;cursor:pointer;-webkit-tap-highlight-color:transparent;}
-.add-btn:hover{background:#a00020;}
-.add-note{font-size:0.84rem;color:#333;margin-top:.5rem;font-weight:500;}
+.add-box{margin-top:1.5rem;border:2px dashed #ececec;border-radius:14px;padding:1.5rem 1rem;text-align:center;background:#fafafa;}
+.add-lbl{font-size:0.82rem;color:#888;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;margin-bottom:.5rem;}
+.add-btn{background:#F5F200;color:#1A1A1A;border:none;padding:12px 30px;border-radius:24px;font-family:'Poppins',sans-serif;font-weight:700;font-size:1rem;letter-spacing:0px;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.add-btn:hover{background:#dad700;}
+.add-note{font-size:0.83rem;color:#999;margin-top:.5rem;font-weight:400;}
 .empty-msg{text-align:center;padding:3rem 1rem;}
-.empty-msg i{font-size:3rem;color:#ddd;display:block;margin-bottom:.75rem;}
-.empty-msg p{font-size:0.9rem;letter-spacing:3px;text-transform:uppercase;color:#333;font-weight:700;}
-.hw-divider{height:5px;background:repeating-linear-gradient(90deg,#C8102E 0 28px,#FFD700 28px 36px);}
+.empty-msg i{font-size:3rem;color:#ececec;display:block;margin-bottom:.75rem;}
+.empty-msg p{font-size:0.88rem;letter-spacing:1.5px;text-transform:uppercase;color:#999;font-weight:600;}
+.hw-divider{height:4px;background:#F5F200;}
 .coll-sec{padding:1.5rem 1rem;}
-.coll-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:1.9rem;letter-spacing:3px;color:#C8102E;margin-bottom:.15rem;}
-.coll-sub{font-size:0.88rem;letter-spacing:3px;color:#111;text-transform:uppercase;font-weight:700;margin-bottom:1.25rem;}
+.coll-title{font-family:'Poppins',sans-serif;font-weight:700;font-size:1.55rem;letter-spacing:-0.5px;color:#1A1A1A;margin-bottom:.15rem;}
+.coll-sub{font-size:0.82rem;letter-spacing:1.5px;color:#999;text-transform:uppercase;font-weight:600;margin-bottom:1.25rem;}
 .coll-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:1rem;}
-.coll-card{background:#fff;border:1.5px solid #e0e0e0;border-radius:10px;overflow:hidden;text-align:center;padding-bottom:.9rem;transition:border-color .15s;}
-.coll-card:hover{border-color:#C8102E;}
-.coll-photo{width:100%;height:105px;background:#f0f0f0;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.coll-card{background:#fff;border:1.5px solid #ececec;border-radius:14px;overflow:hidden;text-align:center;padding-bottom:.9rem;transition:border-color .15s;}
+.coll-card:hover{border-color:#F5F200;}
+.coll-photo{width:100%;height:105px;background:#f2f2f2;overflow:hidden;display:flex;align-items:center;justify-content:center;}
 .coll-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
-.coll-initials{width:62px;height:62px;border-radius:50%;background:#C8102E;color:#fff;font-family:'Bebas Neue',Impact,sans-serif;font-size:1.4rem;letter-spacing:2px;display:flex;align-items:center;justify-content:center;}
-.coll-stripe{height:3px;background:linear-gradient(90deg,#C8102E,#FF6B00,#FFD700);}
-.coll-name{font-family:'Bebas Neue',Impact,sans-serif;font-size:1rem;letter-spacing:1.5px;color:#111;margin:.6rem .6rem .2rem;line-height:1.2;}
-.coll-bio{font-size:0.78rem;color:#111;line-height:1.5;padding:0 .75rem;font-weight:500;font-style:italic;}
-.coll-bio-ph{font-size:0.76rem;color:#888;line-height:1.4;padding:0 .75rem;font-weight:500;}
-.hw-tab-fun{background:linear-gradient(135deg,#2d1a00,#3a2800);color:#FFB347;border-color:#FF8C00 !important;}
-.hw-tab-fun.active{background:linear-gradient(135deg,#3a2200,#4a3000);color:#FFB347;border-bottom-color:#fff !important;}
-.hw-tab-fun:hover:not(.active){background:linear-gradient(135deg,#3d2500,#503500) !important;color:#FFB347 !important;}
-.hw-tab-fun .count-pill{background:rgba(255,140,0,0.2);color:#FFB347;}color:#90ee90;border-color:#4caf50 !important;}
-.hw-tab-special.active{background:linear-gradient(135deg,#1f4f1f,#004a00);color:#90ee90;border-bottom-color:#fff !important;}
-.hw-tab-special:hover:not(.active){background:linear-gradient(135deg,#254525,#005000) !important;color:#90ee90 !important;}
-.hw-tab-special .count-pill{background:rgba(76,175,80,0.2);color:#90ee90;}color:#FFD700;border-color:#FFD700 !important;}
-.hw-tab-event.active{background:linear-gradient(135deg,#2d2d00,#3a1a00);color:#FFD700;border-bottom-color:#fff !important;}
-.hw-tab-event:hover:not(.active){background:linear-gradient(135deg,#2a2a3e,#3d2a00) !important;color:#FFD700 !important;}
-.hw-tab-event .count-pill{background:rgba(255,215,0,0.2);color:#FFD700;}
+.coll-initials{width:62px;height:62px;border-radius:50%;background:#F5F200;color:#1A1A1A;font-family:'Poppins',sans-serif;font-weight:700;font-size:1.3rem;letter-spacing:0px;display:flex;align-items:center;justify-content:center;}
+.coll-stripe{height:3px;background:#F5F200;}
+.coll-name{font-family:'Poppins',sans-serif;font-weight:700;font-size:1rem;letter-spacing:-0.2px;color:#1A1A1A;margin:.6rem .6rem .2rem;line-height:1.25;}
+.coll-bio{font-size:0.77rem;color:#666;line-height:1.5;padding:0 .75rem;font-weight:400;font-style:italic;}
+.coll-bio-ph{font-size:0.75rem;color:#aaa;line-height:1.4;padding:0 .75rem;font-weight:400;}
+.hw-tab-fun{background:#fff0e0;color:#c5680a;border-color:#ffd1a3 !important;}
+.hw-tab-fun.active{background:#F5F200;color:#1A1A1A;border-color:#F5F200 !important;}
+.hw-tab-fun:hover:not(.active){background:#ffe2c2 !important;color:#c5680a !important;}
+.hw-tab-fun .count-pill{background:#ffd9ad;color:#c5680a;}
+.hw-tab-special{color:#1f9d6e;border-color:#a8e8cc !important;}
+.hw-tab-special.active{background:#F5F200;color:#1A1A1A;border-color:#F5F200 !important;}
+.hw-tab-special:hover:not(.active){background:#d4f5e6 !important;color:#1f9d6e !important;}
+.hw-tab-special .count-pill{background:#c2f0dc;color:#1f9d6e;}
+.hw-tab-event{color:#8d5000;border-color:#f0c98a !important;}
+.hw-tab-event.active{background:#F5F200;color:#1A1A1A;border-color:#F5F200 !important;}
+.hw-tab-event:hover:not(.active){background:#fdf0d6 !important;color:#8d5000 !important;}
+.hw-tab-event .count-pill{background:#fae0ad;color:#8d5000;}
 .stats-bar{display:grid;grid-template-columns:repeat(5,1fr);gap:.6rem;margin-bottom:1.4rem;}
-.stat-card{background:#FFD700;border-radius:8px;padding:.7rem .75rem;display:flex;flex-direction:column;gap:.2rem;min-width:0;}
+.stat-card{background:#fafafa;border:1px solid #ececec;border-left:4px solid #F5F200;border-radius:10px;padding:.7rem .75rem;display:flex;flex-direction:column;gap:.2rem;min-width:0;}
 .stat-icon{font-size:1.1rem;line-height:1;}
-.stat-label{font-size:0.8rem;letter-spacing:2px;color:#111;text-transform:uppercase;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.stat-value{font-family:'Bebas Neue',Impact,sans-serif;font-size:1.27rem;color:#C8102E;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.stat-car{font-size:0.82rem;color:#333;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.stat-label{font-size:0.76rem;letter-spacing:1px;color:#999;text-transform:uppercase;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.stat-value{font-family:'Poppins',sans-serif;font-weight:700;font-size:1.18rem;color:#1A1A1A;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.stat-car{font-size:0.8rem;color:#8d5000;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 @media(max-width:600px){.stats-bar{grid-template-columns:1fr 1fr;}.stats-bar .stat-card:last-child{grid-column:1/-1;}}
-.event-name{font-family:'Bebas Neue',Impact,sans-serif;font-size:2rem;letter-spacing:3px;color:#111;line-height:1;}
+.event-name{font-family:'Poppins',sans-serif;font-weight:700;font-size:1.8rem;letter-spacing:-0.5px;color:#1A1A1A;line-height:1;}
 .event-meta{display:flex;gap:.6rem 1rem;flex-wrap:wrap;margin-top:.4rem;align-items:center;}
-.event-meta-item{font-size:0.78rem;font-weight:700;letter-spacing:1px;color:#555;text-transform:uppercase;display:flex;align-items:center;gap:5px;}
-.event-desc{font-size:0.88rem;color:#333;line-height:1.6;border-left:3px solid #FFD700;padding-left:12px;margin:.75rem 0 1.2rem;font-style:italic;}
-.event-trophy{display:inline-block;background:#FFD700;color:#3a0000;font-size:0.65rem;font-weight:700;letter-spacing:2px;padding:3px 10px;border-radius:3px;text-transform:uppercase;margin-bottom:.6rem;}
+.event-meta-item{font-size:0.76rem;font-weight:600;letter-spacing:0px;color:#777;text-transform:none;display:flex;align-items:center;gap:5px;}
+.event-desc{font-size:0.87rem;color:#444;line-height:1.65;border-left:3px solid #F5F200;padding-left:12px;margin:.75rem 0 1.2rem;font-style:italic;}
+.event-trophy{display:inline-block;background:#F5F200;color:#1A1A1A;font-size:0.64rem;font-weight:700;letter-spacing:1px;padding:3px 10px;border-radius:20px;text-transform:uppercase;margin-bottom:.6rem;}
 .feat-hero{display:grid;grid-template-columns:270px 270px 1fr;gap:1rem;margin-bottom:1.5rem;align-items:stretch;}
-.feat-hero-card{background:#fff;border:2px solid #FFD700;border-radius:10px;overflow:hidden;}
-.feat-hero-img{width:100%;height:278px;overflow:hidden;background:#e8e8e8;cursor:zoom-in;position:relative;}
+.feat-hero-card{background:#fff;border:2px solid #F5F200;border-radius:14px;overflow:hidden;}
+.feat-hero-img{width:100%;height:278px;overflow:hidden;background:#f2f2f2;cursor:zoom-in;position:relative;}
 .feat-hero-img img{width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;transition:transform .3s;}
 .feat-hero-img:hover img{transform:scale(1.04);}
-.feat-hero-data{background:#fff;border:2px solid #FFD700;border-radius:10px;padding:1rem;display:flex;flex-direction:column;justify-content:center;gap:.5rem;}
-.feat-hero-info{background:#111;border:2px solid #FFD700;border-radius:10px;padding:1.25rem;display:flex;flex-direction:column;gap:.6rem;}
+.feat-hero-data{background:#fff;border:2px solid #F5F200;border-radius:14px;padding:1rem;display:flex;flex-direction:column;justify-content:center;gap:.5rem;}
+.feat-hero-info{background:#1A1A1A;border:2px solid #F5F200;border-radius:14px;padding:1.25rem;display:flex;flex-direction:column;gap:.6rem;}
 @media(max-width:700px){.feat-hero{grid-template-columns:1fr;}}
 .feat-hero-img:hover img{transform:scale(1.04);}
 .feat-hero-img .photo-date{bottom:6px;left:7px;font-size:0.62rem;padding:2px 6px;}
 .feat-hero-img .zoom-hint{bottom:6px;right:7px;font-size:0.62rem;padding:2px 6px;}
-.feat-hero-label{font-size:0.65rem;letter-spacing:3px;color:#FFD700;text-transform:uppercase;font-weight:700;}
-.feat-hero-make{font-size:0.75rem;letter-spacing:3px;color:#aaa;text-transform:uppercase;font-weight:700;}
-.feat-hero-model{font-family:'Bebas Neue',Impact,sans-serif;font-size:1.9rem;letter-spacing:2px;color:#fff;line-height:1;}
-.feat-hero-years{font-size:0.8rem;color:#C8102E;font-weight:700;}
+.feat-hero-label{font-size:0.64rem;letter-spacing:1.5px;color:#F5F200;text-transform:uppercase;font-weight:700;}
+.feat-hero-make{font-size:0.73rem;letter-spacing:1.5px;color:#aaa;text-transform:uppercase;font-weight:600;}
+.feat-hero-model{font-family:'Poppins',sans-serif;font-weight:700;font-size:1.7rem;letter-spacing:-0.5px;color:#fff;line-height:1.1;}
+.feat-hero-years{font-size:0.8rem;color:#F5F200;font-weight:600;}
 .feat-hero-stats{display:flex;gap:1rem;margin:.15rem 0;}
 .feat-hero-stat{text-align:center;}
-.feat-hero-stat-val{font-family:'Bebas Neue',Impact,sans-serif;font-size:1.2rem;color:#FFD700;line-height:1;}
-.feat-hero-stat-lbl{font-size:0.62rem;letter-spacing:1px;color:#aaa;text-transform:uppercase;font-weight:700;}
-.feat-hero-review{font-size:0.82rem;color:#ddd;line-height:1.55;border-left:3px solid #C8102E;padding-left:10px;font-style:italic;}
-.feat-hero-price{font-size:0.75rem;color:#aaa;font-weight:700;letter-spacing:1px;}
+.feat-hero-stat-val{font-family:'Poppins',sans-serif;font-weight:700;font-size:1.15rem;color:#F5F200;line-height:1;}
+.feat-hero-stat-lbl{font-size:0.6rem;letter-spacing:0.5px;color:#aaa;text-transform:uppercase;font-weight:600;}
+.feat-hero-review{font-size:0.81rem;color:#ddd;line-height:1.6;border-left:3px solid #F5F200;padding-left:10px;font-style:italic;}
+.feat-hero-price{font-size:0.74rem;color:#aaa;font-weight:600;letter-spacing:0px;}
 .feat-hero-price span{color:#fff;}
-.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.93);z-index:9999;align-items:center;justify-content:center;flex-direction:column;gap:12px;}
+.lightbox{display:none;position:fixed;inset:0;background:rgba(26,26,26,0.95);z-index:9999;align-items:center;justify-content:center;flex-direction:column;gap:12px;}
 .lightbox.open{display:flex;}
-.lightbox img{max-width:92vw;max-height:82vh;object-fit:contain;border-radius:6px;display:block;}
-.lightbox-caption{color:#fff;font-size:0.9rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;}
-.lightbox-date{color:#FFD700;font-size:0.78rem;letter-spacing:2px;font-weight:700;}
+.lightbox img{max-width:92vw;max-height:82vh;object-fit:contain;border-radius:10px;display:block;}
+.lightbox-caption{color:#fff;font-size:0.88rem;letter-spacing:0.5px;text-transform:none;font-weight:600;}
+.lightbox-date{color:#F5F200;font-size:0.76rem;letter-spacing:0.5px;font-weight:600;}
 .lightbox-close{position:absolute;top:16px;right:20px;background:none;border:none;color:#fff;font-size:2.2rem;cursor:pointer;line-height:1;}
 .lightbox-close:hover{opacity:.7;}
+
+.month-recap{font-size:0.85rem;color:#555;line-height:1.65;margin:.5rem 0 1.1rem;font-weight:400;font-style:italic;border-left:3px solid #F5F200;padding-left:12px;max-width:780px;}
 
 /* ── MOBILE ── */
 @media(max-width:600px){
   .hw-header{padding:.75rem 1rem .9rem;}
-  .hw-logo{font-size:2.2rem;}
-  .hw-sub{font-size:0.72rem;letter-spacing:2px;}
+  .hw-logo{font-size:2.1rem;}
+  .hw-sub{font-size:0.68rem;letter-spacing:1.5px;}
   .hw-tabs{padding:.5rem .75rem 0;gap:2px;}
-  .hw-tab{padding:7px 12px;font-size:0.78rem;letter-spacing:0;}
+  .hw-tab{padding:7px 12px;font-size:0.76rem;letter-spacing:0;}
   .hw-body{padding:1rem .75rem;}
-  .month-title{font-size:1.5rem;}
+  .month-title{font-size:1.4rem;}
   .cars-grid{grid-template-columns:1fr;}
   .car-img-wrap{height:260px;}
   .feat-hero{flex-direction:column;height:auto;}
   .feat-hero-img{width:100%;height:200px;}
   .feat-hero-info{padding:.85rem .9rem;}
-  .feat-hero-model{font-size:1.6rem;}
+  .feat-hero-model{font-size:1.5rem;}
   .feat-hero-review{display:block;font-size:0.78rem;}
   .coll-sec{padding:1rem .75rem;}
   .coll-grid{grid-template-columns:1fr 1fr;}
@@ -163,6 +167,7 @@
   .spec-val{font-size:0.78rem;}
   .hl-list li{font-size:0.8rem;}
   .lightbox-caption{font-size:0.78rem;text-align:center;padding:0 1rem;}
+  .month-recap{font-size:0.8rem;}
 }
 </style>
 
@@ -290,6 +295,7 @@ const IMGS = {
   amVanquish:         'https://lh3.googleusercontent.com/pw/AP1GczPHbom9A8JZ7yOR-VB_ITOh4t1vLPUIKa3cHvCI_OEGYjT9tfdUZ4McIzrfESYNCCnjTZLTP2qykFpgz4cyVVwloMMVFYhm9cQpAwn8ncfUzfhRNPsw=w1200',
   vwScirocco:         'https://lh3.googleusercontent.com/pw/AP1GczNNj7LyQMqGH8FEHjeWM8_LMfmKvfFLLVAgq_RmhYUiYyOHUAvsqkNC9sVpArJunawtqkG34n4N9UTngAvH2w8RuXDzmD5jQ_M_eWm0FIB9K5Q4cFNj=w1200',
   nissanGTR:          'https://lh3.googleusercontent.com/pw/AP1GczO05EQh4YZFk2aSeXN4mE5msI-J1pYp-Z4Z4KSL4dCJpXKKsNunETM3MQGogO9IF2IiY2rd5RKS88F5C13xqeLqvWpVgxl_zMgO1adH4-TiJKdJnklI=w1200',
+  suzukiSCross:       'https://lh3.googleusercontent.com/pw/AP1GczOZI-4kibs5SlOfDW82igYISjH9jyEN_T6N2l8w_uMk5b2d2tYuolVp8raaVyTmckWbgaNHwXR0Od92fntzagbq6WuvmStH_a2S1XGh8k-08faTTjXg=w1200',
   lamboCountach:      'https://lh3.googleusercontent.com/pw/AP1GczN2UqJtWgKbFj4dcjC2PcYPaKlPNnYBRf-3ZGy9lkg2VxEomefIJGhdYSgLZQXfMkaXeMvvV53ZwjSGOQzIVTadJu9H8sPNDNlS1pMElEzbq5Rjn-G4=w1200',
   logo_vw:            'https://lh3.googleusercontent.com/pw/AP1GczM1JiOKRGnzLi9cj6zW3hn8D6ovYkG39e3h647cms_Y00zbwlgWealkYdtzRRVCMEmy7lG-cmp3T_1N9mNbMOyeUr69ylNw7unZfcQLWeiqwdQ6EPmt=s250-k-no'
 };
@@ -299,7 +305,7 @@ function renderIfReady(){ if(!rendered){ rendered=true; init(); } }
 document.addEventListener('DOMContentLoaded', renderIfReady);
 
 const CARS={
-  "2026-06":{label:"Junio 2026",cars:[{
+  "2026-06":{label:"Junio 2026",recap:"Un mes de extremos: el Rolls-Royce Wraith Black Badge se llevó el destacado con 624hp y un precio de hasta $450,000 CAD, mientras un Corvette C6 naranja y un Pontiac Aztek demostraron que los hallazgos de parqueadero pueden ser igual de memorables. Los dos Subaru WRX y el Range Rover Sport completaron un junio variado entre lujo, potencia y autos del día a día con carácter.",cars:[{
     id:"gs350",make:"Lexus",model:"GS 350",years:"2006–2011",
     photoDate:"7 de junio, 2026",photoTimestamp:20260607,featured:false,
     featuredReason:"Stance radical a ras del suelo con rines cromados multirayos — modificación extrema que convierte un sedán de lujo en una declaración del movimiento VIP/Stance.",
@@ -360,7 +366,7 @@ const CARS={
     specs:{"Motor":"V8 4.4L AJ-V8 / V6 3.0L TDV6","Potencia":"305 hp / 325 lb-ft (V8)","Transmisión":"Automática 6 vel. ZF","Tracción":"4WD Terrain Response","0–100 km/h":"7.8 seg","Vel. máxima":"225 km/h","Carrocería":"SUV 5 puertas","Peso":"2,385 kg","Años de prod.":"2005–2013","Precio CA (usado)":"$8,000–$22,000"},
     highlights:["Hallado frente al Rogers Arena de Vancouver — fondo icónico de la ciudad","Plataforma compartida con el Discovery 3/4 — chassis body-on-frame con suspensión neumática","Sistema Terrain Response de primera generación — selección de terreno con dial central, pionero en su época","El Sport fue el primer Range Rover diseñado explícitamente como SUV deportivo, no utilitario","Usado como vehículo oficial en múltiples producciones cinematográficas por su presencia y tamaño"]
   }]},
-  "2026-05":{label:"Mayo 2026",cars:[{
+  "2026-05":{label:"Mayo 2026",recap:"El mes más diverso del dashboard: desde el Lamborghini Revuelto de 1,001hp frente al Fairmont Pacific Rim hasta el Citroën 2CV \"Charlie\" de 29hp estacionado junto a su compatriota, el Renault Dauphine. Entre ambos extremos aparecieron el MR2 Spyder con su placa BCMR2.com, el Scirocco 16V hallado en el Port Moody Soccer Club donde juega Simón, y el raro Hyundai Equus. El Saab 9-3 SportCombi se quedó con el título de hallazgo más entrañable — una reliquia sueca que sigue rodando.",cars:[{
     id:"lambRevuelto",make:"Lamborghini",model:"Revuelto",years:"2023–presente",
     photoDate:"10 de mayo, 2026",photoTimestamp:20260510,featured:true,
     featuredReason:"1,001 caballos, V12 híbrido y negro mate frente al Fairmont Pacific Rim — el hallazgo más brutal del dashboard.",
@@ -425,8 +431,8 @@ const CARS={
     specs:{"Motor":"I2 602cc OHV aire","Potencia":"29 hp / 32 lb-ft","Transmisión":"Manual 4 vel.","Tracción":"FWD","0–100 km/h":"~30 seg","Vel. máxima":"115 km/h (72 mph)","Carrocería":"Berlina 4 plazas techo enrollable","Peso":"560 kg","Años de prod.":"1948–1990","Precio CA (usado)":"$10,000–$25,000"},
     highlights:["Se llama 'Charlie' — nombre escrito en el parabrisas, este 2CV tiene identidad propia","Al lado está el Renault Dauphine azul — los dos franceses más icónicos del parqueadero del ABFM","Producido durante 42 años sin cambios fundamentales — el diseño más longevo de la historia del automóvil","El techo de lona enrollable fue diseñado para transportar un sombrero sin aplastarlo — diseño para campesinos franceses","Solo 2 cilindros enfriados por aire — el motor más simple de cualquier auto de 4 ruedas de la posguerra"]
   }]},
-  "2026-04":{label:"Abril 2026",cars:[]},
-  "2026-03":{label:"Marzo 2026",cars:[{
+  "2026-04":{label:"Abril 2026",recap:"Mes sin hallazgos registrados todavía — la búsqueda continúa.",cars:[]},
+  "2026-03":{label:"Marzo 2026",recap:"El mes inaugural del dashboard, con un solo hallazgo: el BMW Serie 7 E38, la berlina insignia de los 90s que definió el lujo alemán de esa década.",cars:[{
     id:"bmwE38",make:"BMW",model:"Serie 7 740i (E38)",years:"1994–2001",
     heroPosition:"center 60%",
     photoDate:"29 de marzo, 2026",photoTimestamp:20260329,featured:true,
@@ -436,7 +442,7 @@ const CARS={
     specs:{"Motor":"V8 4.0L M60B40 / 4.4L M62B44","Potencia":"282–286 hp / 295 lb-ft","Transmisión":"Automática 5 vel. ZF Steptronic","Tracción":"RWD","0–100 km/h":"6.9 seg","Vel. máxima":"250 km/h (limitada)","Carrocería":"Sedán 4 puertas","Peso":"1,790 kg","Años de prod.":"1994–2001","Precio CA (usado)":"$8,000–$20,000"},
     highlights:["Protagonista de 'El Quinto Elemento' (1997) — el taxi volador futurista era un E38 modificado","Considerado por Top Gear y Car & Driver el mejor 7 Series de la historia de BMW","Los rines de 3 piezas de este ejemplar son aftermarket BBS o similar — elevación visual notable","Fue el primer 7 Series con sistema de navegación por GPS de serie — tecnología pionera en 1994","James Bond condujo un E38 telecomandado desde el asiento trasero en 'Tomorrow Never Dies' (1997)"]
   }]},
-  "nuestros-autos":{label:"Nuestros Autos",cars:[{
+  "nuestros-autos":{label:"Nuestros Autos",recap:"Cuatro generaciones de autos familiares comprados en Bogotá: el Mazda 2 rojo de 2014, el primer auto propio de la familia, sigue como destacado por ser donde empezó todo. El Kia Cerato de 2013, el Suzuki S-Cross de 2017 y el Mazda 3 Sedán de 2015 completan la colección — cada uno con su propia foto del día de entrega en el concesionario.",cars:[{
     id:"mazda2_2014",make:"Mazda",model:"2 Sport",years:"2012–2014",
     modelYear:2014,
     photoDate:"25 de marzo, 2014",photoTimestamp:20140325,featured:true,
@@ -461,6 +467,14 @@ const CARS={
     hp:155,topSpeed:"200 km/h",zero:"8.5 s",priceCAD:"$19,000–$25,000 CAD (nuevo 2015)",badge:"",badgeLabel:"",imgKey:"mazda3_2015",
     specs:{"Motor":"I4 2.0L SKYACTIV-G","Potencia":"155 hp / 150 lb-ft","Transmisión":"Automática 6 vel. SKYACTIV-Drive","Tracción":"FWD","0–100 km/h":"8.5 seg","Vel. máxima":"200 km/h","Carrocería":"Sedán 4 puertas","Peso":"1,310 kg","Años de prod.":"2014–2019","Ciudad de compra":"Bogotá, Colombia"},
     highlights:["Entregado en Bogotá el 16 de septiembre de 2015 — foto familiar en el concesionario Mazda","Primera generación SKYACTIV de Mazda — tecnología de eficiencia sin turbo que revolucionó la marca","Ganó el premio 'World Car of the Year' en 2014 en su primera generación SKYACTIV","Diseño KODO 'Alma en Movimiento' — uno de los sedanes compactos más elegantes de su época","El Mazda 3 2014-2019 fue consistentemente calificado entre los mejores en su segmento por fiabilidad"]
+  },{
+    id:"suzukiSCross",make:"Suzuki",model:"S-Cross",years:"2013–2021",
+    modelYear:2017,
+    photoDate:"12 de abril, 2017",photoTimestamp:20170412,featured:false,
+    featuredReason:"",review:"",
+    hp:115,topSpeed:"180 km/h",zero:"11.0 s",priceCAD:"$18,000–$23,000 CAD (nuevo 2017)",badge:"",badgeLabel:"",imgKey:"suzukiSCross",
+    specs:{"Motor":"I4 1.6L M16A DOHC","Potencia":"115 hp / 113 lb-ft","Transmisión":"Automática CVT","Tracción":"AWD ALLGRIP / FWD","0–100 km/h":"11.0 seg","Vel. máxima":"180 km/h","Carrocería":"Crossover 5 puertas","Peso":"1,135 kg","Años de prod.":"2013–2021","Ciudad de compra":"Bogotá, Colombia"},
+    highlights:["Dayana y Nelson en el concesionario Suzuki en Bogotá, 12 de abril de 2017 — foto de pareja con placa amarilla DOU 301","El S-Cross fue el primer crossover compacto de Suzuki diseñado para el mercado global, no solo Japón","Sistema ALLGRIP opcional de tracción a las 4 ruedas — raro en su segmento de precio en esa época","Suzuki es reconocida por la fiabilidad de sus motores pequeños y eficientes en mercados latinoamericanos","El mural de kayak en el fondo del concesionario refleja la identidad aventurera que Suzuki proyectaba en su marketing"]
   }]}
 };
 
@@ -881,7 +895,8 @@ const BRAND_LOGOS={
   'Lamborghini':'logo_lamborghini',
   'Toyota':'logo_toyota',
   'Volkswagen':'logo_vw',
-  'Nissan':'logo_nissan'
+  'Nissan':'logo_nissan',
+  'Suzuki':'logo_suzuki'
 };
 
 function brandLogoHtml(make){
@@ -1000,6 +1015,7 @@ function renderMonth(key){
   });
   document.getElementById('body').innerHTML=
     `<div class="month-hdr"><div class="month-title">${m.label}</div></div>`+
+    (m.recap?`<div class="month-recap">${m.recap}</div>`:'')+
     (feat?`<div class="section-title">Destacado</div>`+featHero(feat):'')+
     (sorted.length>=2?`<div class="section-title">Top Estadísticas</div>`+topStats(m.cars):'')+
     (sorted.length?`<div class="section-title">Hallazgos</div><div class="cars-grid">${sorted.map(carCard).join('')}</div>`:
