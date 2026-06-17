@@ -10,7 +10,8 @@
 .hw-logo{font-family:'Poppins',Arial,sans-serif;font-weight:800;font-size:2.6rem;letter-spacing:-1px;color:#1A1A1A;line-height:1;}
 .hw-logo em{color:#1A1A1A;font-style:normal;background:#F5F200;padding:0 6px;border-radius:3px;}
 .hw-sub{font-size:0.78rem;letter-spacing:2px;color:#777;text-transform:uppercase;margin-top:6px;font-weight:600;}
-.hw-tabs{display:flex;gap:3px;padding:0.7rem 1rem 0;background:#fff;border-bottom:1px solid #eee;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.hw-tabs{display:flex;gap:3px;padding:0.7rem 1rem 0;background:#fff;border-bottom:1px solid #eee;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;cursor:grab;}
+.hw-tabs.dragging{cursor:grabbing;user-select:none;}
 .hw-tabs::-webkit-scrollbar{display:none;}
 .hw-tab{padding:8px 18px;border-radius:20px;border:1.5px solid #e0e0e0;font-size:0.84rem;font-weight:600;letter-spacing:0px;cursor:pointer;text-transform:none;background:#f7f7f7;color:#555;transition:all .15s;white-space:nowrap;-webkit-tap-highlight-color:transparent;font-family:'Poppins',sans-serif;margin-bottom:.6rem;}
 .hw-tab.active{background:#F5F200;color:#1A1A1A;border-color:#F5F200;}
@@ -208,6 +209,7 @@ const IMGS = {
   rrCorniche: 'https://lh3.googleusercontent.com/pw/AP1GczOAOX5bjzmqOjLX-I4w_6V5do4tnIOa4pidQVUBXr_TAPuv_od_FzDQD5ntRjhnORG-TIHB7puvKAG4aJ2egagnDN9_pO8Cl37G-7jlpUpxTvhV5TZQ=w1200',
   bentleyT: 'https://lh3.googleusercontent.com/pw/AP1GczPav2IHw0fAU_DhL7mgRCEmamU-nPp0xEBL5y_AQGU9jPpecrt0ioq8nmlX43tbjhNeXpFZ2Yb_oaCc-54eKyqzygZyXTNUErcEGT2odF6zLinUTAsH=w1200',
   rrPhantom: 'https://lh3.googleusercontent.com/pw/AP1GczMtph8_nYWrZui49ZuB-cSDRGMqAG93-1pZWLLWL4c5AlzSN8cHPhJyZrCCepifVDoJm2hEvURuLL81jDRfDvG0N8hcmhBUQgvv9H5iOyYubKsicgH8=w1200',
+  civicLX2022: 'https://lh3.googleusercontent.com/pw/AP1GczNf0jU2ftadYVUvlANCzu9fbujQwDK3jqEb5mVl-H_9VvI7TlItCAsfFNHpDpJUlx3t-NVfN9B8B8fGCitv4ctAhkmt5bypt4Qn_S9aDn-zZJEkLOI2=w1200',
   logo_austin_healey: 'https://lh3.googleusercontent.com/pw/AP1GczOQyR0McpBIO-d7Q_jpghHPANv2tExFYFV8ZLF-xDa1Sy3SMFvbPaZoNGKvzRfvktTWatkc1Ob_8N_mHqiZZyaUk-FUpmAGsIlC6Le_GKhpveGl8zlI=s250-k-no',
   logo_jaguar:        'https://lh3.googleusercontent.com/pw/AP1GczMSR2NmlMhU3P6sL5BljuR0ShFWI__GV8-u2ichf-ADuielKc5it7OeizGNkfgiWbst8UtNCq_6YZBVpk_2z9WQDfBhS33Wdmct82pnYPxyE56Ykqia=s250-k-no',
   logo_rolls_royce:   'https://lh3.googleusercontent.com/pw/AP1GczPALaBpE9jKhtt520vPO4-j8QdwHnUJVC-TbVB9VHRCmCxdsNob4wcjBCnZ7Y1ZVyh8FFgCKB31Lj2YX7F7dWomQjf96XwJikaFRJTUZzT_RmJxu8Rp=s250-k-no',
@@ -267,6 +269,11 @@ const IMGS = {
   logo_land_rover:    'https://lh3.googleusercontent.com/pw/AP1GczNFk0XtMKDBAloltAtwvQNxBTPTgIXMYHTD3YhR0GbW5Cw4JUYNUU0uUMUW87Hrb0f4dy0ZRbJcyN3XmosYjkkb2SvKzrKIH0rL5PIMCRGelk5FwTp6=s250-k-no',
   kia_cerato:         'https://lh3.googleusercontent.com/pw/AP1GczMjHrT8QVTwQo2bQl-N9AIxVyO8sd70vVlQ4asnZ-G4nZ2nqfTt1IF5wpo4LfIHgFLnv3o9u2czTvIGSBIW0TWvmv6dkV43Ba7eqYxBpfpf-TdjrSVd=w1200',
   bmwE38:             'https://lh3.googleusercontent.com/pw/AP1GczOAFlYtS34sHhuoWtLiHT-P4PySZEno5Ibf72EUhSxfgBHZ8G2kmUENiruCHbeD5WuvNbJ_Sx6mirxLmImMwvwb0pUYRM7bSMoeg7bifgs385VeCrCI=w1200',
+  spoonersTruck:      'https://lh3.googleusercontent.com/pw/AP1GczNZUvF6UaT-KB8cscyNg2k3WChgjBNtgQTPORjFj_td8i0NW9cmDeZ0UPz68v5oeisMstE4MCX3YmvfMFGrOKu7FjdrxQEw8ncDDb7N47UUwsjSw6JT=w1200',
+  lucidAirPure:       'https://lh3.googleusercontent.com/pw/AP1GczNROz2VzPPwtkwQxjIXPSKP6upHSWZSqn1pQvA20O7eaDnDHqzbjCbq8dyqG0cEeWfR2vvpYvu6RqH1oKXcJ4tD3JIbexIX1pZ6TuEefZy_ZI3URHoR=w1200',
+  teslaSemiAlpha:     'https://lh3.googleusercontent.com/pw/AP1GczOM8vIDRP40qCENyL4WTDs30DABAs-6PJPEDmvhI4k2fL7OW7ukXECID35Fjfspf3yRU02LzsAPQBjT7VOlNk8jEw2UUr5tmiETVqJjvBiP0pdXsgMK=w1200',
+  bluesmobileMonaco:  'https://lh3.googleusercontent.com/pw/AP1GczMX3FWvojBpBZPL3wn1ITZZgKkWpJQckQrhjtkxY70RehKQHka_MdwbokRx_tKnxLXhzBigrELfydKeMlLGfw4YtTIF8mxwVdL7LGu2CCQGC-04Z6hF=w1200',
+  crv2025:            'https://lh3.googleusercontent.com/pw/AP1GczOpa_-89kYi3Lbi44peW0JSOT5nPNgmugqpHjcGoBMS5U-M-l55k0OMaPp_UBLS83SlTSjl0gFSUFBSjq46TmYafMzcHhioJexCx33CIN2H0GSgX-Oy=w1200',
   logo_kia:           'https://lh3.googleusercontent.com/pw/AP1GczNIMlhlES0EcZ9iXv8a80f9lj4IxzA4oLAdt3eKcG3ljzz8w8sobG23FRkIJ3C7S0qIFbhyZPCTK_2_aTXlVnfJbcSVfNU2x5MZa7_IOlSuezu49y9U=s250-k-no',
   logo_bmw:           'https://lh3.googleusercontent.com/pw/AP1GczNk8O8zYrH-OSZiF3jNGlwCESiy1bWioXoKWT7kq9v2QzZIXzzQ4UuIS5aIDLpHWhuZwEdrtGbZa6ITGcVNbQeuUyF_ZKeAxyE6amIXBNf0qtTGgyrd=s250-k-no',
   logo_mg:            'https://lh3.googleusercontent.com/pw/AP1GczOJ2-IQO1yLfnllR4jl1C7Rv3vOfhC-kUr2GxwuVZIEUU8B9zQqFG1dEIj6oJwM3vbZbNR2N8pM_jgMlqu3CUq11cNSXr8E-_0Fc67kqUdAbPxxvAQX=s250-k-no',
@@ -296,6 +303,13 @@ const IMGS = {
   vwScirocco:         'https://lh3.googleusercontent.com/pw/AP1GczNNj7LyQMqGH8FEHjeWM8_LMfmKvfFLLVAgq_RmhYUiYyOHUAvsqkNC9sVpArJunawtqkG34n4N9UTngAvH2w8RuXDzmD5jQ_M_eWm0FIB9K5Q4cFNj=w1200',
   nissanGTR:          'https://lh3.googleusercontent.com/pw/AP1GczO05EQh4YZFk2aSeXN4mE5msI-J1pYp-Z4Z4KSL4dCJpXKKsNunETM3MQGogO9IF2IiY2rd5RKS88F5C13xqeLqvWpVgxl_zMgO1adH4-TiJKdJnklI=w1200',
   suzukiSCross:       'https://lh3.googleusercontent.com/pw/AP1GczOZI-4kibs5SlOfDW82igYISjH9jyEN_T6N2l8w_uMk5b2d2tYuolVp8raaVyTmckWbgaNHwXR0Od92fntzagbq6WuvmStH_a2S1XGh8k-08faTTjXg=w1200',
+  mitsubishiMontero:  'https://lh3.googleusercontent.com/pw/AP1GczNOkZImlFfnnMphc2_I5CBVh_fOS4eelQxWqEc_F2MMGWmNoMqnpVhGsKFa9ER_OiSK6xk6_FjhWPHHmDn_yDXjrscPgxJhf8XbB27o0b89pS7nHUC6=w1200',
+  toyotaSupraRace:    'https://lh3.googleusercontent.com/pw/AP1GczPC2-F_okoUVBfMVpEnCWhzczTNHjggsSOgITVwY6IHcteXl4qh1Gbe6qBHkVzK8mX4WMNNJNCMVzLDgWpuAfH53yoBFM-eQ4YVP67M5BwUcQ2FCRKp=w1200',
+  logo_mitsubishi:    'https://lh3.googleusercontent.com/pw/AP1GczOEO17ylBc5A1KHwipTHWqfi5VzTV1HvO3BTGEOGqXbuJ3xIo01OLbvD_F9Zrj1DAdq6vvJzm93hH5oEU9KAVn4K5axMQgZSsAydgqjRdZHVSYaTctZ=s250-k-no',
+  logo_lucid:         'https://lh3.googleusercontent.com/pw/AP1GczOePoWAI1Fm0iRXEXvT7PFl3TUfGRgpBb6W7ExVRuB-VnciN-sxuAMds1gLi5Uz7nxcKGJea8OwG9yBxZW2YhXE45QYsHUoHVXjS2NHAmvo7p6m1QNA=s250-k-no',
+  logo_honda:         'https://lh3.googleusercontent.com/pw/AP1GczOtAQ-vsI6VjyPZ8-zYh61hivkMH5NogNAWL6YL_YLSGyVBniPzmAfxg-vROl73BB_-_QQXm6_q_HXAcpPNwAvwKYbCqcECgUl4NVDSo1r0BBT0qZvp=s250-k-no',
+  logo_suzuki:        'https://lh3.googleusercontent.com/pw/AP1GczNBR9a5fUeAchB6eDQsBPGCpSDFqCSI1hqLWK6R2pkUp7QjfgdxTruUgwt7PO8JqD_dn96fU94DqbHfZGGMPC-FW2DF4-6X8ypn_w2JkP6-Co3Bcl4r=s250-k-no',
+  logo_nissan:        'https://lh3.googleusercontent.com/pw/AP1GczMCKAj77j-pLinHWK4f_8gzFj47SnBkPuMc2ODX1yV9faNeKq18DIKHVVSmvi53tfSWwtmOf-NjTp5BT_wsxzkFtogr0nphn6Uejt0UiZQYuf43lpQU=s250-k-no',
   lamboCountach:      'https://lh3.googleusercontent.com/pw/AP1GczN2UqJtWgKbFj4dcjC2PcYPaKlPNnYBRf-3ZGy9lkg2VxEomefIJGhdYSgLZQXfMkaXeMvvV53ZwjSGOQzIVTadJu9H8sPNDNlS1pMElEzbq5Rjn-G4=w1200',
   logo_vw:            'https://lh3.googleusercontent.com/pw/AP1GczM1JiOKRGnzLi9cj6zW3hn8D6ovYkG39e3h647cms_Y00zbwlgWealkYdtzRRVCMEmy7lG-cmp3T_1N9mNbMOyeUr69ylNw7unZfcQLWeiqwdQ6EPmt=s250-k-no'
 };
@@ -366,7 +380,7 @@ const CARS={
     specs:{"Motor":"V8 4.4L AJ-V8 / V6 3.0L TDV6","Potencia":"305 hp / 325 lb-ft (V8)","Transmisión":"Automática 6 vel. ZF","Tracción":"4WD Terrain Response","0–100 km/h":"7.8 seg","Vel. máxima":"225 km/h","Carrocería":"SUV 5 puertas","Peso":"2,385 kg","Años de prod.":"2005–2013","Precio CA (usado)":"$8,000–$22,000"},
     highlights:["Hallado frente al Rogers Arena de Vancouver — fondo icónico de la ciudad","Plataforma compartida con el Discovery 3/4 — chassis body-on-frame con suspensión neumática","Sistema Terrain Response de primera generación — selección de terreno con dial central, pionero en su época","El Sport fue el primer Range Rover diseñado explícitamente como SUV deportivo, no utilitario","Usado como vehículo oficial en múltiples producciones cinematográficas por su presencia y tamaño"]
   }]},
-  "2026-05":{label:"Mayo 2026",recap:"El mes más diverso del dashboard: desde el Lamborghini Revuelto de 1,001hp frente al Fairmont Pacific Rim hasta el Citroën 2CV \"Charlie\" de 29hp estacionado junto a su compatriota, el Renault Dauphine. Entre ambos extremos aparecieron el MR2 Spyder con su placa BCMR2.com, el Scirocco 16V hallado en el Port Moody Soccer Club donde juega Simón, y el raro Hyundai Equus. El Saab 9-3 SportCombi se quedó con el título de hallazgo más entrañable — una reliquia sueca que sigue rodando.",cars:[{
+  "2026-05":{label:"Mayo 2026",recap:"El mes más diverso del dashboard: desde el Lamborghini Revuelto de 1,001hp frente al Fairmont Pacific Rim hasta el Citroën 2CV \"Charlie\" de 29hp estacionado junto a su compatriota, el Renault Dauphine. Entre ambos extremos aparecieron el MR2 Spyder con su placa BCMR2.com, el Scirocco 16V hallado en el Port Moody Soccer Club donde juega Simón, dos GR Supra de pista encontrados en plena calle, y el raro Hyundai Equus. El Saab 9-3 SportCombi se quedó con el título de hallazgo más entrañable — una reliquia sueca que sigue rodando.",cars:[{
     id:"lambRevuelto",make:"Lamborghini",model:"Revuelto",years:"2023–presente",
     photoDate:"10 de mayo, 2026",photoTimestamp:20260510,featured:true,
     featuredReason:"1,001 caballos, V12 híbrido y negro mate frente al Fairmont Pacific Rim — el hallazgo más brutal del dashboard.",
@@ -417,18 +431,25 @@ const CARS={
     specs:{"Motor":"I4 1.8L 16V DOHC","Potencia":"139 hp / 124 lb-ft","Transmisión":"Manual 5 vel.","Tracción":"FWD","0–100 km/h":"8.0 seg","Vel. máxima":"207 km/h (129 mph)","Carrocería":"Hatchback coupé 3 puertas","Peso":"940 kg","Años de prod.":"1974–1992","Precio CA (usado)":"$6,000–$18,000"},
     highlights:["Diseñado por Giorgetto Giugiaro — el mismo que diseñó el Lotus Esprit, VW Golf y BMW M1","Hallado en el parqueadero del Port Moody Soccer Club — donde juega Simón Rodriguez Lemus, el coleccionista más joven","La versión 16V de 1985 fue la más potente — 139hp de un I4 1.8L con doble árbol de levas","El Scirocco fue el precursor directo del VW Corrado y el Golf GTI como coupé de bolsillo VW","Producido durante 18 años con dos generaciones — uno de los coupés de tracción delantera más longevos"]
   },{
+    id:"toyotaSupraRace",make:"Toyota",model:"GR Supra – Race #77",years:"2019–presente",
+    photoDate:"8 de mayo, 2026",photoTimestamp:20260508,featured:false,
+    featuredReason:"",review:"",
+    hp:500,topSpeed:"290 km/h",zero:"3.4 s",priceCAD:"$70,000–$110,000 CAD",badge:"RACE",badgeLabel:"#77",imgKey:"toyotaSupraRace",
+    specs:{"Motor":"I6 3.0L B58 Turbo (preparado)","Potencia":"500 hp (preparación track)","Transmisión":"Manual / Automática 8 vel.","Tracción":"RWD","0–100 km/h":"3.4 seg (preparación track)","Vel. máxima":"290 km/h","Carrocería":"Coupé 2 plazas — preparación track widebody","Peso":"~1,450 kg (aligerado)","Años de prod.":"2019–presente","Evento":"Hallado en la calle, no en show"},
+    highlights:["Dos GR Supra de preparación de pista en la misma calle — este en gris mate #77 y otro con livery 'Undefeated' al fondo","Splitter de carbono, alerón GT y rines negros — preparación completa de track day, no solo estética","El B58 de BMW que usa el GR Supra es uno de los I6 turbo más sólidos para preparación de alta potencia","Encontrar dos Supras de pista estacionados juntos en la calle es más raro que verlos en un evento organizado","El número 77 y el wrap mate gris sugieren que este auto corre regularmente en track days de la región"]
+  },{
     id:"renaultDauphine",make:"Renault",model:"Dauphine",years:"1956–1967",
     photoDate:"16 de mayo, 2026",photoTimestamp:20260516,featured:false,
     featuredReason:"",review:"",
     hp:27,topSpeed:"115 km/h",zero:"32.0 s",priceCAD:"$8,000–$20,000 CAD",badge:"",badgeLabel:"",imgKey:"renaultDauphine",
-    specs:{"Motor":"I4 845cc OHV","Potencia":"27 hp / 41 lb-ft","Transmisión":"Manual 3 vel.","Tracción":"RWD motor trasero","0–100 km/h":"~32 seg","Vel. máxima":"115 km/h (72 mph)","Carrocería":"Sedán 4 puertas","Peso":"585 kg","Años de prod.":"1956–1967","Precio CA (usado)":"$8,000–$20,000"},
+    specs:{"Motor":"I4 845cc OHV","Potencia":"27 hp / 41 lb-ft","Transmisión":"Manual 3 vel.","Tracción":"RWD motor trasero","0–100 km/h":"32 seg","Vel. máxima":"115 km/h (72 mph)","Carrocería":"Sedán 4 puertas","Peso":"585 kg","Años de prod.":"1956–1967","Precio CA (usado)":"$8,000–$20,000"},
     highlights:["Hallado en el parqueadero de la calle durante el ABFM — un hallazgo bonus fuera del evento","Motor trasero de 845cc — el mismo concepto que el VW Escarabajo pero fabricado en Francia","Más de 2 millones de unidades vendidas — fue el auto francés más exportado de los años 50s","El Dauphine fue comercializado en EE.UU. por Renault como alternativa económica al escarabajo","En azul cielo con placa BC — sobreviviente de 60+ años rodando por Vancouver"]
   },{
     id:"citroen2cv",make:"Citroën",model:"2CV – Charlie",years:"1948–1990",
     photoDate:"16 de mayo, 2026",photoTimestamp:20260516,featured:false,
     featuredReason:"",review:"",
     hp:29,topSpeed:"115 km/h",zero:"30.0 s",priceCAD:"$10,000–$25,000 CAD",badge:"",badgeLabel:"",imgKey:"citroen2cv",
-    specs:{"Motor":"I2 602cc OHV aire","Potencia":"29 hp / 32 lb-ft","Transmisión":"Manual 4 vel.","Tracción":"FWD","0–100 km/h":"~30 seg","Vel. máxima":"115 km/h (72 mph)","Carrocería":"Berlina 4 plazas techo enrollable","Peso":"560 kg","Años de prod.":"1948–1990","Precio CA (usado)":"$10,000–$25,000"},
+    specs:{"Motor":"I2 602cc OHV aire","Potencia":"29 hp / 32 lb-ft","Transmisión":"Manual 4 vel.","Tracción":"FWD","0–100 km/h":"30 seg","Vel. máxima":"115 km/h (72 mph)","Carrocería":"Berlina 4 plazas techo enrollable","Peso":"560 kg","Años de prod.":"1948–1990","Precio CA (usado)":"$10,000–$25,000"},
     highlights:["Se llama 'Charlie' — nombre escrito en el parabrisas, este 2CV tiene identidad propia","Al lado está el Renault Dauphine azul — los dos franceses más icónicos del parqueadero del ABFM","Producido durante 42 años sin cambios fundamentales — el diseño más longevo de la historia del automóvil","El techo de lona enrollable fue diseñado para transportar un sombrero sin aplastarlo — diseño para campesinos franceses","Solo 2 cilindros enfriados por aire — el motor más simple de cualquier auto de 4 ruedas de la posguerra"]
   }]},
   "2026-04":{label:"Abril 2026",recap:"Mes sin hallazgos registrados todavía — la búsqueda continúa.",cars:[]},
@@ -442,7 +463,25 @@ const CARS={
     specs:{"Motor":"V8 4.0L M60B40 / 4.4L M62B44","Potencia":"282–286 hp / 295 lb-ft","Transmisión":"Automática 5 vel. ZF Steptronic","Tracción":"RWD","0–100 km/h":"6.9 seg","Vel. máxima":"250 km/h (limitada)","Carrocería":"Sedán 4 puertas","Peso":"1,790 kg","Años de prod.":"1994–2001","Precio CA (usado)":"$8,000–$20,000"},
     highlights:["Protagonista de 'El Quinto Elemento' (1997) — el taxi volador futurista era un E38 modificado","Considerado por Top Gear y Car & Driver el mejor 7 Series de la historia de BMW","Los rines de 3 piezas de este ejemplar son aftermarket BBS o similar — elevación visual notable","Fue el primer 7 Series con sistema de navegación por GPS de serie — tecnología pionera en 1994","James Bond condujo un E38 telecomandado desde el asiento trasero en 'Tomorrow Never Dies' (1997)"]
   }]},
-  "nuestros-autos":{label:"Nuestros Autos",recap:"Cuatro generaciones de autos familiares comprados en Bogotá: el Mazda 2 rojo de 2014, el primer auto propio de la familia, sigue como destacado por ser donde empezó todo. El Kia Cerato de 2013, el Suzuki S-Cross de 2017 y el Mazda 3 Sedán de 2015 completan la colección — cada uno con su propia foto del día de entrega en el concesionario.",cars:[{
+  "2019-04":{label:"Abril 2019",recap:"Un hallazgo fuera de la línea de tiempo habitual del dashboard: durante un viaje familiar a Florida, esta Chevrolet Silverado convertida en monster truck rosa — el anuncio rodante de un taller de llantas en St. Petersburg — se robó la foto del mes.",cars:[{
+    id:"spoonersTruck",make:"Chevrolet",model:"Silverado 2500HD – Monster Truck \"Spooners\"",years:"1999–2006",
+    photoDate:"18 de abril, 2019",photoTimestamp:20190418,featured:true,
+    featuredReason:"Único hallazgo de abril 2019 — un Silverado convertido en monster truck rosa, usado como anuncio rodante de un taller de llantas en Florida. El hallazgo más alejado de Vancouver de todo el dashboard.",
+    review:"Un hallazgo completamente fuera del guion habitual: en medio de un viaje familiar a Florida, esta Chevrolet Silverado pintada de rosa chillón y montada sobre llantas de barro gigantes resultó ser el anuncio rodante de Spooners Tires & Auto, un taller de llantas y mecánica en St. Petersburg. Bajo toda esa locura de colores y neumáticos hay una pickup HD de los años 2000 — pero ningún dato de fábrica importa ya cuando el camión mide casi el doble de su altura original. Es el tipo de hallazgo que solo ocurre de vacaciones: ni Vancouver ni un auto británico de colección, solo un camión imposible de ignorar en un parqueadero de Florida.",
+    hp:300,topSpeed:"169 km/h",zero:"10.0 s",priceCAD:"$25,000–$45,000 CAD (build completo, estimado)",badge:"",badgeLabel:"",imgKey:"spoonersTruck",
+    specs:{"Motor":"V8 6.0L Vortec (base, antes de modificaciones)","Potencia":"300 hp / 360 lb-ft","Transmisión":"Automática 4–6 vel.","Tracción":"4WD","0–100 km/h":"10.0 seg","Vel. máxima":"169 km/h","Carrocería":"Pickup doble cabina, lift extremo + llantas de barro XL","Generación":"GMT800 (1999–2006)","Ubicación":"Spooners Tires & Auto, St. Petersburg, FL","En la foto":"Simón y Nelson"},
+    highlights:["Simón y Nelson posando junto al camión durante un viaje familiar a Florida, 18 de abril de 2019 — el hallazgo más lejano de Vancouver en todo el dashboard","Es el camión publicitario de Spooners Tires & Auto, taller de llantas y mecánica en el 5582 66th St N, St. Petersburg — su dirección y servicios están pintados directamente en la carrocería","Llantas de barro y suspensión de eje sólido extremadamente levantada — un lift muy por encima de cualquier camión 'lifted' normal de la calle","Base: Chevrolet Silverado HD generación GMT800 (1999–2006) con el clásico V8 6.0L Vortec antes de cualquier modificación","El rosa chillón con grafitis negros es 100% intencional — un camión diseñado para ser visto desde la autopista, no para ser práctico"]
+  }]},
+  "2023-06":{label:"Junio 2023",recap:"Otro hallazgo fuera de Vancouver: un Lucid Air Pure recién entregado, encontrado en un parqueadero de Washington con el plástico de fábrica todavía puesto en los asientos.",cars:[{
+    id:"lucidAirPure",make:"Lucid",model:"Air Pure",years:"2023–presente",
+    photoDate:"18 de junio, 2023",photoTimestamp:20230618,featured:true,
+    featuredReason:"Único hallazgo de junio 2023 — un Lucid Air recién entregado, con el plástico de fábrica todavía puesto en los asientos, encontrado en un parqueadero de Washington.",
+    review:"Un sedán eléctrico de lujo recién salido del concesionario — todavía con el plástico protector de fábrica en los asientos y la etiqueta colgando del espejo retrovisor. El Lucid Air superó al Tesla Model S en casi cualquier comparación técnica desde su lanzamiento: más autonomía, más espacio interior gracias a sus motores compactos, y un techo panorámico de cristal que cubre casi todo el largo del auto. Encontrarlo en un parqueadero de Washington, recién entregado, es ver de cerca uno de los autos eléctricos más ambiciosos jamás fabricados por una startup.",
+    hp:480,topSpeed:"225 km/h",zero:"3.8 s",priceCAD:"$120,000–$155,000 CAD (nuevo 2023, EE.UU.)",badge:"",badgeLabel:"",imgKey:"lucidAirPure",
+    specs:{"Motor":"Doble motor AC síncrono (delantero + trasero)","Potencia":"480 hp / 686 lb-ft","Transmisión":"Reductora de 1 velocidad","Tracción":"AWD","0–100 km/h":"3.8 seg","Vel. máxima":"225 km/h (140 mph)","Carrocería":"Sedán 4 puertas, techo panorámico de cristal","Autonomía":"410 millas (660 km) EPA","Años de prod.":"2023–presente (trim Pure)","Ubicación":"Parqueadero, Washington, EE.UU."},
+    highlights:["Foto del 18 de junio de 2023 en un parqueadero de Washington — plástico de fábrica todavía en los asientos, recién entregado","El Lucid Air fue diseñado por Peter Rawlinson, ex ingeniero jefe del Tesla Model S, y ganó el premio 'World Luxury Car' en 2023","Motores del tamaño de una sandía liberan espacio interior — el Air tiene una de las cajuelas delanteras (frunk) más grandes de cualquier eléctrico","Versión Pure AWD: 480hp combinados y hasta 410 millas (660 km) de autonomía EPA — el trim de entrada de la gama Air","Arquitectura de 900 voltios: carga hasta ~300 km de autonomía en unos 12 minutos en un cargador rápido"]
+  }]},
+  "nuestros-autos":{label:"Nuestros Autos",recap:"Siete autos familiares cuentan el camino de Bogotá a Vancouver: el Mazda 2 rojo de 2014, el primer auto propio de la familia, sigue como destacado por ser donde empezó todo. El Kia Cerato de 2013, el Mazda 3 Sedán de 2015, el Suzuki S-Cross de 2017 y el Mitsubishi Montero Sport de 2019 completan los años en Bogotá, mientras que el Honda Civic LX de 2021 y el Honda CR-V Sport de 2025 — comprado en Westwood Honda — marcan los dos autos de la familia ya en Canadá.",cars:[{
     id:"mazda2_2014",make:"Mazda",model:"2 Sport",years:"2012–2014",
     modelYear:2014,
     photoDate:"25 de marzo, 2014",photoTimestamp:20140325,featured:true,
@@ -475,6 +514,30 @@ const CARS={
     hp:115,topSpeed:"180 km/h",zero:"11.0 s",priceCAD:"$18,000–$23,000 CAD (nuevo 2017)",badge:"",badgeLabel:"",imgKey:"suzukiSCross",
     specs:{"Motor":"I4 1.6L M16A DOHC","Potencia":"115 hp / 113 lb-ft","Transmisión":"Automática CVT","Tracción":"AWD ALLGRIP / FWD","0–100 km/h":"11.0 seg","Vel. máxima":"180 km/h","Carrocería":"Crossover 5 puertas","Peso":"1,135 kg","Años de prod.":"2013–2021","Ciudad de compra":"Bogotá, Colombia"},
     highlights:["Dayana y Nelson en el concesionario Suzuki en Bogotá, 12 de abril de 2017 — foto de pareja con placa amarilla DOU 301","El S-Cross fue el primer crossover compacto de Suzuki diseñado para el mercado global, no solo Japón","Sistema ALLGRIP opcional de tracción a las 4 ruedas — raro en su segmento de precio en esa época","Suzuki es reconocida por la fiabilidad de sus motores pequeños y eficientes en mercados latinoamericanos","El mural de kayak en el fondo del concesionario refleja la identidad aventurera que Suzuki proyectaba en su marketing"]
+  },{
+    id:"mitsubishiMontero",make:"Mitsubishi",model:"Montero Sport",years:"2015–2019",
+    modelYear:2019,
+    photoDate:"5 de octubre, 2019",photoTimestamp:20191005,featured:false,
+    featuredReason:"",review:"",
+    hp:178,topSpeed:"180 km/h",zero:"11.5 s",priceCAD:"$28,000–$38,000 CAD (nuevo 2019)",badge:"",badgeLabel:"",imgKey:"mitsubishiMontero",
+    specs:{"Motor":"I4 2.4L 4N15 Turbodiésel","Potencia":"178 hp / 317 lb-ft","Transmisión":"Automática 8 vel.","Tracción":"4WD Super Select II","0–100 km/h":"11.5 seg","Vel. máxima":"180 km/h","Carrocería":"SUV 5 puertas 7 plazas","Peso":"1,920 kg","Años de prod.":"2015–2019","Ciudad de compra":"Bogotá, Colombia"},
+    highlights:["Entregado en Bogotá el 5 de octubre de 2019 — foto frente al concesionario en plateado","El sistema Super Select II 4WD permite cambiar entre 2H, 4H, 4HLc y 4LLc sin detener el vehículo","Motor turbodiésel 2.4L con 317 lb-ft de torque — ideal para las carreteras montañosas de Colombia","El Montero Sport (Pajero Sport en otros mercados) es uno de los SUVs más confiables de Mitsubishi en Latinoamérica","Capacidad para 7 pasajeros en 3 filas — el SUV familiar más grande de la colección"]
+  },{
+    id:"civicLX2022",make:"Honda",model:"Civic Sedan LX",years:"2021–presente",
+    modelYear:2022,
+    photoDate:"5 de diciembre, 2021",photoTimestamp:20211205,featured:false,
+    featuredReason:"",review:"",
+    hp:158,topSpeed:"209 km/h",zero:"9.7 s",priceCAD:"$24,000–$27,000 CAD (nuevo 2022)",badge:"",badgeLabel:"",imgKey:"civicLX2022",
+    specs:{"Motor":"I4 2.0L DOHC i-VTEC","Potencia":"158 hp / 138 lb-ft","Transmisión":"CVT","Tracción":"FWD","0–100 km/h":"9.7 seg","Vel. máxima":"209 km/h","Carrocería":"Sedán 4 puertas","Peso":"1,305 kg","Años de prod.":"2021–presente (11ª gen)","Ciudad de compra":"Coquitlam, Canadá"},
+    highlights:["Puños en alto frente al edificio — el primer auto de la familia comprado ya en Canadá, no en Bogotá","La 11ª generación del Civic se rediseñó por completo para 2022: beltline y cofre más bajos, cabina renovada por dentro","Ensamblado en Alliston, Ontario — este Civic Sedán es 100% hecho en Canadá","El Civic ha sido el auto de pasajeros más vendido de Canadá durante más de dos décadas consecutivas","Versión LX con el motor 2.0L de 158hp sin turbo — la elección confiable y eficiente antes que la potencia"]
+  },{
+    id:"crv2025",make:"Honda",model:"CR-V Sport",years:"2023–presente",
+    modelYear:2025,
+    photoDate:"29 de abril, 2025",photoTimestamp:20250429,featured:false,
+    featuredReason:"",review:"",
+    hp:190,topSpeed:"185 km/h",zero:"9.5 s",priceCAD:"$38,000–$43,000 CAD (nuevo 2025)",badge:"",badgeLabel:"",imgKey:"crv2025",
+    specs:{"Motor":"I4 1.5L Turbo VTEC","Potencia":"190 hp / 179 lb-ft","Transmisión":"CVT","Tracción":"AWD","0–100 km/h":"9.5 seg","Vel. máxima":"185 km/h","Carrocería":"SUV 5 puertas","Peso":"1,560 kg","Años de prod.":"2023–presente (6ª gen)","Ciudad de compra":"Coquitlam, Canadá"},
+    highlights:["Comprado en Westwood Honda — el séptimo auto de la familia y el segundo adquirido ya en Canadá, después del Civic de 2021","La sexta generación del CR-V (2023+) creció en tamaño y adoptó un diseño más cuadrado y robusto frente a las curvas de la generación anterior","El motor 1.5L turbo entrega 190hp — el más potente de toda la colección familiar, superando al Montero Sport","El CR-V ha sido uno de los SUVs más vendidos de Norteamérica por años — Honda mueve cientos de miles de unidades anuales solo entre EE.UU. y Canadá","Rines negros brillantes y acabados en negro — la firma visual del trim Sport dentro de la gama CR-V"]
   }]}
 };
 
@@ -483,7 +546,7 @@ const COLLECTIONS={
   "autos-divertidos":{
     label:"Autos Divertidos",
     description:"Los hallazgos más extravagantes, raros o simplemente imposibles de ignorar. Estos autos hacen sonreír.",
-    carIds:["aztek","sprite","sc430","miniSofa","cartVisteon","citroen2cv"],
+    carIds:["aztek","sprite","sc430","miniSofa","cartVisteon","citroen2cv","spoonersTruck"],
     featuredId:"aztek"
   }
 };
@@ -524,7 +587,7 @@ const EVENTS={
       featuredReason:"",
       review:"Ver un Jaguar XK120 en persona es entender por qué el diseño automotriz importa. Esas curvas diseñadas por William Lyons en solo tres meses tienen más alma que la mayoría de los autos modernos. Este ejemplar en gris oscuro con interior de cuero café luce impecable — claramente restaurado con devoción. En el contexto del All British Field Meet en VanDusen, rodeado de pasto verde y otros clásicos, es una escena difícil de superar.",
       hp:160,topSpeed:"193 km/h",zero:"10.0 s",priceCAD:"$80,000–$200,000 CAD",badge:"",badgeLabel:"",imgKey:"xk120",
-      specs:{"Motor":"I6 3.4L DOHC XK","Potencia":"160 hp / 195 lb-ft","Transmisión":"Manual 4 vel. Moss","Tracción":"RWD","0–100 km/h":"~10.0 seg","Vel. máxima":"193 km/h (120 mph)","Carrocería":"Roadster 2 plazas","Producción total":"~12,000 unidades (todas versiones)","Años de prod.":"1948–1954","Precio CA (usado)":"$80,000–$200,000+"},
+      specs:{"Motor":"I6 3.4L DOHC XK","Potencia":"160 hp / 195 lb-ft","Transmisión":"Manual 4 vel. Moss","Tracción":"RWD","0–100 km/h":"10.0 seg","Vel. máxima":"193 km/h (120 mph)","Carrocería":"Roadster 2 plazas","Producción total":"~12,000 unidades (todas versiones)","Años de prod.":"1948–1954","Precio CA (usado)":"$80,000–$200,000+"},
       highlights:["Auto de producción más rápido del mundo en 1949 — alcanzó 213 km/h en la autopista Jabbeke en Bélgica","El motor XK I6 ganó Le Mans 5 veces y siguió usándose en Jaguars hasta 1992","Los primeros 242 ejemplares tenían carrocería de aluminio sobre estructura de madera de fresno","Diseñado en solo 3 meses por William Lyons como show car — la demanda pública lo convirtió en producción","Compitió en las Mille Miglia, Le Mans y Carrera Panamericana — ganando múltiples clases"]
     },{
       id:"ftype",make:"Jaguar",model:"F-Type R Coupe",years:"2014–2024",
@@ -538,7 +601,7 @@ const EVENTS={
       photoDate:"16 de mayo, 2026",photoTimestamp:20260516,featured:false,
       featuredReason:"",review:"",
       hp:220,topSpeed:"201 km/h",zero:"8.5 s",priceCAD:"$40,000–$90,000 CAD",badge:"",badgeLabel:"",imgKey:"jmk2",
-      specs:{"Motor":"I6 3.8L XK DOHC","Potencia":"220 hp / 240 lb-ft","Transmisión":"Manual 4 vel. + overdrive","Tracción":"RWD","0–100 km/h":"~8.5 seg","Vel. máxima":"201 km/h (125 mph)","Carrocería":"Sedán 4 puertas","Producción total":"83,976 unidades (todas versiones)","Años de prod.":"1959–1967","Precio CA (usado)":"$40,000–$90,000+"},
+      specs:{"Motor":"I6 3.8L XK DOHC","Potencia":"220 hp / 240 lb-ft","Transmisión":"Manual 4 vel. + overdrive","Tracción":"RWD","0–100 km/h":"8.5 seg","Vel. máxima":"201 km/h (125 mph)","Carrocería":"Sedán 4 puertas","Producción total":"83,976 unidades (todas versiones)","Años de prod.":"1959–1967","Precio CA (usado)":"$40,000–$90,000+"},
       highlights:["Considerado el sedán deportivo británico más icónico de los años 60 — 'Grace, pace and space'","Usado por Scotland Yard como patrullero de alta velocidad — superaba a casi todo lo que perseguía","El 3.8 fue el modelo más rápido y deseado, especialmente con rines de rayos y pintura metálica","Protagonista de innumerables películas y series británicas de los 60s y 70s incluyendo The Sweeney","Richard Hammond en Top Gear lo llamó su 'Jaguar definitivo' de todos los tiempos"]
     },{
       id:"ah3000",make:"Austin-Healey",model:"3000 Mk III",years:"1959–1967",
@@ -552,14 +615,14 @@ const EVENTS={
       photoDate:"16 de mayo, 2026",photoTimestamp:20260516,featured:false,
       featuredReason:"",review:"",
       hp:45,topSpeed:"129 km/h",zero:"20.8 s",priceCAD:"$15,000–$35,000 CAD",badge:"",badgeLabel:"",imgKey:"sprite",
-      specs:{"Motor":"I4 948cc OHV A-Series","Potencia":"45 hp / 52 lb-ft","Transmisión":"Manual 4 vel.","Tracción":"RWD","0–100 km/h":"~20 seg","Vel. máxima":"129 km/h (80 mph)","Carrocería":"Roadster 2 plazas","Producción total":"49,616 unidades (solo Mk I Frogeye)","Años de prod.":"1958–1961","Precio CA (usado)":"$15,000–$35,000"},
+      specs:{"Motor":"I4 948cc OHV A-Series","Potencia":"45 hp / 52 lb-ft","Transmisión":"Manual 4 vel.","Tracción":"RWD","0–100 km/h":"20 seg","Vel. máxima":"129 km/h (80 mph)","Carrocería":"Roadster 2 plazas","Producción total":"49,616 unidades (solo Mk I Frogeye)","Años de prod.":"1958–1961","Precio CA (usado)":"$15,000–$35,000"},
       highlights:["Apodado 'Frogeye' en UK y 'Bugeye' en USA por sus faros fijos e inamovibles sobre el capó","Los faros no podían girar hacia adentro como se planeó originalmente — quedaron fijos por costos","Solo 664 kg de peso — más ligero que muchas motos modernas, lo que compensaba sus 45hp","No tiene manijas exteriores de puerta, baúl, parabrisas fijo ni ventanas — máxima austeridad","Costaba $1,795 USD en 1958 — el auto deportivo británico más barato del mercado en su época"]
     },{
       id:"rrCorniche",make:"Rolls-Royce",model:"Corniche Convertible",years:"1971–1995",
       photoDate:"16 de mayo, 2026",photoTimestamp:20260516,featured:false,
       featuredReason:"",review:"",
       hp:237,topSpeed:"190 km/h",zero:"10.5 s",priceCAD:"$60,000–$200,000 CAD",badge:"",badgeLabel:"",imgKey:"rrCorniche",
-      specs:{"Motor":"V8 6.75L L410 OHV","Potencia":"237 hp / 450 lb-ft","Transmisión":"Automática 3 vel. GM Turbo-Hydramatic","Tracción":"RWD","0–100 km/h":"~10.5 seg","Vel. máxima":"190 km/h (118 mph)","Carrocería":"Convertible 2 puertas","Producción total":"3,239 unidades (solo Convertible)","Años de prod.":"1971–1995","Precio CA (usado)":"$60,000–$200,000+"},
+      specs:{"Motor":"V8 6.75L L410 OHV","Potencia":"237 hp / 450 lb-ft","Transmisión":"Automática 3 vel. GM Turbo-Hydramatic","Tracción":"RWD","0–100 km/h":"10.5 seg","Vel. máxima":"190 km/h (118 mph)","Carrocería":"Convertible 2 puertas","Producción total":"3,239 unidades (solo Convertible)","Años de prod.":"1971–1995","Precio CA (usado)":"$60,000–$200,000+"},
       highlights:["Solo 3,239 Corniche Convertibles fabricados en 24 años — cada uno tomaba 4 meses en construirse","El capó del convertible tardaba 2 semanas solo en su confección artesanal en Mulliner Park Ward","El Spirit of Ecstasy de cada Corniche era fundido y pulido a mano — no hay dos idénticos","Rolls-Royce nunca publicaba las cifras de potencia oficialmente — 'suficiente', era su única respuesta","Este ejemplar en marrón con interior crema es la combinación más clásica y codiciada del modelo"]
     },{
       id:"bentleyT",make:"Bentley",model:"T-Series T1/T2",years:"1965–1980",
@@ -608,21 +671,21 @@ const EVENTS={
       photoDate:"16 de mayo, 2026",photoTimestamp:20260516,featured:false,
       featuredReason:"",review:"",
       hp:130,topSpeed:"174 km/h",zero:"13.5 s",priceCAD:"$200,000–$600,000 CAD",badge:"",badgeLabel:"",imgKey:"lagondaM45",
-      specs:{"Motor":"I6 4.5L Meadows OHV","Potencia":"130 hp","Transmisión":"Manual 4 vel. Meadows","Tracción":"RWD","0–100 km/h":"~13.5 seg","Vel. máxima":"174 km/h (108 mph)","Carrocería":"Tourer abierto 4 plazas","Producción total":"~278 unidades (M45+LG45)","Años de prod.":"1933–1937","Precio CA (colección)":"$200,000–$600,000+"},
+      specs:{"Motor":"I6 4.5L Meadows OHV","Potencia":"130 hp","Transmisión":"Manual 4 vel. Meadows","Tracción":"RWD","0–100 km/h":"13.5 seg","Vel. máxima":"174 km/h (108 mph)","Carrocería":"Tourer abierto 4 plazas","Producción total":"~278 unidades (M45+LG45)","Años de prod.":"1933–1937","Precio CA (colección)":"$200,000–$600,000+"},
       highlights:["El auto más antiguo del ABFM 2026 — más de 90 años rodando y sigue impecable","Ganó las 24 Horas de Le Mans en 1935 en su versión M45R Rapide — victoria histórica para Lagonda","El motor Meadows I6 4.5L data de 1928 y fue usado por múltiples fabricantes británicos de la era","Faros auxiliares cromados externos y guardabarros separados — construcción pre-guerra auténtica","Aston Martin compró Lagonda en 1947 — este auto es técnicamente un antepasado directo del Lagonda moderno"]
     },{
       id:"bentley45",make:"Bentley",model:"4½ Litre Tourer",years:"1927–1931",
       photoDate:"16 de mayo, 2026",photoTimestamp:20260516,featured:false,
       featuredReason:"",review:"",
       hp:110,topSpeed:"160 km/h",zero:"13.0 s",priceCAD:"$300,000–$800,000 CAD",badge:"",badgeLabel:"",imgKey:"bentley45",
-      specs:{"Motor":"I4 4.4L SOHC (110hp) / Supercharged (240hp)","Potencia":"110 hp (240 hp Blower) / 220 lb-ft","Transmisión":"Manual 4 vel.","Tracción":"RWD","0–100 km/h":"~13 seg","Vel. máxima":"160 km/h (200+ km/h Blower)","Carrocería":"Tourer abierto","Producción total":"720 unidades (55 Blower)","Años de prod.":"1927–1931","Precio CA (colección)":"$300,000–$800,000+"},
+      specs:{"Motor":"I4 4.4L SOHC (110hp) / Supercharged (240hp)","Potencia":"110 hp (240 hp Blower) / 220 lb-ft","Transmisión":"Manual 4 vel.","Tracción":"RWD","0–100 km/h":"13 seg","Vel. máxima":"160 km/h (200+ km/h Blower)","Carrocería":"Tourer abierto","Producción total":"720 unidades (55 Blower)","Años de prod.":"1927–1931","Precio CA (colección)":"$300,000–$800,000+"},
       highlights:["James Bond conduce un Bentley 4½ Blower en Casino Royale, Live and Let Die y Moonraker — el auto favorito del espía","Solo 720 unidades fabricadas — 55 de ellas con supercharger Blower, ahora valoradas en más de $1.5M USD","Ganó Le Mans en 1928 — y compitió en 1929 y 1930 con el Blower superchargado","WO Bentley se negó a usar el supercharger — lo llamó 'meter un embudo por la garganta al motor'","Verlo en el ABFM 2026 frente al Lagonda M45 es como ver dos leyendas del mismo paddock de Le Mans"]
     },{
       id:"mgJ2",make:"MG",model:"J2 Midget",years:"1932–1934",
       photoDate:"16 de mayo, 2026",photoTimestamp:20260516,featured:false,
       featuredReason:"",review:"",
       hp:36,topSpeed:"134 km/h",zero:"25.0 s",priceCAD:"$20,000–$45,000 CAD",badge:"",badgeLabel:"",imgKey:"mgJ2",
-      specs:{"Motor":"I4 847cc SOHC OHC","Potencia":"36 hp / 45 lb-ft","Transmisión":"Manual 4 vel. sin sincronizador","Tracción":"RWD","0–100 km/h":"~25 seg","Vel. máxima":"134 km/h (83 mph)","Carrocería":"Roadster 2 plazas","Producción total":"2,083 unidades","Años de prod.":"1932–1934","Precio CA (usado)":"$20,000–$45,000"},
+      specs:{"Motor":"I4 847cc SOHC OHC","Potencia":"36 hp / 45 lb-ft","Transmisión":"Manual 4 vel. sin sincronizador","Tracción":"RWD","0–100 km/h":"25 seg","Vel. máxima":"134 km/h (83 mph)","Carrocería":"Roadster 2 plazas","Producción total":"2,083 unidades","Años de prod.":"1932–1934","Precio CA (usado)":"$20,000–$45,000"},
       highlights:["Costaba solo £199 en 1932 — el roadster deportivo más asequible de la era en Gran Bretaña","Peso de solo 495 kg — un auto que hacía sentir cada caballo de sus 36hp al máximo","El logo octagonal MG y el diseño de guardabarros tipo ciclo definieron el look MG para los próximos 20 años","Diseñado por Sid Enever y Hubert Charles — los mismos ingenieros que después crearon el MGA y MGB","Estableció la fórmula del roadster británico asequible que inspiró a Triumph, Austin-Healey y Lotus"]
     },{
       id:"db5",make:"Aston Martin",model:"DB5",years:"1963–1965",
@@ -636,7 +699,7 @@ const EVENTS={
       photoDate:"16 de mayo, 2026",photoTimestamp:20260516,featured:false,
       featuredReason:"",review:"",
       hp:68,topSpeed:"130 km/h",zero:"18.0 s",priceCAD:"$80,000–$180,000 CAD",badge:"",badgeLabel:"",imgKey:"ss1",
-      specs:{"Motor":"I6 2.1L / 2.7L Side-valve Standard","Potencia":"68 hp (20hp RAC rating)","Transmisión":"Manual 4 vel. con sincronizador","Tracción":"RWD","0–100 km/h":"~18 seg","Vel. máxima":"~130 km/h","Carrocería":"Tourer abierto 4 plazas","Producción total":"~2,500 unidades (todas versiones)","Años de prod.":"1931–1936","Precio CA (colección)":"$80,000–$180,000+"},
+      specs:{"Motor":"I6 2.1L / 2.7L Side-valve Standard","Potencia":"68 hp (20hp RAC rating)","Transmisión":"Manual 4 vel. con sincronizador","Tracción":"RWD","0–100 km/h":"18 seg","Vel. máxima":"130 km/h","Carrocería":"Tourer abierto 4 plazas","Producción total":"~2,500 unidades (todas versiones)","Años de prod.":"1931–1936","Precio CA (colección)":"$80,000–$180,000+"},
       highlights:["Diseñado por William Lyons — el mismo visionario que después crearía el XK120, el E-Type y la marca Jaguar","SS Cars se convirtió en Jaguar Cars en 1945 — este auto es el eslabón perdido entre ambas marcas","El bicolor azul y plata de este ejemplar es una de las combinaciones más elegantes del período","El nombre 'SS' fue abandonado en 1945 por las connotaciones negativas de la guerra","Al fondo de la foto se ve el Lagonda verde con capó abierto — dos gigantes del pre-guerra juntos"]
     },{
       id:"jensenInterceptor",make:"Jensen",model:"Interceptor III",years:"1966–1976",
@@ -650,7 +713,7 @@ const EVENTS={
       photoDate:"16 de mayo, 2026",photoTimestamp:20260516,featured:false,
       featuredReason:"",review:"",
       hp:55,topSpeed:"145 km/h",zero:"14.8 s",priceCAD:"$15,000–$40,000 CAD",badge:"",badgeLabel:"",imgKey:"miniCooper",
-      specs:{"Motor":"I4 997–1275cc A-Series OHV","Potencia":"55–76 hp / 54–79 lb-ft","Transmisión":"Manual 4 vel.","Tracción":"FWD","0–100 km/h":"~14.8 seg","Vel. máxima":"145 km/h (91 mph)","Carrocería":"Saloon 2 puertas","Peso":"584–640 kg","Años de prod.":"1961–1971","Precio CA (usado)":"$15,000–$40,000"},
+      specs:{"Motor":"I4 997–1275cc A-Series OHV","Potencia":"55–76 hp / 54–79 lb-ft","Transmisión":"Manual 4 vel.","Tracción":"FWD","0–100 km/h":"14.8 seg","Vel. máxima":"145 km/h (91 mph)","Carrocería":"Saloon 2 puertas","Peso":"584–640 kg","Años de prod.":"1961–1971","Precio CA (usado)":"$15,000–$40,000"},
       highlights:["Ganó el Rally de Montecarlo 3 veces consecutivas (1964, 1965, 1967) — descalificado en 1966 por \"faros ilegales\"","Medalla de ganador del Vancouver Mini Club en el parabrisas — reconocido en el ABFM 2026","Solo pesa 584 kg — menos que un Smart moderno, con tracción delantera y motor transversal pionero","Diseñado por Alec Issigonis en 11 meses — considerado uno de los diseños más ingeniosos del siglo XX","El 80% del espacio interior disponible para pasajeros — récord de eficiencia que aún no ha sido igualado"]
     },{
       id:"tvrWedge",make:"TVR",model:"280i / 350i Wedge",years:"1979–1987",
@@ -671,7 +734,7 @@ const EVENTS={
       photoDate:"16 de mayo, 2026",photoTimestamp:20260516,featured:false,
       featuredReason:"",review:"",
       hp:105,topSpeed:"190 km/h",zero:"5.0 s",priceCAD:"$20,000–$60,000 CAD",badge:"",badgeLabel:"",imgKey:"lotusSeven",
-      specs:{"Motor":"I4 1.0–2.0L (varía por versión)","Potencia":"105–180 hp según versión","Transmisión":"Manual 5 vel.","Tracción":"RWD","0–100 km/h":"~5.0 seg (versiones modernas)","Vel. máxima":"190 km/h","Carrocería":"Roadster abierto 2 plazas","Peso":"490–600 kg","Años de prod.":"1957–presente","Precio CA (usado)":"$20,000–$60,000"},
+      specs:{"Motor":"I4 1.0–2.0L (varía por versión)","Potencia":"105–180 hp según versión","Transmisión":"Manual 5 vel.","Tracción":"RWD","0–100 km/h":"5.0 seg (versiones modernas)","Vel. máxima":"190 km/h","Carrocería":"Roadster abierto 2 plazas","Peso":"490–600 kg","Años de prod.":"1957–presente","Precio CA (usado)":"$20,000–$60,000"},
       highlights:["Diseñado por Colin Chapman en 1957 — el auto que definió la filosofía 'agrega ligereza' de Lotus","Caterham compró los derechos en 1973 y sigue fabricándolo exactamente igual — 67 años de producción continua","El verde y amarillo de este ejemplar son los colores originales del Team Lotus de Fórmula 1","Al fondo se ven otros Lotus modernos — toda una delegación de la marca en el ABFM 2026","490 kg de peso — el mismo principio que el MG J2 de 1932, aplicado con tecnología moderna"]
     },{
       id:"lotusElan",make:"Lotus",model:"Elan",years:"1962–1973",
@@ -748,14 +811,14 @@ const EVENTS={
       photoDate:"16 de mayo, 2026",photoTimestamp:20260516,featured:false,
       featuredReason:"",review:"",
       hp:72,topSpeed:"160 km/h",zero:"12.0 s",priceCAD:"$80,000–$250,000 CAD",badge:"",badgeLabel:"",imgKey:"mgKMagnette",
-      specs:{"Motor":"I6 1.087L OHC Supercharged","Potencia":"72 hp supercharged","Transmisión":"Manual 4 vel. sin sincronizador","Tracción":"RWD","0–100 km/h":"~12 seg","Vel. máxima":"160 km/h (100 mph)","Carrocería":"Racer abierto 2 plazas","Peso":"~680 kg","Años de prod.":"1932–1936","Precio CA (colección)":"$80,000–$250,000+"},
+      specs:{"Motor":"I6 1.087L OHC Supercharged","Potencia":"72 hp supercharged","Transmisión":"Manual 4 vel. sin sincronizador","Tracción":"RWD","0–100 km/h":"12 seg","Vel. máxima":"160 km/h (100 mph)","Carrocería":"Racer abierto 2 plazas","Peso":"~680 kg","Años de prod.":"1932–1936","Precio CA (colección)":"$80,000–$250,000+"},
       highlights:["Motor completamente expuesto al frente — configuración de pre-guerra típica de los autos de carrera de los 30s","La carrocería de madera y aluminio remachado es completamente artesanal — ninguna pieza en serie","El K3 Magnette ganó en Mille Miglia 1933 con Tazio Nuvolari al volante — uno de los pilotos más grandes de la historia","El emblema MG octagonal en la parrilla cromada — el mismo símbolo desde 1924 hasta hoy","En el ABFM 2026 junto al MG J2 — dos íconos de la marca separados por apenas 2 años de fabricación"]
     },{
       id:"morrisMinor",make:"Morris",model:"Minor Traveller",years:"1953–1971",
       photoDate:"16 de mayo, 2026",photoTimestamp:20260516,featured:false,
       featuredReason:"",review:"",
       hp:37,topSpeed:"116 km/h",zero:"28.0 s",priceCAD:"$10,000–$30,000 CAD",badge:"",badgeLabel:"",imgKey:"morrisMinor",
-      specs:{"Motor":"I4 803–1098cc OHV A-Series","Potencia":"37 hp / 44 lb-ft","Transmisión":"Manual 4 vel.","Tracción":"FWD","0–100 km/h":"~28 seg","Vel. máxima":"116 km/h (72 mph)","Carrocería":"Traveller (station wagon) con paneles de madera","Peso":"838 kg","Años de prod.":"1953–1971","Precio CA (usado)":"$10,000–$30,000"},
+      specs:{"Motor":"I4 803–1098cc OHV A-Series","Potencia":"37 hp / 44 lb-ft","Transmisión":"Manual 4 vel.","Tracción":"FWD","0–100 km/h":"28 seg","Vel. máxima":"116 km/h (72 mph)","Carrocería":"Traveller (station wagon) con paneles de madera","Peso":"838 kg","Años de prod.":"1953–1971","Precio CA (usado)":"$10,000–$30,000"},
       highlights:["El Traveller fue la variante más icónica del Minor — station wagon con estructura de madera de fresno genuina","Diseñado por Alec Issigonis — el mismo que después creó el Mini Cooper","Al fondo de la foto se ve el MG K Magnette pre-guerra — dos íconos británicos de eras muy distintas","El primer auto británico en superar el millón de unidades vendidas — hito histórico en 1961","Los paneles de madera no son decorativos — son estructurales; requieren mantenimiento constante"]
     },{
       id:"jaguarXType",make:"Jaguar",model:"X-Type",years:"2001–2009",
@@ -769,21 +832,21 @@ const EVENTS={
       photoDate:"16 de mayo, 2026",photoTimestamp:20260516,featured:false,
       featuredReason:"",review:"",
       hp:72,topSpeed:"161 km/h",zero:"13.0 s",priceCAD:"$20,000–$50,000 CAD",badge:"",badgeLabel:"",imgKey:"mga",
-      specs:{"Motor":"I4 1.5L / 1.6L DOHC (Twin-Cam)","Potencia":"72–108 hp / 87 lb-ft","Transmisión":"Manual 4 vel.","Tracción":"RWD","0–100 km/h":"~13 seg","Vel. máxima":"161 km/h (100 mph)","Carrocería":"Roadster 2 plazas","Peso":"884 kg","Años de prod.":"1955–1962","Precio CA (usado)":"$20,000–$50,000"},
+      specs:{"Motor":"I4 1.5L / 1.6L DOHC (Twin-Cam)","Potencia":"72–108 hp / 87 lb-ft","Transmisión":"Manual 4 vel.","Tracción":"RWD","0–100 km/h":"13 seg","Vel. máxima":"161 km/h (100 mph)","Carrocería":"Roadster 2 plazas","Peso":"884 kg","Años de prod.":"1955–1962","Precio CA (usado)":"$20,000–$50,000"},
       highlights:["El MGA fue el primer MG con carrocería envolvente moderna — fin de la era de guardabarros separados del J2","Bandera Union Jack en la parrilla y capó abierto — orgulloso y patriota en el ABFM 2026","Al lado se ve un Austin-Healey blanco — dos de los roadsters británicos más queridos de los años 50s","Más de 101,000 unidades vendidas — el MG más exitoso hasta ese momento","El Twin-Cam de 108hp fue tan avanzado técnicamente que resultó problemático — la versión más rara y cotizada"]
     },{
       id:"listerRacer",make:"Lister",model:"Racer / Sports Prototype",years:"1954–1959",
       photoDate:"16 de mayo, 2026",photoTimestamp:20260516,featured:false,
       featuredReason:"",review:"",
       hp:150,topSpeed:"225 km/h",zero:"6.0 s",priceCAD:"$150,000–$500,000 CAD",badge:"",badgeLabel:"",imgKey:"listerRacer",
-      specs:{"Motor":"I6 Bristol / Jaguar XK (varía)","Potencia":"~150 hp (Bristol) / 200+ hp (Jaguar)","Transmisión":"Manual 4 vel.","Tracción":"RWD","0–100 km/h":"~6.0 seg","Vel. máxima":"225+ km/h","Carrocería":"Sports racer abierto","Peso":"~680 kg","Años de prod.":"1954–1959","Precio CA (colección)":"$150,000–$500,000+"},
+      specs:{"Motor":"I6 Bristol / Jaguar XK (varía)","Potencia":"150 hp (Bristol) / 200+ hp (Jaguar)","Transmisión":"Manual 4 vel.","Tracción":"RWD","0–100 km/h":"6.0 seg","Vel. máxima":"225+ km/h","Carrocería":"Sports racer abierto","Peso":"~680 kg","Años de prod.":"1954–1959","Precio CA (colección)":"$150,000–$500,000+"},
       highlights:["Carrocería bicolor borgoña y blanco crema — forma aerodinámica de Le Mans de mediados de los 50s","Simón Rodriguez Lemus mirando el auto con fascinación pura — el coleccionista más joven del grupo en acción","Carrocería de aluminio artesanal formada a mano — cada auto Lister era prácticamente único","Lister fue el equipo privado más exitoso de carreras británicas en la era dorada del motorsport","Al fondo se ve el MGA rojo — dos iconos británicos de la misma época en VanDusen"]
     },{
       id:"miniCooperRace",make:"Austin",model:"Mini Cooper – Race #66",years:"1961–1971",
       photoDate:"16 de mayo, 2026",photoTimestamp:20260516,featured:false,
       featuredReason:"",review:"",
       hp:76,topSpeed:"155 km/h",zero:"13.0 s",priceCAD:"$20,000–$50,000 CAD",badge:"RACE",badgeLabel:"#66",imgKey:"miniCooperRace",
-      specs:{"Motor":"I4 1275cc A-Series OHV","Potencia":"76 hp / 79 lb-ft","Transmisión":"Manual 4 vel. close-ratio","Tracción":"FWD","0–100 km/h":"~13 seg","Vel. máxima":"155 km/h (96 mph)","Carrocería":"Saloon 2 puertas – preparación carreras","Peso":"~620 kg","Años de prod.":"1961–1971","Precio CA (usado)":"$20,000–$50,000"},
+      specs:{"Motor":"I4 1275cc A-Series OHV","Potencia":"76 hp / 79 lb-ft","Transmisión":"Manual 4 vel. close-ratio","Tracción":"FWD","0–100 km/h":"13 seg","Vel. máxima":"155 km/h (96 mph)","Carrocería":"Saloon 2 puertas – preparación carreras","Peso":"~620 kg","Años de prod.":"1961–1971","Precio CA (usado)":"$20,000–$50,000"},
       highlights:["Número 66 de competición — rojo con techo blanco, exactamente los colores del Mini de rallyes de los 60s","Simón también inspeccionó este Mini justo antes del Lister — dos joyas británicas, un solo coleccionista en formación","El Mini Cooper S ganó el Rally de Montecarlo 3 veces — este ejemplar lleva ese espíritu en sus números","Dos Minis en el ABFM 2026: el verde azulado ganador y este rojo de carreras — el club Mini Vancouver en pleno","El interior con documentación histórica visible en el parabrisas — el propietario conoce su historia"]
     },{
       id:"ah3000Simon",make:"Austin-Healey",model:"3000 Mk III",years:"1959–1967",
@@ -797,7 +860,7 @@ const EVENTS={
       photoDate:"16 de mayo, 2026",photoTimestamp:20260516,featured:false,
       featuredReason:"",review:"",
       hp:55,topSpeed:"140 km/h",zero:"16.0 s",priceCAD:"$8,000–$25,000 CAD",badge:"",badgeLabel:"",imgKey:"miniSofa",
-      specs:{"Motor":"I4 998cc A-Series OHV","Potencia":"55 hp / 57 lb-ft","Transmisión":"Manual 4 vel.","Tracción":"FWD","0–100 km/h":"~16 seg","Vel. máxima":"140 km/h","Carrocería":"Saloon 2 puertas — con sofá de dos plazas en el techo","Carga en techo":"1 sofá, 1 mopa, 1 cepillo, cuerdas","Años de prod.":"1959–2000","Precio CA (usado)":"$8,000–$25,000"},
+      specs:{"Motor":"I4 998cc A-Series OHV","Potencia":"55 hp / 57 lb-ft","Transmisión":"Manual 4 vel.","Tracción":"FWD","0–100 km/h":"16 seg","Vel. máxima":"140 km/h","Carrocería":"Saloon 2 puertas — con sofá de dos plazas en el techo","Carga en techo":"1 sofá, 1 mopa, 1 cepillo, cuerdas","Años de prod.":"1959–2000","Precio CA (usado)":"$8,000–$25,000"},
       highlights:["Simón y Dayana posando con el Mini más famoso del ABFM — tributo al mítico Mr. Bean","Mr. Bean transportaba su sillón favorito en el techo de su Mini en la serie de la BBC (1990–1995)","Placa UK SLW 287R — un Mini importado directamente del Reino Unido, origen auténtico","El verde lima con capó negro es uno de los colores más atrevidos que puede llevar un Mini","La mejor foto familiar del ABFM 2026 — Simón y Dayana en su elemento, con Mr. Bean de por medio"]
     },{
       id:"ginettaG4",make:"Ginetta",model:"G4",years:"1961–1969",
@@ -819,7 +882,7 @@ const EVENTS={
       photoDate:"16 de mayo, 2026",photoTimestamp:20260516,featured:false,
       featuredReason:"",review:"",
       hp:750,topSpeed:"370 km/h",zero:"2.0 s",priceCAD:"$150,000–$300,000 CAD",badge:"RACE",badgeLabel:"#20",imgKey:"cartVisteon",
-      specs:{"Motor":"I4 2.65L Ford Cosworth XF Turbo","Potencia":"~750 hp @ 14,500 RPM","Transmisión":"Secuencial 6 vel.","Tracción":"RWD","0–100 km/h":"~2.0 seg","Vel. máxima":"370 km/h (230 mph)","Carrocería":"Monoplaza CART","Peso":"690 kg (mínimo reglamentario)","Años de prod.":"2000–2001","Precio estimado":"$150,000–$300,000"},
+      specs:{"Motor":"I4 2.65L Ford Cosworth XF Turbo","Potencia":"750 hp @ 14,500 RPM","Transmisión":"Secuencial 6 vel.","Tracción":"RWD","0–100 km/h":"2.0 seg","Vel. máxima":"370 km/h (230 mph)","Carrocería":"Monoplaza CART","Peso":"690 kg (mínimo reglamentario)","Años de prod.":"2000–2001","Precio estimado":"$150,000–$300,000"},
       highlights:["Estacionado en la calle de Vancouver como si fuera un Honda Civic — el hallazgo más surrealista del dashboard","Patrocinadores: Visteon, FreeMarkets, Shell, TAG Heuer, Bridgestone Firehawk, Toyota — livery de época CART completo","El motor Cosworth XF produce 750hp de 2.65L — más potencia por litro que cualquier auto de calle jamás fabricado","La era CART 2000–2003 fue la cima del automovilismo norteamericano — antes de la guerra con la IRL","Ver uno de estos en la calle de Vancouver es literalmente imposible — excepto que ya pasó"]
     },{
       id:"amVanquish",make:"Aston Martin",model:"Vanquish Volante",years:"2013–2018",
@@ -828,6 +891,38 @@ const EVENTS={
       hp:568,topSpeed:"295 km/h",zero:"4.1 s",priceCAD:"$150,000–$250,000 CAD",badge:"",badgeLabel:"",imgKey:"amVanquish",
       specs:{"Motor":"V12 5.9L AM28 DOHC","Potencia":"568 hp / 465 lb-ft","Transmisión":"Automática 8 vel. Touchtronic III","Tracción":"RWD","0–100 km/h":"4.1 seg","Vel. máxima":"295 km/h (183 mph)","Carrocería":"Convertible 2+2","Peso":"1,920 kg","Años de prod.":"2013–2018","Precio CA (usado)":"$150,000–$250,000"},
       highlights:["Blanco con splitter de carbono — uno de los colores más elegantes del Vanquish Volante","Al fondo se ve el DB7 negro y otro Aston Martin plateado — el ABFM tenía todo un rincón AM","El V12 5.9L es el último motor de gran desplazamiento atmosférico de Aston Martin antes de la era turbo","El Volante convierte al Vanquish en un GT abierto de cuatro estaciones — sin comprometer la rigidez","568hp del mismo V12 que impulsó al DB9, Vantage y DBS — el motor que definió una era de Aston Martin"]
+    }]
+  },
+  "petersen-museum-2023":{
+    label:"Petersen Automotive Museum",
+    date:"15 de septiembre, 2023",
+    timestamp:202309,
+    location:"Petersen Automotive Museum · Los Ángeles, CA",
+    description:"El Petersen Automotive Museum en Los Ángeles es uno de los museos de autos más importantes del mundo, con colecciones permanentes y rotativas de clásicos, prototipos y conceptos icónicos de la historia automotriz.",
+    cars:[{
+      id:"teslaSemiAlpha",make:"Tesla",model:"Semi \"Alpha\" Prototype",years:"2017",
+      photoDate:"15 de septiembre, 2023",photoTimestamp:20230915,featured:true,
+      featuredReason:"Único hallazgo de esta visita al Petersen Museum — el prototipo 'Alpha' del Tesla Semi, con Simón posando junto a sus primos Lorenzo y Emiliano.",
+      review:"Un camión completamente distinto al resto del dashboard: el Tesla Semi 'Alpha' es el prototipo de pruebas de 2017 que Tesla usó antes de iniciar la producción en serie de su camión eléctrico de carga pesada. El asiento de manejo centrado — visible a través del parabrisas — y los espejos extendidos como brazos delatan que esto nunca fue pensado para venderse así, sino para validar tecnología. En el Petersen Automotive Museum de Los Ángeles, Simón posó junto a sus primos Lorenzo y Emiliano frente a esta pieza, que representa el lado más experimental del catálogo Tesla.",
+      hp:0,topSpeed:"105 km/h",zero:"20 s",priceCAD:"No comercializado — prototipo de pruebas",badge:"",badgeLabel:"",imgKey:"teslaSemiAlpha",
+      specs:{"Motor":"Tri-motor eléctrico","Potencia":"No revelada (prototipo)","Transmisión":"Reductora fija","Tracción":"AWD (3 motores)","0–100 km/h":"20 seg","Vel. máxima":"105 km/h","Autonomía":"483–805 km (300–500 millas)","Carrocería":"Camión clase 8, cabina aerodinámica, asiento central","Año":"Prototipo 'Alpha', 2017","Ubicación":"Petersen Automotive Museum, Los Ángeles, CA"},
+      highlights:["Placa del museo: prototipo 'Alpha' del Tesla Semi 2017 — el primer camión eléctrico de carga pesada de Tesla, antes de la producción en serie","Simón, junto a sus primos Lorenzo y Emiliano — el coleccionista más joven de la familia explorando uno de los prototipos más raros de Tesla","El sistema tri-motor mantiene 105 km/h en autopista incluso a plena carga subiendo una pendiente del 5%","Este prototipo resistió pruebas de frío extremo de hasta -40°C en Alaska y completó una prueba de resistencia de 5,000 millas por la Ruta 66","Los camiones de carga pesada generan el 18% de las emisiones vehiculares en EE.UU. — el segmento que Tesla apunta a electrificar con el Semi"]
+    }]
+  },
+  "poco-car-show-2022":{
+    label:"Downtown Port Coquitlam Car Show",
+    date:"20 de agosto, 2022",
+    timestamp:202208,
+    location:"Downtown Port Coquitlam · Port Coquitlam, BC",
+    description:"Uno de los car shows al aire libre más grandes de BC, con cientos de autos clásicos y personalizados desfilando y exhibidos en el centro de Port Coquitlam cada agosto, a minutos de Coquitlam.",
+    cars:[{
+      id:"bluesmobileMonaco",make:"Dodge",model:"Monaco — Réplica \"Bluesmobile\"",years:"1974",
+      photoDate:"20 de agosto, 2022",photoTimestamp:20220820,featured:true,
+      featuredReason:"Réplica del Bluesmobile de 'The Blues Brothers' (1980) — hasta la placa de Illinois 'BDR 529' está recreada al detalle, además de la bocina gigante amarrada al techo.",
+      review:"Una réplica dedicada del auto más famoso del cine de comedia: el Bluesmobile de Jake y Elwood Blues. Este Dodge Monaco 1974 en blanco y negro, con el rótulo 'TO SERVE AND PROTECT' y la placa de Illinois 'BDR 529' — el mismo número exacto que llevaba el auto original en la película — lleva además una bocina gigante amarrada al techo con cuerdas, decorada con la silueta de los hermanos Blues. Verlo en el Downtown Port Coquitlam Car Show, junto a hot rods y autos JDM, es la prueba de que el espíritu de 'la banda vuelve a reunirse' sigue vivo entre los coleccionistas de BC.",
+      hp:220,topSpeed:"196 km/h",zero:"10.4 s",priceCAD:"$15,000–$35,000 CAD (réplica, valor estimado del build)",badge:"",badgeLabel:"",imgKey:"bluesmobileMonaco",
+      specs:{"Motor":"V8 7.2L 440 Magnum","Potencia":"220 hp / 350 lb-ft","Transmisión":"Automática TorqueFlite 3 vel.","Tracción":"RWD","0–100 km/h":"10.4 seg","Vel. máxima":"196 km/h","Carrocería":"Sedán 4 puertas, paquete policial","Peso":"2,023 kg","Años de prod.":"1974","Placa":"Illinois BDR 529 — réplica exacta de la película"},
+      highlights:["Réplica del Bluesmobile de 'The Blues Brothers' (1980) — la placa de Illinois 'BDR 529' es un guiño al club de motociclistas Black Diamond Riders de Toronto, igual que en la película","La bocina gigante amarrada al techo con cuerdas lleva una calcomanía de Jake y Elwood Blues — superando incluso al auto original en puesta en escena","El Dodge Monaco 1974 real de la película usaba un V8 440 Magnum con paquete policial — exactamente el motor que lleva esta réplica","Elwood describe el auto en la película: motor, llantas y suspensión de policía, fabricado antes de los convertidores catalíticos — corre con gasolina regular","Visto en el Downtown Port Coquitlam Car Show — uno de los car shows al aire libre más grandes de BC, con cientos de autos cada año a minutos de Coquitlam"]
     }]
   }
 };
@@ -896,7 +991,10 @@ const BRAND_LOGOS={
   'Toyota':'logo_toyota',
   'Volkswagen':'logo_vw',
   'Nissan':'logo_nissan',
-  'Suzuki':'logo_suzuki'
+  'Suzuki':'logo_suzuki',
+  'Mitsubishi':'logo_mitsubishi',
+  'Lucid':'logo_lucid',
+  'Honda':'logo_honda'
 };
 
 function brandLogoHtml(make){
@@ -1133,5 +1231,32 @@ function init(){
   renderTabs();
   renderMonth(active);
   renderCollectors();
+  enableTabsScroll();
+}
+
+function enableTabsScroll(){
+  const tabs=document.getElementById('tabs');
+  if(!tabs) return;
+  tabs.addEventListener('wheel',e=>{
+    if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){
+      tabs.scrollLeft+=e.deltaY;
+      e.preventDefault();
+    }
+  },{passive:false});
+  let isDown=false,startX=0,startScroll=0,moved=false;
+  tabs.addEventListener('mousedown',e=>{
+    isDown=true;moved=false;tabs.classList.add('dragging');
+    startX=e.pageX;startScroll=tabs.scrollLeft;
+  });
+  window.addEventListener('mouseup',()=>{isDown=false;tabs.classList.remove('dragging');});
+  tabs.addEventListener('mouseleave',()=>{isDown=false;tabs.classList.remove('dragging');});
+  tabs.addEventListener('mousemove',e=>{
+    if(!isDown) return;
+    e.preventDefault();
+    const dx=e.pageX-startX;
+    if(Math.abs(dx)>3) moved=true;
+    tabs.scrollLeft=startScroll-dx;
+  });
+  tabs.addEventListener('click',e=>{ if(moved){ e.preventDefault(); e.stopPropagation(); } },{capture:true});
 }
 </script>
