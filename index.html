@@ -100,6 +100,14 @@
 .hw-tab-event .count-pill{background:#fae0ad;color:#8d5000;}
 .hw-tab-brands{background:#1a1a2e;color:#F5F200;border-color:#1a1a2e !important;font-weight:800;}
 .hw-tab-brands.active,.hw-tab-brands:hover{background:#0f3460 !important;color:#F5F200 !important;border-color:#0f3460 !important;}
+.hw-tab-drop{display:flex;align-items:center;gap:.3rem;white-space:nowrap;cursor:pointer;}
+.drop-arrow{font-size:.75rem;opacity:.6;}
+.drop-menu{background:#fff;border:1.5px solid #e8e8e8;border-radius:10px;box-shadow:0 8px 28px rgba(0,0,0,.16);overflow:hidden;min-width:200px;}
+.drop-item{padding:.58rem 1rem;font-size:.83rem;font-weight:600;color:#333;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:.5rem;transition:background .1s;}
+.drop-item:hover{background:#f8f8f2;}
+.drop-item.drop-active{background:#F5F200;color:#1a1a2e;font-weight:800;}
+.drop-pill{background:#eee;color:#666;font-size:.7rem;font-weight:700;padding:.1rem .45rem;border-radius:20px;min-width:22px;text-align:center;}
+.drop-item.drop-active .drop-pill{background:#1a1a2e;color:#F5F200;}
 .brands-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:1rem;padding:1rem 0 2rem;}
 .brand-card{background:#fff;border:1.5px solid #eee;border-radius:12px;padding:1.2rem .8rem 1rem;display:flex;flex-direction:column;align-items:center;gap:.5rem;cursor:pointer;transition:box-shadow .15s,transform .15s,border-color .15s;}
 .brand-card:hover{box-shadow:0 4px 18px rgba(0,0,0,.13);transform:translateY(-3px);border-color:#F5F200;}
@@ -189,6 +197,7 @@
   <div class="hw-sub">Daily Car Spotting Dashboard · Vancouver BC</div>
 </div>
 <div class="hw-tabs" id="tabs"></div>
+<div id="drop-overlay" style="display:none;position:fixed;z-index:9999;"></div>
 <div class="hw-body" id="body"></div>
 <div class="hw-divider"></div>
 <div class="coll-sec">
@@ -1227,29 +1236,69 @@ function renderCollection(key){
 }
 
 function renderTabs(){
-  const SPECIAL=['nuestros-autos'];
-  const months = Object.entries(CARS)
-    .filter(([k])=>!SPECIAL.includes(k))
-    .map(([k,v])=>({key:k,label:v.label,count:v.cars.length,type:'month',ts:parseInt(k.replace('-',''))||0}));
-  const events = Object.entries(EVENTS).map(([k,v])=>({
-    key:k,label:v.label,count:v.cars.length,type:'event',ts:v.timestamp
-  }));
-  const specials = [
-    ...SPECIAL.filter(k=>CARS[k]).map(k=>({key:k,label:CARS[k].label,count:CARS[k].cars.length,type:'special',ts:-1})),
-    ...Object.entries(COLLECTIONS).map(([k,v])=>({key:k,label:v.label,count:v.carIds.length,type:'collection',ts:-2}))
-  ];
-  const all=[...months,...events].sort((a,b)=>b.ts-a.ts);
-  const marcasTab=`<div class="hw-tab hw-tab-brands${'marcas'===active?' active':''}" data-m="marcas" onclick="setActive('marcas','brands')">🏁 Marcas</div>`;
-  document.getElementById('tabs').innerHTML=[...all,...specials].map(t=>{
-    if(t.type==='event')
-      return `<div class="hw-tab hw-tab-event${t.key===active?' active':''}" data-m="${t.key}" onclick="setActive('${t.key}','event')">⚑ ${t.label}<span class="count-pill">${t.count}</span></div>`;
-    if(t.type==='special')
-      return `<div class="hw-tab hw-tab-special${t.key===active?' active':''}" data-m="${t.key}" onclick="setActive('${t.key}','month')">🚗 ${t.label}<span class="count-pill">${t.count}</span></div>`;
-    if(t.type==='collection')
-      return `<div class="hw-tab hw-tab-fun${t.key===active?' active':''}" data-m="${t.key}" onclick="setActive('${t.key}','collection')">😄 ${t.label}<span class="count-pill">${t.count}</span></div>`;
-    return `<div class="hw-tab${t.key===active?' active':''}" data-m="${t.key}" onclick="setActive('${t.key}','month')">${t.label}<span class="count-pill">${t.count}</span></div>`;
-  }).join('')+marcasTab;
+  // Group months by year
+  const monthEntries=Object.entries(CARS).filter(([k])=>k.match(/^\d{4}-\d{2}$/));
+  const byYear={};
+  monthEntries.forEach(([k,v])=>{
+    const yr=k.split('-')[0];
+    if(!byYear[yr]) byYear[yr]=[];
+    byYear[yr].push({key:k,label:v.label,count:v.cars.length});
+  });
+  const years=Object.keys(byYear).sort((a,b)=>b-a);
+  const events=Object.entries(EVENTS).map(([k,v])=>({key:k,label:v.label,count:v.cars.length}));
+  const evActive=events.some(e=>e.key===active);
+
+  let html='';
+  html+=`<div class="hw-tab hw-tab-brands${'marcas'===active?' active':''}" data-m="marcas" onclick="setActive('marcas','brands')">🏁 Marcas</div>`;
+  html+=`<div class="hw-tab hw-tab-event${evActive?' active':''} hw-tab-drop" data-m="__eventos" onclick="toggleDrop(this,'eventos')">⚑ Eventos <span class="drop-arrow">▾</span></div>`;
+  const na=CARS['nuestros-autos'];
+  html+=`<div class="hw-tab hw-tab-special${'nuestros-autos'===active?' active':''}" data-m="nuestros-autos" onclick="setActive('nuestros-autos','month');closeDrop()">🚗 Nuestros Autos<span class="count-pill">${na?na.cars.length:0}</span></div>`;
+  years.forEach(yr=>{
+    const months=byYear[yr].sort((a,b)=>b.key.localeCompare(a.key));
+    const yrActive=months.some(m=>m.key===active);
+    html+=`<div class="hw-tab${yrActive?' active':''} hw-tab-drop" data-m="__yr${yr}" onclick="toggleDrop(this,'yr${yr}')">${yr} <span class="drop-arrow">▾</span></div>`;
+  });
+  const ad=COLLECTIONS['autos-divertidos'];
+  html+=`<div class="hw-tab hw-tab-fun${'autos-divertidos'===active?' active':''}" data-m="autos-divertidos" onclick="setActive('autos-divertidos','collection');closeDrop()">😄 Autos Divertidos<span class="count-pill">${ad?ad.carIds.length:0}</span></div>`;
+  document.getElementById('tabs').innerHTML=html;
 }
+
+function buildDropItems(id, events, byYear){
+  const eventsData=Object.entries(EVENTS).map(([k,v])=>({key:k,label:v.label,count:v.cars.length}));
+  if(id==='eventos'){
+    return eventsData.map(e=>`<div class="drop-item${e.key===active?' drop-active':''}" onclick="setActive('${e.key}','event');closeDrop()">${e.label}<span class="drop-pill">${e.count}</span></div>`).join('');
+  }
+  const yr=id.replace('yr','');
+  const monthEntries=Object.entries(CARS).filter(([k])=>k.startsWith(yr+'-'));
+  const months=monthEntries.map(([k,v])=>({key:k,label:v.label,count:v.cars.length})).sort((a,b)=>b.key.localeCompare(a.key));
+  return months.map(m=>`<div class="drop-item${m.key===active?' drop-active':''}" onclick="setActive('${m.key}','month');closeDrop()">${m.label}<span class="drop-pill">${m.count}</span></div>`).join('');
+}
+
+function toggleDrop(el, id){
+  const ov=document.getElementById('drop-overlay');
+  if(window._openDrop===id){ closeDrop(); return; }
+  window._openDrop=id;
+  const rect=el.getBoundingClientRect();
+  const items=buildDropItems(id);
+  ov.innerHTML=`<div class="drop-menu open">${items}</div>`;
+  ov.style.display='block';
+  ov.style.left=Math.min(rect.left, window.innerWidth-220)+'px';
+  ov.style.top=(rect.bottom+4)+'px';
+  ov.style.minWidth='200px';
+}
+
+function closeDrop(){
+  window._openDrop=null;
+  const ov=document.getElementById('drop-overlay');
+  if(ov){ ov.style.display='none'; ov.innerHTML=''; }
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click',function(e){
+  if(window._openDrop && !e.target.closest('.hw-tab-drop') && !e.target.closest('#drop-overlay')){
+    closeDrop();
+  }
+});
 
 function setActive(key, type){
   active = key;
