@@ -98,6 +98,17 @@
 .hw-tab-event.active{background:#F5F200;color:#1A1A1A;border-color:#F5F200 !important;}
 .hw-tab-event:hover:not(.active){background:#fdf0d6 !important;color:#8d5000 !important;}
 .hw-tab-event .count-pill{background:#fae0ad;color:#8d5000;}
+.hw-tab-brands{background:#1a1a2e;color:#F5F200;border-color:#1a1a2e !important;font-weight:800;}
+.hw-tab-brands.active,.hw-tab-brands:hover{background:#0f3460 !important;color:#F5F200 !important;border-color:#0f3460 !important;}
+.brands-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:1rem;padding:1rem 0 2rem;}
+.brand-card{background:#fff;border:1.5px solid #eee;border-radius:12px;padding:1.2rem .8rem 1rem;display:flex;flex-direction:column;align-items:center;gap:.5rem;cursor:pointer;transition:box-shadow .15s,transform .15s,border-color .15s;}
+.brand-card:hover{box-shadow:0 4px 18px rgba(0,0,0,.13);transform:translateY(-3px);border-color:#F5F200;}
+.brand-card-img{height:60px;display:flex;align-items:center;justify-content:center;}
+.brand-card-logo{max-height:55px;max-width:90px;object-fit:contain;}
+.brand-card-initials{width:56px;height:56px;border-radius:50%;background:#1a1a2e;color:#F5F200;font-size:1.3rem;font-weight:900;display:flex;align-items:center;justify-content:center;letter-spacing:1px;}
+.brand-card-name{font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:#1a1a2e;text-align:center;}
+.brand-card-count{font-size:.72rem;color:#888;font-weight:600;}
+@media(max-width:600px){.brands-grid{grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:.6rem;}}
 .stats-bar{display:grid;grid-template-columns:repeat(5,1fr);gap:.6rem;margin-bottom:1.4rem;}
 .stat-card{background:#fafafa;border:1px solid #ececec;border-left:4px solid #F5F200;border-radius:10px;padding:.7rem .75rem;display:flex;flex-direction:column;gap:.2rem;min-width:0;}
 .stat-icon{font-size:1.1rem;line-height:1;}
@@ -273,6 +284,10 @@ const IMGS = {
   lucidAirPure:       'https://lh3.googleusercontent.com/pw/AP1GczNROz2VzPPwtkwQxjIXPSKP6upHSWZSqn1pQvA20O7eaDnDHqzbjCbq8dyqG0cEeWfR2vvpYvu6RqH1oKXcJ4tD3JIbexIX1pZ6TuEefZy_ZI3URHoR=w1200',
   nissanPao:          'https://lh3.googleusercontent.com/pw/AP1GczMPwP1EV1VB324ncztDisJe1Xa_qnJyqDfhBcxHTFKYivcGUFVdRRs5esFemCp4ulgl_j9UtWonLqDQNEg_LefvSWgJGQUxV3o3m6pVwqUcGRsnv1qM=w1200',
   ferrari488gtb:      'https://lh3.googleusercontent.com/pw/AP1GczMlO0eIfzQh3U9-CJz1sBymGIqK2W9fXzb597UiRe0zmyGPy_lMB756zT9b303qt6H_LKsRpXSpsw5kzPMMyS4ect5nZf9DjfM4bPEzPXhzfUJQNs23=w1200',
+  bmwI8:              'https://lh3.googleusercontent.com/pw/AP1GczN8KEDEVZCwOi-byOgLuLRi6KdBsDk6fU8_2PVEe_sWT9MF6xRW2lkQeRLfDDrx04t_bALodNCSP4igQwlTwn2JVVBaKysUf9oVCcwtsy-1M9a-4H5H=w1200',
+  astonVanquish:      'https://lh3.googleusercontent.com/pw/AP1GczMEvVjYQVDbzee9Ue35ciFczj3puT0oGbwteVPkYIRHYKO0le7CXXkMmPIyESdB_N-4drOO8u0Uu1LQJ-nHYB8MglT04sBMgYPv_rXFzhLKf7IvO1Pp=w1200',
+  ferrari296gtb:      'https://lh3.googleusercontent.com/pw/AP1GczMuvpvUu2sAYLFiBjR5Oufo9kc_gNTnR8jEiyTSXYg-8YZxDP5g6qJABla5VkBgrbqiWfgjtLFv68wqYi9R0vwuxrVzMcg_T6UxyoWQfgndrvJ1eL1d=w1200',
+  hondaPrelude88:     'https://lh3.googleusercontent.com/pw/AP1GczNbqzYjVjPVJkOdpbl44k_eIY_w17KggRPduv0MXO-WrY4o5U_IQJYFdadAgETtbwsYLSZLS6JOoDQcNCNC5Qk2Vq6SjUQZL8wIiOv8d1PqaxvAThpc=w1200',
   teslaSemiAlpha:     'https://lh3.googleusercontent.com/pw/AP1GczOM8vIDRP40qCENyL4WTDs30DABAs-6PJPEDmvhI4k2fL7OW7ukXECID35Fjfspf3yRU02LzsAPQBjT7VOlNk8jEw2UUr5tmiETVqJjvBiP0pdXsgMK=w1200',
   bluesmobileMonaco:  'https://lh3.googleusercontent.com/pw/AP1GczMX3FWvojBpBZPL3wn1ITZZgKkWpJQckQrhjtkxY70RehKQHka_MdwbokRx_tKnxLXhzBigrELfydKeMlLGfw4YtTIF8mxwVdL7LGu2CCQGC-04Z6hF=w1200',
   crv2025:            'https://lh3.googleusercontent.com/pw/AP1GczOpa_-89kYi3Lbi44peW0JSOT5nPNgmugqpHjcGoBMS5U-M-l55k0OMaPp_UBLS83SlTSjl0gFSUFBSjq46TmYafMzcHhioJexCx33CIN2H0GSgX-Oy=w1200',
@@ -310,6 +325,7 @@ const IMGS = {
   logo_mitsubishi:    'https://lh3.googleusercontent.com/pw/AP1GczOEO17ylBc5A1KHwipTHWqfi5VzTV1HvO3BTGEOGqXbuJ3xIo01OLbvD_F9Zrj1DAdq6vvJzm93hH5oEU9KAVn4K5axMQgZSsAydgqjRdZHVSYaTctZ=s250-k-no',
   logo_lucid:         'https://lh3.googleusercontent.com/pw/AP1GczOePoWAI1Fm0iRXEXvT7PFl3TUfGRgpBb6W7ExVRuB-VnciN-sxuAMds1gLi5Uz7nxcKGJea8OwG9yBxZW2YhXE45QYsHUoHVXjS2NHAmvo7p6m1QNA=s250-k-no',
   logo_honda:         'https://lh3.googleusercontent.com/pw/AP1GczOtAQ-vsI6VjyPZ8-zYh61hivkMH5NogNAWL6YL_YLSGyVBniPzmAfxg-vROl73BB_-_QQXm6_q_HXAcpPNwAvwKYbCqcECgUl4NVDSo1r0BBT0qZvp=s250-k-no',
+  logo_ferrari:       'https://lh3.googleusercontent.com/pw/AP1GczMmXItAfL17hcwTSisEXcAOs4Lc02E6JRQ6Dhw8LyetlttFh6sZpPisOLPoXdpthTQx0v7dU0tYGkWc2Um8duKvGzSZ6EJbL_FLnGw572UMS8Uek3c8=s250-k-no',
   logo_suzuki:        'https://lh3.googleusercontent.com/pw/AP1GczNBR9a5fUeAchB6eDQsBPGCpSDFqCSI1hqLWK6R2pkUp7QjfgdxTruUgwt7PO8JqD_dn96fU94DqbHfZGGMPC-FW2DF4-6X8ypn_w2JkP6-Co3Bcl4r=s250-k-no',
   logo_nissan:        'https://lh3.googleusercontent.com/pw/AP1GczMCKAj77j-pLinHWK4f_8gzFj47SnBkPuMc2ODX1yV9faNeKq18DIKHVVSmvi53tfSWwtmOf-NjTp5BT_wsxzkFtogr0nphn6Uejt0UiZQYuf43lpQU=s250-k-no',
   lamboCountach:      'https://lh3.googleusercontent.com/pw/AP1GczN2UqJtWgKbFj4dcjC2PcYPaKlPNnYBRf-3ZGy9lkg2VxEomefIJGhdYSgLZQXfMkaXeMvvV53ZwjSGOQzIVTadJu9H8sPNDNlS1pMElEzbq5Rjn-G4=w1200',
@@ -321,7 +337,7 @@ function renderIfReady(){ if(!rendered){ rendered=true; init(); } }
 document.addEventListener('DOMContentLoaded', renderIfReady);
 
 const CARS={
-  "2026-06":{label:"Junio 2026",recap:"Un mes de extremos: el Rolls-Royce Wraith Black Badge se llevó el destacado con 624hp y un precio de hasta $450,000 CAD, mientras un Corvette C6 naranja y un Pontiac Aztek demostraron que los hallazgos de parqueadero pueden ser igual de memorables. Los dos Subaru WRX y el Range Rover Sport completaron un junio variado entre lujo, potencia y autos del día a día con carácter.",cars:[{
+  "2026-06":{label:"Junio 2026",recap:"Un mes que terminó en otra liga: el Ferrari 296 GTB amarillo tomó el destacado con 819hp combinados y 0–100 en 2.9s. Entre el Rolls-Royce Wraith Black Badge, el Aston Martin Vanquish con placa 'LOCK IN' en Granville Island, el Corvette C6 naranja, los dos Subaru WRX, el Range Rover Sport y el Pontiac Aztek, junio demostró que Vancouver tiene de todo. El Honda Prelude Si de los 80 con rines dorados fue el hallazgo más clásico del mes.",cars:[{
     id:"gs350",make:"Lexus",model:"GS 350",years:"2006–2011",
     photoDate:"7 de junio, 2026",photoTimestamp:20260607,featured:false,
     featuredReason:"Stance radical a ras del suelo con rines cromados multirayos — modificación extrema que convierte un sedán de lujo en una declaración del movimiento VIP/Stance.",
@@ -354,7 +370,7 @@ const CARS={
     highlights:["El C6 fue el primer Corvette con faros expuestos desde el modelo 1962 — abandono de los faros retráctiles","Carrocería completamente de fibra de vidrio y composites — tradición Corvette desde 1953","Este ejemplar en naranja Torch Red escondido en parqueadero — uno de los mejores colores del C6","El LS3 6.2L produce 430hp de una arquitectura pushrod de bajo costo — eficiencia americana pura","La versión ZR1 del mismo año usaba un LS9 supercharged de 638hp — el Corvette más rápido de la historia hasta ese momento"]
   },{
     id:"rrWraith",make:"Rolls-Royce",model:"Wraith Black Badge",years:"2013–2023",
-    photoDate:"14 de junio, 2026",photoTimestamp:20260614,featured:true,
+    photoDate:"14 de junio, 2026",photoTimestamp:20260614,featured:false,
     featuredReason:"624 caballos, $400,000 CAD y las montañas de Vancouver al fondo — el hallazgo más lujoso del dashboard.",
     review:"Un Rolls-Royce Wraith Black Badge en blanco y negro en un parqueadero al atardecer, con las montañas de North Vancouver como fondo. El Black Badge es la versión más oscura y deportiva que fabrica Rolls-Royce — diseñado para quienes quieren 624hp envueltos en cuero y silencio absoluto. Encontrarlo en un parqueadero corriente de Vancouver es exactamente el tipo de momento que hace que este hobby valga la pena.",
     hp:624,topSpeed:"250 km/h",zero:"4.4 s",priceCAD:"$350,000–$450,000 CAD",badge:"BLACK BADGE",badgeLabel:"BLACK BADGE",imgKey:"rrWraith",
@@ -381,6 +397,30 @@ const CARS={
     hp:305,topSpeed:"225 km/h",zero:"7.8 s",priceCAD:"$8,000–$22,000 CAD",badge:"",badgeLabel:"",imgKey:"rrSport",
     specs:{"Motor":"V8 4.4L AJ-V8 / V6 3.0L TDV6","Potencia":"305 hp / 325 lb-ft (V8)","Transmisión":"Automática 6 vel. ZF","Tracción":"4WD Terrain Response","0–100 km/h":"7.8 seg","Vel. máxima":"225 km/h","Carrocería":"SUV 5 puertas","Peso":"2,385 kg","Años de prod.":"2005–2013","Precio CA (usado)":"$8,000–$22,000"},
     highlights:["Hallado frente al Rogers Arena de Vancouver — fondo icónico de la ciudad","Plataforma compartida con el Discovery 3/4 — chassis body-on-frame con suspensión neumática","Sistema Terrain Response de primera generación — selección de terreno con dial central, pionero en su época","El Sport fue el primer Range Rover diseñado explícitamente como SUV deportivo, no utilitario","Usado como vehículo oficial en múltiples producciones cinematográficas por su presencia y tamaño"]
+  },{
+    id:"astonVanquish",make:"Aston Martin",model:"Vanquish",years:"2012–2018",
+    photoDate:"17 de junio, 2026",photoTimestamp:20260617,featured:false,
+    featuredReason:"",
+    review:"Un gran turismo británico estacionado entre compradores casuales en el Granville Island Public Market — placa personalizada 'LOCK IN' incluida. El Vanquish de segunda generación reemplazó al DBS en 2012 como el buque insignia de Aston Martin, con líneas inspiradas directamente en el One-77 de edición limitada y un V12 de 5.9L que suena tan bien como se ve. El labio delantero de fibra de carbono y las pinzas de freno rojas en este ejemplar apuntan a que podría tratarse de una versión con paquete deportivo S. Un auto pensado para cruzar continentes con elegancia, no para correr semáforo a semáforo — aunque tiene de sobra para hacerlo si se le antoja.",
+    hp:565,topSpeed:"295 km/h",zero:"4.1 s",priceCAD:"$120,000–$180,000 CAD",badge:"",badgeLabel:"",imgKey:"astonVanquish",
+    specs:{"Motor":"V12 5.9L naturalmente aspirado","Potencia":"565 hp / 457 lb-ft","Transmisión":"Automática Touchtronic 6 vel.","Tracción":"RWD","0–100 km/h":"4.1 seg","Vel. máxima":"295 km/h","Carrocería":"Coupé 2+2 puertas, fibra de carbono","Peso":"1,739 kg","Años de prod.":"2012–2018","Ubicación":"Granville Island Public Market, Vancouver"},
+    highlights:["Encontrado en Granville Island con la placa personalizada 'LOCK IN' — un detalle que dice tanto del dueño como del auto mismo","Diseñado con líneas heredadas del Aston Martin One-77, un superauto de edición limitada de solo 77 unidades","V12 de 5.9L con 565hp — el motor de producción más potente que Aston Martin había instalado hasta ese momento","El labio delantero de fibra de carbono y las pinzas de freno rojas sugieren que pudo recibir el paquete deportivo S","Reemplazó al DBS en 2012 como el buque insignia de la marca, antes de la llegada del DBS Superleggera en 2018"]
+  },{
+    id:"ferrari296gtb",make:"Ferrari",model:"296 GTB",years:"2021–presente",
+    photoDate:"17 de junio, 2026",photoTimestamp:20260617,featured:true,
+    featuredReason:"819hp combinados, 0–100 en 2.9s y placas de 'Ferrari of Vancouver' — el hallazgo más potente y más rápido de junio, encontrado en plena calle al atardecer.",
+    review:"Un Ferrari 296 GTB amarillo, con el marco de placa de 'Ferrari of Vancouver' delatando que probablemente salió directo del concesionario. Es el primer Ferrari de producción en serie con solo seis cilindros desde los Dino de los 60 y 70 — un V6 biturbo de 120° combinado con un motor eléctrico que suma 819hp en total, suficiente para sacarle ventaja a cualquier otro auto del dashboard este mes. El nombre 'shark nose' que le ponen a su frente no es casualidad: los faros ultra delgados y el capó hundido evocan directamente al hypercar de Le Mans 499P. Que algo así aparezca estacionado en una calle común de Vancouver, sin previo aviso, es el tipo de hallazgo que justifica revisar cada cuadra dos veces.",
+    hp:819,topSpeed:"330 km/h",zero:"2.9 s",priceCAD:"$350,000–$450,000 CAD",badge:"",badgeLabel:"",imgKey:"ferrari296gtb",
+    specs:{"Motor":"V6 3.0L biturbo + motor eléctrico (PHEV)","Potencia":"819 hp combinados / 546 lb-ft","Transmisión":"Doble embrague 8 vel.","Tracción":"RWD","0–100 km/h":"2.9 seg","Vel. máxima":"330 km/h","Carrocería":"Berlinetta 2 puertas, motor central-trasero","Peso":"1,470 kg (en seco)","Años de prod.":"2021–presente","Ubicación":"Vancouver, BC (placas de Ferrari of Vancouver)"},
+    highlights:["Visto con el marco de placa de 'Ferrari of Vancouver' — probablemente una unidad de exhibición o recién comprada del concesionario local","Primer Ferrari de producción en serie con motor de 6 cilindros desde los Dino de los años 60 y 70","V6 biturbo de 120° + motor eléctrico: 819hp combinados, más que cualquier auto del dashboard hasta ahora","El diseño 'shark nose' con faros ultra delgados está inspirado directamente en el hypercar de Le Mans 499P","0–100 km/h en 2.9 segundos y más de 330 km/h de velocidad máxima — nuevo récord del dashboard en ambas categorías"]
+  },{
+    id:"hondaPrelude88",make:"Honda",model:"Prelude Si",years:"1987–1991",
+    photoDate:"18 de junio, 2026",photoTimestamp:20260618,featured:false,
+    featuredReason:"",
+    review:"Un Honda Prelude Si de 3ª generación negro, impecable, con rines de malla dorada tipo BBS que le quedan perfectos — estacionado en plena calle de Vancouver como si fuera un día cualquiera. La tercera generación del Prelude (1987–1991) fue un salto enorme respecto a la segunda: faros emergentes, motor 2.0L de 16 válvulas y la opción de 4WS (dirección en las cuatro ruedas), una rareza tecnológica de finales de los 80. Con más de 35 años, este Prelude está en un estado de conservación que lo convierte en una pieza de colección real.",
+    hp:135,topSpeed:"200 km/h",zero:"9.5 s",priceCAD:"$8,000–$18,000 CAD",badge:"",badgeLabel:"",imgKey:"hondaPrelude88",
+    specs:{"Motor":"I4 2.0L DOHC 16V","Potencia":"135 hp / 127 lb-ft","Transmisión":"Manual 5 vel.","Tracción":"FWD","0–100 km/h":"9.5 seg","Vel. máxima":"200 km/h","Carrocería":"Coupé 2 puertas, faros emergentes","Peso":"1,115 kg","Años de prod.":"1987–1991 (3ª generación)","Ubicación":"Vancouver, BC"},
+    highlights:["Negro con rines de malla dorada tipo BBS — una combinación clásica que los fanáticos JDM de los 80 y 90 reconocen de inmediato","Motor 2.0L DOHC de 16 válvulas — tecnología poco común en un auto de calle a finales de los 80","La 3ª generación ofreció la opción de 4WS (dirección en las cuatro ruedas), una rareza tecnológica que Honda fue pionera en autos compactos","El diseño con faros emergentes y líneas cuña fue un ícono del estilo deportivo japonés de la era — referencia directa para toda la cultura JDM posterior","Con más de 35 años en este estado, este Prelude es una pieza de colección real rodando por las calles de Vancouver"]
   }]},
   "2026-05":{label:"Mayo 2026",recap:"El mes más diverso del dashboard: desde el Lamborghini Revuelto de 1,001hp frente al Fairmont Pacific Rim hasta el Citroën 2CV \"Charlie\" de 29hp estacionado junto a su compatriota, el Renault Dauphine. Entre ambos extremos aparecieron el MR2 Spyder con su placa BCMR2.com, el Scirocco 16V hallado en el Port Moody Soccer Club donde juega Simón, dos GR Supra de pista encontrados en plena calle, y el raro Hyundai Equus. El Saab 9-3 SportCombi se quedó con el título de hallazgo más entrañable — una reliquia sueca que sigue rodando.",cars:[{
     id:"lambRevuelto",make:"Lamborghini",model:"Revuelto",years:"2023–presente",
@@ -491,6 +531,15 @@ const CARS={
     hp:661,topSpeed:"330 km/h",zero:"3.0 s",priceCAD:"$220,000–$290,000 CAD (usado)",badge:"",badgeLabel:"",imgKey:"ferrari488gtb",
     specs:{"Motor":"V8 3.9L biturbo","Potencia":"661 hp / 561 lb-ft","Transmisión":"Doble embrague 7 vel.","Tracción":"RWD","0–100 km/h":"3.0 seg","Vel. máxima":"330 km/h","Carrocería":"Berlinetta 2 puertas, motor central-trasero","Peso":"1,475 kg","Años de prod.":"2015–2019","Ubicación":"Vancouver, BC"},
     highlights:["Encontrado en un parqueadero corriente, entre un sedán y un crossover — el contraste que hace que este hobby valga la pena","Sucesor del 458 Italia, el 488 GTB fue el primer Ferrari V8 biturbo de calle moderno desde el F40/F50 — Top Gear lo nombró 'Supercar of the Year' en 2015","Las tomas de aire laterales ovaladas rinden homenaje al Ferrari 308 GTB de los años 70","661hp de un V8 3.9L bastan para 0-100 km/h en 3.0 segundos y 330 km/h de velocidad máxima","Reemplazado por el F8 Tributo en 2019 y luego por el 296 GTB híbrido — el 488 fue el último V8 Ferrari de calle sin asistencia eléctrica"]
+  }]},
+  "2020-04":{label:"Abril 2020",recap:"Un híbrido que parecía de otra época: este BMW i8 azul Protonic, estacionado junto a un parque de Vancouver, con placas de concesionario que sugieren que salió directo de la sala de ventas.",cars:[{
+    id:"bmwI8",make:"BMW",model:"i8",years:"2014–2020",
+    photoDate:"21 de abril, 2020",photoTimestamp:20200421,featured:true,
+    featuredReason:"Único hallazgo de abril 2020 — un BMW i8 azul Protonic, el híbrido enchufable que parecía sacado de una película de ciencia ficción cuando salió en 2014.",
+    review:"Un BMW i8 azul Protonic estacionado junto a un parque, con el marco de placa de 'The Ultimate BMW Dealer' delatando que probablemente salió de un concesionario de Vancouver. Cuando se lanzó en 2014, el i8 parecía un auto de ciencia ficción: carrocería de fibra de carbono, puertas tipo mariposa y un sistema híbrido enchufable que combina un motor de 3 cilindros en el eje trasero con un motor eléctrico independiente en el eje delantero. BMW lo descontinuó en 2020 sin anunciar un sucesor directo, dejándolo como un experimento brillante y solitario en la historia de la marca — la prueba de que un híbrido puede ser tan deseable como un superauto.",
+    hp:369,topSpeed:"250 km/h",zero:"4.4 s",priceCAD:"$45,000–$75,000 CAD (usado)",badge:"",badgeLabel:"",imgKey:"bmwI8",
+    specs:{"Motor":"I3 1.5L turbo + motor eléctrico (PHEV)","Potencia":"369 hp combinados / 420 lb-ft","Transmisión":"6 vel. (motor de gas) + reductora 2 vel. (motor eléctrico)","Tracción":"AWD","0–100 km/h":"4.4 seg","Vel. máxima":"250 km/h","Carrocería":"Coupé 2+2 puertas, fibra de carbono (CFRP)","Autonomía eléctrica":"29 km (modo 100% eléctrico)","Años de prod.":"2014–2020","Ubicación":"Vancouver, BC"},
+    highlights:["Placa de concesionario 'The Ultimate BMW Dealer' — probablemente Brian Jessel BMW, uno de los distribuidores más conocidos de Vancouver","Carrocería de fibra de carbono reforzada (CFRP) — la misma tecnología que BMW usa en el i3, pensada para compensar el peso de la batería","Combina un motor de gas de 3 cilindros en el eje trasero con un motor eléctrico independiente en el eje delantero — tracción total sin un eje mecánico que los conecte","Hasta 29 km de autonomía 100% eléctrica antes de que entre el motor de gasolina","Descontinuado en 2020 sin sucesor directo — BMW nunca repitió la fórmula de este híbrido deportivo"]
   }]},
   "2023-06":{label:"Junio 2023",recap:"Otro hallazgo fuera de Vancouver: un Lucid Air Pure recién entregado, encontrado en un parqueadero de Washington con el plástico de fábrica todavía puesto en los asientos.",cars:[{
     id:"lucidAirPure",make:"Lucid",model:"Air Pure",years:"2023–presente",
@@ -1014,7 +1063,8 @@ const BRAND_LOGOS={
   'Suzuki':'logo_suzuki',
   'Mitsubishi':'logo_mitsubishi',
   'Lucid':'logo_lucid',
-  'Honda':'logo_honda'
+  'Honda':'logo_honda',
+  'Ferrari':'logo_ferrari'
 };
 
 function brandLogoHtml(make){
@@ -1189,6 +1239,7 @@ function renderTabs(){
     ...Object.entries(COLLECTIONS).map(([k,v])=>({key:k,label:v.label,count:v.carIds.length,type:'collection',ts:-2}))
   ];
   const all=[...months,...events].sort((a,b)=>b.ts-a.ts);
+  const marcasTab=`<div class="hw-tab hw-tab-brands${'marcas'===active?' active':''}" data-m="marcas" onclick="setActive('marcas','brands')">🏁 Marcas</div>`;
   document.getElementById('tabs').innerHTML=[...all,...specials].map(t=>{
     if(t.type==='event')
       return `<div class="hw-tab hw-tab-event${t.key===active?' active':''}" data-m="${t.key}" onclick="setActive('${t.key}','event')">⚑ ${t.label}<span class="count-pill">${t.count}</span></div>`;
@@ -1197,14 +1248,78 @@ function renderTabs(){
     if(t.type==='collection')
       return `<div class="hw-tab hw-tab-fun${t.key===active?' active':''}" data-m="${t.key}" onclick="setActive('${t.key}','collection')">😄 ${t.label}<span class="count-pill">${t.count}</span></div>`;
     return `<div class="hw-tab${t.key===active?' active':''}" data-m="${t.key}" onclick="setActive('${t.key}','month')">${t.label}<span class="count-pill">${t.count}</span></div>`;
-  }).join('');
+  }).join('')+marcasTab;
 }
 
 function setActive(key, type){
   active = key;
   if(type==='event') renderEvent(key);
   else if(type==='collection') renderCollection(key);
+  else if(type==='brands') renderBrands();
+  else if(type==='brand-detail') renderBrandDetail(key);
   else renderMonth(key);
+}
+
+function getAllCars(){
+  const all=[];
+  Object.entries(CARS).forEach(([,sec])=>sec.cars.forEach(c=>all.push(c)));
+  Object.entries(EVENTS).forEach(([,ev])=>ev.cars.forEach(c=>all.push(c)));
+  return all;
+}
+
+function renderBrands(){
+  active='marcas';
+  const all=getAllCars();
+  const byMake={};
+  all.forEach(c=>{
+    if(!byMake[c.make]) byMake[c.make]=[];
+    byMake[c.make].push(c);
+  });
+  const sorted=Object.keys(byMake).sort((a,b)=>a.localeCompare(b));
+  document.getElementById('body').innerHTML=
+    `<div class="month-hdr">
+      <div class="month-title">Marcas</div>
+      <div class="month-recap">Todas las marcas del dashboard — haz clic en una para ver sus autos.</div>
+    </div>
+    <div class="brands-grid">
+      ${sorted.map(make=>{
+        const cars=byMake[make];
+        const logoKey=BRAND_LOGOS[make];
+        const logoSrc=logoKey&&IMGS[logoKey];
+        const logoHtml=logoSrc
+          ?`<img src="${logoSrc}" alt="${make}" class="brand-card-logo" />`
+          :`<div class="brand-card-initials">${make.substring(0,2).toUpperCase()}</div>`;
+        return `<div class="brand-card" onclick="setActive('brand::${make}','brand-detail')">
+          <div class="brand-card-img">${logoHtml}</div>
+          <div class="brand-card-name">${make}</div>
+          <div class="brand-card-count">${cars.length} auto${cars.length!==1?'s':''}</div>
+        </div>`;
+      }).join('')}
+    </div>`;
+  document.querySelectorAll('.hw-tab').forEach(t=>t.classList.toggle('active',t.dataset.m==='marcas'));
+}
+
+function renderBrandDetail(makeKey){
+  const make=makeKey.replace('brand::','');
+  const all=getAllCars().filter(c=>c.make===make);
+  const sorted=[...all].sort((a,b)=>(b.photoTimestamp||0)-(a.photoTimestamp||0));
+  const logoKey=BRAND_LOGOS[make];
+  const logoSrc=logoKey&&IMGS[logoKey];
+  const logoHtml=logoSrc?`<img src="${logoSrc}" alt="${make}" style="height:48px;object-fit:contain;" />`:`<strong>${make}</strong>`;
+  document.getElementById('body').innerHTML=
+    `<div class="month-hdr">
+      <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+        ${logoHtml}
+        <div>
+          <div class="month-title">${make}</div>
+          <div class="month-recap">${sorted.length} auto${sorted.length!==1?'s':''} en el dashboard · <span style="cursor:pointer;color:#c8a200;text-decoration:underline;" onclick="renderBrands()">← Todas las marcas</span></div>
+        </div>
+      </div>
+    </div>
+    ${sorted.length>=2?`<div class="section-title">Top Estadísticas</div>`+topStats(sorted):''}
+    <div class="section-title">Autos</div>
+    <div class="cars-grid">${sorted.map(carCard).join('')}</div>`;
+  document.querySelectorAll('.hw-tab').forEach(t=>t.classList.toggle('active',t.dataset.m==='marcas'));
 }
 
 function renderEvent(key){
