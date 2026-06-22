@@ -193,8 +193,15 @@
 
 <div class="hw">
 <div class="hw-header">
-  <div class="hw-logo">HOT<em>FINDS</em> <em style="font-size:1.6rem">⚡</em></div>
-  <div class="hw-sub">Daily Car Spotting Dashboard · Vancouver BC</div>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <button id="back-btn" onclick="goBack()" style="display:none;align-items:center;gap:.4rem;background:#1a1a2e;color:#F5F200;border:none;border-radius:8px;padding:.45rem .9rem;font-size:.82rem;font-weight:800;cursor:pointer;letter-spacing:.5px;flex-shrink:0;">
+      ◀ Volver
+    </button>
+    <div>
+      <div class="hw-logo">HOT<em>FINDS</em> <em>⚡</em></div>
+      <div class="hw-sub">Daily Car Spotting Dashboard · Vancouver BC</div>
+    </div>
+  </div>
 </div>
 <div class="hw-tabs" id="tabs"></div>
 <div id="drop-overlay" style="display:none;position:fixed;z-index:9999;"></div>
@@ -210,8 +217,14 @@
 <div class="lightbox" id="lightbox" onclick="closeLB()">
   <button class="lightbox-close" onclick="closeLB()" aria-label="Cerrar"><i class="ti ti-x"></i></button>
   <img id="lbImg" src="" alt="" onclick="event.stopPropagation()" />
+  <div id="lbErr" style="display:none;flex-direction:column;align-items:center;gap:.8rem;text-align:center;" onclick="event.stopPropagation()">
+    <i class="ti ti-photo-off" style="font-size:2.5rem;color:#888;"></i>
+    <div style="color:#ccc;font-size:.9rem;">La foto no cargó en el visor</div>
+    <a id="lbExtLink" href="#" target="_blank" rel="noopener" style="background:#F5F200;color:#1a1a2e;font-weight:800;padding:.5rem 1.2rem;border-radius:8px;font-size:.85rem;text-decoration:none;" onclick="event.stopPropagation()">🔗 Ver foto en nueva pestaña</a>
+  </div>
   <div class="lightbox-caption" id="lbCap"></div>
   <div class="lightbox-date" id="lbDate"></div>
+  <a id="lbTabLink" href="#" target="_blank" rel="noopener" style="color:#F5F200;font-size:.75rem;opacity:.7;text-decoration:none;margin-top:.2rem;" onclick="event.stopPropagation()">↗ Abrir en nueva pestaña</a>
 </div>
 
 <script>
@@ -297,6 +310,48 @@ const IMGS = {
   astonVanquish:      'https://lh3.googleusercontent.com/pw/AP1GczMEvVjYQVDbzee9Ue35ciFczj3puT0oGbwteVPkYIRHYKO0le7CXXkMmPIyESdB_N-4drOO8u0Uu1LQJ-nHYB8MglT04sBMgYPv_rXFzhLKf7IvO1Pp=w1200',
   ferrari296gtb:      'https://lh3.googleusercontent.com/pw/AP1GczMuvpvUu2sAYLFiBjR5Oufo9kc_gNTnR8jEiyTSXYg-8YZxDP5g6qJABla5VkBgrbqiWfgjtLFv68wqYi9R0vwuxrVzMcg_T6UxyoWQfgndrvJ1eL1d=w1200',
   hondaPrelude88:     'https://lh3.googleusercontent.com/pw/AP1GczNbqzYjVjPVJkOdpbl44k_eIY_w17KggRPduv0MXO-WrY4o5U_IQJYFdadAgETtbwsYLSZLS6JOoDQcNCNC5Qk2Vq6SjUQZL8wIiOv8d1PqaxvAThpc=w1200',
+  vwHerbie:           'https://lh3.googleusercontent.com/pw/AP1GczP41ib60wsy2ZtZ8Q8oFriGO55aXTe2VWo09s3dFbccbagZFYS9VIBYy3eeeguQxaRVaepEPVYh4rE_inVFQH-7ePOh7LVVjHI8uB3sVNSWYkWcSFvU=w1200',
+  corvetteC5:         'https://lh3.googleusercontent.com/pw/AP1GczMSyqbxfjathq8NdG6ucbCGAqul1YZr4GZyJ0AUk_ML0YrM0qAyqAYUHRTaIIY9AZ8aViPxyeSiD8Oi_1_X11iNjOv_dzCKzsoeSrq65N4ANL9knQ3i=w1200',
+  chevyOBS:           'https://lh3.googleusercontent.com/pw/AP1GczNxdGUH7w0s9Wl3xD1Fo0Z3rw2VhMeYuhEk5hrZCJeyk_d5QHyrrigBMwAtg-Fyxrqtmr6NmqmjFm8Xqn97APBP-rCdzJk1zaEdA5dxGIY4ZYYWceFk=w1200',
+  bmw230i:            'https://lh3.googleusercontent.com/pw/AP1GczNGXe-U_P4viXx3DYWD4LjZvZkmspStySt1lWVmDyZ6PKmpfi4GWAYd0sLz1oFhJxfgrwEW8rXFqCcuwcdMBHI0qftorO7a_DSO-syg5OieHzhwlE4c=w1200',
+  lincolnLimo:        'https://lh3.googleusercontent.com/pw/AP1GczOJxMBGd6P7VLWgMZugGBY2i5GTGx4vaFXIO1UNCAQWvMpIBoKFMYpDYuREDHMqv2DP6wyMOG0PuHwRC-E4F3d26YbHBgNzoPP38i14skpnGpVB76pZ=w1200',
+  chevyBelAir55:      'https://lh3.googleusercontent.com/pw/AP1GczM2ul9Ktd3BzVQUDkwmbJjNmYJKxH9Z9aOcw4AXtXxyaFu2pyH5bHXeaIsiXW4CoP_OadDPFfmgTrfVKH8uAKgjyTt8XIWbPkC6BOOVeSjNviQQvI8F=w1200',
+  porsche914:         'https://lh3.googleusercontent.com/pw/AP1GczP6wpZqt7bg873pxGfZQMP_a6UkfoE6SQNsdQPOqHjsGoNC_a7U8RDkxxSQ3eVktG6TBx08_zN4XPaBufTCtVP5goVE7P-YZ_-V5ofSKaIQe42-w7r8=w1200',
+  porsche993:         'https://lh3.googleusercontent.com/pw/AP1GczOcorRWvChUAAx8JHqMCa_aqbHq85mMEiNPEAEIck41fWRjtHlhyT8CoqrcRn_iimVsjjkVuLrhYg4P1cPW0BXxG-Jb-xDfx5NtyoYHzso5uYQjJI6-=w1200',
+  porsche356:         'https://lh3.googleusercontent.com/pw/AP1GczNvCHWvCN-YUEWmTh4YMl-D66-PHT9H0HinO2eSZF43TtmIYMAIEOP2ZeWZVwMDrMVchA_ltmC9_JlYGkTria0obPJ7KLYTryqim3G1GeCUiUjcgwv9=w1200',
+  porsche911sc:       'https://lh3.googleusercontent.com/pw/AP1GczOb33F3o6fCCgPZJ1aGTA-3raIHrgPyumdyDXcozDs45svEiWkbuvMGDTpLtaDEVK8mQIhX8FrKm8Iumsq5FO9RjFArCcqZ4WSfbpTABbUwejZs38XR=w1200',
+  porsche911early:    'https://lh3.googleusercontent.com/pw/AP1GczPadVPCCzDhDJJAbenIqrVuZ6zH3szvUGC_eree_XPblK8F0OmO5p3O8F9CZWwS9SGswbzwN4goQR4rAbnd6czbexv_8zg-gjml4K3HXmlW6nXc_08p=w1200',
+  ssJaguarReplica:    'https://lh3.googleusercontent.com/pw/AP1GczPJ6wZTigl3ZM5pvGvTr6nQUgQEjh9k6hTZEMuiO4kI6Wak4LmLrgvMm_r2FihwYOUQ8PjOokEXjyRz0ApqdvKVvCru5_n0atNPF0ViH8HhnZb3yvwC=w1200',
+  amgGTR:             'https://lh3.googleusercontent.com/pw/AP1GczNTpTF9A2krIQhaWYGRlZOazHgQRC46nAt0WdqKC36V7tmCnRjIdXpe_51tDQg_zvYuKNrOebmJlUGG1xkOz60no0lvEUkl2UJL_sq0tym9e1jY8keA=w1200',
+  bentleyGTC:         'https://lh3.googleusercontent.com/pw/AP1GczPzpEiQfdPIvCyuCaQDsmP3Bnp8AAsHDKe2gtCmYcJXudnt8Dy5YLD3lT4wCLe4qoACDH7yw-D_4mDVwy_ygXjhUyLECX5jV4MZXo5p8OrJ5rWR2CXU=w1200',
+  alfaRomeo4C:        'https://lh3.googleusercontent.com/pw/AP1GczMt6yyTYL6dg-z9rllqu4s2U6zLA5Twu78cLPtp4eth61-Z9ZUwiuxh5XZ6XR4uPzNHJWjG8ga6-PSYMamSaxiPAqqLu8IEY8zJE0G1u3FRjaSmZY0f=w1200',
+  porsche911weissach: 'https://lh3.googleusercontent.com/pw/AP1GczPoNhnLxkbXU9FmvqzGXNhnJvOnz4_e-R3f30i7Aj1EZtZdohCgWXWIlMDMy1SyUJm-IAhKDnBW0fIRzUyg5jiMiSQ_djyIe39uQ0QontFciY-QpJdb=w1200',
+  huracanSTO:         'https://lh3.googleusercontent.com/pw/AP1GczPrdHkI_BJgc02Pe450fUVdWUm_cUtOAvjLc0LsWpy4pdT5VHxv-sIKzinpXvk-Y-Jjw2ga2f-r57RtAL0oaZacWRt3BXF1m0xgoHVlGala__rxeyEP=w1200',
+  aventadorLP700:     'https://lh3.googleusercontent.com/pw/AP1GczPxG99E6LKmXH8zuKjBUhJhNh_Jo-suE4sTGQ0tvK11lbWxBYEKhSjac0dIlpR_hJWfhEe4-wH2OJexhR_hVslHFaEWoml4qdvlyvnjUSXqzwUzvyx_=w1200',
+  miniGroovy:         'https://lh3.googleusercontent.com/pw/AP1GczMNtPXat_kr6njqV9N0xHF8I5z3RuLnOjaEgatZfz3ecmmuAMSDjFQMnGIR5oIzpjbj9R-PWIjbPByzBu9UkADlL6jCUE4ATDhv2GFn_qlR4bst8gno=w1200',
+  jensenInterceptor: 'https://lh3.googleusercontent.com/pw/AP1GczMPiT_aNl6x3pSbT-rGxHvCoupqswFAWH36sIUo8v9r3a6wbV15HleFS8EJ-I3KGHZ6hJZS2U3nL28PnqnAMUOz_hAP5RoTtLxW5ZMprSNpZ3p2ztuy=w1200',
+  triumphTR7:        'https://lh3.googleusercontent.com/pw/AP1GczMZmScMOHUfK04SBGp2QctinxTgaskw1UHM0sAFSDYSXVYDSVgDoeuEglHcUPntYb1HLfyv5kZFC1BxEha7x56HpTKq_1MnH519aRt2NAJbgeTXqS8S=w1200',
+  teslaCybertruck:   'https://lh3.googleusercontent.com/pw/AP1GczNM3V5k7IYez88t--EHUBtNdX0zuMVu-SHoHbTDasiif0qB28jbVpQVKIlsAB7R_H9sMTQeV27L33Wl2pmd4H7Fj-P0zt3uh4QxxuYOK2b1ZP3dtHMZ=w1200',
+  triumphHerald:     'https://lh3.googleusercontent.com/pw/AP1GczMDWre1gzHb-lXcolBOiLvO91BW-Ndb7qMT1j8n0840hBlSMup2IttxFHBa9e8XOHu2aCxku5vyAumkquuHDRsAgljaGVT8M3016nZhP0CXb04gk7GG=w1200',
+  morrisTulipas:     'https://lh3.googleusercontent.com/pw/AP1GczMJ-A8sRuwAGZHhPeQbtIBcRKNK5vlMqAHLwErCq6sGoLqDVAe4Q9EABHJPOOZND_2XhWWnB1dqbOdMkcAeq0vmSbspsgPWOrn0PNkDGzERds8MS82R=w1200',
+  hondaCRF50:        'https://lh3.googleusercontent.com/pw/AP1GczP01fdtNuWifEakUHqlW-UI4E21LerB9ub6DoYxmWYtVlw1LktoiIhQ3KM8Z2GjultSViOFcrK7x3QXg_ifzqSDRNeku8AJSrj_cpbAq6OpEuEgz2_q=w1200',
+  camaroProMod:      'https://lh3.googleusercontent.com/pw/AP1GczM7g3US3YBMbS-OZYGpE72_oZ81mvpIg79TBEz-FHgyPlackLR_Tv-0xdF6-MGBqLtmj3XM8ax1P95nTQkyToY4CAtPCzBA81RAWdOrQXvWCko_J4PZ=w1200',
+  fordHotRod33:      'https://lh3.googleusercontent.com/pw/AP1GczPb-GjSN0_9NyZExSKpq1hAinX0_0J0u5Hy3I9BNKYqqUrGDJXmCfiTUUCKXDcvxLV2xYyjU4RXSDf8fEjyW92Ii1D-TsWgFy0fwhLOfz9i-6C3nQBK=w1200',
+  gallardoSpyder:    'https://lh3.googleusercontent.com/pw/AP1GczPKoLru1C5vmMa5H6rg3lFizXNn_nqUDNLVPUZIe8705tkrMpX4venTeyxBI2KTn67Zbhsyp-9FuKQeTtABlO7ckc6bojx4EmBEyxfZ8Ykh89soCPw7=w1200',
+  miniCooperSRed:    'https://lh3.googleusercontent.com/pw/AP1GczMsSrqwfEVZnv2c3_3nrW0vGdTw90bgWuEO94DdrlemWMYSQxDrM6LSAhNk-KqxG6LDJ0FYGA5loCkUT2BQauU4zo8CnVbkG-SD27xAKP88T-E83vtP=w1200',
+  miniPaddyHopkirk:  'https://lh3.googleusercontent.com/pw/AP1GczMsSrqwfEVZnv2c3_3nrW0vGdTw90bgWuEO94DdrlemWMYSQxDrM6LSAhNk-KqxG6LDJ0FYGA5loCkUT2BQauU4zo8CnVbkG-SD27xAKP88T-E83vtP=w1200',
+  fordGranTorino:    'https://lh3.googleusercontent.com/pw/AP1GczP1hRtUyInno93joKC-PR3TySITzN9aUynZEFcFmdSWPI9EK6G3mVNKFaf_Te89WCxRCvxBFMdhHtVnBC0wwMqSKVjpjqXEhT9emYW__tUeGYdboNsU=w1200',
+  porsche992gts:     'https://lh3.googleusercontent.com/pw/AP1GczNtZljYuffFImcTN-jmTPwC9tHRTvCOT_T6u1SA3QyRU0D5bmABQyO8zQGYYRtp4MclWrPRAvKcGmcty1lhPqwCFZFhxVPm_Zc0azIZZoHjjVZSriiE=w1200',
+  nissan350Z:        'https://lh3.googleusercontent.com/pw/AP1GczPruQsHEbV3QPpujreSCmAybCnhGZK-lWmwQDtrBxGdrC-i8CYbtvfN62SOk79JkpdbnWwrbrjU0AohUmoBW8TI-ya2ChIhSuhqakVZklBd1YR_KErE=w1200',
+  ferrariF8:         'https://lh3.googleusercontent.com/pw/AP1GczNkf3GQ7pMaxnhfP2KpEFQU7RBzF87nvRqxo9GvDk7-UbBrIiUariCvyTzOkfEt-1ZyUuhpeSBRo5IzokSohHXLrCsv5n3FbyPIIQAk2A6fqGx5guzI=w1200',
+  ferrari488Spider:  'https://lh3.googleusercontent.com/pw/AP1GczPIYL8XIdGv3alz9T8_t2xZEKAZqJPBS67tVPvaMEwotvqJwGsCNZvkOWki59q47mkZ4oxNsvU2u5pL-306axKqkhVrDDUnO4BswtZSPzmw4qY3iieW=w1200',
+  fordModelA:        'https://lh3.googleusercontent.com/pw/AP1GczPIhvkIhLctGLqy6gfR1Gg_QA6QS0OjN7sOut_zwCppn7oZe9-t99mpOrz0ouXWeFW6v_4v3pf9nbhlc3zm7ZT6YRodqmsaRWH0wGpIFax9vpGDPR6v=w1200',
+  douglasTruck:      'https://lh3.googleusercontent.com/pw/AP1GczMaKG4w3NObtoyr8Tq35WNlS61gYfSk3gQ2Jj90ONv5TTD1fGcYzLQz4PmIt8kD3OT1vvZwXGc3ovYgu2jcdtHXQU62BYJzJLqAZxhBF3FdaAz4Rt89=w1200',
+  nissan240Z:        'https://lh3.googleusercontent.com/pw/AP1GczOCaJ4-8AxLV_sYxHTYlTSBGKj3a9asXr83X2A66_o8qjTUH9M9IhgrFKGVPc3otoeFaWWNiiZon5DUuQ3O2NzS5-l5mexuRqlywR6NpEJVuwlkxPLC=w1200',
+  fordModelT:        'https://lh3.googleusercontent.com/pw/AP1GczNxvH_Pu6wb3OvP3ASPhCEjRkwD9E_iPRqg_Y4eXr3HaPdAm7mIa0dJojjhJ84vqnIMVp9bjaMhh9SvniyBvM1pqxeCmKT6fRdgl0zglIplvjv5PcRP=w1200',
+  ferrari308gts:     'https://lh3.googleusercontent.com/pw/AP1GczMqXDf27y21i-0T26toaHNflZ8nffoexHrJHd5tmRvkblQwxuE8emQ_gmfC92OfG7W-lR7Xe3C6Sj7t8eGFsH22BXJsgyG3ZEPrP11j_gN3xarNK8Gi=w1200',
+  mercuryLeadSled:   'https://lh3.googleusercontent.com/pw/AP1GczOR46_S1g1hF796ZZ39Ckwn2ZKplmS8SvRZTAf3mZlJpKJDz2zDraUeyZbhDGyWU5KtWIe6PzF55zn_1PF_mM7-P06W_M_IHRy9uOasl06K4pARfYol=w1200',
+  triumphTR7:        'https://lh3.googleusercontent.com/pw/AP1GczN5AhaOk684T72nrub8HcsfXgXk0u9rKBj50RNDpqaMo0R-5w6kwQZMnBppimO6lVMSF3hjsLqBF9Y1jcjekYSHiIRe_QZ8TheHipoPkclLONAlkut5=w1200',
   teslaSemiAlpha:     'https://lh3.googleusercontent.com/pw/AP1GczOM8vIDRP40qCENyL4WTDs30DABAs-6PJPEDmvhI4k2fL7OW7ukXECID35Fjfspf3yRU02LzsAPQBjT7VOlNk8jEw2UUr5tmiETVqJjvBiP0pdXsgMK=w1200',
   bluesmobileMonaco:  'https://lh3.googleusercontent.com/pw/AP1GczMX3FWvojBpBZPL3wn1ITZZgKkWpJQckQrhjtkxY70RehKQHka_MdwbokRx_tKnxLXhzBigrELfydKeMlLGfw4YtTIF8mxwVdL7LGu2CCQGC-04Z6hF=w1200',
   crv2025:            'https://lh3.googleusercontent.com/pw/AP1GczOpa_-89kYi3Lbi44peW0JSOT5nPNgmugqpHjcGoBMS5U-M-l55k0OMaPp_UBLS83SlTSjl0gFSUFBSjq46TmYafMzcHhioJexCx33CIN2H0GSgX-Oy=w1200',
@@ -305,6 +360,9 @@ const IMGS = {
   logo_mg:            'https://lh3.googleusercontent.com/pw/AP1GczOJ2-IQO1yLfnllR4jl1C7Rv3vOfhC-kUr2GxwuVZIEUU8B9zQqFG1dEIj6oJwM3vbZbNR2N8pM_jgMlqu3CUq11cNSXr8E-_0Fc67kqUdAbPxxvAQX=s250-k-no',
   logo_ss_cars:       'https://lh3.googleusercontent.com/pw/AP1GczM94XQDPqPwJfk0xecFWkL5SJY2gUcngmELvBuzQ2ljpiO715j_SC8xeViA8CSzOn1SdNTpwrhtC-bvQQp-xDSgHwbkJtOI8zc10bS1lMKBzCCdJG90=s250-k-no',
   logo_jensen:        'https://lh3.googleusercontent.com/pw/AP1GczN2kIvqYv16a510rR78qRsIpYkA_sUyEd7rbBdkrZojA6usqy3WSTKVj4-d_Z-OpJf5Sca_wiSuAx3byI1rPJf5p7IM47oRazjYDLv_RUa3HOwJldEQ=s250-k-no',
+  logo_ford:          'https://lh3.googleusercontent.com/pw/AP1GczOZSr1xH61oos3YWCQ_krtE7tKr4uVyUldMAg0Pk6XPNTvhYW-4UiAihUu0pXKbEC8O9ud1sVgRLZ8msP52NPv6M_kPNFW40A5QnyOTyoGmXim7gAaf=s250-k-no',
+  logo_mercury:       'https://lh3.googleusercontent.com/pw/AP1GczNdXK9WVA3L81y96Vc71XRZ33gbLwxBhn6zUP5BS8uXdrbDJCuI2Sy-U9MIrxR81Pbt6fwnLpv1go0oKd6arv5DCEyvRcHGh4GPdQoFms0K5TyWdymW=s250-k-no',
+  logo_douglas:       'https://lh3.googleusercontent.com/pw/AP1GczNLiuPcA5RzeblF-PPSEFcY5b010vY7a-VR5zWuCIka5BJ8wofmxdb8PEF87JW3AiIxAs0vaMpSiNfCGt9Ss6LIwhKljRxQXUFhIDFuWzKPNmw8_x1H=s225-k-no',
   logo_mini:          'https://lh3.googleusercontent.com/pw/AP1GczOy7JhtPvMnEmUt4zBOsZ9ycjgmKt39il59_2miq-ueWOH84kWRnmoalwz5DWSRw-OnQLOLI40bdP2j_biqoAUcW_0RasvQasT5AEk1YVUDQ2_9uKwO=s250-k-no',
   logo_tvr:           'https://lh3.googleusercontent.com/pw/AP1GczNc9IKfPC69jcBYDQNw8l2rJ1UXC7fk_vgaajsaVtyarYa_TDVn6xc6KnUuUX4RnzbHiSvDNxgUtpUnR9w_i6MGTrKaXuaQp-XrJCxx1e8unlNeotem=s250-k-no',
   logo_triumph:       'https://lh3.googleusercontent.com/pw/AP1GczOzJKiMKOEM1iURHoSXKYIWH82Fu_moxUFcBLEWUfjLQbU4hiHgp5mLUyZQvtG2ssrONYL9f2CEJZBjmx829kdIfO3fbRAXnCsmOzt-7Ddy10WKH-rg=s250-k-no',
@@ -332,6 +390,10 @@ const IMGS = {
   mitsubishiMontero:  'https://lh3.googleusercontent.com/pw/AP1GczNOkZImlFfnnMphc2_I5CBVh_fOS4eelQxWqEc_F2MMGWmNoMqnpVhGsKFa9ER_OiSK6xk6_FjhWPHHmDn_yDXjrscPgxJhf8XbB27o0b89pS7nHUC6=w1200',
   toyotaSupraRace:    'https://lh3.googleusercontent.com/pw/AP1GczPC2-F_okoUVBfMVpEnCWhzczTNHjggsSOgITVwY6IHcteXl4qh1Gbe6qBHkVzK8mX4WMNNJNCMVzLDgWpuAfH53yoBFM-eQ4YVP67M5BwUcQ2FCRKp=w1200',
   logo_mitsubishi:    'https://lh3.googleusercontent.com/pw/AP1GczOEO17ylBc5A1KHwipTHWqfi5VzTV1HvO3BTGEOGqXbuJ3xIo01OLbvD_F9Zrj1DAdq6vvJzm93hH5oEU9KAVn4K5axMQgZSsAydgqjRdZHVSYaTctZ=s250-k-no',
+  logo_porsche:       'https://lh3.googleusercontent.com/pw/AP1GczN75UUEGiaF8ohgP_LHmfrJUzI1ubHe9vQo1Q-IvQj4VBiqPu5PvNwjoiTsJePaVVR-REXB-FwcWGUDT913PRR7_vS6Vtl-PjMr8nx1lUaHXV1CkxeJ=s250-k-no',
+  logo_lincoln:       'https://lh3.googleusercontent.com/pw/AP1GczNO6lZ8t3OnNfhQUnBxE29HUZS4X8dVhckptiaNZD50NmXsUkRxdlUB73JmUl7vQzzQkLKcZRbaxx2RCBBrBfVvqCSzk8qGfIvnzyfgQ4W_7c6rykrr=s250-k-no',
+  logo_mercedes:      'https://lh3.googleusercontent.com/pw/AP1GczMXEYWcMnnER6SexuiI4Hz3D0UGPnhRN7xGc7rtN6ysma9bWSyPnA0bmYHyE1Igbjp14xk5yLd8KDh1HIf31yMxTjqzWyeAKcdXA0nXR9__5yIRFOWA=s250-k-no',
+  logo_alfa:          'https://lh3.googleusercontent.com/pw/AP1GczP2JboUdY_GctUtY2okrpS-ZhfWaaLsvqL5U2q6SPvWV6SCQ6ILr52-IBxpKKKa9y2TcLYutYN2UQqkY-_NEux_HeFnVFWC15VCQ6stzLWM79bOfj22=s250-k-no',
   logo_lucid:         'https://lh3.googleusercontent.com/pw/AP1GczOePoWAI1Fm0iRXEXvT7PFl3TUfGRgpBb6W7ExVRuB-VnciN-sxuAMds1gLi5Uz7nxcKGJea8OwG9yBxZW2YhXE45QYsHUoHVXjS2NHAmvo7p6m1QNA=s250-k-no',
   logo_honda:         'https://lh3.googleusercontent.com/pw/AP1GczOtAQ-vsI6VjyPZ8-zYh61hivkMH5NogNAWL6YL_YLSGyVBniPzmAfxg-vROl73BB_-_QQXm6_q_HXAcpPNwAvwKYbCqcECgUl4NVDSo1r0BBT0qZvp=s250-k-no',
   logo_ferrari:       'https://lh3.googleusercontent.com/pw/AP1GczMmXItAfL17hcwTSisEXcAOs4Lc02E6JRQ6Dhw8LyetlttFh6sZpPisOLPoXdpthTQx0v7dU0tYGkWc2Um8duKvGzSZ6EJbL_FLnGw572UMS8Uek3c8=s250-k-no',
@@ -346,7 +408,7 @@ function renderIfReady(){ if(!rendered){ rendered=true; init(); } }
 document.addEventListener('DOMContentLoaded', renderIfReady);
 
 const CARS={
-  "2026-06":{label:"Junio 2026",recap:"Un mes que terminó en otra liga: el Ferrari 296 GTB amarillo tomó el destacado con 819hp combinados y 0–100 en 2.9s. Entre el Rolls-Royce Wraith Black Badge, el Aston Martin Vanquish con placa 'LOCK IN' en Granville Island, el Corvette C6 naranja, los dos Subaru WRX, el Range Rover Sport y el Pontiac Aztek, junio demostró que Vancouver tiene de todo. El Honda Prelude Si de los 80 con rines dorados fue el hallazgo más clásico del mes.",cars:[{
+  "2026-06":{label:"Junio 2026",recap:"Un mes que terminó en otra liga: el Ferrari 296 GTB amarillo tomó el destacado con 819hp combinados y 0–100 en 2.9s. Entre el Rolls-Royce Wraith Black Badge, el Aston Martin Vanquish con placa 'LOCK IN', el Corvette C6 naranja, los dos Subaru WRX, el Range Rover Sport y el Pontiac Aztek, junio demostró que Vancouver tiene de todo. El Honda Prelude Si con rines dorados fue el clásico del mes y el VW New Beetle réplica de Herbie #53 se llevó el premio al hallazgo más inesperado.",cars:[{
     id:"gs350",make:"Lexus",model:"GS 350",years:"2006–2011",
     photoDate:"7 de junio, 2026",photoTimestamp:20260607,featured:false,
     featuredReason:"Stance radical a ras del suelo con rines cromados multirayos — modificación extrema que convierte un sedán de lujo en una declaración del movimiento VIP/Stance.",
@@ -430,6 +492,86 @@ const CARS={
     hp:135,topSpeed:"200 km/h",zero:"9.5 s",priceCAD:"$8,000–$18,000 CAD",badge:"",badgeLabel:"",imgKey:"hondaPrelude88",
     specs:{"Motor":"I4 2.0L DOHC 16V","Potencia":"135 hp / 127 lb-ft","Transmisión":"Manual 5 vel.","Tracción":"FWD","0–100 km/h":"9.5 seg","Vel. máxima":"200 km/h","Carrocería":"Coupé 2 puertas, faros emergentes","Peso":"1,115 kg","Años de prod.":"1987–1991 (3ª generación)","Ubicación":"Vancouver, BC"},
     highlights:["Negro con rines de malla dorada tipo BBS — una combinación clásica que los fanáticos JDM de los 80 y 90 reconocen de inmediato","Motor 2.0L DOHC de 16 válvulas — tecnología poco común en un auto de calle a finales de los 80","La 3ª generación ofreció la opción de 4WS (dirección en las cuatro ruedas), una rareza tecnológica que Honda fue pionera en autos compactos","El diseño con faros emergentes y líneas cuña fue un ícono del estilo deportivo japonés de la era — referencia directa para toda la cultura JDM posterior","Con más de 35 años en este estado, este Prelude es una pieza de colección real rodando por las calles de Vancouver"]
+  },{
+    id:"vwHerbie",make:"Volkswagen",model:"New Beetle – Réplica Herbie #53",years:"1998–2010",
+    photoDate:"19 de junio, 2026",photoTimestamp:20260619,featured:false,
+    featuredReason:"",
+    review:"Un New Beetle completamente transformado en réplica del Herbie #53 de Disney, encontrado hoy en un parqueadero de Vancouver. Las franjas negras y el número 53 pintado en capó y puerta son la firma inmediata del famoso Volkswagen de las películas, pero este va mucho más allá: wide body kit con guardafangos extendidos, faldón delantero de carbono, luces de rally cromadas en el frente, rines de malla negros y hasta una placa decorativa alemana 'B ZU 5984' de Berlin. El dueño no construyó un disfraz — construyó una versión definitiva del Herbie que jamás aparecería en una película de Disney.",
+    hp:115,topSpeed:"178 km/h",zero:"11.0 s",priceCAD:"$15,000–$30,000 CAD (réplica, build completo)",badge:"",badgeLabel:"",imgKey:"vwHerbie",
+    specs:{"Motor":"I4 2.0L AEG (base)","Potencia":"115 hp / 122 lb-ft","Transmisión":"Automática 4 vel. / Manual 5 vel.","Tracción":"FWD","0–100 km/h":"11.0 seg","Vel. máxima":"178 km/h","Carrocería":"Hatchback 3 puertas — wide body kit, guardafangos extendidos","Número de carrera":"53 (réplica Herbie Disney)","Placa decorativa":"B ZU 5984 (Berlin, Alemania)","Ubicación":"Vancouver, BC"},
+    highlights:["Número 53 y franjas negras en capó y puerta — réplica fiel del Herbie de las películas Disney, con el detalle de la placa alemana decorativa 'B ZU 5984'","Wide body kit completo con guardafangos extendidos — transforma la silueta del New Beetle en algo que nunca salió de fábrica","Luces de rally cromadas triples en el frente — un guiño a los Volkswagen de rally de los años 60 y 70","Faldón delantero de carbono y rines de malla negros — construcción que mezcla cultura de carreras vintage con tuning moderno","El New Beetle de Disney en 'Herbie: Fully Loaded' (2005) fue un Volkswagen New Beetle 1963 reimaginado — este propietario lo llevó a otro nivel con un build moderno completo"]
+  },{
+    id:"corvetteC5",make:"Chevrolet",model:"Corvette C5",years:"1997–2004",
+    photoDate:"19 de junio, 2026",photoTimestamp:20260619,featured:false,
+    featuredReason:"",
+    review:"Un Corvette C5 amarillo estacionado en plena calle de Vancouver, placa de Michigan 'C57' — el coupé americano que en 1997 reinventó el Corvette con un chasis de fibra de vidrio completamente nuevo, aluminio en la suspensión y el LS1 V8 de 345hp bajo el capó. La generación C5 fue la primera en adoptar el techo removible de una sola pieza (targa), las llantas traseras más anchas que las delanteras de serie, y un coeficiente aerodinámico mejor que muchos supercars europeos de la época. Este mismo año ya vimos un C6 naranja en el dashboard — tenerlos a los dos completa la historia reciente del Corvette en Vancouver.",
+    hp:345,topSpeed:"275 km/h",zero:"4.7 s",priceCAD:"$15,000–$35,000 CAD",badge:"",badgeLabel:"",imgKey:"corvetteC5",
+    specs:{"Motor":"V8 5.7L LS1 OHV","Potencia":"345 hp / 350 lb-ft","Transmisión":"Manual 6 vel. / Automática 4 vel.","Tracción":"RWD","0–100 km/h":"4.7 seg","Vel. máxima":"275 km/h","Carrocería":"Coupé targa 2 plazas, fibra de vidrio","Peso":"1,456 kg","Años de prod.":"1997–2004","Ubicación":"Vancouver, BC (placa Michigan C57)"},
+    highlights:["Placa de Michigan 'C57' — un Corvette que cruzó la frontera para rodar por Vancouver","El C5 fue el primer Corvette con chasis completamente rediseñado desde el C3 de los 70 — aluminio en la suspensión, fibra de vidrio de nueva generación","Motor LS1 V8 de 5.7L: el mismo bloque que se instalaría después en el Camaro SS, el GTO y el Pontiac Firebird","Techo removible de una sola pieza (targa hardtop) — sin columna B, sin ruidos estructurales","Junto al C6 naranja que vimos el 7 de junio, ahora tenemos dos generaciones de Corvette documentadas en Junio 2026"]
+  },{
+    id:"chevyOBS",make:"Chevrolet",model:"Silverado C/K – OBS Lowrider",years:"1988–1998",
+    photoDate:"19 de junio, 2026",photoTimestamp:20260619,featured:false,
+    featuredReason:"",
+    review:"Una Chevrolet C/K OBS negra completamente nivelada — el build exacto que la cultura del lowrider californiana popularizó a finales de los 90 y que hoy está en pleno regreso entre coleccionistas. 'OBS' significa 'Old Body Style', el apodo que los fanáticos le dan a la generación 1988–1998 del Silverado por su diseño angular y sus líneas cuadradas características de la era. Esta unidad tiene la suspensión lowered al máximo, rines de aluminio tipo bullet de bajo perfil y una pintura negra impecable — sin levantada, sin paso de rueda agresivo, sin nada. Pura actitud de parqueadero.",
+    hp:210,topSpeed:"175 km/h",zero:"10.5 s",priceCAD:"$15,000–$45,000 CAD (build lowrider)",badge:"",badgeLabel:"",imgKey:"chevyOBS",
+    specs:{"Motor":"V8 5.7L TBI (base)","Potencia":"210 hp / 300 lb-ft","Transmisión":"Automática 4 vel. 4L60-E","Tracción":"RWD","0–100 km/h":"10.5 seg","Vel. máxima":"175 km/h","Carrocería":"Pickup extended cab, suspensión lowered","Estilo":"OBS Lowrider — nivelada, rines bullet","Años de prod.":"1988–1998 (generación OBS)","Ubicación":"Vancouver, BC (placa BC NX 3546)"},
+    highlights:["'OBS' (Old Body Style): el apodo de los fanáticos para la Silverado 1988–1998, hoy uno de los trucks clásicos más buscados del mercado","Lowrider nivelado al máximo con rines de aluminio tipo bullet de bajo perfil — el build que define la cultura lowrider de los 90","Motor V8 5.7L TBI con 210hp y 300 lb-ft: el bloque que Chevrolet usó en la C/K, el Suburban y el Blazer durante toda la década","Placa BC 'NX 3546' — una OBS que no llegó de California sino que vive y se mantiene en Vancouver","El mercado de OBS lowriders está en pleno auge: los mismos trucks que se vendían por $5,000 hace 10 años hoy valen 4 o 5 veces más en buen estado"]
+  },{
+    id:"teslaCybertruck",make:"Tesla",model:"Cybertruck",years:"2023–presente",
+    photoDate:"20 de junio, 2026",photoTimestamp:20260620,featured:false,
+    featuredReason:"",
+    review:"Un Tesla Cybertruck en el parqueadero del T&T Supermarket de Coquitlam, placa BC 'WP 5822' — el auto que más veces ha partido en dos la opinión del público desde el Pontiac Aztek. El Cybertruck llegó con cinco años de retraso respecto a su anuncio original en 2019, y cuando por fin apareció en producción mantuvo casi exactamente el diseño del prototipo: acero inoxidable sin pintura, sin líneas curvas, sin compromisos. Al lado derecho en la foto se distingue un BMW azul — el contraste entre el diseño atemporal bávaro y el acero futurista de Tesla resume perfectamente lo que hace a este hobby interesante.",
+    hp:600,topSpeed:"209 km/h",zero:"2.7 s",priceCAD:"$80,000–$130,000 CAD",badge:"",badgeLabel:"",imgKey:"teslaCybertruck",
+    specs:{"Motor":"Tri-motor eléctrico (AWD)","Potencia":"600 hp combinados / 895 lb-ft","Transmisión":"Reductora fija","Tracción":"AWD (Cyberbeast: tri-motor)","0–100 km/h":"2.7 seg","Vel. máxima":"209 km/h","Carrocería":"Pickup 4 plazas, acero inoxidable 30X ultra-hard","Autonomía":"547 km (Cyberbeast)","Años de prod.":"2023–presente","Ubicación":"T&T Supermarket, Coquitlam, BC (placa BC WP 5822)"},
+    highlights:["Visto hoy en el T&T de Coquitlam — el supermercado asiático más popular del Lower Mainland, fondo improbable para el pickup más extremo de Tesla","Carrocería de acero inoxidable 30X sin pintura: no se puede rayar con una llave, no se puede abollar fácilmente, y nunca necesita repintarse","El Cybertruck fue anunciado en 2019 y prometido para 2021 — llegó en 2023 con casi exactamente el mismo diseño del prototipo original","Versión Cyberbeast: 0-100 km/h en 2.7 segundos con más de 2,000 kg de peso — el pickup de producción más rápido de la historia","Al lado en la foto: un BMW azul — el contraste entre diseño europeo clásico y acero futurista americano en el mismo parqueadero"]
+  },{
+    id:"miniCooperSRed",make:"Mini",model:"Cooper S (F56)",years:"2014–presente",
+    photoDate:"21 de junio, 2026",photoTimestamp:20260621,featured:false,
+    featuredReason:"",
+    review:"Un Mini Cooper S rojo con techo negro y Simón con la camiseta de Colombia — pero el detalle que hace a este Mini único es la firma de Paddy Hopkirk en la carrocería. Hopkirk fue el piloto que ganó el Rally de Montecarlo de 1964 en un Mini Cooper S BMC, la victoria que puso al Mini en el mapa del automovilismo mundial. Falleció el 23 de agosto de 2022 a los 82 años, lo que convierte su firma en una pieza histórica. Este ejemplar F56 en rojo con las franjas de capó y el logo MINI en la parrilla es un guiño directo al Mini de carreras original — y quien lo conduce claramente lo sabe.",
+    hp:192,topSpeed:"235 km/h",zero:"6.7 s",priceCAD:"$35,000–$45,000 CAD",badge:"",badgeLabel:"",imgKey:"miniPaddyHopkirk",
+    specs:{"Motor":"I4 2.0L TwinPower Turbo B48","Potencia":"192 hp / 207 lb-ft","Transmisión":"Manual 6 vel. o automática 7 vel. DCT","Tracción":"FWD","0–100 km/h":"6.7 seg","Vel. máxima":"235 km/h","Carrocería":"Hatchback 3 puertas (F56)","Peso":"1,275 kg","Años de prod.":"2014–presente","Ubicación":"Coquitlam, BC (placa BC VP2 37G)","En la foto":"Simón"},
+    highlights:["Firma de Paddy Hopkirk en la carrocería — el legendario piloto que ganó el Rally de Montecarlo 1964 en un Mini Cooper S falleció en agosto de 2022, haciendo su firma una reliquia","Simón con la camiseta de Colombia posando junto al Mini rojo — uno de los más clásicos del dashboard","El Mini Cooper S F56 usa el mismo nombre que el BMC Cooper S de 1964 de Paddy Hopkirk pero ahora con 192hp y turbo","El Mini Cooper original (1961) tenía 55hp y pesaba 630 kg — este Cooper S tiene 192hp en casi el doble de peso, pero sigue siendo el más ágil de su categoría","El rojo con techo negro y franjas de capó es el esquema de color más cercano al Mini Cooper S de competición de los 60"]
+  },{
+    id:"fordGranTorino",make:"Ford",model:"Gran Torino",years:"1975–1976",
+    photoDate:"21 de junio, 2026",photoTimestamp:20260621,featured:false,
+    featuredReason:"",
+    review:"Un Ford Gran Torino negro impecable con rines de aluminio de bajo perfil, placa BC 'JD2 48L' — hallazgo especial gracias a Andrés Rodríguez Esmeral, el tío de Simón, que lo encontró y lo compartió con la familia. El Gran Torino es el auto que Clint Eastwood puso de moda con la película homónima de 2008 — aunque el de esa película era un 1972. Este 1975/76 es la generación que también inmortalizó la serie de TV Starsky & Hutch (aunque ese era rojo con franja blanca). El negro lo hace más discreto pero no menos imponente: el V8 Cleveland bajo el capó y las proporciones de muscle car americano de los 70 no pasan desapercibidos en ningún parqueadero de Vancouver.",
+    hp:218,topSpeed:"190 km/h",zero:"9.0 s",priceCAD:"$25,000–$55,000 CAD",badge:"",badgeLabel:"",imgKey:"fordGranTorino",
+    specs:{"Motor":"V8 351 Cleveland o 460 (dependiendo spec)","Potencia":"~218 hp / 310 lb-ft","Transmisión":"Automática SelectShift 3 vel.","Tracción":"RWD","0–100 km/h":"9.0 seg","Vel. máxima":"190 km/h","Carrocería":"Coupé fastback 2 puertas","Peso":"1,700 kg","Años de prod.":"1975–1976","Ubicación":"Vancouver, BC (placa BC JD2 48L)","Colaboración":"Andrés Rodríguez Esmeral (tío de Simón)"},
+    highlights:["Colaboración especial de Andrés Rodríguez Esmeral — el tío de Simón encontró este Gran Torino y lo compartió con la familia","El Gran Torino negro es el auto más icónico del parqueadero — el mismo modelo que Clint Eastwood condujo en la película 'Gran Torino' (2008)","La serie de TV Starsky & Hutch (1975–1979) usó un Gran Torino rojo con franja blanca — este negro es igual de imponente","Rines de aluminio de bajo perfil modernos que le quedan perfectos sin romper el carácter del original","El Gran Torino de los 70 representa el fin de la era de los muscle cars americanos sin restricciones — este ejemplar se conserva impecable"]
+  },{
+    id:"porsche992gts",make:"Porsche",model:"911 Carrera GTS Cabriolet (992)",years:"2021–presente",
+    photoDate:"21 de junio, 2026",photoTimestamp:20260621,featured:false,
+    featuredReason:"",
+    review:"Un Porsche 911 GTS Cabriolet generación 992 en gris pizarra con pinzas rojas y rines negros mate, frente al CF Pacific Centre de Vancouver — el más refinado y completo de los 911 modernos encontrado con el techo bajado un domingo de junio. El GTS ocupa el punto exacto entre el Carrera S y el GT3: más potencia que el S, más practicable que el GT3. La generación 992 (2019–presente) es la primera 911 con motor de 3.0L biturbo en todas sus versiones y la primera con dirección trasera de serie en el GTS. Un 911 que puede manejarse diariamente y ganarte en la pista al mismo tiempo.",
+    hp:473,topSpeed:"312 km/h",zero:"3.3 s",priceCAD:"$200,000–$230,000 CAD",badge:"",badgeLabel:"",imgKey:"porsche992gts",
+    specs:{"Motor":"Flat-6 3.0L biturbo","Potencia":"473 hp / 420 lb-ft","Transmisión":"PDK 8 vel.","Tracción":"RWD (o AWD 4 GTS)","0–100 km/h":"3.3 seg","Vel. máxima":"312 km/h","Carrocería":"Cabriolet 2+2, techo eléctrico","Peso":"1,595 kg","Años de prod.":"2021–presente (992)","Ubicación":"CF Pacific Centre, Vancouver, BC (placa BC VP2 51M)"},
+    highlights:["Techo bajado frente al CF Pacific Centre — el 911 GTS Cabriolet en el escenario urbano más reconocible de Vancouver","El GTS es el punto exacto entre el Carrera S y el GT3: 473hp, dirección trasera de serie y el equipamiento deportivo completo sin sacrificar usabilidad diaria","La generación 992 (2019–presente) fue la primera 911 en llevar biturbo en toda la gama — el turbo llegó al Carrera base, dejando al GTS con ajuste de potencia propio","Pinzas de freno rojas sobre rines negros mate en gris pizarra — la combinación que hacen que el GTS se vea diferente a cualquier otro 911 en la calle","Cuarto Porsche documentado en Junio 2026 — Vancouver vive un verano de Porsches"]
+  },{
+    id:"nissan350Z",make:"Nissan",model:"350Z Roadster",years:"2003–2009",
+    photoDate:"21 de junio, 2026",photoTimestamp:20260621,featured:false,
+    featuredReason:"",
+    review:"Un Nissan 350Z Roadster plata cruzando las calles de Vancouver con el techo bajado — kit de carrocería ancho, rines de multiradiados tipo racing y placa de Campus Nissan. El 350Z fue el regreso de Nissan al deportivo puro después de una larga ausencia, basado en el icónico Z de los 70. Con el V6 de 3.5L VQ de 287hp, el 350Z fue uno de los deportivos mejor valorados por precio/desempeño de su generación — y sigue siendo una de las plataformas de tuning más activas de la cultura JDM actual.",
+    hp:287,topSpeed:"250 km/h",zero:"5.5 s",priceCAD:"$12,000–$30,000 CAD (usado)",badge:"",badgeLabel:"",imgKey:"nissan350Z",
+    specs:{"Motor":"V6 3.5L VQ35DE / VQ35HR","Potencia":"287–306 hp / 268–268 lb-ft","Transmisión":"Manual 6 vel. o automática 5 vel.","Tracción":"RWD","0–100 km/h":"5.5 seg","Vel. máxima":"250 km/h","Carrocería":"Roadster 2 plazas, techo de lona eléctrico","Peso":"1,525 kg","Años de prod.":"2003–2009 (Z33)","Ubicación":"Vancouver, BC (placa BC WW1 87B — Campus Nissan)"},
+    highlights:["Placa de Campus Nissan — el dealer de Nissan más grande de BC, en el marco de placa del Roadster","Kit de carrocería ancho y rines de multiradiados tipo racing — un build de tuning que le da más presencia al Z sin exagerar","El V6 VQ35 de Nissan fue elegido como uno de los 10 mejores motores del mundo por Ward's Auto durante 7 años consecutivos","El 350Z revivió la línea Z de Nissan en 2003 tras una ausencia de 11 años desde el 300ZX — y el mercado respondió con 170,000 unidades vendidas","La versión Roadster llegó en 2004, un año después del Coupé — con el mismo motor pero 45 kg adicionales por la capota eléctrica"]
+  },{
+    id:"ferrariF8",make:"Ferrari",model:"F8 Tributo",years:"2019–2022",
+    photoDate:"21 de junio, 2026",photoTimestamp:20260621,featured:false,
+    featuredReason:"",
+    review:"Un Ferrari F8 Tributo rojo con franjas negras y pinzas amarillas frente a un edificio de lujo en Vancouver — al fondo otro Ferrari rojo Spider los acompaña. El F8 Tributo fue el último V8 biturbo de Maranello antes de que el 296 GTB híbrido tomara el relevo: 710hp del mismo V8 3.9L que el 488, pero con el 10% de los componentes derivados del 488 Challenge de competición. El nombre 'Tributo' es un homenaje a los V8 turbo de Ferrari desde el 308 de los 70. El 296 GTB que ya tenemos en el dashboard es más nuevo y más potente, pero el F8 es el último Ferrari V8 'puro' sin asistencia eléctrica.",
+    hp:710,topSpeed:"340 km/h",zero:"2.9 s",priceCAD:"$300,000–$420,000 CAD",badge:"",badgeLabel:"",imgKey:"ferrariF8",
+    specs:{"Motor":"V8 3.9L biturbo","Potencia":"710 hp / 568 lb-ft","Transmisión":"Doble embrague 7 vel.","Tracción":"RWD","0–100 km/h":"2.9 seg","Vel. máxima":"340 km/h","Carrocería":"Berlinetta 2 puertas, motor central-trasero","Peso":"1,330 kg","Años de prod.":"2019–2022","Ubicación":"Vancouver, BC"},
+    highlights:["Dos Ferraris rojos juntos frente a un edificio de lujo — el tipo de imagen que Vancouver no ve en cualquier domingo","El F8 Tributo es el sucesor directo del 488 GTB que ya tenemos en el dashboard — mismo V8 3.9L biturbo pero afinado a 710hp (+50hp)","'Tributo': homenaje a los V8 turbo de Ferrari desde el 208/308 Turbo de los años 70 y 80","El 10% de sus componentes provienen directamente del Ferrari 488 Challenge de competición","Junto al 296 GTB y el 488 GTB ya en el dashboard, Junio 2026 tiene tres generaciones de Ferrari V8 documentadas en el mismo mes"]
+  },{
+    id:"ferrari488Spider",make:"Ferrari",model:"488 Spider",years:"2015–2019",
+    photoDate:"21 de junio, 2026",photoTimestamp:20260621,featured:false,
+    featuredReason:"",
+    review:"El compañero descapotable del F8 Tributo frente al Fairmont Pacific Rim — un Ferrari 488 Spider rojo con pinzas rojas. El 488 Spider es la versión convertible del 488 GTB: mismo V8 3.9L biturbo de 661hp pero con el techo retráctil de aluminio que abre y cierra en 14 segundos. En este caso el 488 Spider de la foto comparte el espacio con el F8 Tributo — su sucesor inmediato — lo que da una foto comparativa única entre dos generaciones del V8 Ferrari en el mismo momento, en la misma acera.",
+    hp:661,topSpeed:"325 km/h",zero:"3.0 s",priceCAD:"$280,000–$380,000 CAD",badge:"",badgeLabel:"",imgKey:"ferrari488Spider",
+    specs:{"Motor":"V8 3.9L biturbo","Potencia":"661 hp / 561 lb-ft","Transmisión":"Doble embrague 7 vel.","Tracción":"RWD","0–100 km/h":"3.0 seg","Vel. máxima":"325 km/h","Carrocería":"Spider descapotable, techo retráctil de aluminio","Peso":"1,525 kg","Años de prod.":"2015–2019","Ubicación":"Fairmont Pacific Rim, Vancouver, BC"},
+    highlights:["Fotografiado junto al F8 Tributo — el 488 Spider y su sucesor directo en la misma acera del Fairmont Pacific Rim","El techo retráctil de aluminio del Spider abre y cierra en 14 segundos a velocidades de hasta 45 km/h","Mismo motor V8 3.9L biturbo que el 488 GTB de Marzo 2020 — el Spider añade el descapote con solo 70 kg adicionales","Junio 2026 acumula 4 Ferraris distintos: 488 GTB (Marzo 2020), 296 GTB, F8 Tributo y este 488 Spider — toda la saga V8 reciente","El 488 Spider fue reemplazado en 2019 por el F8 Spider — el mismo que está estacionado a su lado en esta foto"]
   }]},
   "2026-05":{label:"Mayo 2026",recap:"El mes más diverso del dashboard: desde el Lamborghini Revuelto de 1,001hp frente al Fairmont Pacific Rim hasta el Citroën 2CV \"Charlie\" de 29hp estacionado junto a su compatriota, el Renault Dauphine. Entre ambos extremos aparecieron el MR2 Spyder con su placa BCMR2.com, el Scirocco 16V hallado en el Port Moody Soccer Club donde juega Simón, dos GR Supra de pista encontrados en plena calle, y el raro Hyundai Equus. El Saab 9-3 SportCombi se quedó con el título de hallazgo más entrañable — una reliquia sueca que sigue rodando.",cars:[{
     id:"lambRevuelto",make:"Lamborghini",model:"Revuelto",years:"2023–presente",
@@ -502,6 +644,14 @@ const CARS={
     hp:29,topSpeed:"115 km/h",zero:"30.0 s",priceCAD:"$10,000–$25,000 CAD",badge:"",badgeLabel:"",imgKey:"citroen2cv",
     specs:{"Motor":"I2 602cc OHV aire","Potencia":"29 hp / 32 lb-ft","Transmisión":"Manual 4 vel.","Tracción":"FWD","0–100 km/h":"30 seg","Vel. máxima":"115 km/h (72 mph)","Carrocería":"Berlina 4 plazas techo enrollable","Peso":"560 kg","Años de prod.":"1948–1990","Precio CA (usado)":"$10,000–$25,000"},
     highlights:["Se llama 'Charlie' — nombre escrito en el parabrisas, este 2CV tiene identidad propia","Al lado está el Renault Dauphine azul — los dos franceses más icónicos del parqueadero del ABFM","Producido durante 42 años sin cambios fundamentales — el diseño más longevo de la historia del automóvil","El techo de lona enrollable fue diseñado para transportar un sombrero sin aplastarlo — diseño para campesinos franceses","Solo 2 cilindros enfriados por aire — el motor más simple de cualquier auto de 4 ruedas de la posguerra"]
+  },{
+    id:"mercuryLeadSled",make:"Mercury",model:"Eight – Lead Sled Custom",years:"1949–1951",
+    photoDate:"24 de mayo, 2026",photoTimestamp:20260524,featured:false,
+    featuredReason:"",
+    review:"Un Mercury Eight borgoña metálico con build custom 'Lead Sled' completo — body chopped, stance muy baja, cromados impecables y la silueta redondeada que definió los custom californios de los 50. Placa BC '2M3 243', visto en la zona de Coquitlam un domingo. El Mercury 1949-1951 fue la base favorita de los customizadores de la era porque su carrocería de acero era fácil de modificar: el chopped se hacía cortando secciones del techo para bajarlo, el channeling bajaba el cuerpo sobre el chasis, y el leaded suavizaba todas las uniones con plomo — de ahí el nombre 'Lead Sled'. James Dean condujo uno en 'Rebelde sin causa' (1955) y sellaron el mito para siempre.",
+    hp:110,topSpeed:"160 km/h",zero:"15.0 s",priceCAD:"$40,000–$120,000 CAD (build custom)",badge:"",badgeLabel:"",imgKey:"mercuryLeadSled",
+    specs:{"Motor":"V8 4.2L flathead (base)","Potencia":"110 hp / 200 lb-ft","Transmisión":"Automática 3 vel.","Tracción":"RWD","0–100 km/h":"~15.0 seg","Vel. máxima":"~160 km/h","Carrocería":"Fastback 2 puertas — custom chopped, channeled","Estilo":"Lead Sled — estética custom californiana de los 50","Años de prod.":"1949–1951","Ubicación":"Coquitlam, BC (placa BC 2M3 243)"},
+    highlights:["La silueta del 'Lead Sled' con techo cortado (chopped) y cuerpo bajo (channeled) — el custom californiano más influyente de los años 50","James Dean condujo un Mercury '49 en la película 'Rebelde sin causa' (1955) — el auto que consolidó la cultura del custom entre los jóvenes americanos","El nombre 'Lead Sled' viene de la técnica de rellenar las uniones con plomo (lead) para suavizar la carrocería — trabajo de alta habilidad artesanal","El Mercury Eight 1949-1951 fue la base preferida de customizadores como George Barris y Dean Jeffries por la flexibilidad de su acero","Borgoña metálico con cromados impecables — el color y el estado que confirma que este build fue tomado muy en serio"]
   }]},
   "2026-04":{label:"Abril 2026",recap:"Mes sin hallazgos registrados todavía — la búsqueda continúa.",cars:[]},
   "2026-03":{label:"Marzo 2026",recap:"El mes inaugural del dashboard, con un solo hallazgo: el BMW Serie 7 E38, la berlina insignia de los 90s que definió el lujo alemán de esa década.",cars:[{
@@ -523,14 +673,99 @@ const CARS={
     specs:{"Motor":"V8 6.0L Vortec (base, antes de modificaciones)","Potencia":"300 hp / 360 lb-ft","Transmisión":"Automática 4–6 vel.","Tracción":"4WD","0–100 km/h":"10.0 seg","Vel. máxima":"169 km/h","Carrocería":"Pickup doble cabina, lift extremo + llantas de barro XL","Generación":"GMT800 (1999–2006)","Ubicación":"Spooners Tires & Auto, St. Petersburg, FL","En la foto":"Simón y Nelson"},
     highlights:["Simón y Nelson posando junto al camión durante un viaje familiar a Florida, 18 de abril de 2019 — el hallazgo más lejano de Vancouver en todo el dashboard","Es el camión publicitario de Spooners Tires & Auto, taller de llantas y mecánica en el 5582 66th St N, St. Petersburg — su dirección y servicios están pintados directamente en la carrocería","Llantas de barro y suspensión de eje sólido extremadamente levantada — un lift muy por encima de cualquier camión 'lifted' normal de la calle","Base: Chevrolet Silverado HD generación GMT800 (1999–2006) con el clásico V8 6.0L Vortec antes de cualquier modificación","El rosa chillón con grafitis negros es 100% intencional — un camión diseñado para ser visto desde la autopista, no para ser práctico"]
   }]},
-  "2021-11":{label:"Noviembre 2021",recap:"Un JDM retro poco común para Vancouver: este Nissan Pao, uno de los icónicos 'Pike Cars' de Nissan de finales de los 80, encontrado estacionado de noche con placas de BC.",cars:[{
+  "2020-06":{label:"Junio 2020",recap:"Una limusina Lincoln Navigator blanca — el hallazgo más largo (literalmente) de todo el dashboard, estacionada en un barrio residencial de Vancouver.",cars:[{
+    id:"lincolnLimo",make:"Lincoln",model:"Navigator Stretch Limousine",years:"2003–2006",
+    photoDate:"6 de junio, 2020",photoTimestamp:20200606,featured:true,
+    featuredReason:"Único hallazgo de junio 2020 — y el auto más largo del dashboard: una Lincoln Navigator Stretch Limousine blanca de 10 metros con placa de BC.",
+    review:"Una Lincoln Navigator convertida en limousina de ocasiones especiales — el tipo de vehículo que aparece en barrios residenciales solo cuando alguien cumple 15 años, se gradúa o llega a la boda con estilo. La base Navigator (2003–2006) ya era un SUV de proporciones generosas, pero los carroceros de limusinas la extendieron hasta prácticamente el doble de su longitud original, añadiendo una sección central de cristales tintados que puede acomodar hasta 14 pasajeros. Vista desde una esquina de Vancouver, entre casas y jardines, la escala de este vehículo parece completamente incorrecta — que es exactamente lo que hace memorable verla.",
+    hp:300,topSpeed:"180 km/h",zero:"10.5 s",priceCAD:"$60,000–$120,000 CAD (build limousina)",badge:"",badgeLabel:"",imgKey:"lincolnLimo",
+    specs:{"Motor":"V8 5.4L 3V Triton","Potencia":"300 hp / 365 lb-ft","Transmisión":"Automática 4 vel.","Tracción":"4WD","0–100 km/h":"10.5 seg","Vel. máxima":"180 km/h","Carrocería":"SUV Stretch Limousine — extensión carrocera ~10 m","Capacidad":"Hasta 14 pasajeros","Años de prod.":"2003–2006 (base Navigator)","Ubicación":"Vancouver, BC (placa BC PJ-2979)"},
+    highlights:["Una Lincoln Navigator de por sí ya es grande — convertida en limusina llega a casi el doble de longitud original","La sección central con cristales tintados puede alojar hasta 14 pasajeros con bar, iluminación LED y audio propio","Placa de BC 'PJ-2979' — una limusina registrada localmente, parte de la flota de ocasiones especiales de Vancouver","El V8 5.4L Triton de Ford/Lincoln también aparece en el F-150, la Expedition y la Mustang GT500 de la época","Este es el auto más largo del dashboard — y probablemente el más difícil de estacionar"]
+  }]},
+  "2020-05":{label:"Mayo 2020",recap:"Un BMW 230i Cabriolet blanco con interior borgoña — hallado con el techo abierto en un día de sol en Vancouver. El tipo de coupé descapotable que desaparece en cuanto llega el invierno y reaparece cuando el cielo lo permite.",cars:[{
+    id:"bmw230i",make:"BMW",model:"230i Cabriolet",years:"2015–2021",
+    photoDate:"18 de mayo, 2020",photoTimestamp:20200518,featured:true,
+    featuredReason:"Único hallazgo de mayo 2020 — un BMW 230i Cabriolet blanco con interior rojo borgoña, techo abierto en un día de sol de Vancouver.",
+    review:"Un BMW Serie 2 Cabriolet blanco con interior en borgoña — estacionado con el techo completamente recogido en una tarde soleada de mayo. El F23 fue la última generación del Serie 2 Cabriolet antes de que BMW lo descontinuara en 2021 sin reemplazarlo directamente, optando por convertir el Serie 2 en un modelo de tracción delantera mucho más compacto. Como coupé descapotable de cuatro plazas con el motor turbo I4 de 248hp, era la combinación perfecta de practicidad y disfrute que BMW siempre supo ofrecer en formato pequeño. El interior borgoña es el toque de carácter que separa este Cabriolet de los que salen del lote en gris con interior negro.",
+    hp:248,topSpeed:"250 km/h",zero:"6.1 s",priceCAD:"$50,000–$65,000 CAD (nuevo)",badge:"",badgeLabel:"",imgKey:"bmw230i",
+    specs:{"Motor":"I4 2.0L TwinPower Turbo B48","Potencia":"248 hp / 258 lb-ft","Transmisión":"Automática 8 vel. ZF","Tracción":"RWD","0–100 km/h":"6.1 seg","Vel. máxima":"250 km/h","Carrocería":"Cabriolet 4 plazas, techo de lona eléctrico","Peso":"1,595 kg","Años de prod.":"2015–2021 (F23)","Ubicación":"Vancouver, BC"},
+    highlights:["Techo abierto en pleno sol de mayo — la razón por la que alguien compra un Cabriolet en Vancouver","Interior borgoña sobre carrocería blanca — una combinación poco común que se aleja del clásico negro de los BMW de concesionario","El F23 fue la última generación del Serie 2 Cabriolet: BMW lo discontinuó en 2021 sin sucesor directo","Motor B48 de 2.0L turbo: el mismo bloque que usa BMW en casi toda su gama actual, refinado y eficiente","Transmisión automática ZF de 8 velocidades — la misma unidad que usa BMW en sus modelos M Performance"]
+  }]},
+  "2021-06":{label:"Junio 2021",recap:"Un Chevrolet Bel Air de 1955 verde turquesa, impecable, estacionado en la esquina de Pacific — uno de los clásicos americanos más reconocibles de la historia rodando por Vancouver.",cars:[{
+    id:"chevyBelAir55",make:"Chevrolet",model:"Bel Air",years:"1955",
+    photoDate:"12 de junio, 2021",photoTimestamp:20210612,featured:true,
+    featuredReason:"Único hallazgo de junio 2021 — un Chevrolet Bel Air 1955 verde turquesa en estado de restauración impecable, con placa de BC.",
+    review:"Un Chevrolet Bel Air de 1955 en verde turquesa que detiene el tiempo: cromados de espejo, pintura sin una imperfección y rines de aluminio modernos que le dan un toque restomod sin romper la línea del clásico. El Bel Air del 55 fue la primera generación del auto americano por excelencia — el año en que el diseñador Harley Earl introdujo el famoso 'jet-age' styling y Chevrolet lanzó el Small Block V8 que cambió la industria para siempre. Que uno de estos ruede por las calles de Vancouver con placas de BC no es casual: hay una comunidad seria de coleccionistas de clásicos americanos en la costa oeste que mantiene vivos estos autos décadas después.",
+    hp:162,topSpeed:"170 km/h",zero:"12.5 s",priceCAD:"$45,000–$80,000 CAD (restaurado)",badge:"",badgeLabel:"",imgKey:"chevyBelAir55",
+    specs:{"Motor":"V8 265 ci Small Block (base)","Potencia":"162 hp / 257 lb-ft","Transmisión":"Manual 3 vel. / Automática PowerGlide 2 vel.","Tracción":"RWD","0–100 km/h":"12.5 seg","Vel. máxima":"170 km/h","Carrocería":"Sedán 4 puertas, hard-top","Peso":"1,474 kg","Años de prod.":"1955 (1ª gen Bel Air)","Ubicación":"Vancouver, BC (placa BC LLO 50H)"},
+    highlights:["Verde turquesa con cromados impecables y rines de aluminio modernos — restauración de primer nivel que puede ser un restomod","El 1955 fue el año del debut del Small Block V8 de Chevrolet — el motor más influyente de la historia del automóvil americano","Diseñado por Harley Earl con el estilo 'jet-age' de los 50: aletas traseras, chrome trim y parrilla de 'sonrisa' ahora icónica","El Bel Air del 55 compartió plataforma con el Cameo pickup y el Nomad wagon — todos coleccionables hoy en día","Visto en la esquina de Pacific, en el centro de Vancouver — un clásico americano de 70 años rodando por una ciudad moderna"]
+  }]},
+
+  "2021-08":{label:"Agosto 2021",recap:"Un roadster rojo de estilo años 30 encontrado en un centro comercial de Coquitlam — el tipo de hallazgo que confirma que los clásicos más inesperados aparecen donde menos los buscas.",cars:[{
+    id:"ssJaguarReplica",make:"Jaguar",model:"SS100 – Réplica Roadster 1930s",years:"~1935 (réplica)",
+    photoDate:"29 de agosto, 2021",photoTimestamp:20210829,featured:true,
+    featuredReason:"Único hallazgo de agosto 2021 — una réplica impecable de un roadster británico estilo SS Jaguar de los años 30, encontrada en un parqueadero de Coquitlam.",
+    review:"Un roadster rojo de estilo 1930s estacionado en un parqueadero de centro comercial en Coquitlam — el tipo de contraste que define este hobby. El diseño replica de cerca el SS Jaguar 100 (SS Cars Ltd, luego Jaguar) de mediados de los 30: guardafangos tipo ciclo separados del cuerpo, faros cromados en soportes externos, capó largo con rejillas de ventilación, parrilla vertical cromada y el neumático de repuesto montado en el guardabarro. Los faros amarillos tipo rallye en el parachoques delantero y el estado impecable de la pintura y los cromados sugieren una restauración o réplica de alta calidad. Placa BC 'HT2 87G' confirma que rueda activamente por Vancouver.",
+    hp:125,topSpeed:"160 km/h",zero:"12.0 s",priceCAD:"$30,000–$80,000 CAD (réplica)",badge:"",badgeLabel:"",imgKey:"ssJaguarReplica",
+    specs:{"Motor":"Desconocido (réplica — posiblemente I6 o V8 moderno)","Potencia":"~125 hp","Transmisión":"Manual","Tracción":"RWD","0–100 km/h":"~12.0 seg","Vel. máxima":"~160 km/h","Carrocería":"Roadster 2 plazas abierto, guardafangos tipo ciclo","Estilo":"Réplica SS Jaguar 100 o British roadster 1930s","Ubicación":"Coquitlam, BC (placa BC HT2 87G)"},
+    highlights:["Encontrado en el parqueadero de un centro comercial en Coquitlam — el hallazgo más inesperado por ubicación del dashboard","Diseño replica del SS Jaguar 100 (1936–1940), el deportivo que precedió al Jaguar XK120 y definió la línea clásica de la marca","Faros amarillos tipo rallye montados en el parachoques — un guiño a los autos de competencia europeos de los años 30 que usaban lentes amarillas","Guardafangos tipo ciclo, neumático de repuesto externo en el guardabarro y parrilla cromada vertical — los tres elementos que definen el estilo roadster 1930s","El SS Jaguar 100 original alcanzaba 100 mph (161 km/h) y fue el primer Jaguar en usar ese nombre como marca"]
+  }]},
+  "2021-11":{label:"Noviembre 2021",recap:"El mes más poderoso del dashboard: el Lamborghini Huracán STO con 640hp toma el destacado desde el showroom de Lamborghini Vancouver, superando al AMG GT R verde (577hp) y al Bentley Continental GTC (552hp). El Alfa Romeo 4C, el 911 navideño del showroom Weissach y el Nissan Pao de 52hp completan el mes más contrastante de la colección.",cars:[{
+    id:"amgGTR",make:"Mercedes-Benz",model:"AMG GT R",years:"2017–2023",
+    photoDate:"8 de noviembre, 2021",photoTimestamp:20211108,featured:false,
+    featuredReason:"",
+    review:"Un Mercedes-AMG GT R verde brillante con franja amarilla, estacionado en plena calle de Vancouver en un día de lluvia de noviembre. El badge 'V8 BITURBO' en el guardabarro delantero confirma que bajo ese capó largo vive el motor AMG de 4.0L con 577hp — el mismo bloque que AMG usa en el GT S, el C63 y el E63, pero aquí en su versión más bestial, con diferencial trasero de deslizamiento limitado de 6 posiciones y geometría de suspensión tomada directamente del GT3 de Le Mans. El verde 'Green Hell Magno' original es el color que AMG eligió para conmemorar las pruebas en el circuito de Nürburgring — este lleva la franja amarilla que convierte cualquier auto verde en una referencia inmediata al Lamborghini Miura de Valentino Balboni o al Porsche 917K del Le Mans. Verlo en la llovizna de Vancouver es ver un auto de circuito tomado por la ciudad.",
+    hp:577,topSpeed:"318 km/h",zero:"3.6 s",priceCAD:"$200,000–$250,000 CAD",badge:"",badgeLabel:"",imgKey:"amgGTR",
+    specs:{"Motor":"V8 4.0L AMG Biturbo M178","Potencia":"577 hp / 516 lb-ft","Transmisión":"DCT 7 vel. AMG Speedshift","Tracción":"RWD","0–100 km/h":"3.6 seg","Vel. máxima":"318 km/h","Carrocería":"Coupé 2 plazas, fibra de carbono parcial","Peso":"1,555 kg","Años de prod.":"2017–2023","Ubicación":"Vancouver, BC"},
+    highlights:["Badge 'V8 BITURBO' en el guardabarro — el mismo bloque AMG M178 de 4.0L que equipa el C63, E63 y el GT S, aquí en su configuración más extrema","Verde con franja amarilla — la combinación de colores que evoca el Lamborghini Miura de Valentino Balboni y el Porsche 917K del Le Mans 1970","El 'Green Hell Magno' fue el color de lanzamiento oficial del GT R, en honor al Nürburgring Nordschleife — el circuito más exigente del mundo","Diferencial trasero de deslizamiento limitado electrónico con 6 configuraciones — más ajustabilidad que muchos autos de pista","Geometría de suspensión derivada del GT3 de Le Mans — no es una mejora en papel, es tecnología de circuito adaptada a la calle"]
+  },{
     id:"nissanPao",make:"Nissan",model:"Pao",years:"1989–1991",
-    photoDate:"21 de noviembre, 2021",photoTimestamp:20211121,featured:true,
-    featuredReason:"Único hallazgo de noviembre 2021 — un Nissan Pao, uno de los raros 'Pike Cars' japoneses de los 80, con placas de BC.",
-    review:"Un JDM diminuto y carismático escondido entre autos modernos en un parqueadero de noche: el Nissan Pao, parte de la serie 'Pike Factory' de Nissan junto al Figaro, el Be-1 y el S-Cargo. Vendido únicamente en Japón entre 1989 y 1991 por reserva — más de 51,000 personas aplicaron para solo 31,352 unidades fabricadas — el Pao mezcla líneas de un Mini clásico, ventanas tipo Citroën 2CV y un diseño que parece sacado de una caricatura. Que uno de estos haya llegado hasta Vancouver, con placas de Columbia Británica, es el tipo de hallazgo que solo aparece cuando menos lo esperas.",
+    photoDate:"21 de noviembre, 2021",photoTimestamp:20211121,featured:false,
+    featuredReason:"",
+    review:"Un JDM diminuto y carismático escondido entre autos modernos en un parqueadero de noche: el Nissan Pao, parte de la serie 'Pike Factory' de Nissan junto al Figaro, el Be-1 y el S-Cargo. Vendido únicamente en Japón entre 1989 y 1991 por reserva — más de 51,000 personas aplicaron para solo 31,352 unidades fabricadas.",
     hp:52,topSpeed:"140 km/h",zero:"17.4 s",priceCAD:"$8,000–$20,000 CAD (importado, mercado JDM)",badge:"",badgeLabel:"",imgKey:"nissanPao",
     specs:{"Motor":"I4 1.0L MA10S","Potencia":"52 hp / 55 lb-ft","Transmisión":"Manual 5 vel. o automática 3 vel.","Tracción":"FWD","0–100 km/h":"17.4 seg","Vel. máxima":"140 km/h","Carrocería":"Hatchback 3 puertas, techo de lona opcional","Peso":"720–760 kg","Años de prod.":"1989–1991 (31,352 unidades)","Ubicación":"Vancouver, BC (placas BC)"},
     highlights:["Uno de los 'Pike Cars' de Nissan — junto al Figaro, el Be-1 y el S-Cargo, autos retro de edición limitada vendidos solo en Japón por reserva","Más de 51,000 solicitudes para apenas 31,352 unidades fabricadas entre 1989 y 1991 — se agotó en 3 meses","Comparte plataforma y motor con el Nissan Micra/March de la época: un 1.0L de apenas 52hp","El diseño mezcla guiños al Mini clásico (manijas externas), al Citroën 2CV (ventanas tipo flap) y a los autos 'woodie' (molduras laterales)","Importado legalmente a Canadá bajo la regla de los 25 años — un capricho JDM poco común incluso para los estándares de Vancouver"]
+  },{
+    id:"bentleyGTC",make:"Bentley",model:"Continental GTC",years:"2006–2011",
+    photoDate:"16 de noviembre, 2021",photoTimestamp:20211116,featured:false,
+    featuredReason:"",
+    review:"Un Bentley Continental GTC negro con interior camel y el techo de lona recogido en noviembre — el gran turismo descapotable más lujoso que Bentley ha fabricado, visto en Glen Drive, Coquitlam. El Continental GTC es la versión cabriolet del Continental GT: cuatro plazas, W12 de 6.0L biturbo con 552hp y una capota eléctrica que sube y baja en 25 segundos. El interior de cuero camel con costuras contrastantes visible en esta foto es un equipo típico del GTC de primera generación — Bentley ofrecía decenas de combinaciones a medida. Un auto que no necesita velocidad para impresionar: el peso del W12 y el silencio de la cabina hacen el trabajo.",
+    hp:552,topSpeed:"318 km/h",zero:"4.8 s",priceCAD:"$60,000–$120,000 CAD (usado)",badge:"",badgeLabel:"",imgKey:"bentleyGTC",
+    specs:{"Motor":"W12 6.0L biturbo","Potencia":"552 hp / 479 lb-ft","Transmisión":"Automática ZF 6 vel.","Tracción":"AWD","0–100 km/h":"4.8 seg","Vel. máxima":"318 km/h","Carrocería":"Cabriolet 4 plazas, capota de lona eléctrica","Peso":"2,355 kg","Años de prod.":"2006–2011 (1ª gen GTC)","Ubicación":"Glen Drive, Coquitlam, BC (placa BC JR7 15T)"},
+    highlights:["Techo de lona recogido en noviembre en Coquitlam — Glen Drive al fondo confirma la ubicación","Motor W12 de 6.0L biturbo: el único motor de 12 cilindros en configuración W de la industria, compartido con el Volkswagen Phaeton","Interior camel con costuras contrastantes — Bentley ofrecía más de 100 combinaciones de cuero y madera en esta generación","La capota eléctrica de lona opera en 25 segundos a velocidades de hasta 30 km/h — sin necesidad de detener el auto","Un GTC en buen estado se ha convertido en una de las berlinas de lujo usadas con mejor relación precio-exclusividad del mercado"]
+  },{
+    id:"alfaRomeo4C",make:"Alfa Romeo",model:"4C",years:"2013–2020",
+    photoDate:"21 de noviembre, 2021",photoTimestamp:20211121,featured:false,
+    featuredReason:"",
+    review:"Un Alfa Romeo 4C rojo con el marco de placa de 'Alfa-Romeo of Vancouver' — probablemente recién salido del concesionario local. El 4C es uno de los deportivos más puros fabricados en los últimos 20 años: sin dirección asistida, sin control de tracción que suavice la experiencia, con una carrocería de fibra de carbono que pesa menos de 900 kg y un motor turbo de 1.75L de 237hp montado en posición central-trasera. En un mercado donde cada supercar tiene más electrónica que un avión, el 4C elige el camino opuesto. Verlo en una calle de Vancouver en noviembre es ver uno de los últimos deportivos verdaderamente analógicos de producción reciente.",
+    hp:237,topSpeed:"258 km/h",zero:"4.5 s",priceCAD:"$60,000–$80,000 CAD (nuevo)",badge:"",badgeLabel:"",imgKey:"alfaRomeo4C",
+    specs:{"Motor":"I4 1.75L turbo intercooler","Potencia":"237 hp / 258 lb-ft","Transmisión":"TCT doble embrague 6 vel.","Tracción":"RWD motor central-trasero","0–100 km/h":"4.5 seg","Vel. máxima":"258 km/h","Carrocería":"Coupé 2 plazas, chasis de fibra de carbono","Peso":"895 kg (en seco)","Años de prod.":"2013–2020","Ubicación":"Vancouver, BC (marco de placa: Alfa-Romeo of Vancouver)"},
+    highlights:["Marco de placa 'ALFA-ROMEO OF VANCOUVER' — probablemente una unidad nueva recién entregada del concesionario local","Carrocería de fibra de carbono y aluminio: solo 895 kg en seco — más liviano que muchos hatchbacks compactos modernos","Sin dirección asistida y sin control de tracción de serie — una decisión de diseño deliberada para mantener la comunicación directa con el camino","Motor I4 1.75L turbo montado centralmente detrás del conductor — la misma lógica de diseño del Ferrari 308 y el Porsche 914","El 4C fue descontinuado en 2020 sin sucesor directo — uno de los últimos deportivos de bajo peso y alta pureza de conducción"]
+  },{
+    id:"porsche911weissach",make:"Porsche",model:"911 – Librea Carrera RS (Weissach)",years:"~1978–1983",
+    photoDate:"21 de noviembre, 2021",photoTimestamp:20211121,featured:false,
+    featuredReason:"",
+    review:"Un Porsche 911 con librea rally azul y amarillo del concesionario Weissach de Vancouver — foto desde el vitral del showroom durante su decoración navideña de 2021. El auto lleva luces auxiliares CIBIÉ amarillas, franja amarilla al estilo Carrera RS y, el detalle más memorable, una cornamenta de reno montada sobre el techo para la temporada de Navidad. Al fondo se distinguen otros Porsches del inventario, incluyendo el 993 negro con la placa 'WEISSACH'. El dealer homónimo del centro de desarrollo de Porsche en Alemania es uno de los especialistas en Porsches clásicos más conocidos de Vancouver.",
+    hp:180,topSpeed:"225 km/h",zero:"6.5 s",priceCAD:"$50,000–$120,000 CAD",badge:"",badgeLabel:"",imgKey:"porsche911weissach",
+    specs:{"Motor":"Flat-6 3.0L refrigerado por aire (era SC)","Potencia":"~180 hp","Transmisión":"Manual 5 vel.","Tracción":"RWD","0–100 km/h":"~6.5 seg","Vel. máxima":"~225 km/h","Carrocería":"Coupé 2+2 con librea rally Carrera RS","Luces":"CIBIÉ auxiliares amarillas","Ubicación":"Weissach Vancouver — showroom, Nov 2021"},
+    highlights:["Foto desde el vitral del showroom de Weissach Vancouver — el 911 decorado con cuernos de reno para la Navidad 2021","Librea azul y amarillo estilo Carrera RS con luces CIBIÉ amarillas — el look que inmortalizaron los rallyes europeos de los 70","Al fondo visible: el 993 negro 'WEISSACH' del Encuentro Harrison Hot Springs — dos hallazgos distintos conectados por el mismo dealer","Weissach toma su nombre del centro de desarrollo de Porsche en Baden-Württemberg, Alemania — la decisión de naming más apropiada de cualquier dealer clásico","Los cuernos de reno sobre el techo son el guiño navideño de un dealer que entiende que los autos también pueden tener humor"]
+  },{
+    id:"huracanSTO",make:"Lamborghini",model:"Huracán STO",years:"2020–presente",
+    photoDate:"21 de noviembre, 2021",photoTimestamp:20211121,featured:true,
+    featuredReason:"640hp, 0–100 en 3.0s y homologado para pista — el Huracán STO es el auto más extremo y potente de noviembre 2021, fotografiado en el showroom de Lamborghini Vancouver.",
+    review:"Un Lamborghini Huracán STO blanco con detalles rojos en el showroom de Lamborghini Vancouver, con la frase de Ferruccio Lamborghini en la pared del fondo: 'I wanted this car just for me. It was always a dream and must remain a dream.' El STO (Super Trofeo Omologata) es la versión más extrema del Huracán: derivado directamente del auto de carreras Super Trofeo EVO2 y homologado para uso en calle, con el 90% de sus componentes de fibra de carbono, un alerón trasero masivo y aerodinámica capaz de generar más de 640 kg de downforce a alta velocidad. El pack blanco y rojo de este ejemplar es el color oficial de lanzamiento del STO. Una rareza absoluta en cualquier concesionario del mundo.",
+    hp:640,topSpeed:"310 km/h",zero:"3.0 s",priceCAD:"$370,000–$430,000 CAD",badge:"",badgeLabel:"",imgKey:"huracanSTO",
+    specs:{"Motor":"V10 5.2L NA","Potencia":"640 hp / 417 lb-ft","Transmisión":"LDF doble embrague 7 vel.","Tracción":"RWD","0–100 km/h":"3.0 seg","Vel. máxima":"310 km/h","Carrocería":"Coupé 2 plazas, 90% fibra de carbono","Peso":"1,339 kg (en seco)","Años de prod.":"2020–presente","Ubicación":"Lamborghini Vancouver — showroom, Nov 2021"},
+    highlights:["Frase de Ferruccio Lamborghini en la pared del showroom: 'I wanted this car just for me. It was always a dream and must remain a dream'","STO: Super Trofeo Omologata — derivado directo del Huracán Super Trofeo EVO2 de carreras, homologado para uso en calle","90% de la carrocería en fibra de carbono — incluyendo el capó de una sola pieza que cubre también los faros delanteros","V10 naturalmente aspirado de 640hp: Lamborghini es uno de los últimos fabricantes en resistir el turbo en sus V10","El STO puede generar hasta 640 kg de carga aerodinámica a velocidad máxima — más que su propio peso en seco"]
+  },{
+    id:"aventadorLP700",make:"Lamborghini",model:"Aventador LP700-4",years:"2011–2022",
+    photoDate:"21 de noviembre, 2021",photoTimestamp:20211121,featured:false,
+    featuredReason:"",
+    review:"Un Lamborghini Aventador LP700-4 en azul noche casi negro, fotografiado en un showroom de Vancouver — el letrero 'McLaren' invertido en el fondo revela que el edificio aloja a los dos dealers en pisos contiguos. El Aventador fue el sucesor del Murcielago y el primer Lamborghini con chasis de fibra de carbono monocoque de producción en serie. El V12 de 6.5L con 700hp no tiene turbo ni compresor — toda la potencia llega de forma natural entre 8,250 RPM, con un sonido que ningún motor con asistencia puede replicar. El mismo día que el Huracán STO en el piso de abajo, dos Lamborghini en la misma tarde de noviembre.",
+    hp:700,topSpeed:"350 km/h",zero:"2.9 s",priceCAD:"$450,000–$600,000 CAD",badge:"",badgeLabel:"",imgKey:"aventadorLP700",
+    specs:{"Motor":"V12 6.5L NA","Potencia":"700 hp / 509 lb-ft","Transmisión":"ISR 7 vel. (cambio robotizado)","Tracción":"AWD","0–100 km/h":"2.9 seg","Vel. máxima":"350 km/h","Carrocería":"Coupé 2 plazas, chasis monocoque CFRP","Peso":"1,575 kg","Años de prod.":"2011–2022","Ubicación":"Vancouver — showroom, Nov 2021"},
+    highlights:["Mismo día que el Huracán STO — dos Lamborghini en la misma tarde de showrooms, probablemente en el mismo edificio","Al fondo se refleja el letrero 'McLaren' invertido — Lamborghini y McLaren Vancouver comparten edificio en Burrard Street","V12 de 6.5L naturalmente aspirado a 8,250 RPM: el motor de calle más sonoro del dashboard sin ninguna discusión","Primer Lamborghini con chasis monocoque de fibra de carbono en producción en serie — tecnología de F1 en calle","El Aventador LP700-4 fue producido de 2011 a 2022 con 11,465 unidades — inusualmente alto para Lamborghini"]
   }]},
   "2020-03":{label:"Marzo 2020",recap:"Un Ferrari rojo entre autos del día a día en un parqueadero de Vancouver — el tipo de contraste que hace que valga la pena revisar cada estacionamiento dos veces.",cars:[{
     id:"ferrari488gtb",make:"Ferrari",model:"488 GTB",years:"2015–2019",
@@ -549,6 +784,98 @@ const CARS={
     hp:369,topSpeed:"250 km/h",zero:"4.4 s",priceCAD:"$45,000–$75,000 CAD (usado)",badge:"",badgeLabel:"",imgKey:"bmwI8",
     specs:{"Motor":"I3 1.5L turbo + motor eléctrico (PHEV)","Potencia":"369 hp combinados / 420 lb-ft","Transmisión":"6 vel. (motor de gas) + reductora 2 vel. (motor eléctrico)","Tracción":"AWD","0–100 km/h":"4.4 seg","Vel. máxima":"250 km/h","Carrocería":"Coupé 2+2 puertas, fibra de carbono (CFRP)","Autonomía eléctrica":"29 km (modo 100% eléctrico)","Años de prod.":"2014–2020","Ubicación":"Vancouver, BC"},
     highlights:["Placa de concesionario 'The Ultimate BMW Dealer' — probablemente Brian Jessel BMW, uno de los distribuidores más conocidos de Vancouver","Carrocería de fibra de carbono reforzada (CFRP) — la misma tecnología que BMW usa en el i3, pensada para compensar el peso de la batería","Combina un motor de gas de 3 cilindros en el eje trasero con un motor eléctrico independiente en el eje delantero — tracción total sin un eje mecánico que los conecte","Hasta 29 km de autonomía 100% eléctrica antes de que entre el motor de gasolina","Descontinuado en 2020 sin sucesor directo — BMW nunca repitió la fórmula de este híbrido deportivo"]
+  }]},
+  "2022-04":{label:"Abril 2022",recap:"El día con más hallazgos del dashboard — 5 autos el 24 de abril: el Jensen Interceptor negro (destacado), el TR7 amarillo y el Herald azul cielo en el car meet de clásicos, el Mini 'Groovy' con flores psicodélicas, y Nelson con Simón y Dayana dentro de un Morris Minor oxidado entre los tulipanes del Fraser Valley.",cars:[{
+    id:"jensenInterceptor",make:"Jensen",model:"Interceptor III",years:"1966–1976",
+    photoDate:"24 de abril, 2022",photoTimestamp:20220424,featured:true,
+    featuredReason:"Un Jensen Interceptor negro impecable con interior marfil — uno de los GTs británicos más raros del dashboard, con motor V8 Chrysler y placa de Washington.",
+    review:"Un Jensen Interceptor III negro con interior marfil y placa de Washington 'BTZ105', exhibido en un car meet al aire libre el 24 de abril de 2022. El Jensen Interceptor es uno de los gran turismos más interesantes de los años 70: diseñado en Italia por Vignale, fabricado en West Bromwich, Inglaterra, con un motor V8 de Chrysler bajo el capó. Esa combinación — estilo europeo, potencia americana, fabricación británica — lo convierte en algo único en la historia del automóvil. Solo 6,408 unidades fueron fabricadas en toda la producción, lo que lo hace tan raro como hermoso. Que uno aparezca con placa de Washington en un car meet de BC confirma que los coleccionistas más serios no conocen fronteras.",
+    hp:285,topSpeed:"230 km/h",zero:"7.3 s",priceCAD:"$60,000–$150,000 CAD",badge:"",badgeLabel:"",imgKey:"jensenInterceptor",
+    specs:{"Motor":"V8 7.2L Chrysler 440 Magnum","Potencia":"285 hp / 490 lb-ft","Transmisión":"Automática TorqueFlite 3 vel.","Tracción":"RWD","0–100 km/h":"7.3 seg","Vel. máxima":"230 km/h","Carrocería":"GT 2+2, diseño Vignale (Italia)","Peso":"1,814 kg","Años de prod.":"1966–1976 (6,408 unidades totales)","Ubicación":"Car meet BC (placa Washington BTZ105)"},
+    highlights:["Diseñado en Italia por Carrozzeria Vignale, fabricado en West Bromwich (UK) con motor V8 Chrysler — la combinación más internacional del dashboard","Motor Chrysler 440 Magnum de 7.2L con 490 lb-ft de torque — la misma mecánica que equipó el Dodge Challenger R/T y el Plymouth 'Cuda","Solo 6,408 unidades fabricadas en toda la producción 1966–1976 — más raro que cualquier Ferrari de calle de esa época","La ventana trasera panorámica de una pieza fue diseñada por Vignale — un elemento que cuesta miles restaurar y que define la silueta del Interceptor","Placa de Washington 'BTZ105' — cruzó la frontera para el car meet; los Interceptors con buena historia no se quedan en un garaje"]
+  },{
+    id:"miniGroovy",make:"Mini",model:"Cooper Mk1 – \"Groovy\"",years:"1959–2000",
+    photoDate:"24 de abril, 2022",photoTimestamp:20220424,featured:false,
+    featuredReason:"",
+    review:"Un Mini Cooper Mk1 convertido en la máquina más psicodélica del dashboard: pintura negra como fondo con flores de colores en cada panel, motivos en llamas rojas y amarillas, y el texto 'GROOVY' en letras arcoíris estilo años 70 en la puerta del conductor. Simón y Dayana señalándolo en el mismo gesto lo dicen todo. El Mini original (1959–2000) es uno de los autos más icónicos de la historia y este ejemplar lleva la personalización al límite: no hay ni un centímetro cuadrado sin pintura. Un auto diseñado para ser visto — y evidentemente, para hacer sonreír.",
+    hp:55,topSpeed:"140 km/h",zero:"16.0 s",priceCAD:"$12,000–$30,000 CAD (réplica/build)",badge:"",badgeLabel:"",imgKey:"miniGroovy",
+    specs:{"Motor":"I4 1.0L o 1.3L A-Series","Potencia":"~55 hp","Transmisión":"Manual 4 vel.","Tracción":"FWD","0–100 km/h":"~16.0 seg","Vel. máxima":"~140 km/h","Carrocería":"Hatchback 2 puertas — pintura personalizada 'Groovy'","Peso":"~680 kg","Años de prod.":"1959–2000","Ubicación":"Vancouver, BC","En la foto":"Simón y Dayana"},
+    highlights:["Simón y Dayana señalando el Mini con el gesto perfecto — la foto más divertida de toda la colección","Pintura personalizada full-body: flores de colores, llamas rojo-amarillo, texto 'GROOVY' en arcoíris — ni un centímetro sin arte","El Mini Cooper original (1959) fue diseñado por Alec Issigonis para que cupieran 4 adultos en solo 3 metros de longitud — lo logró","Motor A-Series de 1.0L transversal con tracción delantera: en 1959 esta configuración era radicalmente nueva y cambió el diseño de autos para siempre","El Mini fue el auto favorito de los Beatles, de Steve McQueen y de The Italian Job (1969) — y ahora también de Simón y Dayana"]
+  },{
+    id:"triumphTR7",make:"Triumph",model:"TR7",years:"1975–1981",
+    photoDate:"24 de abril, 2022",photoTimestamp:20220424,featured:false,
+    featuredReason:"",
+    review:"Un Triumph TR7 amarillo con rines dorados y placa BC 'B22-782', exhibido en el mismo car meet del 24 de abril junto al Jensen Interceptor y el Mini Groovy. El TR7 fue el último Triumph de dos plazas y uno de los más polémicos: la forma de cuña ('wedge') diseñada por Harris Mann fue radical para su época, y la decisión de fabricarlo solo como coupé cerrado generó tal descontento que British Leyland terminó lanzando también la versión Spider descapotable. Al fondo de la foto se distinguen varios MGB y más clásicos del encuentro — una tarde de primavera con el mejor escaparate de los roadsters británicos de los 70.",
+    hp:105,topSpeed:"190 km/h",zero:"10.5 s",priceCAD:"$12,000–$30,000 CAD",badge:"",badgeLabel:"",imgKey:"triumphTR7",
+    specs:{"Motor":"I4 2.0L OHC","Potencia":"105 hp / 119 lb-ft","Transmisión":"Manual 4/5 vel. o automática 3 vel.","Tracción":"RWD","0–100 km/h":"10.5 seg","Vel. máxima":"190 km/h","Carrocería":"Coupé 2 plazas, diseño 'wedge' Harris Mann","Peso":"1,060 kg","Años de prod.":"1975–1981","Ubicación":"Car meet, BC (placa BC B22-782)"},
+    highlights:["El TR7 fue el último Triumph de dos plazas — British Leyland cerró la marca en 1984 apenas tres años después","Diseño 'wedge' (cuña) de Harris Mann: radicalmente distinto a cualquier Triumph anterior, polémico y hoy reconocido como icónico de los 70","Amarillo con rines dorados — exactamente los colores del año de lanzamiento que Triumph usó en los materiales promocionales originales","Al fondo visible: varios MGB y otros clásicos del mismo encuentro del 24 de abril — una concentración de roadsters británicos de los 70","El TR7 inició como coupé solo — la presión del mercado americano forzó a British Leyland a lanzar la versión Spider descapotable en 1979"]
+  },{
+    id:"triumphHerald",make:"Triumph",model:"Herald Cabriolet",years:"1959–1971",
+    photoDate:"24 de abril, 2022",photoTimestamp:20220424,featured:false,
+    featuredReason:"",
+    review:"Un Triumph Herald Cabriolet azul cielo con Simón dando el pulgar arriba — la foto más expresiva del car meet del 24 de abril. El Herald fue el auto con el que Triumph apostó al mercado masivo a finales de los 50: diseñado por Giovanni Michelotti, con un radio de giro increíblemente pequeño gracias a su dirección delantera independiente de cremallera y las ruedas que giraban casi 90 grados. La versión Cabriolet de techo de lona era la más elegante de la gama, y este ejemplar en azul cielo — perfectamente restaurado — es exactamente el auto que uno imagina en un domingo de primavera en Vancouver.",
+    hp:40,topSpeed:"130 km/h",zero:"22.0 s",priceCAD:"$12,000–$28,000 CAD",badge:"",badgeLabel:"",imgKey:"triumphHerald",
+    specs:{"Motor":"I4 1.2L OHV","Potencia":"40 hp / 55 lb-ft","Transmisión":"Manual 4 vel.","Tracción":"RWD","0–100 km/h":"22.0 seg","Vel. máxima":"130 km/h","Carrocería":"Cabriolet 2+2, techo de lona","Peso":"711 kg","Años de prod.":"1959–1971","Ubicación":"Car meet, BC (placa no visible)","En la foto":"Simón"},
+    highlights:["Simón dando pulgar arriba — una de las mejores fotos de coleccionista del dashboard, con el Herald azul cielo como fondo perfecto","Diseñado por Giovanni Michelotti — el mismo italiano que diseñó el Triumph TR4, el TR5 y la carrocería del BMW 1500","Radio de giro de apenas 7.6 metros: el más pequeño de cualquier auto de producción de los 60 — podía dar la vuelta en calles estrechas donde otros no podían","La versión Cabriolet (1960–1971) fue la más vendida de la gama Herald en el mercado norteamericano","Al fondo del mismo encuentro: el TR7 amarillo y el Jensen Interceptor negro — tres generaciones de Triumph en el mismo parqueadero"]
+  },{
+    id:"morrisTulipas",make:"Morris",model:"Minor Cabriolet – Prop de campo de tulipanes",years:"~1950s",
+    photoDate:"24 de abril, 2022",photoTimestamp:20220424,featured:false,
+    featuredReason:"",
+    review:"Nelson, Simón y Dayana posando dentro de un Morris Minor Cabriolet rojo oxidado — pero no en un parqueadero sino en un campo de tulipanes del Fraser Valley (probablemente Chilliwack o Agassiz, con las montañas al fondo). Este Morris no rueda: es una pieza de decoración del campo, un clásico con patina de décadas que los visitantes usan como fondo para fotos entre los tulipanes rojos. La combinación del rojo oxidado del Morris, el mar de tulipanes y las montañas nevadas de fondo hace de esta la foto más paisajística del dashboard.",
+    hp:0,topSpeed:"N/A",zero:"N/A",priceCAD:"Pieza de decoración — no disponible",badge:"",badgeLabel:"",imgKey:"morrisTulipas",
+    specs:{"Motor":"I4 803 cc OHV (orig.)","Potencia":"~30 hp (original)","Carrocería":"Cabriolet 2 puertas — estado: prop decorativo","Estado":"Patina — no circula","Ubicación":"Campo de tulipanes, Fraser Valley, BC","En la foto":"Nelson, Simón y Dayana"},
+    highlights:["Nelson, Simón y Dayana dentro del Morris — la foto más paisajística del dashboard: tulipanes rojos, montañas nevadas, Morris oxidado","Este Morris no circula — es prop de decoración del campo de tulipanes del Fraser Valley, probablemente en Chilliwack o Agassiz","El Morris Minor (1948–1971) fue el primer auto británico en vender un millón de unidades — diseñado por Alec Issigonis, el mismo creador del Mini","La patina roja y la pintura desgastada forman parte del encanto — el campo lo eligió deliberadamente por su look vintage auténtico","Mismo día que el car meet de clásicos — el 24 de abril de 2022 fue el día con más hallazgos (5 autos) de toda la historia del dashboard"]
+  }]},
+  "2022-05":{label:"Mayo 2022",recap:"El día más extremo del dashboard en dos vehículos: Simón primero con la Honda CRF50F de 49cc (el más pequeño del dashboard), luego mirando embelesado un Camaro SS Pro Mod de 2,000hp de Bubba's Speed Shop — el más potente. De 3hp a 2,000hp en el mismo día.",cars:[{
+    id:"hondaCRF50",make:"Honda",model:"CRF50F",years:"2004–presente",
+    photoDate:"21 de mayo, 2022",photoTimestamp:20220521,featured:false,
+    featuredReason:"",
+    review:"El primer vehículo de dos ruedas en llegar al dashboard — y llegó de la mejor manera: Simón con gafas de sol espejadas y cara de speed racer junto a una Honda CRF50F roja. La CRF50 es la moto de iniciación más vendida de Honda en Norteamérica: motor de 49cc, transmisión automática de centrifugado y un tamaño perfectamente calibrado para que un niño aprenda a manejar sin miedo. Desde el 1967 la marca la ha mantenido en producción casi sin cambios — la prueba de que cuando algo funciona bien no hay razón para tocarlo.",
+    hp:3,topSpeed:"55 km/h",zero:"N/A",priceCAD:"$1,800–$2,200 CAD (nueva)",badge:"",badgeLabel:"",imgKey:"hondaCRF50",
+    specs:{"Motor":"Monocilíndrico OHV 49cc","Potencia":"~3 hp","Transmisión":"Automática centrífuga 3 vel.","Tracción":"Cadena — rueda trasera","Vel. máxima":"~55 km/h","Carrocería":"Moto trail/enduro niños","Peso":"50 kg","Años de prod.":"1967–presente (XR50 → CRF50)","En la foto":"Simón"},
+    highlights:["Simón con gafas espejadas y pose de campeón — la primera foto sobre dos ruedas de la colección y la más cool de mayo 2022","La Honda CRF50F se ha vendido prácticamente sin cambios desde 1967 — el mismo concepto de 'mini moto roja para aprender' que ha iniciado a millones de pilotos","Motor de 49cc con transmisión automática centrífuga: sin embrague manual, perfecta para aprender el equilibrio antes de añadir complejidad","La CRF50 ha sido el primer escalón de pilotos como Valentino Rossi y Marc Márquez en sus versiones de motocross junior","El único vehículo de dos ruedas del dashboard — se merece su propio mes"]
+  },{
+    id:"camaroProMod",make:"Chevrolet",model:"Camaro SS – Pro Mod Drag Car",years:"1969 (base)",
+    photoDate:"21 de mayo, 2022",photoTimestamp:20220521,featured:true,
+    featuredReason:"El auto de competencia más extremo del dashboard — un Camaro SS Pro Mod rojo cromado de Bubba's Speed Shop con motor superalimentado y carrocería en fibra de carbono, con Simón mirándolo embobado.",
+    review:"Simón mirando embelesado un Camaro SS Pro Mod rojo cromado bajo el toldo de Bubba's Speed Shop — uno de los vehículos de competencia más impresionantes que han aparecido en el dashboard. Los Pro Mod son la categoría más extrema del drag racing no-profesional: carrocería de fibra de carbono basada en el Camaro '69, motor superalimentado de 2,000+ hp, slicks traseros gigantes y el capo de admisión asomando por el cofre. El auto #D61 de Racing.ca compite en eventos de arrastre en BC — y este día Simón lo encontró en el paddock de Bubba's Speed Shop, probablemente en Mission Raceway o un evento similar.",
+    hp:2000,topSpeed:"400 km/h",zero:"3.7 s (1/4 milla en ~5.5 seg)",priceCAD:"$200,000–$400,000 CAD (build completo)",badge:"",badgeLabel:"",imgKey:"camaroProMod",
+    specs:{"Motor":"V8 Big Block superalimentado (estimado 2,000+ hp)","Transmisión":"Automática de carrera Powerglide 2 vel.","Tracción":"RWD — slicks traseros de competencia","0-400m":"~5.5 seg (1/4 milla)","Vel. máxima":"~400 km/h (¼ milla)","Carrocería":"Fibra de carbono — silueta Camaro 1969","Categoría":"Pro Mod Drag Racing","Número":"D61 (Racing.ca / Bubba's Speed Shop)","Ubicación":"Drag meet BC (Bubba's Speed Shop paddock)","En la foto":"Simón"},
+    highlights:["Simón mirando el Camaro Pro Mod como si fuera lo más impresionante que ha visto — y probablemente lo era","Pro Mod: la categoría donde el Camaro '69 es solo una silueta — el resto es fibra de carbono, motor superalimentado de 2,000hp y slicks de 18 pulgadas","El número D61 y 'Racing.ca' identifican al equipo — Bubba's Speed Shop en bubbaspeedshop.ca es un taller de preparación de dragsters de BC","Los Pro Mod corren el cuarto de milla en ~5.5 segundos a ~400 km/h — más rápido que cualquier auto de producción del dashboard","El capo de admisión asomando por el cofre del motor es la firma visual de los Pro Mod — necesario para alimentar el enorme supercompresor"]
+  },{
+    id:"fordHotRod33",make:"Ford",model:"Coupe Hot Rod 1933 – Bubba's Speed Shop",years:"1933",
+    photoDate:"21 de mayo, 2022",photoTimestamp:20220521,featured:false,
+    featuredReason:"",
+    review:"Un Ford Coupe de 1933/34 amarillo brillante bajo el toldo de Bubba's Speed Shop — el clásico del hot rod americano en todo su esplendor. El '33/'34 Ford es la base favorita de los constructores de hot rods desde los años 50: los guardafangos tipo burbuja, el capó alto y la silueta de coupé cerrado son perfectos para esconder motores modernos sin perder el estilo de la época. Este ejemplar con el número 6983 y la etiqueta 'TEST' en el parabrisas sugiere que es un build reciente aún en proceso de homologación para correr en la pista. Visto en el mismo evento que el Camaro Pro Mod y la CRF50 de Simón, en un día que resultó ser el más diverso del dashboard.",
+    hp:400,topSpeed:"200 km/h",zero:"5.0 s",priceCAD:"$60,000–$150,000 CAD (build completo)",badge:"",badgeLabel:"",imgKey:"fordHotRod33",
+    specs:{"Motor":"V8 moderno (estimado, build no especificado)","Potencia":"~400 hp","Transmisión":"Automática de carrera","Tracción":"RWD","0–100 km/h":"~5.0 seg","Vel. máxima":"~200 km/h","Carrocería":"Coupé 3 ventanas — carrocería original 1933/34 restaurada","Número":"6983 TEST (Bubba's Speed Shop)","Ubicación":"Drag meet BC (Bubba's Speed Shop paddock)"},
+    highlights:["Número '6983 TEST' en el parabrisas — un hot rod recién construido en proceso de homologación para correr en pista","El Ford Coupe 1933/34 es la base favorita del hot rodding americano desde los años 50 — su silueta es el ícono del género","Bajo el toldo de Bubba's Speed Shop — el mismo equipo que prepara el Camaro SS Pro Mod del mismo evento","Los guardafangos tipo burbuja y el capó alto del '33 Ford son prácticamente imposibles de mejorar en términos de estética de hot rod","Este mismo día: la Honda CRF50 de 49cc y el Camaro Pro Mod de 2,000hp — el rango más extremo de potencia que registra el dashboard en un solo día"]
+  }]},
+  "2022-07":{label:"Julio 2022",recap:"Un Ford Model A de los años 30 en el Durham Museum de Omaha Union Station — Lorenzo y Simón mirándolo asombrados. El auto más antiguo en exhibición que el dashboard ha documentado, en uno de los museos ferroviarios más hermosos de EE.UU.",cars:[{
+    id:"fordModelA",make:"Ford",model:"Model A",years:"1927–1931",
+    photoDate:"13 de julio, 2022",photoTimestamp:20220713,featured:true,
+    featuredReason:"El Ford Model A es el auto más antiguo de todo el dashboard — casi 100 años de antigüedad, en exhibición en el Durham Museum de Omaha Union Station con Lorenzo y Simón maravillados frente a él.",
+    review:"Un Ford Model A marrón oscuro en el Durham Museum de Omaha Union Station — Lorenzo y Simón mirando asombrados a través de la barrera de exhibición. El Model A fue el sucesor del Model T en 1927: primer Ford con caja de cambios de 3 velocidades sincronizada y motor I4 de 40hp. El Durham Museum está alojado en la espectacular estación ferroviaria Art Déco de Omaha (1931), con uno de los halls de mármol más hermosos de cualquier estación americana. Ver un Ford Model A en ese edificio — contemporáneo exacto de la estación — es una coincidencia perfecta: el auto y el edificio salieron del mismo año.",
+    hp:40,topSpeed:"105 km/h",zero:"22.0 s",priceCAD:"$20,000–$50,000 CAD (restaurado)",badge:"",badgeLabel:"",imgKey:"fordModelA",
+    specs:{"Motor":"I4 3.3L (201 ci) side-valve","Potencia":"40 hp / 128 lb-ft","Transmisión":"Manual 3 vel. (primera sincronizada de Ford)","Tracción":"RWD","0–100 km/h":"~22.0 seg","Vel. máxima":"~105 km/h","Carrocería":"Sedán 4 puertas, carrocería de acero","Peso":"~1,200 kg","Años de prod.":"1927–1931 (4.8 millones de unidades)","Estado":"Exhibición de museo","Ubicación":"Durham Museum – Omaha Union Station, Nebraska","En la foto":"Lorenzo y Simón"},
+    highlights:["Lorenzo y Simón en el Durham Museum de Omaha Union Station — el Model A exhibido en el edificio Art Déco más elegante de Nebraska, construido en 1931, el mismo año que el auto","El Ford Model A reemplazó al Model T en 1927 — Henry Ford tuvo que cerrar las fábricas por 6 meses para reconstruirlas para el nuevo modelo","Primera caja de cambios de 3 velocidades sincronizada de Ford — el conductor ya no necesitaba habilidades especiales para cambiar marcha","4.8 millones de unidades producidas entre 1927 y 1931 — el auto que completó la democratización del automóvil en Norteamérica","El auto más antiguo de todo el dashboard — rodó por primera vez cuando los abuelos de los abuelos eran jóvenes"]
+  },{
+    id:"douglasTruck",make:"Douglas",model:"Camión de Plataforma",years:"~1929–1931",
+    photoDate:"13 de julio, 2022",photoTimestamp:20220713,featured:false,
+    featuredReason:"",
+    review:"Un camión Douglas de plataforma rojo en el Durham Museum de Omaha Union Station — cargado con maletas y baúles de viaje de la época, placa '29-2060'. Douglas fue un fabricante de camiones americano de los años 20 y 30, hoy prácticamente desconocido, que producía vehículos de carga para el comercio regional. Este ejemplar restaurado en rojo brillante, con la carga de maletas vintage sobre la cama plana, recrea exactamente el tipo de transporte que llevaba equipajes entre hoteles y estaciones de tren en la era dorada de los viajes americanos.",
+    hp:35,topSpeed:"80 km/h",zero:"N/A",priceCAD:"$30,000–$70,000 CAD (restaurado)",badge:"",badgeLabel:"",imgKey:"douglasTruck",
+    specs:{"Motor":"I4 o I6 de la época (~3.0–4.0L)","Potencia":"~35 hp","Transmisión":"Manual 3–4 vel.","Tracción":"RWD","Carrocería":"Camión plataforma de carga","Años de prod.":"~1929–1931","Estado":"Exhibición de museo","Ubicación":"Durham Museum – Omaha Union Station, Nebraska","Carga":"Maletas y baúles de viaje de la época"},
+    highlights:["Cargado con maletas y baúles vintage de los años 30 — recreación de cómo el equipaje viajaba entre hoteles y estaciones de tren en la era dorada del viaje americano","Douglas fue un fabricante de camiones americano de los años 20–30, hoy prácticamente desconocido — su presencia en el Durham Museum lo rescata del olvido","Placa '29-2060' — una matrícula auténtica de Nebraska de finales de los 20, el tipo de detalle que los museos cuidan con esmero","Exhibido el mismo día que el Ford Model A en el mismo salón — dos piezas del mismo período que cuentan historias completamente distintas","El Durham Museum en Omaha Union Station es uno de los museos históricos más importantes del Midwest americano"]
+  }]},
+  "2022-06":{label:"Junio 2022",recap:"Un Lamborghini Gallardo Spyder azul cromado estacionado en plena calle de Vancouver — el tipo de hallazgo que detiene el paso y obliga a sacar el teléfono de inmediato.",cars:[{
+    id:"gallardoSpyder",make:"Lamborghini",model:"Gallardo Spyder",years:"2006–2013",
+    photoDate:"2 de junio, 2022",photoTimestamp:20220602,featured:true,
+    featuredReason:"Lamborghini Gallardo Spyder en vinilo chrome azul eléctrico, techo abierto en plena calle de Vancouver — la combinación de color y modelo que justifica revisar cada cuadra.",
+    review:"Un Lamborghini Gallardo Spyder en vinilo chrome azul eléctrico estacionado en la calle, con el techo completamente bajado y placa de Miles End Motors — probablemente una unidad de alquiler de lujo en Vancouver. El Gallardo fue el Lamborghini más vendido de la historia con más de 14,000 unidades fabricadas, y el Spyder es la versión descapotable que llegó en 2006. El vinilo azul cromado es un wrap posterior — de fábrica los Gallardo no salían así — pero en las calles de Vancouver este tipo de personalización no sorprende a nadie.",
+    hp:520,topSpeed:"315 km/h",zero:"4.0 s",priceCAD:"$120,000–$200,000 CAD (usado)",badge:"",badgeLabel:"",imgKey:"gallardoSpyder",
+    specs:{"Motor":"V10 5.2L LP560 (última generación)","Potencia":"520 hp / 398 lb-ft","Transmisión":"E-gear 6 vel. (automatizado) o manual","Tracción":"AWD","0–100 km/h":"4.0 seg","Vel. máxima":"315 km/h","Carrocería":"Spyder descapotable, techo de lona eléctrico","Peso":"1,570 kg","Años de prod.":"2006–2013","Ubicación":"Vancouver, BC (placa BC NF2 02J — Miles End Motors)"},
+    highlights:["Vinilo chrome azul eléctrico — un wrap posterior impactante sobre el Gallardo; el marco de Miles End Motors sugiere que puede ser una unidad de alquiler","El Gallardo fue el Lamborghini más vendido de la historia con más de 14,000 unidades fabricadas entre 2003 y 2013","V10 de 5.2L con 520hp en la versión LP560-4 — el mismo motor que Audi usó en el R8 V10 de primera generación","Techo completamente bajado en junio en Vancouver — la única manera correcta de manejar un Gallardo Spyder","El Gallardo fue el primer Lamborghini de producción compartido con la plataforma Audi (VW Group compró Lamborghini en 1998)"]
   }]},
   "2023-06":{label:"Junio 2023",recap:"Otro hallazgo fuera de Vancouver: un Lucid Air Pure recién entregado, encontrado en un parqueadero de Washington con el plástico de fábrica todavía puesto en los asientos.",cars:[{
     id:"lucidAirPure",make:"Lucid",model:"Air Pure",years:"2023–presente",
@@ -624,7 +951,7 @@ const COLLECTIONS={
   "autos-divertidos":{
     label:"Autos Divertidos",
     description:"Los hallazgos más extravagantes, raros o simplemente imposibles de ignorar. Estos autos hacen sonreír.",
-    carIds:["aztek","sprite","sc430","miniSofa","cartVisteon","citroen2cv","spoonersTruck"],
+    carIds:["aztek","sprite","sc430","miniSofa","cartVisteon","citroen2cv","spoonersTruck","vwHerbie","lincolnLimo","miniGroovy"],
     featuredId:"aztek"
   }
 };
@@ -654,7 +981,7 @@ const EVENTS={
     }]
   },
   "abfm-2026":{
-    label:"All British Field Meet",
+    label:"All British Field Meet 2026",
     date:"16 de mayo, 2026",
     timestamp:202605,
     location:"VanDusen Botanical Garden · Vancouver BC",
@@ -972,7 +1299,7 @@ const EVENTS={
     }]
   },
   "petersen-museum-2023":{
-    label:"Petersen Automotive Museum",
+    label:"Petersen Automotive Museum 2023",
     date:"15 de septiembre, 2023",
     timestamp:202309,
     location:"Petersen Automotive Museum · Los Ángeles, CA",
@@ -987,8 +1314,71 @@ const EVENTS={
       highlights:["Placa del museo: prototipo 'Alpha' del Tesla Semi 2017 — el primer camión eléctrico de carga pesada de Tesla, antes de la producción en serie","Simón, junto a sus primos Lorenzo y Emiliano — el coleccionista más joven de la familia explorando uno de los prototipos más raros de Tesla","El sistema tri-motor mantiene 105 km/h en autopista incluso a plena carga subiendo una pendiente del 5%","Este prototipo resistió pruebas de frío extremo de hasta -40°C en Alaska y completó una prueba de resistencia de 5,000 millas por la Ruta 66","Los camiones de carga pesada generan el 18% de las emisiones vehiculares en EE.UU. — el segmento que Tesla apunta a electrificar con el Semi"]
     }]
   },
-  "poco-car-show-2022":{
-    label:"Downtown Port Coquitlam Car Show",
+  "porsche-harrison-2021":{
+    label:"Encuentro Porsche Harrison Hot Springs 2021",
+    date:"24 de julio, 2021",
+    timestamp:202107,
+    location:"Harrison Hot Springs · British Columbia, Canadá",
+    description:"Un encuentro exclusivo de Porsches clásicos en Harrison Hot Springs, BC — cuatro generaciones del mismo ADN reunidas en el mismo parqueadero: desde el 356 original de los años 60 hasta el 993, el último 911 refrigerado por aire.",
+    cars:[{
+      id:"porsche993",make:"Porsche",model:"911 Carrera (993)",years:"1994–1998",
+      photoDate:"24 de julio, 2021",photoTimestamp:20210724,featured:true,
+      featuredReason:"El último 911 refrigerado por aire de la historia — el 993 negro es el Porsche más rápido y codiciado de este encuentro.",
+      review:"Un Porsche 911 tipo 993 negro, impecable, en el encuentro de Harrison Hot Springs. El 993 es posiblemente el Porsche más codiciado de todos: fue la última generación del 911 con motor refrigerado por aire antes de que Porsche pasara al agua en 1998 con el 996. Para los puristas, ese cambio fue el fin de una era de casi 35 años. El motor Flat-6 de 3.6L que lleva este 993 desarrolla 272hp y es una obra de ingeniería mecánica pura — sin turbo, sin electrónica invasiva, solo cilindros opuestos refrigerados por aire trabajando a altas RPM. Su placa 'WEISBACH' confirma que este es un 993 de coleccionista serio.",
+      hp:272,topSpeed:"270 km/h",zero:"5.6 s",priceCAD:"$80,000–$200,000 CAD",badge:"",badgeLabel:"",imgKey:"porsche993",
+      specs:{"Motor":"Flat-6 3.6L refrigerado por aire","Potencia":"272 hp / 243 lb-ft","Transmisión":"Manual 6 vel. G50","Tracción":"RWD","0–100 km/h":"5.6 seg","Vel. máxima":"270 km/h","Carrocería":"Coupé 2+2, motor trasero","Peso":"1,370 kg","Años de prod.":"1994–1998 (última gen. aire)","Placa":"WEISBACH (personalizada)"},
+      highlights:["El 993 fue el último Porsche 911 refrigerado por aire — con el 996 de 1998 llegó el motor de agua y un diseño polémico","Motor Flat-6 3.6L de 272hp sin turbo: uno de los motores naturalmente aspirados más refinados de la industria","Placa personalizada 'WEISBACH' — un coleccionista que sabe exactamente qué tiene","El mercado ha triplicado el valor del 993 en la última década: ejemplares superan los $150,000 CAD","El sonido del Flat-6 a alta RPM es considerado el mejor sonido de un auto de calle de los 90"]
+    },{
+      id:"porsche356",make:"Porsche",model:"356 Cabriolet",years:"1960–1963",
+      photoDate:"24 de julio, 2021",photoTimestamp:20210724,featured:false,
+      featuredReason:"",
+      review:"Un Porsche 356 Cabriolet azul cielo con interior borgoña — placa coleccionista BC 'B56-375' — el auto que dio origen a todo lo que es Porsche. El 356 fue el primer Porsche de producción en serie, derivado del diseño de Ferry Porsche a partir de piezas del VW Beetle de posguerra. Rodeado de sus descendientes en Harrison Hot Springs, este 356 representa el punto de partida de 70 años de ingeniería Porsche.",
+      hp:75,topSpeed:"160 km/h",zero:"17.0 s",priceCAD:"$80,000–$200,000 CAD",badge:"",badgeLabel:"",imgKey:"porsche356",
+      specs:{"Motor":"Flat-4 1.6L refrigerado por aire","Potencia":"75 hp / 81 lb-ft","Transmisión":"Manual 4 vel.","Tracción":"RWD","0–100 km/h":"17.0 seg","Vel. máxima":"160 km/h","Carrocería":"Cabriolet 2 plazas, techo de lona","Peso":"830 kg","Años de prod.":"~1960–1963","Placa":"Coleccionista BC B56-375"},
+      highlights:["El primer Porsche de producción en serie — Ferry Porsche lo diseñó en 1948 con piezas del VW Beetle","Azul cielo con interior borgoña — combinación excepcionalmente rara y hermosa","Placa coleccionista 'B56-375' — registrado como vehículo histórico en BC","Históricamente el más valioso del encuentro: $80,000–$200,000 CAD en buen estado","La pieza más antigua de toda la historia del dashboard — ronda los 60–65 años de antigüedad"]
+    },{
+      id:"porsche911sc",make:"Porsche",model:"911 SC Targa",years:"1978–1983",
+      photoDate:"24 de julio, 2021",photoTimestamp:20210724,featured:false,
+      featuredReason:"",
+      review:"Un Porsche 911 SC Targa negro con placa coleccionista 'B20-558' de BC. El 911 SC fue la generación que consolidó al 911 como el deportivo de referencia a finales de los 70. La versión Targa añade el clásico arco de acero plateado que Porsche patentó. Detrás en la foto se distingue el 993 negro con la placa 'WEISBACH'.",
+      hp:180,topSpeed:"225 km/h",zero:"6.5 s",priceCAD:"$50,000–$120,000 CAD",badge:"",badgeLabel:"",imgKey:"porsche911sc",
+      specs:{"Motor":"Flat-6 3.0L refrigerado por aire","Potencia":"180 hp / 175 lb-ft","Transmisión":"Manual 5 vel.","Tracción":"RWD","0–100 km/h":"6.5 seg","Vel. máxima":"225 km/h","Carrocería":"Targa 2+2, arco de acero Targa","Peso":"1,160 kg","Años de prod.":"1978–1983","Placa":"Coleccionista BC B20-558"},
+      highlights:["Targa: el arco de acero central y el techo extraíble que Porsche patentó — el SC fue una de las versiones más populares","El 911 SC estabilizó al 911 tras los problemas del 930 Turbo — más civilizado y confiable","Placa coleccionista 'B20-558' — cuarto Porsche del encuentro","El Flat-6 3.0L de 180hp fue el corazón del 911 hasta la llegada del 3.2 Carrera en 1984","Detrás visible en la foto: el 993 negro con placa WEISBACH"]
+    },{
+      id:"porsche914",make:"Porsche",model:"914",years:"1969–1976",
+      photoDate:"24 de julio, 2021",photoTimestamp:20210724,featured:false,
+      featuredReason:"",
+      review:"Un Porsche 914 negro en estado impecable — el proyecto conjunto Porsche/Volkswagen de los 70, hoy completamente reivindicado entre coleccionistas. Su motor central le da un balance de manejo superior al 911 de la época. El techo targa que lleva fue el primero en la historia de Porsche.",
+      hp:100,topSpeed:"185 km/h",zero:"10.5 s",priceCAD:"$20,000–$55,000 CAD",badge:"",badgeLabel:"",imgKey:"porsche914",
+      specs:{"Motor":"Flat-4 2.0L aire/aceite","Potencia":"100 hp / 103 lb-ft","Transmisión":"Manual 5 vel.","Tracción":"RWD motor central","0–100 km/h":"10.5 seg","Vel. máxima":"185 km/h","Carrocería":"Targa 2 plazas, motor central","Peso":"980 kg","Años de prod.":"1969–1976","Ubicación":"Harrison Hot Springs, BC"},
+      highlights:["Proyecto conjunto Porsche/Volkswagen — la plataforma venía del VW 411, el motor 2.0L del 911 base","Motor central trasero: configuración única de la época, dándole un balance superior al 911","El primer Porsche en llevar el sistema targa que la marca patentó","Despreciado por los puristas en los 70, hoy coleccionable y apreciado","La pieza más económica del encuentro — pero con la historia técnica más interesante"]
+    },{
+      id:"porsche911early",make:"Porsche",model:"911 (1ª generación)",years:"1965–1969",
+      photoDate:"24 de julio, 2021",photoTimestamp:20210724,featured:false,
+      featuredReason:"",
+      review:"Un Porsche 911 de primera generación en amarillo champán — el 911 original en su forma más pura, antes del ensanchamiento de guardafangos de los años 70. Placa coleccionista BC '1MI-693'. Este 911 de 'cuello corto' (SWB) de los 60 es el que definió el template de todo lo que vino después: líneas de coupé 2+2, motor Flat-6 trasero, capó redondo y faros circulares con cromados. Al fondo se distingue un 993 blanco y la hilera completa del encuentro.",
+      hp:130,topSpeed:"210 km/h",zero:"8.5 s",priceCAD:"$80,000–$180,000 CAD",badge:"",badgeLabel:"",imgKey:"porsche911early",
+      specs:{"Motor":"Flat-6 2.0L refrigerado por aire","Potencia":"130 hp / 128 lb-ft","Transmisión":"Manual 5 vel.","Tracción":"RWD","0–100 km/h":"8.5 seg","Vel. máxima":"210 km/h","Carrocería":"Coupé 2+2 SWB (Short Wheelbase)","Peso":"1,080 kg","Años de prod.":"1965–1969 (1ª gen SWB)","Placa":"Coleccionista BC 1MI-693"},
+      highlights:["El '911 de cuello corto' (SWB) — el más antiguo de los 911 presentes, anterior al alargamiento del chasis de 1969","Amarillo champán original de los 60: uno de los colores más emblemáticos de Porsche de esa época","Placa coleccionista '1MI-693' de BC — registrado como vehículo histórico de más de 60 años","Al fondo en la foto: un 993 blanco y la hilera completa del encuentro de Harrison Hot Springs","Con el 356, cubre el extremo más antiguo de la historia del evento — de 1960 a 1969"]
+    }]
+  },
+  "poco-car-show-2024":{
+    label:"Downtown Port Coquitlam Car Show 2024",
+    date:"18 de agosto, 2024",
+    timestamp:202408,
+    location:"Downtown Port Coquitlam · Port Coquitlam, BC",
+    description:"Segunda edición del Car Show al aire libre más grande del área de Port Coquitlam — con clásicos, muscle cars y deportivos modernos en el centro de la ciudad.",
+    cars:[{
+      id:"ferrari308gts",make:"Ferrari",model:"308 GTS",years:"1977–1985",
+      photoDate:"18 de agosto, 2024",photoTimestamp:20240818,featured:true,
+      featuredReason:"Un Ferrari 308 GTS rojo impecable — el Ferrari de Magnum P.I. — como hallazgo estelar del Car Show de Port Coquitlam 2024.",
+      review:"Un Ferrari 308 GTS rojo en el Downtown Port Coquitlam Car Show 2024, con el papel de información en el parabrisas. El 308 GTS es el Ferrari con el techo targa removible — el que Tom Selleck conducía en Magnum P.I. (1980–1988) y que convirtió al Cavallino en el símbolo del éxito de los 80. El V8 de 2.9L de 240hp suena como pocas cosas en el mundo — y verlo en Port Coquitlam en este estado de conservación es exactamente el tipo de hallazgo que hace que valga la pena cada salida.",
+      hp:240,topSpeed:"235 km/h",zero:"6.5 s",priceCAD:"$80,000–$180,000 CAD",badge:"",badgeLabel:"",imgKey:"ferrari308gts",
+      specs:{"Motor":"V8 2.9L (Tipo F106A) DOHC 32v","Potencia":"240 hp / 179 lb-ft","Transmisión":"Manual 5 vel.","Tracción":"RWD motor central-trasero","0–100 km/h":"6.5 seg","Vel. máxima":"235 km/h","Carrocería":"Targa 2 plazas, techo removible (GTS)","Peso":"1,310 kg","Años de prod.":"1977–1985","Ubicación":"Downtown Port Coquitlam Car Show 2024"},
+      highlights:["El Ferrari que Tom Selleck conducía en Magnum P.I. (1980–1988) — el 308 GTS es el Ferrari más reconocible de la cultura pop de los 80","La versión GTS tiene el techo targa removible — la variante más codiciada del 308 junto al 308 GTB coupé","Motor V8 de 2.9L colocado transversalmente en posición central-trasera — una configuración técnicamente avanzada para 1977","El 308 completa la saga Ferrari del dashboard: de 1977 al 296 GTB híbrido de 2021, toda la evolución del V8 Cavallino documentada","Segunda vez que el Car Show de Port Coquitlam aparece en el dashboard — en 2022 fue el Bluesmobile, en 2024 el Ferrari de Magnum"]
+    }]
+  },
+  "poco-car-show-2022":{    label:"Downtown Port Coquitlam Car Show 2022",
     date:"20 de agosto, 2022",
     timestamp:202208,
     location:"Downtown Port Coquitlam · Port Coquitlam, BC",
@@ -1001,6 +1391,22 @@ const EVENTS={
       hp:220,topSpeed:"196 km/h",zero:"10.4 s",priceCAD:"$15,000–$35,000 CAD (réplica, valor estimado del build)",badge:"",badgeLabel:"",imgKey:"bluesmobileMonaco",
       specs:{"Motor":"V8 7.2L 440 Magnum","Potencia":"220 hp / 350 lb-ft","Transmisión":"Automática TorqueFlite 3 vel.","Tracción":"RWD","0–100 km/h":"10.4 seg","Vel. máxima":"196 km/h","Carrocería":"Sedán 4 puertas, paquete policial","Peso":"2,023 kg","Años de prod.":"1974","Placa":"Illinois BDR 529 — réplica exacta de la película"},
       highlights:["Réplica del Bluesmobile de 'The Blues Brothers' (1980) — la placa de Illinois 'BDR 529' es un guiño al club de motociclistas Black Diamond Riders de Toronto, igual que en la película","La bocina gigante amarrada al techo con cuerdas lleva una calcomanía de Jake y Elwood Blues — superando incluso al auto original en puesta en escena","El Dodge Monaco 1974 real de la película usaba un V8 440 Magnum con paquete policial — exactamente el motor que lleva esta réplica","Elwood describe el auto en la película: motor, llantas y suspensión de policía, fabricado antes de los convertidores catalíticos — corre con gasolina regular","Visto en el Downtown Port Coquitlam Car Show — uno de los car shows al aire libre más grandes de BC, con cientos de autos cada año a minutos de Coquitlam"]
+    },{
+      id:"nissan240Z",make:"Nissan",model:"240Z (S30) – Build JDM Extremo",years:"1969–1978",
+      photoDate:"20 de agosto, 2022",photoTimestamp:20220820,featured:false,
+      featuredReason:"",
+      review:"Simón con gorra de Spider-Man saludando frente a un Nissan 240Z naranja y negro con build de tuning extremo en el Port Coquitlam Car Show 2022. El parabrisas lleva stickers de 'Hot Wheels LEGEND', 'Kimori Style', 'SickSpeed' y 'DriftRoyalty' — una lista de marcas de la cultura JDM de BC y el Noroeste del Pacífico. Wide body kit completo, rines rojos, iluminación roja bajo el cofre y sponsors de Nitto, Bride, Falken y 720Moto. El 240Z original (S30) fue el primer Datsun/Nissan que conquistó el mercado americano con estilo propio en 1969 — este ejemplo lleva ese legado a un nivel completamente diferente.",
+      hp:300,topSpeed:"230 km/h",zero:"5.5 s",priceCAD:"$40,000–$80,000 CAD (build completo)",badge:"",badgeLabel:"",imgKey:"nissan240Z",
+      specs:{"Motor":"L24 6 cilindros (base) — posiblemente swap turbo en este build","Potencia":"~300 hp (build modificado)","Transmisión":"Manual","Tracción":"RWD","0–100 km/h":"~5.5 seg (estimado build)","Vel. máxima":"~230 km/h","Carrocería":"Fastback 2 puertas, wide body kit completo","Rines":"Rojos — estilo JDM deep dish","En la foto":"Simón"},
+      highlights:["Simón con gorra de Spider-Man saludando — la cara perfecta de un coleccionista ante el 240Z JDM más agresivo del Port Coquitlam Car Show","Stickers de 'Hot Wheels LEGEND' en el parabrisas — el sello que Hot Wheels le pone a los autos reales más icónicos de la cultura car culture","Sponsors de Nitto Tires, Bride Seats, Falken y SickSpeed — un build serio apoyado por las marcas más reconocidas del mundo JDM","Wide body, rines rojos y pintura naranja/negro: la estética del 240Z que la cultura JDM ha convertido en leyenda del drift y el tuning","El 240Z (Datsun S30, 1969) fue el primer deportivo japonés que convenció al mercado americano — este build lo lleva 50 años adelante"]
+    },{
+      id:"fordModelT",make:"Ford",model:"Model T",years:"1908–1927",
+      photoDate:"20 de agosto, 2022",photoTimestamp:20220820,featured:false,
+      featuredReason:"",
+      review:"Un Ford Model T azul cielo con ruedas de madera dorada y placa histórica de BC '17 085' en el Port Coquitlam Car Show 2022 — con un Pontiac Firebird naranja detrás, el contraste perfecto entre el origen del automóvil y la era muscle. El Model T es el auto que cambió el mundo: Henry Ford lo introdujo en 1908 a un precio accesible y con la primera línea de ensamblaje de producción en masa, convirtiendo el automóvil de lujo de ricos en herramienta cotidiana. Este ejemplar en azul cielo con ruedas de madera dorada es el auto de producción en serie más antiguo del dashboard — superando incluso al Ford Model A que vimos en Omaha.",
+      hp:20,topSpeed:"72 km/h",zero:"N/A",priceCAD:"$20,000–$60,000 CAD (restaurado)",badge:"",badgeLabel:"",imgKey:"fordModelT",
+      specs:{"Motor":"I4 2.9L (177 ci) side-valve","Potencia":"20 hp / 83 lb-ft","Transmisión":"Planetaria 2 vel. (pedales)","Tracción":"RWD","Vel. máxima":"72 km/h","Carrocería":"Touring / Roadster (múltiples estilos)","Peso":"~540 kg","Años de prod.":"1908–1927 (15 millones de unidades)","Ubicación":"Downtown Port Coquitlam Car Show, BC (placa histórica BC 17-085)"},
+      highlights:["El auto de producción en serie más antiguo del dashboard — el Model T supera al Model A de Omaha por casi 20 años de anterioridad","Placa histórica de BC '17-085' — registrado como vehículo patrimonial en British Columbia","Ruedas de madera dorada con radios: la firma visual del Model T que definió el aspecto de los autos hasta los años 20","Detrás en la foto: un Pontiac Firebird naranja — de 1908 a los 70, el contraste más extremo del dashboard en una sola imagen","15 millones de unidades producidas entre 1908 y 1927 — Henry Ford democratizó el automóvil con la primera línea de ensamblaje en masa de la historia"]
     }]
   }
 };
@@ -1017,12 +1423,25 @@ let active="2026-06";
 function openLB(imgKey,cap,date){
   const src=IMGS[imgKey]||'';
   if(!src) return;
-  document.getElementById('lbImg').src=src;
+  const lb=document.getElementById('lightbox');
+  const img=document.getElementById('lbImg');
   document.getElementById('lbCap').textContent=cap;
   document.getElementById('lbDate').textContent=date?'Fotografiado el '+date:'';
-  document.getElementById('lightbox').classList.add('open');
+  document.getElementById('lbExtLink').href=src;
+  document.getElementById('lbTabLink').href=src;
+  document.getElementById('lbErr').style.display='none';
+  img.style.display='block';
+  img.src='';
+  img.onerror=function(){
+    img.style.display='none';
+    document.getElementById('lbErr').style.display='flex';
+  };
+  img.onload=function(){ img.style.display='block'; document.getElementById('lbErr').style.display='none'; };
+  img.src=src;
+  lb.classList.add('open');
 }
 function closeLB(){document.getElementById('lightbox').classList.remove('open');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape') closeLB();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB();});
 
 function badgeHtml(c){
@@ -1052,6 +1471,9 @@ const BRAND_LOGOS={
   'MG':'logo_mg',
   'SS Cars':'logo_ss_cars',
   'Jensen':'logo_jensen',
+  'Ford':'logo_ford',
+  'Mercury':'logo_mercury',
+  'Douglas':'logo_douglas',
   'Austin':'logo_mini',
   'TVR':'logo_tvr',
   'Triumph':'logo_triumph',
@@ -1073,7 +1495,12 @@ const BRAND_LOGOS={
   'Mitsubishi':'logo_mitsubishi',
   'Lucid':'logo_lucid',
   'Honda':'logo_honda',
-  'Ferrari':'logo_ferrari'
+  'Ferrari':'logo_ferrari',
+  'Porsche':'logo_porsche',
+  'Lincoln':'logo_lincoln',
+  'Mercedes-Benz':'logo_mercedes',
+  'Alfa Romeo':'logo_alfa',
+  'Mini':'logo_mini'
 };
 
 function brandLogoHtml(make){
@@ -1245,7 +1672,7 @@ function renderTabs(){
     byYear[yr].push({key:k,label:v.label,count:v.cars.length});
   });
   const years=Object.keys(byYear).sort((a,b)=>b-a);
-  const events=Object.entries(EVENTS).map(([k,v])=>({key:k,label:v.label,count:v.cars.length}));
+  const events=Object.entries(EVENTS).map(([k,v])=>({key:k,label:v.label,count:v.cars.length,ts:v.timestamp||0})).sort((a,b)=>b.ts-a.ts);
   const evActive=events.some(e=>e.key===active);
 
   let html='';
@@ -1264,7 +1691,7 @@ function renderTabs(){
 }
 
 function buildDropItems(id, events, byYear){
-  const eventsData=Object.entries(EVENTS).map(([k,v])=>({key:k,label:v.label,count:v.cars.length}));
+  const eventsData=Object.entries(EVENTS).map(([k,v])=>({key:k,label:v.label,count:v.cars.length,ts:v.timestamp||0})).sort((a,b)=>b.ts-a.ts);
   if(id==='eventos'){
     return eventsData.map(e=>`<div class="drop-item${e.key===active?' drop-active':''}" onclick="setActive('${e.key}','event');closeDrop()">${e.label}<span class="drop-pill">${e.count}</span></div>`).join('');
   }
@@ -1300,13 +1727,29 @@ document.addEventListener('click',function(e){
   }
 });
 
-function setActive(key, type){
+const navHistory=[];
+function setActive(key, type, pushHistory=true){
+  if(pushHistory && active) navHistory.push({key:active, type:window._activeType||'month'});
+  window._activeType=type;
   active = key;
   if(type==='event') renderEvent(key);
   else if(type==='collection') renderCollection(key);
   else if(type==='brands') renderBrands();
   else if(type==='brand-detail') renderBrandDetail(key);
   else renderMonth(key);
+  updateBackBtn();
+}
+
+function goBack(){
+  if(!navHistory.length) return;
+  const prev=navHistory.pop();
+  setActive(prev.key, prev.type, false);
+}
+
+function updateBackBtn(){
+  const btn=document.getElementById('back-btn');
+  if(!btn) return;
+  btn.style.display=navHistory.length?'flex':'none';
 }
 
 function getAllCars(){
