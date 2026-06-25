@@ -205,6 +205,7 @@
 </div>
 <div class="hw-tabs" id="tabs"></div>
 <div id="drop-overlay" style="display:none;position:fixed;z-index:9999;"></div>
+<div id="global-top-stats"></div>
 <div class="hw-body" id="body"></div>
 <div class="hw-divider"></div>
 <div class="coll-sec">
@@ -349,10 +350,25 @@ const IMGS = {
   douglasTruck:      'https://lh3.googleusercontent.com/pw/AP1GczMaKG4w3NObtoyr8Tq35WNlS61gYfSk3gQ2Jj90ONv5TTD1fGcYzLQz4PmIt8kD3OT1vvZwXGc3ovYgu2jcdtHXQU62BYJzJLqAZxhBF3FdaAz4Rt89=w1200',
   nissan240Z:        'https://lh3.googleusercontent.com/pw/AP1GczOCaJ4-8AxLV_sYxHTYlTSBGKj3a9asXr83X2A66_o8qjTUH9M9IhgrFKGVPc3otoeFaWWNiiZon5DUuQ3O2NzS5-l5mexuRqlywR6NpEJVuwlkxPLC=w1200',
   fordModelT:        'https://lh3.googleusercontent.com/pw/AP1GczNxvH_Pu6wb3OvP3ASPhCEjRkwD9E_iPRqg_Y4eXr3HaPdAm7mIa0dJojjhJ84vqnIMVp9bjaMhh9SvniyBvM1pqxeCmKT6fRdgl0zglIplvjv5PcRP=w1200',
+  chevyMasterEagle:  'https://lh3.googleusercontent.com/pw/AP1GczM6koiGlSRovbwzfjaTE2MNu-3mIO4LRcc-YR4yx9y_Ihue9mEg58pNcMf-KM0YBf2c8mWhnMSvG65c-6IJSYpLk201tDBPCixjuXZ2bej3vpOQAxX1=w1200',
+  fordThunderbird:   'https://lh3.googleusercontent.com/pw/AP1GczPPz4Qy7lQJtO1V7K5UEo3HiDrrwbeuPR6H9LSOyhUBACZxsy5TWPKjFqYwtfums2FDqi79AeWolV1j8N9WRZCyrpSbTZBlbe9iZOa2wyD6qn4oewJt=w1200',
+  gazelleKitCar:     'https://lh3.googleusercontent.com/pw/AP1GczPMkUyUexXI07XYC-Nwk92X_sdoY3XK_O37JfDx3Nfpaz2Nm9nmu6jRZ3IlRsEocqwfSuiWJjahHAKQYfpDfNZgwenlEp5bS_3_ktsEfmMKDjtIbH2q=w1200',
+  fordModelAHotRod:  'https://lh3.googleusercontent.com/pw/AP1GczNc2nvA5CtKPtTvK4GcugTF6EPwsZxWOkE1qVnu_r_SKm1EtRWrRkCKbD3Me7RiGlED_dUNYEjgI5x-LQDlO6ANUewhMLHNvkCBij07UhhX5wlkDmZ_=w1200',
+  datsun240ZBlanco:  'https://lh3.googleusercontent.com/pw/AP1GczM9VoKDCuc0-NpWYxitk9f1Hpsfv-f01k3UD2C1xyN59H-vIH_GoyOTb0XNMZCW-5M1iDAmP7jiDW7FrnOXXXd7YP7Glm1ZUK3uazUqJ0X3Gq-50upM=w1200',
+  mclarenMP412C:     'https://lh3.googleusercontent.com/pw/AP1GczPhKNp3Pt8gu4EU8cvd-TmD1hvUoIrWqrOx33GjUAgnN6O0Oh0n2_qqpGvjKBxfV8gtm2r_uK6NzDGAoVRIDbrB-9VywYWPlcmPiL9E0Eo610hRdZO3=w1200',
+  mazdaRX7FD:        'https://lh3.googleusercontent.com/pw/AP1GczOhfBaxxUayThSzM8Qv21Q-y6jeJqFUItWYnylYeQN7_d5jAqbyBCDASlY2gTcSi-nn2ZSqikFgZ5zHcMHJ0WcpkN_ZPJgGKvBnUuRlyiFWXI_a2-Ho=w1200',
+  internationalCXT:  'https://lh3.googleusercontent.com/pw/AP1GczPFTA3KxGKoLpaF5mOznYEs6A2e5bs8Qlne45QRKA8DvoVU8sf4CcIMaacyRxir8nTFyLELm8smQMrCBwVbdE-zJywa_3ggoGr3nUV9z--dUicUv5-m=w1200',
+  renault9_1985:     'https://lh3.googleusercontent.com/pw/AP1GczMpr5IiaYfnwM1TuX9HmHboDDftHBQuVsyBmuDFg-e9vkTwFb-WQLlfulfYrcQqFsnuMisWiLvRqVG22gSpN21MyBssaa-8jPFAjohaG0elXw9H2akN=w1200',
+  pierceFire:        'https://lh3.googleusercontent.com/pw/AP1GczNFIcUJToh08-nlv9iwJSaO9sX5JtxczO33BUZHwZEN9A0_XTleNN1kQXGJISwLdRWVLlHKRRx3LjOE9M5FQvQpmeGCkEN7bNTNDIlCbFUTnjvdbs5e=w1200',
   ferrari308gts:     'https://lh3.googleusercontent.com/pw/AP1GczMqXDf27y21i-0T26toaHNflZ8nffoexHrJHd5tmRvkblQwxuE8emQ_gmfC92OfG7W-lR7Xe3C6Sj7t8eGFsH22BXJsgyG3ZEPrP11j_gN3xarNK8Gi=w1200',
   mercuryLeadSled:   'https://lh3.googleusercontent.com/pw/AP1GczOR46_S1g1hF796ZZ39Ckwn2ZKplmS8SvRZTAf3mZlJpKJDz2zDraUeyZbhDGyWU5KtWIe6PzF55zn_1PF_mM7-P06W_M_IHRy9uOasl06K4pARfYol=w1200',
   triumphTR7:        'https://lh3.googleusercontent.com/pw/AP1GczN5AhaOk684T72nrub8HcsfXgXk0u9rKBj50RNDpqaMo0R-5w6kwQZMnBppimO6lVMSF3hjsLqBF9Y1jcjekYSHiIRe_QZ8TheHipoPkclLONAlkut5=w1200',
   teslaSemiAlpha:     'https://lh3.googleusercontent.com/pw/AP1GczOM8vIDRP40qCENyL4WTDs30DABAs-6PJPEDmvhI4k2fL7OW7ukXECID35Fjfspf3yRU02LzsAPQBjT7VOlNk8jEw2UUr5tmiETVqJjvBiP0pdXsgMK=w1200',
+  fiatAbbarthRecord:  'https://lh3.googleusercontent.com/pw/AP1GczPyGbh9azh47YftMU1d-vgzvTkthC8QjO2p3KN4_SR48f-zsuuLy6Hd9SynZ11_qkv0cCUYOVdI5aVjMZTlFXPnCHpckISUwpsK8Armp8c5K45G1kbK=w1200',
+  porsche718RSK:      'https://lh3.googleusercontent.com/pw/AP1GczM-qg-bnVfwhuY6fxhmRDItJGgPynfEOqT0ZU9AfJMhWZKHaxRoi2JZCMLxvrs58mhS5UK_P8QHE0TRcsWte_WgngE7o7n0N5K5BQn9x0DTtPszUoTQ=w1200',
+  rrPhantomAero:      'https://lh3.googleusercontent.com/pw/AP1GczOGQuRg0L4-pxbroIj2qTplrqQqsMsOEgXshplK6N0zy8AoZfR_bNDJkwKG6izx63l8tu32_rWmNN9exWF_pUBEdisOdWSR0FyX53aeP-JWYh02X70W=w1200',
+  porsche917_30:      'https://lh3.googleusercontent.com/pw/AP1GczOj9Ry3kN5xCCopXD3ILkyy6GnVSbPpBRcPZIfHjkXDPF5FT4-Fg3aMD7jFBfh1XBfSa2Y11SPJH1ILVbqJLGHCJ0mB_s0wYMKE5Cz5m6GKQMD7wjz=w1200',
+  porsche935Brumos:   'https://lh3.googleusercontent.com/pw/AP1GczNXF8Fh31Qd4PV73hSJiRPYz7mh1_JVn38Q91mSIQ5Jle5OoE5MZf4G14sWR8fSWxpgBU9pCABNv9aRc89mjCQU-JT1NNPX3k2TH1g0yC8gfYUxjjt=w1200',
   bluesmobileMonaco:  'https://lh3.googleusercontent.com/pw/AP1GczMX3FWvojBpBZPL3wn1ITZZgKkWpJQckQrhjtkxY70RehKQHka_MdwbokRx_tKnxLXhzBigrELfydKeMlLGfw4YtTIF8mxwVdL7LGu2CCQGC-04Z6hF=w1200',
   crv2025:            'https://lh3.googleusercontent.com/pw/AP1GczOpa_-89kYi3Lbi44peW0JSOT5nPNgmugqpHjcGoBMS5U-M-l55k0OMaPp_UBLS83SlTSjl0gFSUFBSjq46TmYafMzcHhioJexCx33CIN2H0GSgX-Oy=w1200',
   logo_kia:           'https://lh3.googleusercontent.com/pw/AP1GczNIMlhlES0EcZ9iXv8a80f9lj4IxzA4oLAdt3eKcG3ljzz8w8sobG23FRkIJ3C7S0qIFbhyZPCTK_2_aTXlVnfJbcSVfNU2x5MZa7_IOlSuezu49y9U=s250-k-no',
@@ -363,6 +379,7 @@ const IMGS = {
   logo_ford:          'https://lh3.googleusercontent.com/pw/AP1GczOZSr1xH61oos3YWCQ_krtE7tKr4uVyUldMAg0Pk6XPNTvhYW-4UiAihUu0pXKbEC8O9ud1sVgRLZ8msP52NPv6M_kPNFW40A5QnyOTyoGmXim7gAaf=s250-k-no',
   logo_mercury:       'https://lh3.googleusercontent.com/pw/AP1GczNdXK9WVA3L81y96Vc71XRZ33gbLwxBhn6zUP5BS8uXdrbDJCuI2Sy-U9MIrxR81Pbt6fwnLpv1go0oKd6arv5DCEyvRcHGh4GPdQoFms0K5TyWdymW=s250-k-no',
   logo_douglas:       'https://lh3.googleusercontent.com/pw/AP1GczNLiuPcA5RzeblF-PPSEFcY5b010vY7a-VR5zWuCIka5BJ8wofmxdb8PEF87JW3AiIxAs0vaMpSiNfCGt9Ss6LIwhKljRxQXUFhIDFuWzKPNmw8_x1H=s225-k-no',
+  logo_international: 'https://lh3.googleusercontent.com/pw/AP1GczOACuBR02RDOhv0tVhV3NVh5Ztt2YNQVFzjBFRmn386UCu1SwuH9EXhqm1HBLM6OkcVyBzM0f1T1kiJ-7QF3FrYx_ivHs5nn9OoD3U4WUtCWN6XnK0k=s250-k-no',
   logo_mini:          'https://lh3.googleusercontent.com/pw/AP1GczOy7JhtPvMnEmUt4zBOsZ9ycjgmKt39il59_2miq-ueWOH84kWRnmoalwz5DWSRw-OnQLOLI40bdP2j_biqoAUcW_0RasvQasT5AEk1YVUDQ2_9uKwO=s250-k-no',
   logo_tvr:           'https://lh3.googleusercontent.com/pw/AP1GczNc9IKfPC69jcBYDQNw8l2rJ1UXC7fk_vgaajsaVtyarYa_TDVn6xc6KnUuUX4RnzbHiSvDNxgUtpUnR9w_i6MGTrKaXuaQp-XrJCxx1e8unlNeotem=s250-k-no',
   logo_triumph:       'https://lh3.googleusercontent.com/pw/AP1GczOzJKiMKOEM1iURHoSXKYIWH82Fu_moxUFcBLEWUfjLQbU4hiHgp5mLUyZQvtG2ssrONYL9f2CEJZBjmx829kdIfO3fbRAXnCsmOzt-7Ddy10WKH-rg=s250-k-no',
@@ -664,7 +681,7 @@ const CARS={
     specs:{"Motor":"V8 4.0L M60B40 / 4.4L M62B44","Potencia":"282–286 hp / 295 lb-ft","Transmisión":"Automática 5 vel. ZF Steptronic","Tracción":"RWD","0–100 km/h":"6.9 seg","Vel. máxima":"250 km/h (limitada)","Carrocería":"Sedán 4 puertas","Peso":"1,790 kg","Años de prod.":"1994–2001","Precio CA (usado)":"$8,000–$20,000"},
     highlights:["Protagonista de 'El Quinto Elemento' (1997) — el taxi volador futurista era un E38 modificado","Considerado por Top Gear y Car & Driver el mejor 7 Series de la historia de BMW","Los rines de 3 piezas de este ejemplar son aftermarket BBS o similar — elevación visual notable","Fue el primer 7 Series con sistema de navegación por GPS de serie — tecnología pionera en 1994","James Bond condujo un E38 telecomandado desde el asiento trasero en 'Tomorrow Never Dies' (1997)"]
   }]},
-  "2019-04":{label:"Abril 2019",recap:"Un hallazgo fuera de la línea de tiempo habitual del dashboard: durante un viaje familiar a Florida, esta Chevrolet Silverado convertida en monster truck rosa — el anuncio rodante de un taller de llantas en St. Petersburg — se robó la foto del mes.",cars:[{
+  "2019-04":{label:"Abril 2019",recap:"Viaje familiar a Florida: el mismo día, dos vehículos imposibles de olvidar en St. Petersburg. La Silverado monster truck rosa de Spooners Tires es el destacado por pura locura visual, pero la foto de Nelson cargando a Simón (toddler) frente al camión de bomberos Pierce HR4 es la más entrañable del mes.",cars:[{
     id:"spoonersTruck",make:"Chevrolet",model:"Silverado 2500HD – Monster Truck \"Spooners\"",years:"1999–2006",
     photoDate:"18 de abril, 2019",photoTimestamp:20190418,featured:true,
     featuredReason:"Único hallazgo de abril 2019 — un Silverado convertido en monster truck rosa, usado como anuncio rodante de un taller de llantas en Florida. El hallazgo más alejado de Vancouver de todo el dashboard.",
@@ -672,6 +689,14 @@ const CARS={
     hp:300,topSpeed:"169 km/h",zero:"10.0 s",priceCAD:"$25,000–$45,000 CAD (build completo, estimado)",badge:"",badgeLabel:"",imgKey:"spoonersTruck",
     specs:{"Motor":"V8 6.0L Vortec (base, antes de modificaciones)","Potencia":"300 hp / 360 lb-ft","Transmisión":"Automática 4–6 vel.","Tracción":"4WD","0–100 km/h":"10.0 seg","Vel. máxima":"169 km/h","Carrocería":"Pickup doble cabina, lift extremo + llantas de barro XL","Generación":"GMT800 (1999–2006)","Ubicación":"Spooners Tires & Auto, St. Petersburg, FL","En la foto":"Simón y Nelson"},
     highlights:["Simón y Nelson posando junto al camión durante un viaje familiar a Florida, 18 de abril de 2019 — el hallazgo más lejano de Vancouver en todo el dashboard","Es el camión publicitario de Spooners Tires & Auto, taller de llantas y mecánica en el 5582 66th St N, St. Petersburg — su dirección y servicios están pintados directamente en la carrocería","Llantas de barro y suspensión de eje sólido extremadamente levantada — un lift muy por encima de cualquier camión 'lifted' normal de la calle","Base: Chevrolet Silverado HD generación GMT800 (1999–2006) con el clásico V8 6.0L Vortec antes de cualquier modificación","El rosa chillón con grafitis negros es 100% intencional — un camión diseñado para ser visto desde la autopista, no para ser práctico"]
+  },{
+    id:"pierceFire",make:"Pierce",model:"Hook & Ladder HR4 – Old Northeast",years:"2010s",
+    photoDate:"18 de abril, 2019",photoTimestamp:20190418,featured:false,
+    featuredReason:"",
+    review:"Nelson cargando a Simón (toddler) frente al camión de bomberos Pierce HR4 de la estación Old Northeast en St. Petersburg, Florida — el mismo viaje del Silverado monster truck de Spooners. El letrero 'HR4 Old Northeast' y la bandera americana en la rejilla frontal identifican la unidad. Al lado un segundo camión con el lema 'Saving Lives & Property Since 1907' — la estación tiene más de un siglo de historia. Pierce Manufacturing es el fabricante de camiones de bomberos más importante de EE.UU. El detalle más especial: Simón bebé en brazos de Nelson, su primera visita a una estación de bomberos.",
+    hp:450,topSpeed:"120 km/h",zero:"N/A",priceCAD:"$800,000–$1,200,000 CAD (nuevo)",badge:"",badgeLabel:"",imgKey:"pierceFire",
+    specs:{"Fabricante":"Pierce Manufacturing (Appleton, Wisconsin)","Modelo":"Hook & Ladder / Heavy Rescue HR4","Unidad":"HR4 – Old Northeast Fire Station, St. Petersburg, FL","Motor":"Diesel Cummins ISX de alta potencia","Potencia":"~450 hp","Longitud":"~14 m (camión de escala)","Tripulación":"Hasta 6 bomberos","Estación":"Old Northeast, St. Petersburg, FL (fundada 1907)","En la foto":"Nelson y Simón (toddler)"},
+    highlights:["Nelson cargando a Simón (toddler) en su primera visita a una estación de bomberos — la foto más tierna del dashboard","HR4 Old Northeast con bandera americana en la rejilla — la identidad visual del departamento de bomberos de St. Petersburg","Al lado del HR4 se ve otro camión con el lema 'Saving Lives & Property Since 1907' — más de 100 años de historia en la misma estación","Pierce Manufacturing de Wisconsin es el proveedor número uno de camiones de bomberos en los EE.UU. — cada unidad cuesta entre $800K y $1.2M","El mismo día y la misma ciudad del Silverado monster truck de Spooners — el viaje a Florida de 2019 dio dos hallazgos completamente distintos"]
   }]},
   "2020-06":{label:"Junio 2020",recap:"Una limusina Lincoln Navigator blanca — el hallazgo más largo (literalmente) de todo el dashboard, estacionada en un barrio residencial de Vancouver.",cars:[{
     id:"lincolnLimo",make:"Lincoln",model:"Navigator Stretch Limousine",years:"2003–2006",
@@ -886,7 +911,7 @@ const CARS={
     specs:{"Motor":"Doble motor AC síncrono (delantero + trasero)","Potencia":"480 hp / 686 lb-ft","Transmisión":"Reductora de 1 velocidad","Tracción":"AWD","0–100 km/h":"3.8 seg","Vel. máxima":"225 km/h (140 mph)","Carrocería":"Sedán 4 puertas, techo panorámico de cristal","Autonomía":"410 millas (660 km) EPA","Años de prod.":"2023–presente (trim Pure)","Ubicación":"Parqueadero, Washington, EE.UU."},
     highlights:["Foto del 18 de junio de 2023 en un parqueadero de Washington — plástico de fábrica todavía en los asientos, recién entregado","El Lucid Air fue diseñado por Peter Rawlinson, ex ingeniero jefe del Tesla Model S, y ganó el premio 'World Luxury Car' en 2023","Motores del tamaño de una sandía liberan espacio interior — el Air tiene una de las cajuelas delanteras (frunk) más grandes de cualquier eléctrico","Versión Pure AWD: 480hp combinados y hasta 410 millas (660 km) de autonomía EPA — el trim de entrada de la gama Air","Arquitectura de 900 voltios: carga hasta ~300 km de autonomía en unos 12 minutos en un cargador rápido"]
   }]},
-  "nuestros-autos":{label:"Nuestros Autos",recap:"Siete autos familiares cuentan el camino de Bogotá a Vancouver: el Mazda 2 rojo de 2014, el primer auto propio de la familia, sigue como destacado por ser donde empezó todo. El Kia Cerato de 2013, el Mazda 3 Sedán de 2015, el Suzuki S-Cross de 2017 y el Mitsubishi Montero Sport de 2019 completan los años en Bogotá, mientras que el Honda Civic LX de 2021 y el Honda CR-V Sport de 2025 — comprado en Westwood Honda — marcan los dos autos de la familia ya en Canadá.",cars:[{
+  "nuestros-autos":{label:"Nuestros Autos",recap:"La historia familiar empieza en diciembre de 1985: Nelson y Marcello junto a un Renault 6 en Antioquia — la foto más antigua del dashboard. De ahí al Mazda 2 (primer auto propio, Bogotá 2014), el Kia Cerato, el Mazda 3, el Suzuki S-Cross, el Mitsubishi Montero Sport, y ya en Canadá, el Honda Civic y el Honda CR-V comprado en Westwood Honda en 2025. Ocho autos, dos países, cuatro décadas.",cars:[{
     id:"mazda2_2014",make:"Mazda",model:"2 Sport",years:"2012–2014",
     modelYear:2014,
     photoDate:"25 de marzo, 2014",photoTimestamp:20140325,featured:true,
@@ -943,6 +968,14 @@ const CARS={
     hp:190,topSpeed:"185 km/h",zero:"9.5 s",priceCAD:"$38,000–$43,000 CAD (nuevo 2025)",badge:"",badgeLabel:"",imgKey:"crv2025",
     specs:{"Motor":"I4 1.5L Turbo VTEC","Potencia":"190 hp / 179 lb-ft","Transmisión":"CVT","Tracción":"AWD","0–100 km/h":"9.5 seg","Vel. máxima":"185 km/h","Carrocería":"SUV 5 puertas","Peso":"1,560 kg","Años de prod.":"2023–presente (6ª gen)","Ciudad de compra":"Coquitlam, Canadá"},
     highlights:["Comprado en Westwood Honda — el séptimo auto de la familia y el segundo adquirido ya en Canadá, después del Civic de 2021","La sexta generación del CR-V (2023+) creció en tamaño y adoptó un diseño más cuadrado y robusto frente a las curvas de la generación anterior","El motor 1.5L turbo entrega 190hp — el más potente de toda la colección familiar, superando al Montero Sport","El CR-V ha sido uno de los SUVs más vendidos de Norteamérica por años — Honda mueve cientos de miles de unidades anuales solo entre EE.UU. y Canadá","Rines negros brillantes y acabados en negro — la firma visual del trim Sport dentro de la gama CR-V"]
+  },{
+    id:"renault9_1985",make:"Renault",model:"6 (Sofasa)",years:"1968–1986",
+    photoDate:"Diciembre de 1985",photoTimestamp:19851201,featured:false,
+    featuredReason:"",
+    review:"Diciembre de 1985, Colombia — Nelson y su hermano Marcello de pie junto a un Renault 6 beige en Antioquia. La foto es analógica, con los colores suaves y la textura de grano de la época. El Renault 6 fue el auto de la clase media colombiana de los años 70 y 80 — fabricado por Sofasa en Envigado, Antioquia, y sinónimo de la vida familiar en las carreteras colombianas de la época. Robusto, económico y fácil de mantener, el R6 fue el compañero de miles de familias antioqueñas. La foto, tomada en Antioquia, muestra a Nelson y Marcello en ese paisaje de pasto seco característico de las zonas templadas del departamento.",
+    hp:55,topSpeed:"150 km/h",zero:"16.0 s",priceCAD:"N/A (Colombia, 1985)",badge:"",badgeLabel:"",imgKey:"renault9_1985",
+    specs:{"Motor":"I4 1.4L (motores varios según año)","Potencia":"~55 hp","Transmisión":"Manual 4/5 vel.","Tracción":"FWD","Vel. máxima":"~150 km/h","Carrocería":"Sedán o hatchback 4/5 puertas","Fabricante":"Sofasa — Envigado, Antioquia, Colombia","Años de prod.":"1968–1986 (Colombia)","Región":"Antioquia, Colombia","En la foto":"Nelson y Marcello (diciembre 1985)"},
+    highlights:["La foto más antigua del dashboard — diciembre 1985, Colombia, con Nelson niño y su hermano Marcello junto al Renault 6 en Antioquia","El Renault 6 fue el auto de la familia colombiana de los 70-80 — fabricado por Sofasa en Envigado, Antioquia","Sofasa comenzó a ensamblar el R6 en Colombia en los años 70 — fue el auto que popularizó el motor de gasolina pequeño y eficiente para las carreteras antioqueñas","Cuarenta años después Nelson sigue documentando autos — del Renault 6 antioqueño de 1985 al McLaren MP4-12C en Port Coquitlam en 2022","La imagen más personal del dashboard — un auto de familia en una foto analógica que conecta el origen de la pasión con la colección actual"]
   }]}
 };
 
@@ -951,7 +984,7 @@ const COLLECTIONS={
   "autos-divertidos":{
     label:"Autos Divertidos",
     description:"Los hallazgos más extravagantes, raros o simplemente imposibles de ignorar. Estos autos hacen sonreír.",
-    carIds:["aztek","sprite","sc430","miniSofa","cartVisteon","citroen2cv","spoonersTruck","vwHerbie","lincolnLimo","miniGroovy"],
+    carIds:["aztek","sprite","sc430","miniSofa","cartVisteon","citroen2cv","spoonersTruck","vwHerbie","lincolnLimo","miniGroovy","pierceFire"],
     featuredId:"aztek"
   }
 };
@@ -1306,12 +1339,52 @@ const EVENTS={
     description:"El Petersen Automotive Museum en Los Ángeles es uno de los museos de autos más importantes del mundo, con colecciones permanentes y rotativas de clásicos, prototipos y conceptos icónicos de la historia automotriz.",
     cars:[{
       id:"teslaSemiAlpha",make:"Tesla",model:"Semi \"Alpha\" Prototype",years:"2017",
-      photoDate:"15 de septiembre, 2023",photoTimestamp:20230915,featured:true,
+      photoDate:"15 de septiembre, 2023",photoTimestamp:20230915,featured:false,
       featuredReason:"Único hallazgo de esta visita al Petersen Museum — el prototipo 'Alpha' del Tesla Semi, con Simón posando junto a sus primos Lorenzo y Emiliano.",
       review:"Un camión completamente distinto al resto del dashboard: el Tesla Semi 'Alpha' es el prototipo de pruebas de 2017 que Tesla usó antes de iniciar la producción en serie de su camión eléctrico de carga pesada. El asiento de manejo centrado — visible a través del parabrisas — y los espejos extendidos como brazos delatan que esto nunca fue pensado para venderse así, sino para validar tecnología. En el Petersen Automotive Museum de Los Ángeles, Simón posó junto a sus primos Lorenzo y Emiliano frente a esta pieza, que representa el lado más experimental del catálogo Tesla.",
       hp:0,topSpeed:"105 km/h",zero:"20 s",priceCAD:"No comercializado — prototipo de pruebas",badge:"",badgeLabel:"",imgKey:"teslaSemiAlpha",
       specs:{"Motor":"Tri-motor eléctrico","Potencia":"No revelada (prototipo)","Transmisión":"Reductora fija","Tracción":"AWD (3 motores)","0–100 km/h":"20 seg","Vel. máxima":"105 km/h","Autonomía":"483–805 km (300–500 millas)","Carrocería":"Camión clase 8, cabina aerodinámica, asiento central","Año":"Prototipo 'Alpha', 2017","Ubicación":"Petersen Automotive Museum, Los Ángeles, CA"},
       highlights:["Placa del museo: prototipo 'Alpha' del Tesla Semi 2017 — el primer camión eléctrico de carga pesada de Tesla, antes de la producción en serie","Simón, junto a sus primos Lorenzo y Emiliano — el coleccionista más joven de la familia explorando uno de los prototipos más raros de Tesla","El sistema tri-motor mantiene 105 km/h en autopista incluso a plena carga subiendo una pendiente del 5%","Este prototipo resistió pruebas de frío extremo de hasta -40°C en Alaska y completó una prueba de resistencia de 5,000 millas por la Ruta 66","Los camiones de carga pesada generan el 18% de las emisiones vehiculares en EE.UU. — el segmento que Tesla apunta a electrificar con el Semi"]
+    },{
+      id:"fiatAbbarthRecord",make:"Fiat",model:"Abarth Record Car",years:"~1956",
+      photoDate:"15 de septiembre, 2023",photoTimestamp:20230915,featured:false,
+      featuredReason:"El auto de récord de velocidad más antiguo y raro del Petersen Museum — una pieza única de carrocería teardrop de los años 50 con un solo faro central, al lado del Corvette más clásico.",
+      review:"Una pieza excepcional del Petersen Automotive Museum en Los Ángeles: un auto de récord de velocidad Fiat/Abarth con carrocería aerodinámica teardrop de los años 50, un solo faro central y el texto 'FIAT' en el morro. Al lado, un Chevrolet Corvette negro de pared blanca de la misma época. El Petersen tiene una de las colecciones de autos de récord y concept cars más importantes del mundo. Abarth fue el preparador italiano que tomó motores Fiat pequeños y los llevó a velocidades récord en la categoría de cilindrada limitada — estos autos teardrop eran cápsulas de aluminio diseñadas para cortar el aire con la menor resistencia posible.",
+      hp:65,topSpeed:"220 km/h",zero:"N/A",priceCAD:"Pieza de museo — sin precio",badge:"",badgeLabel:"",imgKey:"fiatAbbarthRecord",
+      specs:{"Motor":"I4 Fiat/Abarth de pequeña cilindrada","Potencia":"~65 hp (modificado para récords)","Carrocería":"Teardrop aerodinámico — aluminio","Diseño":"Un solo faro central, morro bajo","Año":"~1956 (era de récords Abarth)","Estado":"Exhibición — Petersen Automotive Museum, LA","Ubicación":"Petersen Automotive Museum, Los Ángeles, CA"},
+      highlights:["Carrocería teardrop de una sola pieza en aluminio — el diseño más aerodinámico que era posible fabricar a mano en los años 50","Un solo faro central en el morro — una solución técnica que minimizaba la resistencia al aire y era legal en los reglamentos de récord de velocidad","Abarth tomó motores Fiat de pequeña cilindrada y los llevó a velocidades récord — el mismo principio que aplicaría luego al Fiat 500 Abarth moderno","Al lado en la vitrina: un Chevrolet Corvette negro de pared blanca — Italia vs EE.UU., record car vs sports car, en el mismo espacio del Petersen","El Petersen Automotive Museum alberga más de 300 vehículos en exhibición rotativa — uno de los museos de automóviles más importantes del hemisferio occidental"]
+    },{
+      id:"porsche718RSK",make:"Porsche",model:"718 RSK / RS60 Spyder #27",years:"1957–1961",
+      photoDate:"15 de septiembre, 2023",photoTimestamp:20230915,featured:false,
+      featuredReason:"",
+      review:"Un Porsche 718 RSK o RS60 Spyder plateado con el número de carrera 27, exhibido en el salón dedicado a Porsche del Petersen Automotive Museum. Al fondo otro Porsche 550 Spyder en aluminio. El 718 RSK fue el sucesor del 550 Spyder — mismo concepto de motor central, carrocería de aluminio ultraliviana, pero con más potencia y mejor aerodinámica. Con el motor flat-4 de 1.5L y apenas 600 kg, el RSK dominó las categorías de pequeña cilindrada en Le Mans, Sebring y Targa Florio a finales de los 50. El número 27 puede corresponder a un piloto específico — los RSK corrieron bajo muchos números en los circuitos internacionales.",
+      hp:142,topSpeed:"240 km/h",zero:"N/A",priceCAD:"$3,000,000–$6,000,000 CAD (en subasta)",badge:"",badgeLabel:"",imgKey:"porsche718RSK",
+      specs:{"Motor":"Flat-4 1.5L DOHC (Type 547/3)","Potencia":"142 hp / 96 lb-ft","Transmisión":"Manual 5 vel.","Tracción":"RWD motor central","Peso":"600 kg","Vel. máxima":"~240 km/h","Número":"#27","Carrocería":"Spyder descubierto, aluminio","Años de competición":"1957–1961","Ubicación":"Petersen Automotive Museum – Salón Porsche, Los Ángeles"},
+      highlights:["El Porsche 718 RSK/RS60 Spyder — el auto que precedió al 904 y que estableció la base del éxito de Porsche en endurance racing","Número #27 — los RSK corrieron en Le Mans, Sebring, Nürburgring y Targa Florio con múltiples victorias de clase en la era de los 60","Motor flat-4 de 1.5L de solo 600 kg: la misma filosofía de peso mínimo y motor máximo que define a Porsche hasta hoy","Al fondo visible: el Porsche 550 Spyder plateado — el predecesor directo del RSK, el auto en que murió James Dean en 1955","El salón Porsche del Petersen reúne piezas de carrera únicas que normalmente solo se ven en el Museo Porsche de Stuttgart"]
+    },{
+      id:"rrPhantomAero",make:"Rolls-Royce",model:"Phantom I – Aerodynamic Coupé",years:"1925",
+      photoDate:"15 de septiembre, 2023",photoTimestamp:20230915,featured:true,
+      featuredReason:"El Rolls-Royce Phantom I Aerodynamic Coupé de 1925 es la pieza más antigua, más rara y más espectacular del Petersen Museum — Simón con camiseta de F1 posando junto a la obra maestra del Art Déco automóvil.",
+      review:"Simón con camiseta de Formula 1 y gorra Honda sonriendo frente al Rolls-Royce Phantom I Aerodynamic Coupé de 1925 — la pieza más impactante del Petersen Automotive Museum. El cartel del museo confirma: 1925 Rolls-Royce Phantom I Aerodynamic Coupé. Es una carrocería única sobre el chassis del Silver Ghost / Phantom I, diseñada en estilo Art Déco: guardafangos traseros cubiertos en spoats aerodinámicos de una pieza, techo bajo y curvo, y pintura negra total. Una de las piezas más fotografiadas del Petersen y probablemente el auto de calle más espectacular del dashboard completo.",
+      hp:100,topSpeed:"145 km/h",zero:"N/A",priceCAD:"$10,000,000+ CAD (estimado, pieza única)",badge:"",badgeLabel:"",imgKey:"rrPhantomAero",
+      specs:{"Motor":"I6 7.7L Silver Ghost / Phantom I","Potencia":"~100 hp","Transmisión":"Manual 4 vel.","Tracción":"RWD","Carrocería":"Coupé Art Déco única — spoats aerodinámicos traseros","Año":"1925","Estado":"Exhibición Petersen Automotive Museum — pieza única","Ubicación":"Petersen Automotive Museum, Los Ángeles, CA","En la foto":"Simón"},
+      highlights:["Simón con camiseta de Formula 1 posando junto al Rolls-Royce más espectacular jamás construido — la foto más elegante del dashboard","El Phantom I Aerodynamic Coupé de 1925 es una carrocería única: nadie más tiene un auto como este en el mundo","Los spoats traseros aerodinámicos de una sola pieza — enormes guardafangos curvos que cubren las ruedas traseras — definen el estilo Art Déco extremo","El Rolls-Royce Phantom I fue el primer modelo Phantom de la marca (1925–1931), sucesor del Silver Ghost — la base más lujosa disponible en los años 20","Esta pieza vale más de $10M USD y es el auto más caro y más antiguo exhibido en el Petersen — la corona de la colección"]
+    },{
+      id:"porsche917_30",make:"Porsche",model:"917/30 Can-Am #6 – Penske/Sunoco",years:"1973",
+      photoDate:"15 de septiembre, 2023",photoTimestamp:20230915,featured:false,
+      featuredReason:"",
+      review:"El Porsche 917/30 #6 de Penske Racing con livrea Sunoco azul y amarillo — el auto de Mark Donohue que ganó el campeonato Can-Am de 1973 y que en 1975 estableció el récord de velocidad en circuito cerrado de 221 mph (356 km/h) en Talladega. El 917/30 tiene el motor flat-12 de 5.4L biturbo de 1,100 hp — más potencia que cualquier auto del dashboard, incluyendo el Camaro Pro Mod. El cartel del cockpit dice 'Mark Donohue', el ingeniero-piloto que trabajó con Roger Penske para desarrollar este auto hasta convertirlo en el más dominante de la historia del Can-Am.",
+      hp:1100,topSpeed:"356 km/h",zero:"2.1 s",priceCAD:"$28,000,000–$35,000,000 CAD",badge:"",badgeLabel:"",imgKey:"porsche917_30",
+      specs:{"Motor":"Flat-12 5.4L biturbo","Potencia":"1,100 hp / 795 lb-ft","Transmisión":"Manual 4 vel.","Tracción":"RWD","0–100 km/h":"2.1 seg","Vel. máxima":"356 km/h (récord Talladega 1975)","Piloto":"Mark Donohue (Penske Racing)","Equipo":"Roger Penske / Sunoco + Audi","Campeonato":"Can-Am 1973 (campeón)","Ubicación":"Petersen Automotive Museum, Los Ángeles, CA"},
+      highlights:["El auto con más potencia de todo el dashboard — 1,100 hp del flat-12 biturbo supera al Camaro Pro Mod (2,000hp estimado de drag) en una pista real","Mark Donohue y Roger Penske dominaron el Can-Am 1973 con este auto — ganaron 6 de 8 carreras y el campeonato de constructores y pilotos","En 1975 Donohue llevó este 917/30 a 221 mph (356 km/h) en Talladega — récord de velocidad en circuito cerrado para un auto de carreras","El Porsche 917 fue el auto que Porsche usó para ganar Le Mans en 1970 y 1971 — el 917/30 es su evolución más extrema para Can-Am","El 917/30 tiene el récord de ser el auto que mató a la competencia Can-Am — nadie podía competir con 1,100 hp y Roger Penske"]
+    },{
+      id:"porsche935Brumos",make:"Porsche",model:"935 #59 – Brumos Racing",years:"1977–1981",
+      photoDate:"15 de septiembre, 2023",photoTimestamp:20230915,featured:false,
+      featuredReason:"",
+      review:"El Porsche 935 #59 de Brumos Racing en su icónica livrea blanco, rojo y azul — el auto de la escudería de Jacksonville, Florida, con sponsors Bosch, Kendall y Camel GT. Brumos Porsche fue el equipo americano de Porsche más exitoso de finales de los 70, con Peter Gregg y Hurley Haywood como pilotos. El 935 es la versión de carreras del 911 Turbo: motor flat-6 de 2.85L biturbo de hasta 800hp, carrocería GT modificada para las reglas Group 5 de la FIA. Ganó Le Mans en 1979 en manos de Klaus Ludwig y los hermanos Whittington. El #59 de Brumos está entre los colores de carreras más reconocidos de la historia del automovilismo americano.",
+      hp:800,topSpeed:"340 km/h",zero:"3.2 s",priceCAD:"$3,000,000–$5,000,000 CAD",badge:"",badgeLabel:"",imgKey:"porsche935Brumos",
+      specs:{"Motor":"Flat-6 2.85L biturbo (twin-turbo)","Potencia":"800 hp / 590 lb-ft","Transmisión":"Manual 4 vel.","Tracción":"RWD","0–100 km/h":"3.2 seg","Vel. máxima":"340 km/h","Carrocería":"GT Group 5 — based on Porsche 911 Turbo","Equipo":"Brumos Porsche (Jacksonville, FL)","Pilotos":"Peter Gregg / Hurley Haywood","Número":"#59","Ubicación":"Petersen Automotive Museum, Los Ángeles, CA"},
+      highlights:["La livrea blanco/rojo/azul del #59 Brumos es una de las más reconocidas del automovilismo americano — junto al #6 Penske en el mismo salón del Petersen","Brumos Racing con Peter Gregg y Hurley Haywood dominaron el IMSA/Camel GT a finales de los 70 — los más grandes de la era GT americana","El Porsche 935 ganó Le Mans en 1979 en manos de Klaus Ludwig y los hermanos Whittington — la victoria GT más icónica de Porsche","El mismo salón del Petersen tiene el 917/30 #6 Penske — dos épocas distintas del dominio de Porsche en carreras americanas en el mismo espacio","El 935 fue producido de 1977 a 1981 en múltiples variantes — el 'Moby Dick' de Le Mans y el 935/78 son las más extremas de la familia"]
     }]
   },
   "porsche-harrison-2021":{
@@ -1385,8 +1458,8 @@ const EVENTS={
     description:"Uno de los car shows al aire libre más grandes de BC, con cientos de autos clásicos y personalizados desfilando y exhibidos en el centro de Port Coquitlam cada agosto, a minutos de Coquitlam.",
     cars:[{
       id:"bluesmobileMonaco",make:"Dodge",model:"Monaco — Réplica \"Bluesmobile\"",years:"1974",
-      photoDate:"20 de agosto, 2022",photoTimestamp:20220820,featured:true,
-      featuredReason:"Réplica del Bluesmobile de 'The Blues Brothers' (1980) — hasta la placa de Illinois 'BDR 529' está recreada al detalle, además de la bocina gigante amarrada al techo.",
+      photoDate:"20 de agosto, 2022",photoTimestamp:20220820,featured:false,
+      featuredReason:"",
       review:"Una réplica dedicada del auto más famoso del cine de comedia: el Bluesmobile de Jake y Elwood Blues. Este Dodge Monaco 1974 en blanco y negro, con el rótulo 'TO SERVE AND PROTECT' y la placa de Illinois 'BDR 529' — el mismo número exacto que llevaba el auto original en la película — lleva además una bocina gigante amarrada al techo con cuerdas, decorada con la silueta de los hermanos Blues. Verlo en el Downtown Port Coquitlam Car Show, junto a hot rods y autos JDM, es la prueba de que el espíritu de 'la banda vuelve a reunirse' sigue vivo entre los coleccionistas de BC.",
       hp:220,topSpeed:"196 km/h",zero:"10.4 s",priceCAD:"$15,000–$35,000 CAD (réplica, valor estimado del build)",badge:"",badgeLabel:"",imgKey:"bluesmobileMonaco",
       specs:{"Motor":"V8 7.2L 440 Magnum","Potencia":"220 hp / 350 lb-ft","Transmisión":"Automática TorqueFlite 3 vel.","Tracción":"RWD","0–100 km/h":"10.4 seg","Vel. máxima":"196 km/h","Carrocería":"Sedán 4 puertas, paquete policial","Peso":"2,023 kg","Años de prod.":"1974","Placa":"Illinois BDR 529 — réplica exacta de la película"},
@@ -1400,13 +1473,76 @@ const EVENTS={
       specs:{"Motor":"L24 6 cilindros (base) — posiblemente swap turbo en este build","Potencia":"~300 hp (build modificado)","Transmisión":"Manual","Tracción":"RWD","0–100 km/h":"~5.5 seg (estimado build)","Vel. máxima":"~230 km/h","Carrocería":"Fastback 2 puertas, wide body kit completo","Rines":"Rojos — estilo JDM deep dish","En la foto":"Simón"},
       highlights:["Simón con gorra de Spider-Man saludando — la cara perfecta de un coleccionista ante el 240Z JDM más agresivo del Port Coquitlam Car Show","Stickers de 'Hot Wheels LEGEND' en el parabrisas — el sello que Hot Wheels le pone a los autos reales más icónicos de la cultura car culture","Sponsors de Nitto Tires, Bride Seats, Falken y SickSpeed — un build serio apoyado por las marcas más reconocidas del mundo JDM","Wide body, rines rojos y pintura naranja/negro: la estética del 240Z que la cultura JDM ha convertido en leyenda del drift y el tuning","El 240Z (Datsun S30, 1969) fue el primer deportivo japonés que convenció al mercado americano — este build lo lleva 50 años adelante"]
     },{
-      id:"fordModelT",make:"Ford",model:"Model T",years:"1908–1927",
+      id:"chevyMasterEagle",make:"Chevrolet",model:"Master Eagle / Standard Six",years:"1931–1932",
+      photoDate:"20 de agosto, 2022",photoTimestamp:20220820,featured:false,
+      featuredReason:"",
+      review:"Un Chevrolet amarillo y negro dos tonos de los años 30, con Simón y Dayana posando junto a él en el Port Coquitlam Car Show 2022. El badge azul en la parrilla y la forma característica del radiador apuntan a un Chevrolet Master Eagle o Standard Six de 1931–1932 — la generación que compitió directamente con el Ford Model A en el mercado de autos económicos al inicio de la Gran Depresión. En dos tonos amarillo marfil y negro, con los cromados y el estribo lateral impecables, este clásico de casi 100 años llega al Car Show con la elegancia que solo el tiempo puede dar.",
+      hp:50,topSpeed:"110 km/h",zero:"N/A",priceCAD:"$25,000–$60,000 CAD (restaurado)",badge:"",badgeLabel:"",imgKey:"chevyMasterEagle",
+      specs:{"Motor":"I6 3.2L (194 ci) OHV","Potencia":"~50 hp","Transmisión":"Manual 3 vel.","Tracción":"RWD","Vel. máxima":"~110 km/h","Carrocería":"Sedán 2 puertas Coach, dos tonos amarillo/negro","Años de prod.":"1931–1932","Ubicación":"Downtown Port Coquitlam Car Show, BC","En la foto":"Simón y Dayana"},
+      highlights:["Simón y Dayana posando junto al Chevrolet de los años 30 — uno de los más elegantes del Car Show 2022","Dos tonos amarillo marfil y negro con cromados impecables — la combinación que definió el lujo asequible de los 30","El badge azul en la parrilla es la firma visual de los Chevrolet 1931–1932 — un detalle que los coleccionistas conocen de inmediato","Contemporáneo exacto del Ford Model A — ambos compitieron por el mismo comprador en los años de la Gran Depresión","El mismo Car Show tiene el Ford Model T, el Bluesmobile, el 240Z y el Ford Model T — del 1908 a los 80, todo en una sola calle"]
+    },{
+      id:"fordThunderbird",make:"Ford",model:"Thunderbird (1ª gen)",years:"1955–1957",
+      photoDate:"20 de agosto, 2022",photoTimestamp:20220820,featured:false,
+      featuredReason:"",
+      review:"Un Ford Thunderbird verde lima de primera generación con llantas de pared blanca y placa coleccionista BC 'B47-048' — al lado izquierdo se distingue otro Thunderbird azul del mismo período, y al fondo un Camaro. El T-Bird fue la respuesta de Ford al Chevrolet Corvette en 1955: donde el Corvette apostó por el deportivo puro de dos plazas con V8 y fibra de vidrio, el Thunderbird eligió el lujo personal con techo desmontable, más confort y el mismo V8 de 292ci. En solo tres años de primera generación se vendieron más de 53,000 unidades — tres veces más que el Corvette en el mismo período.",
+      hp:212,topSpeed:"190 km/h",zero:"10.0 s",priceCAD:"$50,000–$120,000 CAD (restaurado)",badge:"",badgeLabel:"",imgKey:"fordThunderbird",
+      specs:{"Motor":"V8 5.1L (312 ci) Y-Block","Potencia":"212 hp / 297 lb-ft","Transmisión":"Automática Fordomatic 3 vel. / Manual 3 vel.","Tracción":"RWD","0–100 km/h":"~10.0 seg","Vel. máxima":"~190 km/h","Carrocería":"Coupé/Roadster 2 plazas, techo hardtop o lona","Placa":"Coleccionista BC B47-048","Años de prod.":"1955–1957 (1ª gen)","Ubicación":"Downtown Port Coquitlam Car Show, BC"},
+      highlights:["Verde lima con llantas de pared blanca — el T-Bird en el color más llamativo del Car Show 2022 de Port Coquitlam","Al lado se ve otro Thunderbird azul del mismo período — dos T-Birds de primera generación en el mismo evento","La respuesta de Ford al Corvette en 1955: mismo V8, pero más lujo, más ventas (53,000 vs 15,000 Corvettes en el mismo período)","El techo 'porthole' (ventana oval) que asoma en la foto es la firma de los T-Bird de primera generación — diseño de Frank Hershey","El Thunderbird 1955-57 es considerado hoy uno de los autos más bellos de la era dorada americana — placa coleccionista BC lo confirma"]
+    },{id:"fordModelT",make:"Ford",model:"Model T",years:"1908–1927",
       photoDate:"20 de agosto, 2022",photoTimestamp:20220820,featured:false,
       featuredReason:"",
       review:"Un Ford Model T azul cielo con ruedas de madera dorada y placa histórica de BC '17 085' en el Port Coquitlam Car Show 2022 — con un Pontiac Firebird naranja detrás, el contraste perfecto entre el origen del automóvil y la era muscle. El Model T es el auto que cambió el mundo: Henry Ford lo introdujo en 1908 a un precio accesible y con la primera línea de ensamblaje de producción en masa, convirtiendo el automóvil de lujo de ricos en herramienta cotidiana. Este ejemplar en azul cielo con ruedas de madera dorada es el auto de producción en serie más antiguo del dashboard — superando incluso al Ford Model A que vimos en Omaha.",
       hp:20,topSpeed:"72 km/h",zero:"N/A",priceCAD:"$20,000–$60,000 CAD (restaurado)",badge:"",badgeLabel:"",imgKey:"fordModelT",
       specs:{"Motor":"I4 2.9L (177 ci) side-valve","Potencia":"20 hp / 83 lb-ft","Transmisión":"Planetaria 2 vel. (pedales)","Tracción":"RWD","Vel. máxima":"72 km/h","Carrocería":"Touring / Roadster (múltiples estilos)","Peso":"~540 kg","Años de prod.":"1908–1927 (15 millones de unidades)","Ubicación":"Downtown Port Coquitlam Car Show, BC (placa histórica BC 17-085)"},
       highlights:["El auto de producción en serie más antiguo del dashboard — el Model T supera al Model A de Omaha por casi 20 años de anterioridad","Placa histórica de BC '17-085' — registrado como vehículo patrimonial en British Columbia","Ruedas de madera dorada con radios: la firma visual del Model T que definió el aspecto de los autos hasta los años 20","Detrás en la foto: un Pontiac Firebird naranja — de 1908 a los 70, el contraste más extremo del dashboard en una sola imagen","15 millones de unidades producidas entre 1908 y 1927 — Henry Ford democratizó el automóvil con la primera línea de ensamblaje en masa de la historia"]
+    },{
+      id:"gazelleKitCar",make:"Jaguar",model:"SS100 – Réplica 1937 (Kit Car)",years:"1937 (réplica)",
+      photoDate:"20 de agosto, 2022",photoTimestamp:20220820,featured:false,
+      featuredReason:"",
+      review:"Una réplica del Jaguar SS100 de 1937 en blanco con bandera Union Jack, propiedad de Jerry Bunch de Chilliwack — registrado como Kit Car en el cartel oficial del Port Coquitlam Car Show 2022. Al fondo se ve el Ford Thunderbird rojo. El SS100 original (1936–1940) fue el deportivo que precedió al Jaguar XK120 y estableció la identidad de la marca: largo capó, guardafangos tipo ciclo, dos plazas y motor en línea de 6 cilindros. Este ejemplar de Jerry Bunch es una reproducción fiel del SS100 en carrocería blanca con Union Jack — uno de los mejores kit cars vistos en el dashboard.",
+      hp:60,topSpeed:"145 km/h",zero:"N/A",priceCAD:"$10,000–$30,000 CAD (build completo)",badge:"",badgeLabel:"",imgKey:"gazelleKitCar",
+      specs:{"Make":"Jaguar (réplica)","Model":"SS100 1937","Motor":"Depende del chassis base","Carrocería":"Roadster 2 plazas — réplica fiel SS100","Dueño":"Jerry Bunch (Chilliwack, BC)","Clase":"Kit Car (registrado en el show)","Bandera":"Union Jack en guardafango","Ubicación":"Downtown Port Coquitlam Car Show, BC"},
+      highlights:["El cartel oficial lo confirma: Year 1937 / Make Jaguar / Model SS100 / Owner Jerry Bunch / City Chilliwack — datos precisos del propietario","El SS100 original (1936–1940) fue el Jaguar que precedió al XK120 y estableció la identidad deportiva de la marca — solo 309 unidades originales existen","Propiedad de Jerry Bunch de Chilliwack, BC — un coleccionista local que cruzó a Port Coquitlam para el Car Show","Bandera Union Jack en el guardafango — tributo explícito a las raíces británicas del SS Jaguar original","Segundo kit car del dashboard: junto a la réplica SS Jaguar de Agosto 2021 en Coquitlam, el dashboard documenta dos homenajes al mismo auto"]
+    },{
+      id:"fordModelAHotRod",make:"Ford",model:"Model A – Street Rod",years:"1927–1931 (restomod)",
+      photoDate:"20 de agosto, 2022",photoTimestamp:20220820,featured:false,
+      featuredReason:"",
+      review:"Un Ford Model A convertido en street rod rojo candy con placa coleccionista BC 'OM8-760'. Carrocería bajada, rines de aluminio tipo Cragar modernos, techo recortado (chopped) y pintura burdeos metálica. A diferencia del Model A original del museo de Omaha, este ejemplar abraza la cultura street rod: se conserva la silueta del original pero se moderniza todo lo que mejora la experiencia. Al fondo un Chevy pickup amarillo y un Dodge negro completan el paisaje del Car Show.",
+      hp:200,topSpeed:"180 km/h",zero:"N/A",priceCAD:"$25,000–$60,000 CAD (restomod)",badge:"",badgeLabel:"",imgKey:"fordModelAHotRod",
+      specs:{"Base":"Ford Model A (1927–1931)","Motor":"V8 moderno (restomod)","Potencia":"~200 hp","Carrocería":"Sedán chopped, lowered — street rod","Rines":"Cragar-style aluminio","Placa":"Coleccionista BC OM8-760","Ubicación":"Downtown Port Coquitlam Car Show, BC"},
+      highlights:["El Model A de la calle vs el Model A del museo — este es la versión que abraza el hot rod culture, no la vitrina","Techo chopped, stance bajado y rines Cragar: los tres elementos del street rod americano clásico","Pintura candy rojo burdeos con reflejo metálico — una restauración que costó tiempo y dinero serios","Placa coleccionista BC 'OM8-760' — el Ford Model A como punto de partida legal para un build registrado","El séptimo auto del Port Coquitlam Car Show 2022"]
+    },{
+      id:"datsun240ZBlanco",make:"Nissan",model:"240Z (S30) – Stock Original",years:"1969–1978",
+      photoDate:"20 de agosto, 2022",photoTimestamp:20220820,featured:false,
+      featuredReason:"",
+      review:"Un Datsun 240Z blanco en estado stock original con Simón posando — el contraste perfecto con el 240Z naranja JDM extremo que también está en el Car Show 2022. El mismo auto en dos filosofías: uno en su forma más pura, el otro llevado al límite del tuning. El S30 blanco stock representa el punto de partida que hizo enamorarse a los fanáticos del Z en primer lugar.",
+      hp:150,topSpeed:"210 km/h",zero:"8.5 s",priceCAD:"$20,000–$60,000 CAD (stock)",badge:"",badgeLabel:"",imgKey:"datsun240ZBlanco",
+      specs:{"Motor":"I6 2.4L (L24) OHC","Potencia":"150 hp / 146 lb-ft","Transmisión":"Manual 4 vel.","Tracción":"RWD","0–100 km/h":"8.5 seg","Vel. máxima":"210 km/h","Carrocería":"Fastback 2 plazas stock","En la foto":"Simón","Ubicación":"Downtown Port Coquitlam Car Show, BC"},
+      highlights:["Simón con gorra Spider-Man — el mismo niño que también posó frente al 240Z JDM naranja extremo del mismo evento","El contraste perfecto del Car Show: el 240Z naranja (tuneado extremo) y este blanco (stock puro) — mismo auto, dos filosofías opuestas","El S30 blanco en estado original es la pieza más pura del evento JDM — sin modificar, sin widebody, sin sponsors","La silueta del 240Z de 1969 es una de las más bellas del automovilismo japonés — Yoshihiko Matsuo la diseñó y nunca necesitó actualizarse","El octavo auto del Port Coquitlam Car Show 2022"]
+    },{
+      id:"mclarenMP412C",make:"McLaren",model:"MP4-12C",years:"2011–2014",
+      photoDate:"20 de agosto, 2022",photoTimestamp:20220820,featured:true,
+      featuredReason:"Un McLaren MP4-12C rojo candy en el mismo Car Show que el Ford Model T de 1908 — 100+ años de diferencia en el mismo evento, con Simón como testigo.",
+      review:"Un McLaren MP4-12C rojo metallic con Simón posando — el auto más rápido y moderno del Car Show 2022, rodeado de clásicos americanos de los 30 y 70. Detrás un Dodge pickup naranja de los 70, a la izquierda un Pontiac verde, más atrás el caos del show. El MP4-12C fue el primer McLaren de producción en serie de la era moderna: motor V8 biturbo de 3.8L con 592hp, carrocería de fibra de carbono y el mismo ADN de F1 que McLaren Applied Technologies desarrolló para las pistas. Ver uno rojo candy entre muscle cars y classics americanos es la esencia del Port Coquitlam Car Show.",
+      hp:592,topSpeed:"330 km/h",zero:"3.1 s",priceCAD:"$80,000–$140,000 CAD (usado)",badge:"",badgeLabel:"",imgKey:"mclarenMP412C",
+      specs:{"Motor":"V8 3.8L M838T biturbo","Potencia":"592 hp / 443 lb-ft","Transmisión":"Doble embrague 7 vel. SSG","Tracción":"RWD","0–100 km/h":"3.1 seg","Vel. máxima":"330 km/h","Carrocería":"Coupé 2 plazas, chasis MonoCell de carbono","Peso":"1,301 kg","Años de prod.":"2011–2014","Ubicación":"Downtown Port Coquitlam Car Show, BC","En la foto":"Simón"},
+      highlights:["El auto más rápido del Port Coquitlam Car Show 2022 — 592hp y 3.1s al lado del Ford Model T de 1908 con 20hp","El MP4-12C fue el primer McLaren de producción en serie moderno — antes de él, McLaren solo había hecho el F1 y autos de carrera","Chasis MonoCell: una célula de fibra de carbono de una sola pieza que pesa solo 75 kg — tecnología directa de F1","Rojo candy metálico entre clásicos americanos de los 30-70 — el contraste visual más extremo del evento","Simón posando como si fuera suyo — la cara correcta ante el auto correcto"]
+    },{
+      id:"mazdaRX7FD",make:"Mazda",model:"RX-7 FD3S",years:"1992–2002",
+      photoDate:"20 de agosto, 2022",photoTimestamp:20220820,featured:false,
+      featuredReason:"",
+      review:"Un Mazda RX-7 FD negro con capó de carbono, rines blancos y el sticker 'WEST COAST ROTARY' en el parabrisas — placa BC 'D2 70F'. El FD es el RX-7 de tercera y última generación, con el motor rotary 13B-REW biturbo secuencial de 255hp que hace que el auto suene como ningún otro. El capó de carbono y los rines OEM+ indican un build enfocado en rendimiento. Exhibido por West Coast Rotary, el club de Mazda rotary más activo de BC. Al fondo se distingue un Plymouth Duster amarillo y un clásico americano verde — el Car Show 2022 mezclando muscle cars y JDM en la misma calle.",
+      hp:255,topSpeed:"250 km/h",zero:"5.3 s",priceCAD:"$25,000–$80,000 CAD",badge:"",badgeLabel:"",imgKey:"mazdaRX7FD",
+      specs:{"Motor":"13B-REW Rotary biturbo secuencial","Potencia":"255 hp / 217 lb-ft","Transmisión":"Manual 5 vel.","Tracción":"RWD","0–100 km/h":"5.3 seg","Vel. máxima":"250 km/h","Carrocería":"Coupé 2+2, capó de carbono (modificado)","Peso":"1,280 kg","Años de prod.":"1992–2002 (FD3S)","Club":"West Coast Rotary (sticker en parabrisas)","Ubicación":"Downtown Port Coquitlam Car Show, BC"},
+      highlights:["Sticker 'WEST COAST ROTARY' — exhibido por el club de Mazda rotary más activo de BC","Capó de carbono y rines blancos OEM+ — un build limpio enfocado en rendimiento sin exagerar","El motor 13B-REW biturbo secuencial es el único motor rotary biturbo de producción en serie de la historia","El RX-7 FD fue inmortalizado en Fast & Furious (2001) — la película que hizo que toda una generación lo conociera","Al fondo: Plymouth Duster amarillo y clásicos americanos — el JDM y el muscle car americano en la misma calle de Port Coquitlam"]
+    },{
+      id:"internationalCXT",make:"International",model:"CXT (Commercial Extreme Truck)",years:"2004–2008",
+      photoDate:"20 de agosto, 2022",photoTimestamp:20220820,featured:false,
+      featuredReason:"",
+      review:"Simón parado junto al International CXT azul eléctrico mirando hacia arriba — la única reacción posible ante el pickup más grande jamás fabricado en producción en serie. El CXT (Commercial Extreme Truck) fue lanzado por International en 2004 basado en un chasis de camión pesado 7300 4x4: 9 pies de alto, 7,711 kg de peso, motor diesel MaxxForce de 7.6L con 220hp y 540 lb-ft. International lo produjo por cuatro años como el pickup personal más extremo del mercado americano, antes de que el precio ($100,000+ USD) y el consumo frenaran su producción.",
+      hp:220,topSpeed:"130 km/h",zero:"N/A",priceCAD:"$130,000–$180,000 CAD",badge:"",badgeLabel:"",imgKey:"internationalCXT",
+      specs:{"Motor":"MaxxForce DT 7.6L diesel turbo","Potencia":"220 hp / 540 lb-ft","Transmisión":"Automática Allison 1000 6 vel.","Tracción":"4WD","Peso":"7,711 kg (GVW)","Altura":"2.74 m (9 pies)","Longitud":"6.7 m","Años de prod.":"2004–2008","Unidades fabricadas":"<1,000 unidades","Ubicación":"Downtown Port Coquitlam Car Show, BC","En la foto":"Simón"},
+      highlights:["Simón mirando hacia arriba para ver la cabina — la foto que mejor demuestra la escala absurda del CXT","El International CXT es el pickup más grande fabricado en producción en serie de la historia — 9 pies de alto, 7,711 kg","Basado en el chasis de camión pesado International 7300 4x4 — el mismo que usa la industria de la construcción","Menos de 1,000 unidades fabricadas en 4 años (2004–2008) — el precio de $100,000+ USD limitó severamente las ventas","El complemento perfecto del Car Show: el mismo evento tiene el Ford Model T de 20hp (1908) y este diésel de 540 lb-ft (2004)"]
     }]
   }
 };
@@ -1474,6 +1610,7 @@ const BRAND_LOGOS={
   'Ford':'logo_ford',
   'Mercury':'logo_mercury',
   'Douglas':'logo_douglas',
+  'International':'logo_international',
   'Austin':'logo_mini',
   'TVR':'logo_tvr',
   'Triumph':'logo_triumph',
@@ -1854,10 +1991,67 @@ function renderCollectors(){
     </div>`).join('');
 }
 
+function renderGlobalTopStats(){
+  // Collect all cars from all sections
+  const allCars = [];
+  Object.values(CARS).forEach(m=>m.cars.forEach(c=>allCars.push(c)));
+  Object.values(EVENTS).forEach(e=>e.cars.forEach(c=>allCars.push(c)));
+
+  function parseSpeed(s){return parseFloat((s||'').replace(',','.'))||0;}
+  function parseZero(s){const v=parseFloat(s);return(!s||s==='N/A'||isNaN(v))?999:v;}
+  function parseYear(c){return parseInt((c.years||'').split(/[–-]/)[0])||9999;}
+  function parsePrice(s){
+    const m=[...(s||'').matchAll(/\$([\d,]+)/g)].map(m=>parseInt(m[1].replace(/,/g,'')));
+    return m.length?Math.max(...m):0;
+  }
+  function maxPriceLabel(s){
+    const m=[...(s||'').matchAll(/\$([\d,]+)/g)];
+    return m.length?'$'+m[m.length-1][1]:'N/A';
+  }
+
+  function best(fn,fmt,icon,label){
+    const valid=allCars.filter(c=>fn(c)>0);
+    if(!valid.length) return '';
+    const w=valid.reduce((a,b)=>fn(a)>=fn(b)?a:b);
+    return `<div class="stat-card">
+      <div class="stat-icon">${icon}</div>
+      <div class="stat-label">${label}</div>
+      <div class="stat-value">${fmt(w)}</div>
+      <div class="stat-car">${w.make} ${w.model}</div>
+    </div>`;
+  }
+  function bestMin(fn,fmt,icon,label){
+    const valid=allCars.filter(c=>fn(c)<9999);
+    if(!valid.length) return '';
+    const w=valid.reduce((a,b)=>fn(a)<=fn(b)?a:b);
+    return `<div class="stat-card">
+      <div class="stat-icon">${icon}</div>
+      <div class="stat-label">${label}</div>
+      <div class="stat-value">${fmt(w)}</div>
+      <div class="stat-car">${w.make} ${w.model}</div>
+    </div>`;
+  }
+
+  const power   = best(c=>c.hp||0, c=>`${c.hp} hp`, '⚡', 'Mayor potencia');
+  const fastest = best(c=>parseSpeed(c.topSpeed), c=>c.topSpeed, '🏎️', 'Mayor velocidad');
+  const accel   = bestMin(c=>parseZero(c.zero), c=>c.zero, '🚀', 'Mejor aceleración');
+  const oldest  = bestMin(c=>parseYear(c), c=>String(parseYear(c)), '📅', 'Más antiguo');
+  const pricey  = best(c=>parsePrice(c.priceCAD), c=>maxPriceLabel(c.priceCAD), '💰', 'Más costoso');
+
+  const total = allCars.length;
+
+  document.getElementById('global-top-stats').innerHTML = `
+    <div style="padding:.6rem 1rem .2rem;background:#fff;border-bottom:1px solid #eee;">
+      <div style="font-size:.65rem;font-weight:800;color:#888;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.4rem;">🏆 Récords de la Colección · ${total} vehículos</div>
+      <div class="stats-bar" style="margin:0;">${power}${fastest}${accel}${oldest}${pricey}</div>
+    </div>`;
+}
+
 function init(){
   renderTabs();
   renderMonth(active);
   renderCollectors();
+  renderGlobalTopStats();
   enableTabsScroll();
 }
 
