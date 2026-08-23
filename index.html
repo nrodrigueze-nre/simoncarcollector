@@ -33,6 +33,13 @@
 .car-card:hover .car-img-wrap img{transform:scale(1.04);}
 .zoom-hint{position:absolute;bottom:7px;right:8px;background:rgba(26,26,26,0.7);color:#fff;font-size:0.7rem;letter-spacing:0.5px;padding:3px 8px;border-radius:12px;font-weight:600;text-transform:none;pointer-events:none;}
 .photo-date{position:absolute;bottom:7px;left:8px;background:rgba(245,242,0,0.95);color:#1A1A1A;font-size:0.68rem;letter-spacing:0.5px;padding:3px 7px;border-radius:12px;font-weight:700;pointer-events:none;}
+.share-btn{position:absolute;top:8px;right:8px;background:rgba(26,26,26,0.72);color:#fff;border:none;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:5;transition:background .15s,color .15s,transform .15s;}
+.share-btn svg{display:block;}
+.share-btn:hover{background:#F5F200;color:#1A1A1A;transform:scale(1.08);}
+.share-btn:active{transform:scale(0.95);}
+.share-btn.loading{pointer-events:none;opacity:0.75;}
+.share-toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#1A1A1A;color:#F5F200;font-size:0.82rem;font-weight:600;letter-spacing:0.3px;padding:10px 18px;border-radius:30px;box-shadow:0 6px 20px rgba(0,0,0,.35);z-index:10000;opacity:0;transition:opacity .25s;pointer-events:none;}
+.share-toast.show{opacity:1;}
 .car-stripe{height:4px;background:#F5F200;}
 .car-info{padding:0.85rem 1rem 0.55rem;}
 .car-make-row{display:flex;align-items:center;gap:12px;margin-bottom:4px;}
@@ -4558,6 +4565,169 @@ function closeLB(){document.getElementById('lightbox').classList.remove('open');
 document.addEventListener('keydown',e=>{if(e.key==='Escape') closeLB();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB();});
 
+function showShareToast(msg){
+  let t=document.getElementById('share-toast');
+  if(!t){
+    t=document.createElement('div');
+    t.id='share-toast';
+    t.className='share-toast';
+    document.body.appendChild(t);
+  }
+  t.textContent=msg;
+  t.classList.add('show');
+  clearTimeout(t._hideTimer);
+  t._hideTimer=setTimeout(()=>t.classList.remove('show'),2600);
+}
+
+function wrapCanvasText(ctx,text,x,y,maxWidth,lineHeight,maxLines){
+  const words=String(text).split(' ');
+  let line='',curY=y,lines=0;
+  for(let n=0;n<words.length;n++){
+    const testLine=line+words[n]+' ';
+    if(ctx.measureText(testLine).width>maxWidth && n>0){
+      ctx.fillText(line.trim(),x,curY);
+      line=words[n]+' ';curY+=lineHeight;lines++;
+      if(maxLines&&lines>=maxLines-1){
+        const rest=words.slice(n+1).join(' ');
+        line=line.trim()+(rest?' '+rest:'');
+        ctx.fillText(line.length>0?line:'',x,curY);
+        return curY+lineHeight;
+      }
+    }else{line=testLine;}
+  }
+  ctx.fillText(line.trim(),x,curY);
+  return curY+lineHeight;
+}
+
+function loadImageCORS(url){
+  return new Promise((resolve,reject)=>{
+    const img=new Image();
+    img.crossOrigin='anonymous';
+    img.onload=()=>resolve(img);
+    img.onerror=reject;
+    img.src=url;
+  });
+}
+
+function downloadBlob(blob,filename){
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;a.download=filename;
+  document.body.appendChild(a);a.click();document.body.removeChild(a);
+  setTimeout(()=>URL.revokeObjectURL(url),3000);
+}
+
+async function shareCard(id){
+  const c=findCarById(id);
+  if(!c)return;
+  const btn=document.getElementById('share-'+id);
+  if(btn)btn.classList.add('loading');
+  try{
+    const W=1080,H=1350;
+    const canvas=document.createElement('canvas');
+    canvas.width=W;canvas.height=H;
+    const ctx=canvas.getContext('2d');
+    ctx.fillStyle='#1A1A1A';ctx.fillRect(0,0,W,H);
+    const photoH=Math.round(H*0.6);
+    const src=IMGS[c.imgKey];
+    let img=null;
+    if(src){try{img=await loadImageCORS(src);}catch(e){img=null;}}
+    if(img){
+      const iw=img.width,ih=img.height,targetRatio=W/photoH,srcRatio=iw/ih;
+      let sx,sy,sw,sh;
+      if(srcRatio>targetRatio){sh=ih;sw=ih*targetRatio;sx=(iw-sw)/2;sy=0;}
+      else{sw=iw;sh=iw/targetRatio;sx=0;sy=(ih-sh)*0.35;}
+      ctx.drawImage(img,sx,sy,sw,sh,0,0,W,photoH);
+    }else{
+      ctx.fillStyle='#2a2a2a';ctx.fillRect(0,0,W,photoH);
+      ctx.fillStyle='#666';ctx.textAlign='center';
+      ctx.font='700 34px Poppins, Arial, sans-serif';
+      ctx.fillText(`${c.make} ${c.model}`,W/2,photoH/2);
+      ctx.textAlign='left';
+    }
+    ctx.fillStyle='#F5F200';ctx.fillRect(0,photoH,W,10);
+    if(c.photoDate){
+      ctx.fillStyle='rgba(245,242,0,0.95)';
+      const dateTxt=c.photoDate;
+      ctx.font='700 22px Poppins, Arial, sans-serif';
+      const dw=ctx.measureText(dateTxt).width+28;
+      ctx.beginPath();ctx.roundRect?ctx.roundRect(24,photoH-46,dw,34,17):ctx.rect(24,photoH-46,dw,34);ctx.fill();
+      ctx.fillStyle='#1A1A1A';ctx.fillText(dateTxt,38,photoH-22);
+    }
+    let y=photoH+66;
+    ctx.textAlign='left';
+    ctx.fillStyle='#F5F200';
+    ctx.font='700 28px Poppins, Arial, sans-serif';
+    ctx.fillText(c.make.toUpperCase(),60,y);
+    y+=52;
+    ctx.fillStyle='#fff';
+    ctx.font='800 44px Poppins, Arial, sans-serif';
+    y=wrapCanvasText(ctx,c.model,60,y,W-120,50,2);
+    ctx.fillStyle='#aaa';
+    ctx.font='600 26px Poppins, Arial, sans-serif';
+    ctx.fillText(c.years,60,y);
+    y+=54;
+    const stats=[['HP',c.hp],['V-MAX',c.topSpeed],['0–100',c.zero]];
+    const statW=(W-120)/3;
+    stats.forEach((s,i)=>{
+      const x=60+i*statW;
+      ctx.fillStyle='#F5F200';
+      ctx.font='800 38px Poppins, Arial, sans-serif';
+      ctx.fillText(String(s[1]),x,y);
+      ctx.fillStyle='#999';
+      ctx.font='600 18px Poppins, Arial, sans-serif';
+      ctx.fillText(s[0],x,y+28);
+    });
+    y+=70;
+    ctx.fillStyle='rgba(245,242,0,0.35)';ctx.fillRect(60,y,W-120,2);
+    y+=48;
+    ctx.fillStyle='#999';
+    ctx.font='600 20px Poppins, Arial, sans-serif';
+    ctx.fillText('PRECIO CA',60,y);
+    y+=38;
+    ctx.fillStyle='#fff';
+    ctx.font='700 30px Poppins, Arial, sans-serif';
+    y=wrapCanvasText(ctx,c.priceCAD,60,y,W-120,36,2);
+    ctx.textAlign='center';
+    ctx.fillStyle='#F5F200';
+    ctx.font='800 26px Poppins, Arial, sans-serif';
+    ctx.fillText('HotFinds · Vancouver BC',W/2,H-38);
+    ctx.textAlign='left';
+
+    canvas.toBlob(async(blob)=>{
+      if(btn)btn.classList.remove('loading');
+      if(!blob){
+        shareCardTextFallback(c);
+        return;
+      }
+      const filename=`${c.id}.png`;
+      const file=new File([blob],filename,{type:'image/png'});
+      const shareData={files:[file],title:`${c.make} ${c.model}`,text:`${c.make} ${c.model} (${c.years}) · HotFinds Vancouver BC`};
+      if(navigator.canShare && navigator.canShare({files:[file]})){
+        try{await navigator.share(shareData);}
+        catch(e){if(e.name!=='AbortError'){downloadBlob(blob,filename);showShareToast('Tarjeta descargada');}}
+      }else{
+        downloadBlob(blob,filename);
+        showShareToast('Tarjeta descargada');
+      }
+    },'image/png',0.92);
+  }catch(err){
+    if(btn)btn.classList.remove('loading');
+    shareCardTextFallback(c);
+  }
+}
+
+function shareCardTextFallback(c){
+  const text=`${c.make} ${c.model} (${c.years}) · HotFinds Vancouver BC`;
+  if(navigator.share){
+    navigator.share({title:`${c.make} ${c.model}`,text}).catch(()=>{});
+  }else if(navigator.clipboard){
+    navigator.clipboard.writeText(text).then(()=>showShareToast('Copiado al portapapeles'));
+  }else{
+    showShareToast('No se pudo generar la tarjeta');
+  }
+}
+
 function badgeHtml(c){
   if(!c.badge) return '';
   const cls=c.badge==='stance'?'badge-stance':'badge-chrome';
@@ -4730,6 +4900,7 @@ function carCard(c){
       ${imgHtml}
       ${c.photoDate?`<span class="photo-date"><i class="ti ti-calendar" aria-hidden="true"></i> ${c.photoDate}</span>`:''}
       ${src?`<span class="zoom-hint"><i class="ti ti-zoom-in" aria-hidden="true"></i> Ver foto</span>`:''}
+      <button class="share-btn" id="share-${c.id}" onclick="event.stopPropagation();shareCard('${c.id}')" title="Compartir tarjeta" aria-label="Compartir tarjeta"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.6" x2="15.4" y2="6.4"></line><line x1="8.6" y1="13.4" x2="15.4" y2="17.6"></line></svg></button>
     </div>
     <div class="car-stripe"></div>
     <div class="car-info">
@@ -4769,6 +4940,7 @@ function featHero(c,label){
         ${src?`<img src="${src}" alt="${c.make} ${c.model}" style="object-position:${c.heroPosition||'center 35%'};" />`:`<div style="display:flex;align-items:center;justify-content:center;height:100%;"><i class="ti ti-car" style="font-size:2.8rem;color:#bbb;"></i></div>`}
         ${c.photoDate?`<span class="photo-date"><i class="ti ti-calendar"></i> ${c.photoDate}</span>`:''}
         ${src?`<span class="zoom-hint"><i class="ti ti-zoom-in"></i> Ver foto</span>`:''}
+        <button class="share-btn" id="share-${c.id}" onclick="event.stopPropagation();shareCard('${c.id}')" title="Compartir tarjeta" aria-label="Compartir tarjeta"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.6" x2="15.4" y2="6.4"></line><line x1="8.6" y1="13.4" x2="15.4" y2="17.6"></line></svg></button>
       </div>
     </div>
     <div class="feat-hero-data">
