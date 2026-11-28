@@ -254,6 +254,24 @@ html,body{background:var(--bg)!important;color:var(--txt)!important}
 .month-hdr,.month-hdr *{color:inherit}
 #global-top-stats>div{background:#0F0F12!important;border-color:var(--line)!important}
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style id="hero-c">
+.hero-c{position:relative;min-height:min(78vh,620px);display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(28px,6vw,64px) clamp(18px,5vw,56px);background:#0B0B0D;overflow:hidden;border-bottom:1px solid #26262B}
+.hero-c .bg{position:absolute;inset:0;background-size:cover;background-position:center 40%;opacity:.55}
+.hero-c .ov{position:absolute;inset:0;background:radial-gradient(ellipse at 70% 40%,rgba(122,20,16,.55) 0%,rgba(42,11,10,.55) 45%,rgba(11,11,13,.97) 85%),linear-gradient(0deg,#0B0B0D 0%,transparent 55%)}
+.hero-c>*:not(.bg):not(.ov){position:relative}
+.hero-kick{font-size:.75rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#F5F200}
+.hero-h{font-family:'Space Grotesk','Poppins',sans-serif;font-weight:700;font-size:clamp(3rem,13vw,7rem);line-height:.95;letter-spacing:-.04em;margin:.6rem 0 .4rem;color:#F2F2F2}
+.hero-sub{font-size:1.05rem;color:#B4B4BC}
+.hero-stats{display:flex;flex-wrap:wrap;gap:1rem clamp(1.5rem,5vw,3.5rem);margin-top:1.8rem}
+.hero-stats b{display:block;font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,7vw,3rem);font-weight:600;line-height:1;color:#F2F2F2}
+.hero-stats span{font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:#8A8A94;display:block;margin-top:6px}
+.hero-price{margin-top:1.4rem;font-size:1.1rem;font-weight:700;color:#F5F200}
+.hero-scar{max-width:320px;margin-top:1rem}
+.hero-btn{margin-top:1.4rem;align-self:flex-start;border:1px solid #F5F200;color:#F5F200;border-radius:999px;padding:10px 20px;font-size:.85rem;font-weight:600;text-decoration:none;cursor:pointer;background:transparent}
+.hero-btn:hover{background:#F5F200;color:#0B0B0D}
+.hw-logo,.section-title,.month-title,.car-model,.coll-title,.event-name{font-family:'Space Grotesk','Poppins',sans-serif!important}
+</style>
 </head>
 <body>
 
@@ -8984,5 +9002,24 @@ function enableTabsScroll(){
 <script type="application/json" id="imgs-b64-2024-07">{}</script>
 <script type="application/json" id="imgs-b64-2021-09">{}</script>
 <script type="application/json" id="imgs-b64-2025-12">{}</script>
+<script id="hero-c-js">
+window.addEventListener('load',function(){try{
+  var c=getAllCars().find(function(x){return x.id==='fordGT40MkIV1967Red'});
+  if(!c)return;
+  var src=(typeof IMGS!=='undefined'&&IMGS[c.imgKey])||'';
+  var el=document.createElement('section');el.className='hero-c';
+  var model=c.model.replace(/^GT40/,'GT40<br>').replace(/<br>\s*/,'<br>');
+  el.innerHTML='<div class="bg" style="'+(src?"background-image:url('"+src+"')":'')+'"></div><div class="ov"></div>'+
+   '<div class="hero-kick">Destacado · LeMay Museum</div>'+
+   '<h1 class="hero-h">'+c.model.replace(' ','<br>')+'</h1>'+
+   '<div class="hero-sub">'+c.make+' · '+c.years+' · Tacoma, WA</div>'+
+   '<div class="hero-stats"><div><b>'+c.hp+'</b><span>hp</span></div><div><b>'+c.topSpeed+'</b><span>v-max</span></div><div><b>'+c.zero+'</b><span>0–100</span></div></div>'+
+   '<div class="hero-price">'+c.priceCAD+'</div>'+
+   '<div class="hero-scar">'+scarcityHtml(c)+'</div>'+
+   '<a class="hero-btn" onclick="openLB(\''+c.imgKey+'\',\''+c.make+' '+c.model+' · '+c.years+'\',\''+(c.photoDate||'')+'\')">Ver foto</a>';
+  var anchor=document.querySelector('.hw-tabs');anchor.parentNode.insertBefore(el,anchor);
+  if(!src&&typeof loadImg==='function'){}
+}catch(e){console.log(e)}});
+</script>
 </body>
 </html>
