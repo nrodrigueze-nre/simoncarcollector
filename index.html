@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>HotFinds · Vancouver BC</title>
+<title>HotFinds Opción C</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='72' font-size='72' text-anchor='middle'%3E%E2%9A%A1%3C/text%3E%3C/svg%3E">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
@@ -207,7 +207,140 @@
   .month-recap{font-size:0.8rem;}
 }
 </style>
-</head>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style id="theme-c">
+:root{--bg:#0B0B0D;--card:#141418;--line:#26262B;--line2:#3A3A42;--txt:#F2F2F2;--mut:#8A8A94;--mut2:#B4B4BC;--soft:#1B1B20;--det:#101013;--img:#0E0E11;--yt:#F5F200;--fr:#1D1C08;--body2:#D0D0D6;--y:#F5F200}
+html,body,.hw,.hw-body,.coll-sec{background:var(--bg)!important;color:var(--txt)!important}
+.hw-header{background:var(--bg)!important;background-image:none!important;min-height:0!important;padding:20px clamp(16px,4vw,48px)!important;border-bottom:1px solid var(--line)!important;display:flex!important;flex-wrap:wrap;align-items:center;gap:12px 24px}
+.hw-header>div:last-child{margin:0 0 0 auto!important;flex:0 1 280px;min-width:180px}
+.hw-logo{font-family:'Space Grotesk',sans-serif!important;font-weight:700!important;font-size:1.4rem!important;letter-spacing:2px!important;text-transform:uppercase;text-shadow:none!important;color:var(--txt)!important}
+.hw-logo em{background:none!important;padding:0!important;color:var(--yt)!important}
+.hw-logo em+em{display:none}
+.hw-sub{color:var(--mut)!important;text-shadow:none!important;font-size:.66rem!important;margin-top:4px!important}
+#search-input{border:1px solid var(--line2)!important;background:transparent!important;color:var(--txt)!important;border-radius:999px!important;padding:.55rem 1.1rem!important;font-size:.85rem!important}
+#search-input::placeholder{color:var(--mut)}
+.hw-tabs{background:var(--bg)!important;padding:.5rem clamp(16px,4vw,48px)!important;border-bottom:1px solid var(--line)!important;gap:4px 22px!important}
+.hw-tab,.hw-tab-fun,.hw-tab-special,.hw-tab-event,.hw-tab-brands{background:transparent!important;border:none!important;border-radius:0!important;color:var(--mut2)!important;font-weight:500!important;padding:10px 2px!important;border-bottom:2px solid transparent!important}
+.hw-tab.active,.hw-tab-brands.active{background:transparent!important;color:var(--yt)!important;border-bottom:2px solid var(--y)!important}
+.hw-tab:hover:not(.active){background:transparent!important;color:var(--yt)!important}
+.count-pill,.hw-tab .count-pill,.hw-tab-fun .count-pill,.hw-tab-special .count-pill,.hw-tab-event .count-pill{background:var(--soft)!important;color:var(--mut2)!important}
+.hw-tab.active .count-pill{background:var(--y)!important;color:#0B0B0D!important}
+.section-title,.month-title,.coll-title,.event-name,.stat-value,.car-model,.qs-val,.spec-val,.brand-card-name{color:var(--txt)!important}
+.hw-logo,.section-title,.month-title,.car-model,.coll-title,.event-name{font-family:'Space Grotesk','Poppins',sans-serif!important}
+.car-card,.coll-card,.brand-card,.stat-card,.drop-menu,.feat-hero-card,.feat-hero-data{background:var(--card)!important;border-color:var(--line)!important}
+.car-card:hover,.coll-card:hover,.brand-card:hover{border-color:var(--y)!important;box-shadow:0 10px 30px rgba(245,242,0,.08)!important}
+.car-card.featured,.feat-hero-card,.feat-hero-data{border-color:var(--y)!important}
+.car-img-wrap,.coll-photo,.feat-hero-img{background:var(--img)!important}
+.brand-logo,.brand-card-logo{background:#fff;border-radius:10px;padding:4px}
+.car-make,.qs-lbl,.price-tag,.spec-key,.stat-label,.coll-sub,.add-note,.scar-ends,.brand-card-count{color:var(--mut)!important}
+.car-year,.stat-car,.dtl-title,.price-val{color:var(--yt)!important}
+.dtl-title,.price-wrap,.spec-row,.hl-list li{border-color:var(--line)!important}
+.qs{background:var(--soft)!important;border-color:var(--line)!important}
+.expand-btn{background:var(--soft)!important;color:var(--txt)!important;border-color:var(--line)!important}
+.expand-btn:hover,.expand-btn.open{background:var(--y)!important;color:#0B0B0D!important}
+.car-details,.add-box{background:var(--det)!important;border-color:var(--line)!important}
+.hl-list li{color:var(--body2)!important}
+.feat-reason{background:var(--fr)!important;color:var(--body2)!important}
+.feat-hero-info{background:var(--fr)!important;border-color:var(--y)!important}
+.feat-hero-review{color:var(--body2)!important}
+.scar-top{color:var(--mut2)!important}.scar-n{color:var(--txt)!important}.scar-n small{color:var(--mut)!important}
+.scar-bar i{background:#fff!important;border-color:#000!important}
+.feat-badge{background:var(--y)!important;color:#0B0B0D!important}
+.drop-item{color:var(--body2)!important}.drop-item:hover{background:var(--soft)!important}
+.drop-pill{background:var(--soft)!important;color:var(--mut2)!important}
+.nav-btn{background:var(--card)!important;color:var(--txt)!important;border:1px solid var(--line2)!important}
+.nav-btn:hover{background:var(--y)!important;color:#0B0B0D!important}
+#global-top-stats>div{background:var(--bg)!important;border-color:var(--line)!important}
+.stat-card{border-left-color:var(--y)!important}
+.hw-divider{background:var(--y)!important}
+.coll-name{color:var(--txt)!important}
+.coll-bio,.month-recap,.event-desc,.event-meta-item{color:var(--mut2)!important}
+.coll-bio-ph{color:var(--mut)!important}
+.coll-initials{color:#0B0B0D!important}
+.coll-stripe{background:var(--y)!important}
+.coll-photo{background:var(--img)!important}
+.month-hdr *{border-color:var(--y)}
+.car-stripe{height:3px!important}
+.perf{display:flex;flex-direction:column;gap:7px;margin:.2rem 0 .6rem}
+.perf-row{display:flex;align-items:center;gap:10px;font-size:.72rem;color:var(--mut)}
+.perf-row span{width:52px}.perf-track{flex:1;height:4px;background:var(--line);border-radius:2px}
+.perf-track div{height:4px;background:var(--y);border-radius:2px}
+.perf-row b{width:70px;text-align:right;color:var(--txt);font-weight:600}
+.hero-c{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center;padding:clamp(28px,6vw,64px) clamp(18px,5vw,56px);background:var(--bg);overflow:hidden;border-bottom:1px solid var(--line)}
+.hero-c::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 40%,rgba(122,20,16,.55) 0%,rgba(42,11,10,.55) 45%,rgba(11,11,13,.97) 85%),linear-gradient(0deg,#0B0B0D 0%,transparent 55%);opacity:.85;pointer-events:none}
+.hero-c>*{position:relative}
+.hero-l{display:flex;flex-direction:column;min-width:0}
+.hero-r{min-width:0}
+.hero-imgbox{position:relative;border-radius:8px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/3;background:var(--img);cursor:zoom-in;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.hero-imgbox img{width:100%;height:100%;object-fit:cover;display:block}
+@media(max-width:820px){.hero-c{grid-template-columns:1fr}.hero-r{order:-1}}
+.hero-kick{font-size:.75rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--yt)}
+.hero-h{font-family:'Space Grotesk','Poppins',sans-serif;font-weight:700;font-size:clamp(3rem,13vw,7rem);line-height:.95;letter-spacing:-.04em;margin:.6rem 0 .4rem;color:var(--txt)}
+.hero-sub{font-size:1.05rem;color:var(--mut2)}
+.hero-stats{display:flex;flex-wrap:wrap;gap:1rem clamp(1.5rem,5vw,3.5rem);margin-top:1.8rem}
+.hero-stats b{display:block;font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,7vw,3rem);font-weight:600;line-height:1;color:var(--txt)}
+.hero-stats span{font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--mut);display:block;margin-top:6px}
+.hero-price{margin-top:1.4rem;font-size:1.1rem;font-weight:700;color:var(--yt)}
+.hero-scar{max-width:320px;margin-top:1rem}
+.hero-btn{margin-top:1.4rem;align-self:flex-start;border:1px solid var(--yt);color:var(--yt);border-radius:999px;padding:10px 20px;font-size:.85rem;font-weight:600;cursor:pointer;background:transparent}
+.hero-btn:hover{background:var(--y);color:#0B0B0D;border-color:var(--y)}
+</style>
+<style id="c2">
+.cars-grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr))!important;gap:24px!important}
+.car-card.c2{border-radius:6px!important;border:1px solid var(--line)!important}
+.c2 .car-img-wrap{height:380px!important;position:relative}
+.c2 .car-img-wrap img{object-position:center 40%!important}
+.c2-grad{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.88) 0%,rgba(0,0,0,.35) 38%,transparent 62%);pointer-events:none}
+.c2 .photo-date{top:12px;bottom:auto!important;left:12px!important;background:rgba(0,0,0,.55)!important;color:#fff!important;font-weight:600!important;backdrop-filter:blur(4px)}
+.c2-title{position:absolute;left:16px;right:16px;bottom:14px;color:#fff;pointer-events:none;display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+.c2-txt{min-width:0;flex:1}
+.c2-logo{flex:0 0 auto;width:52px;height:52px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.45)}
+.c2-logo .brand-logo{width:34px!important;height:34px!important;padding:0!important;border-radius:0!important;background:none!important;object-fit:contain}
+.c2-make-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.c2-make{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:#F5F200}
+.c2-year{font-size:.75rem;color:#ddd;font-weight:500}
+.c2-model{font-family:'Space Grotesk','Poppins',sans-serif;font-weight:700;font-size:1.75rem;line-height:1.05;letter-spacing:-.03em;margin-top:6px;text-shadow:0 2px 12px rgba(0,0,0,.5)}
+.c2-title .mod-badge{display:none}
+.c2-info{padding:16px 18px 14px!important}
+.c2-nums{display:flex;justify-content:space-between;gap:10px;margin-bottom:14px}
+.c2-nums b{display:block;font-family:'Space Grotesk',sans-serif;font-size:1.55rem;font-weight:600;line-height:1;color:var(--txt)}
+.c2-nums span{display:block;font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--mut);margin-top:5px}
+.c2-price{margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-weight:700;font-size:1rem;color:var(--yt);display:flex;justify-content:space-between;align-items:baseline;gap:6px 12px;flex-wrap:wrap}
+.c2-date{font-size:.72rem;color:var(--mut);font-weight:500}
+.topb{position:absolute;top:12px;left:12px;display:flex;flex-direction:column;gap:5px;z-index:3;align-items:flex-start;pointer-events:none}
+.topb-i{background:#F5F200;color:#0B0B0D;font-size:.62rem;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:4px 10px;border-radius:999px;box-shadow:0 2px 8px rgba(0,0,0,.35)}
+.topb-i i{font-style:normal;opacity:.7;margin-right:2px}
+.topb-i b{font-size:.72rem;margin-left:2px}
+.t10-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 1rem}
+.t10-chip{background:transparent;border:1px solid var(--line2);color:var(--mut2);border-radius:999px;padding:9px 18px;font-size:.85rem;font-weight:600;cursor:pointer;font-family:inherit}
+.t10-chip.on{background:var(--y);color:#0B0B0D;border-color:var(--y)}
+.rank-wrap{position:relative}
+.rank-n{display:flex;align-items:baseline;justify-content:space-between;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.6rem;color:var(--yt);margin-bottom:6px}
+.rank-n span{font-size:.8rem;color:var(--mut);font-weight:500;font-family:inherit}
+.hw-tabs [data-m='top10']{order:-1}
+.c2 .zoom-hint{display:none}
+.c2.featured::before{top:12px!important;right:12px!important}
+.section-title{font-size:1.9rem!important;letter-spacing:-.03em!important}
+.hw-tabs [data-m^='__yr']{display:none!important}
+.hw-tabs [data-m='anios']{order:-1}
+.hw-tabs [data-m='thismonth']{order:-2}
+.drop-yr{display:flex;justify-content:space-between;padding:.6rem 1rem .25rem;font-size:.68rem;font-weight:800;letter-spacing:2px;color:var(--yt);border-top:1px solid var(--line);background:var(--card);position:sticky;top:0}
+.drop-yr:first-child{border-top:0}
+.drop-item.drop-active{color:#0B0B0D!important}
+.drop-item.drop-active .drop-pill{background:#0B0B0D!important;color:#F5F200!important}
+.drop-menu{max-height:min(70vh,460px)!important;min-width:230px!important}
+.stat-value{font-family:'Space Grotesk',sans-serif!important;font-size:1.5rem!important;font-weight:600!important}
+
+.hero-feat{border:1px solid var(--line);border-radius:8px;margin-bottom:1.5rem}
+.hero-feat .hero-h{font-size:clamp(2.2rem,5.5vw,4.6rem);overflow-wrap:anywhere}
+.hero-feat .hero-imgbox{box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.hero-date{position:absolute;left:12px;bottom:12px;background:rgba(0,0,0,.6);color:#fff;font-size:.72rem;font-weight:600;padding:4px 10px;border-radius:999px;backdrop-filter:blur(4px)}
+.hero-review{grid-column:1/-1;border-left:3px solid var(--y);padding:.2rem 0 .2rem 1.1rem;font-size:1.02rem;line-height:1.75;color:var(--body2);max-width:980px}
+.hero-review-t{font-size:.7rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--yt);margin-bottom:.4rem}
+.hero-feat .expand-btn{margin:0}
+.hero-feat .car-details{margin:0}
+.month-hdr+.section-title,.section-title:has(+.hero-feat){display:none}
+</style></head>
 <body>
 
 <div class="hw">
@@ -3214,18 +3347,18 @@ const CARS={
     specs:{"Motor":"Eléctrico, 9.6 kW","Potencia":"13 hp","Transmisión":"Directa","Tracción":"Delantera","0–100 km/h":"No alcanza (máx. 70 km/h)","Vel. máxima":"70 km/h","Autonomía":"80 km","Largo":"2.1 m","Carrocería":"Biplaza urbano para car sharing","Generación":"Concept (1995)","Ubicación":"París, Francia","En la foto":"Vista trasera con peluche de león en la cabina"},
     highlights:["Tulip viene de Transport Urbain Libre Individuel et Public, un sistema de autos eléctricos compartidos para la ciudad","Mide solo 2.1 metros de largo","Existió también con la insignia de Citroën"]
   }]},
-  "2007-01":{label:"Enero 2007",recap:"Tres hallazgos en ferias de Las Vegas: el Batmobile de la serie de TV de 1966, con el cartel del Batmobile de Hot Wheels detrás, un Cadillac 1960 custom dorado y un Honda Civic Si custom con pintura tribal naranja, los dos últimos en pabellones de audio. El Batmobile es el destacado.",cars:[{
+  "2007-01":{label:"Enero 2007",recap:"Tres hallazgos en ferias de Las Vegas: el Batmobile de la serie de TV de 1966, con el cartel del Batmobile de Hot Wheels detrás, un Cadillac 1960 custom dorado y un Honda Civic Si custom con pintura tribal naranja, los dos últimos en pabellones de audio. El Cadillac Dragillac es el destacado.",cars:[{
     id:"batmobile1966TVReplica2007",make:"Chevrolet",model:"Batmobile 1966 (serie de TV)",years:"1966",
-    photoDate:"9 de enero, 2007",photoTimestamp:20070109,featured:true,
-    featuredReason:"El Batmobile de la serie de TV de 1966 de Adam West, un ícono histórico de la televisión, supera al Cadillac custom por prestigio e historia.",
+    photoDate:"9 de enero, 2007",photoTimestamp:20070109,featured:false,
+    featuredReason:"",
     review:"El Batmobile de la serie de TV de Batman de 1966, negro con los bordes naranja fluorescente que lo hicieron famoso, expuesto en una feria de Las Vegas. Detrás se ve un cartel del Batmobile de Hot Wheels, y varias personas se acercan a mirar la cabina con sus dos parabrisas de burbuja. Es el diseño de George Barris sobre el prototipo Lincoln Futura de 1955, con aletas traseras de murciélago, el emblema del murciélago en los costados y rines cromados.",
     hp:335,topSpeed:"190 km/h",zero:"7.2 s",priceCAD:"$30,000–$70,000 CAD",badge:"",badgeLabel:"",imgKey:"batmobile1966TVReplica2007",
     specs:{"Base":"Ford Galaxie 1966 (chasis y mecánica de la réplica)","Motor":"V8 390 ci","Potencia":"335 hp","Transmisión":"Automática 3 vel.","Tracción":"RWD","0–100 km/h":"7.2 seg","Vel. máxima":"190 km/h","Carrocería":"Roadster de fibra de vidrio estilo Barris, doble parabrisas de burbuja","Generación":"Batmobile TV 1966","Ubicación":"Las Vegas, NV","En la foto":"Exhibido con cartel del Batmobile de Hot Wheels al fondo"},
     highlights:["Diseñado por George Barris a partir del Lincoln Futura de 1955, el concept que ya había aparecido en el cine","Los bordes naranja fluorescente delinean toda la carrocería y son la firma visual del Batmobile de la serie","Cabina abierta con dos parabrisas de burbuja y tubos de escape tipo cohete en la parte trasera"]
   },{
     id:"cadillacDragillac1960Gold2007",make:"Cadillac",model:"Dragillac – Convertible 1960 Custom",years:"1960",
-    photoDate:"9 de enero, 2007",photoTimestamp:20070109,featured:false,
-    featuredReason:"",
+    photoDate:"9 de enero, 2007",photoTimestamp:20070109,featured:true,
+    featuredReason:"Gana por escasez: el Dragillac es una preparación custom única, hecha a mano, mientras que el Batmobile de la serie de TV es una réplica reproducible y el Civic Si custom es una modificación común.",
     review:"Un Cadillac convertible de 1960 dorado metálico, tan bajo que casi roza el piso, con la puerta y la tapa del maletero abiertas para mostrar un interior blanco y gris. Está en un pabellón de audio para autos, con carteles de Directed, Polk Audio y Orion al fondo, y varias personas caminando entre los stands. Es una preparación custom conocida como 'Dragillac', con manijas rasuradas, rines cromados de diez rayos y la parrilla cromada de aletas del modelo original.",
     hp:325,topSpeed:"180 km/h",zero:"~9 s",priceCAD:"$150,000–$350,000 CAD",badge:"",badgeLabel:"",imgKey:"cadillacDragillac1960Gold2007",
     specs:{"Base":"Cadillac 1960 convertible","Motor":"V8 6.4L (390 ci)","Potencia":"325 hp","Transmisión":"Automática","Tracción":"RWD","0–100 km/h":"~9 seg","Vel. máxima":"180 km/h","Carrocería":"Convertible custom, suspensión bajada, manijas rasuradas","Generación":"Cadillac 1960 (Dragillac custom)","Ubicación":"Las Vegas, NV","En la foto":"Dorado metálico con puerta y maletero abiertos en un pabellón de audio"},
@@ -7034,7 +7167,7 @@ const EVENTS={
   },
   "petersen-museum-2023":{
     label:"Petersen Automotive Museum 2023",
-    recap:"Evento más grande del dashboard: más de 60 hallazgos en una sola visita al Petersen, del Benz Patent-Motorwagen de 1886 a hypercars modernos. Destacado: el Porsche 917/30 Can-Am, el auto más dominante de la historia del Can-Am.",
+    recap:"Evento más grande del dashboard: más de 60 hallazgos en una sola visita al Petersen, del Benz Patent-Motorwagen de 1886 a hypercars modernos. Destacado: el Porsche 356/1, el primer Porsche jamás construido (chasis No. 1, 1948).",
     date:"15 de septiembre, 2023",
     timestamp:202309,
     location:"Petersen Automotive Museum · Los Ángeles, CA",
@@ -7131,8 +7264,8 @@ const EVENTS={
       highlights:["El tanque superior con el logo dorado 'INDIAN — HENDEE MFG. CO. — Springfield Mass' es el diseño original de la marca antes de que adoptara su icónico rojo Indian décadas después","Motor monocilíndrico con aletas de enfriamiento expuestas — la arquitectura más simple posible para una motocicleta de principios del siglo XX","Cuarta motocicleta pre-1930 del dashboard, junto a la Harley-Davidson Model J de 1919, la Indian 101 Scout de 1928 y la Sunbeam Model 90 — la Indian Single de 1905 es ahora la más antigua de las cuatro"]
     },{
       id:"porsche917_30",make:"Porsche",model:"917/30 Can-Am #6 – Penske/Sunoco",years:"1973",
-      photoDate:"15 de septiembre, 2023",photoTimestamp:20230915,featured:true,
-      featuredReason:"Gana el destacado del Petersen bajo el nuevo criterio (prestigio histórico > precio > escasez): el auto más dominante de la historia del Can-Am — tan superior a la competencia que aceleró el fin de la serie — y el precio más alto de toda la sección ($28M–$35M CAD), superando incluso al Porsche 356/1 (el primer Porsche) y al Rolls-Royce Phantom Aero.",
+      photoDate:"15 de septiembre, 2023",photoTimestamp:20230915,featured:false,
+      featuredReason:"",
       review:"El Porsche 917/30 #6 de Penske Racing con livrea Sunoco azul y amarillo — el auto de Mark Donohue que ganó el campeonato Can-Am de 1973 y que en 1975 estableció el récord de velocidad en circuito cerrado de 221 mph (356 km/h) en Talladega. El 917/30 tiene el motor flat-12 de 5.4L biturbo de 1,100 hp — más potencia que cualquier auto del dashboard, incluyendo el Camaro Pro Mod. El cartel del cockpit dice 'Mark Donohue', el ingeniero-piloto que trabajó con Roger Penske para desarrollar este auto hasta convertirlo en un auto dominante del Can-Am.",
       hp:1100,topSpeed:"356 km/h",zero:"2.1 s",priceCAD:"$28,000,000–$35,000,000 CAD",badge:"",badgeLabel:"",imgKey:"porsche917_30",
       specs:{"Motor":"Flat-12 5.4L biturbo","Potencia":"1,100 hp / 795 lb-ft","Transmisión":"Manual 4 vel.","Tracción":"RWD","0–100 km/h":"2.1 seg","Vel. máxima":"356 km/h (récord Talladega 1975)","Piloto":"Mark Donohue (Penske Racing)","Equipo":"Roger Penske / Sunoco + Audi","Campeonato":"Can-Am 1973 (campeón)","Ubicación":"Petersen Automotive Museum, Los Ángeles, CA"},
@@ -7371,8 +7504,8 @@ const EVENTS={
       highlights:["La estética camp de los años 60 está en cada detalle: colores saturados, formas exageradas, murciélagos pintados a mano — la serie de Adam West definió el camp como género visual","El logo R rojo y amarillo en el sidecar es tan reconocible como el logo del propio Batman — Robin tuvo su propio espacio visual dedicado en cada vehículo del Dynamic Duo","Tercer vehículo de superhéroes/cómics del dashboard junto al Batmobile 1989 (excluido de stats por ser prop) — el Petersen colecciona la cultura pop con la misma seriedad que los autos de producción","Al fondo: el Gran Torino de Starsky and Hutch — dos vehículos de TV de los años 60-70 conviviendo en la misma sala, ambos íconos de persecuciones televisivas de su época"]
     },{
       id:"porsche356_1",make:"Porsche",model:"356/1 – El Primer Porsche",years:"1948",
-      photoDate:"15 de septiembre, 2023",photoTimestamp:20230915,featured:false,
-      featuredReason:"",
+      photoDate:"15 de septiembre, 2023",photoTimestamp:20230915,featured:true,
+      featuredReason:"Gana por escasez: es el chasis No. 1, el primer Porsche jamás construido (1948), una pieza única donada por Porsche AG, y además tiene el mayor prestigio histórico de la sección. Supera al Porsche 917/30 Can-Am, del que existieron pocas unidades.",
       review:"El 1948 Porsche 356/1 en el Petersen Automotive Museum — el auto que abre la exposición We Are Porsche, chief entre los primeros esfuerzos de la marca. Carrocería de aluminio pulido sin pintar, interior rojo, techo con panel de rejilla de ventilación. Este es el 35hp abuelo al que todos los Porsche pueden trazar su linaje, donado por Porsche mismo en su condición pristina. Construido en Gmünd, Austria, inmediatamente después de la Segunda Guerra Mundial, cuando Porsche fabricaba carrocerías 356 SL usando moldes de madera para dar forma a paneles de aluminio a mano. El 356/1 fue el primer auto que llevó el nombre Porsche — antes de esto, Ferdinand Porsche solo había diseñado autos para otras marcas, incluyendo el VW Beetle.",
       hp:35,topSpeed:"135 km/h",zero:"12.0 s",priceCAD:"$25,000,000+ CAD",badge:"",badgeLabel:"",imgKey:"porsche356_1",
       specs:{"Motor":"Flat-4 1.1L enfriado por aire (basado en el motor VW)","Potencia":"35 hp","Carrocería":"Aluminio sin pintar — construido a mano en Gmünd, Austria","Color":"Aluminio pulido / interior rojo","Chasis":"Tubular ligero, motor central-trasero","Producción":"Chasis No. 1 — el primer Porsche jamás fabricado","Ubicación de construcción":"Gmünd, Austria (fábrica temporal de posguerra)","Año":"1948","Exposición":"We Are Porsche — Petersen Automotive Museum","Propietario":"Porsche AG (donado para la exposición)","Ubicación":"Petersen Automotive Museum, Los Ángeles, CA"},
@@ -8225,7 +8358,7 @@ function brandLogoHtml(make){
   return `<img src="${src}" alt="${make} logo" class="brand-logo" />`;
 }
 
-const SCARCITY = {"bmw7G11MSportBlack2026":3,"ramTRXBlack2026":4,"maseratiQuattroporteV2005Silver":2,"chevroletAveo5TeamCanadaSilver":2,"fordMustangMachEGTBlack":4,"hyundaiGenesisCoupeWhiteA274UL":2,"ferrari599GTBFioranoBlack":5,"bmwAlpinaXB7Black":5,"buickSuperSedanet1948Black":5,"oldsmobileSuper88_1954LeadSled":5,"mercedesEClassEstateW212BlackRHD":2,"huracanPerformanteGreen":5,"toyotaSoarerZ20TwinTurboBlack1989":2,"teslaCyberquadForKidsOct2026":2,"nissanSkylineR34GTRWhite":4,"aventadorWidebodyMatteBlackToronto":7,"maseratiGranCabrioTrofeoBlackToronto":5,"ferrari458ItaliaBlackToronto":5,"audiRS6AvantSilverRoofbox":5,"ramDodge1500BlackSRTStripe":2,"challengerSRTHellcatBlackHalloween":4,"bentleyContinentalGTV8S2014Pearl":4,"jaguarFTypeRBlueSept2026":4,"jaguarETypeSeries2CoupeBronze1969":4,"corvairMonza1966Maroon":2,"chevyCaprice1993Maroon":2,"porscheGT4RSYellow2023":5,"mclaren600LTOrangeBurrard":5,"mercedesAMGGT63S4DoorMatteStripe":5,"mercedes280SLPagodaCream1970":4,"ducatiPanigaleV2Red":2,"ferrari612ScagliettiBlue":4,"bmwM5G90Red2025":5,"toyotaCrownPlatinumHybridMax2025":4,"ferrariPurosangueWhite":6,"challengerSRT8392InauguralWhite":3,"mustangBullitt2019Green":3,"suzukiCarryDA63TGreen":2,"nissanZRZ34Black":3,"ferrari12CilindriSpiderYellow":6,"bentleyFlyingSpurBlack":3,"lamborghiniTemerarioWhite":6,"dodgeRamVanIslandBarVan":2,"lotusEmiraFirstEditionBlue":4,"ferrariCaliforniaBlackGastown":4,"dodgeDurangoSRT392White":3,"mercedesGLS63AMGBlack":5,"meteor1956":2,"nissanJukeNismo":2,"porscheTaycanRoseGold":4,"smartFortwoOrcaFin":2,"audiEtronGTBlueGrey":4,"piaggioLibertyWhite":2,"mercedesSLwhiteR107":3,"monteCarloSS80sG":2,"porsche992CarreraSilverStripe":4,"pontiacBonnevilleAmbulance":2,"camaroZL1Black2026":3,"corvetteC3HotWheelsWrap":2,"mercedesG63BrabusSilver":5,"teslaModelXRed":5,"toyotaMR2AW11":2,"lucidAirTouringBlackGold":4,"fiat500CAbarthWhiteCabrio":2,"astonMartinDBX":5,"fordModelATruck":4,"mustang65Red":4,"suzukiVolusia":2,"uralSidecar":2,"audiQ8Etron":4,"amgG63White":5,"cobra427Green":4,"chevy3100Green":4,"porsche992BlackA38":5,"audiRS3Grey":4,"vwGolfGTIMk8":3,"smartFortwoYellow":2,"bentleyContGTS":5,"hondaCRVBC542J":2,"cadillacEscaladeGray":3,"kiaEV6Chameleon":3,"mustangGT5_0Blue":2,"jaguarSType":2,"dodgeChallengerBlack":2,"mercedesCLSBrabus":2,"bmwM2Comp":3,"nissanFigaroPink":2,"toyotaSupraA90":4,"lamborghiniUrusWhite":5,"bmwE90Bagged":2,"ramRebel":4,"cadillacEscaladeIQ":5,"mazdaMX5NDGray":2,"alfaSpider916":2,"mustangGT2018Red":2,"rivianR1T":4,"gmcHummerEVSUV":4,"subaruBRZ":2,"mercedesSL500R129":2,"nissanSkylineR33GTR":3,"porsche992GT3Weissach":5,"hotRodRedKalTire":6,"mercedesSLK280R171":2,"apriliaRS660LimitedEdition":2,"harleySoftailDeluxe":2,"hyundaiVelosterN":2,"astonMartinVantage2024":5,"maseratiLevanteWhite":3,"rrGhostBlackBadge":6,"fiat500Abarth":2,"hondaS2000AP2Silver":2,"chevyCapriceTaxi1978":2,"lincolnMarkVI1980":2,"oldsmobileDelta88_1982":2,"alfaStelvioBlue":3,"fiat500eBlack":3,"porschePanameraExecutive":4,"ferrariF8":6,"gs350":2,"charger":2,"aztek":2,"corvetteC6":2,"rrWraith":6,"wrxsti":2,"wrx":2,"rrSport":2,"astonVanquish":5,"ferrari296gtb":6,"hondaPrelude88":2,"vwHerbie":2,"corvetteC5":2,"chevyOBS":2,"teslaCybertruck":4,"miniCooperSRed":3,"fordGranTorino":2,"porsche992gts":5,"nissan350Z":2,"maseratiGT":3,"lambUrusS":6,"bmwI3":2,"bentleyBentayga":5,"ferrari488Spider":5,"rcmpFordPIU":3,"bluebirdSchoolBus":5,"fiat500cLounge":2,"porsche944red":2,"kiaEV5FIFA":3,"hondaVTX1800custom":3,"harleyDynaWideGlide":2,"kawasakiZX6Rpink":2,"mercedesSLK250white":2,"nissanGTRblue":5,"chevyCruzeLucas":2,"nissanSkylineR34":3,"ptCruiser707":2,"vwSciroccoR":2,"cadillacEscaladeBO":4,"lambRevuelto":6,"toyotaMR2":2,"hyundaiEquus":2,"sc430":2,"saab93":2,"mx5na":2,"vwScirocco":2,"toyotaSupraRace":4,"toyotaSupraUndefeated49":4,"renaultDauphine":2,"citroen2cv":3,"mercuryLeadSled":5,"piaggioApeColombia":2,"corvetteC3Orange":2,"rrSilverSpirit":2,"studebakerStarliner1954":3,"chevyMonteCarloss":2,"mercedesC63Black":5,"bmwE38":2,"spoonersTruck":2,"pierceFire":7,"lincolnLimo":4,"bmw230i":3,"chevyBelAir55":4,"ssJaguarReplica":6,"chryslerAirflow1934":6,"huracanSTO":6,"amgGTR":5,"nissanPao":2,"bentleyGTC":4,"alfaRomeo4C":4,"porsche911weissach":3,"aventadorLP700":6,"ferrari488gtb":5,"bmwI8":3,"monsterJamMegalodonBlue2022":6,"jensenInterceptor":4,"miniGroovy":2,"triumphTR7":2,"triumphHerald":2,"morrisTulipas":3,"citroen2cvGris":2,"aecRegentRTL":5,"camaroProMod":6,"hondaCRF50":2,"fordHotRod33":6,"fordModelA":4,"douglasTruck":4,"gallardoSpyder":5,"uralPatrol":2,"whiteGA1910Coupe":6,"whiteGB1910TownCar":6,"lasalle1930touring":6,"fordModelTBlack":4,"lincolnContinental40":6,"lincolnModelL1929":6,"ferrariSF90StradaleWhite":6,"mercuryCycloneGT1966":4,"dodgeChallengerBagged":3,"mclaren675LTwhite":6,"internationalKBwine":4,"cadillac1941conv":5,"pontiakFirebirdGreen":4,"suzukiSamuraiBlack":2,"jeepWranglerTactical":4,"dodgeDurangoHemi":3,"lamborghiniGallardoOrange":4,"huracanEvoSpyderPurple":5,"lucidAirPure":5,"bugattiType57VentouxBrownTan2008":8,"peugeot908HDiFAPLeMansSilver2008":7,"peugeotQuarkConceptGray2008":5,"peugeotH2OFireConceptRed2008":6,"peugeotTulipConceptRed2008":5,"batmobile1966TVReplica2007":4,"cadillacDragillac1960Gold2007":6,"hondaCivicSiEP3CustomOrange2007":3,"cadillacArtBarPink2007":4,"mercedesF125ConceptSilver2012":8,"audiUrbanConceptWhite2012":6,"fordEvosConceptRed2012":7,"kiaNaimoConceptGreen2012":6,"mazda2_2014":2,"kia_cerato":2,"mazda3_2015":2,"suzukiSCross":2,"mitsubishiMontero":2,"civicLX2022":2,"crv2025":3,"chevroletMasterDeluxe1939CoupeGreen":4,"chevyBelAirNomad1957RedWhite":4,"lincolnContinentalCabriolet1948Black":5,"oldsmobileHoliday1955CreamCoral":4,"hupmobileModelEEightSedan1928Maroon":4,"kaiserDragon1951MaroonGold":4,"internationalScout80TealWhite1962":2,"nortonCafeRacer1969Yellow":2,"cadillacSeries62Conv1947Black":5,"bentleyContinentalGT2003Navy":2,"rickmanTrailHodaka1970":2,"sunbeamModel9Sloper1927":4,"dodgeDartSwinger1973Copper":2,"cadillacSeries85_1937":6,"chevyMonteCarloEarnhardt3NASCAR":6,"owossoPulse1986Yellow":2,"lambrettaLI150_1960":2,"bmwIsetta300_1958":2,"fordGTHeritageGulf2006":6,"saleenS11ClayModel":6,"oldsmobileAerotechLT1992":7,"lolaA1GPTeamUSAUnserJr":5,"ferrariAmalfiTeal":6,"ferrari849TestarossaBlue":6,"soapBoxDerbySeattle1971":2,"lamborghiniHuracanSterrato2023":6,"pontiacFieroGT1988Red":2,"corvetteC1_1957LeMay":4,"corvetteBlackjackMule2014":6,"fordSuperDeluxeConv1947Maroon":4,"saleenS281ExtremeWidebody":5,"saleenS7Yellow2003":6,"mercedes230SLPagoda1967Green":4,"mercedes300SLGullwing1955Black":8,"fordGT40MkIV1967Red":10,"hurstOlds1972White":3,"studebakerAvanti1963White":4,"cord812Westchester1937Maroon":6,"mustangGTD2025White":6,"fiatTopolino500_1937Cream":4,"studebakerChampionStarlight1951Blue":3,"camaroFelton1981White":4,"mercedes280SE35Coupe1970Gold":6,"camaroKellyChallenge1984Blue":3,"crosleyMidgetRacer1949":3,"stutzBearcat1914Yellow":8,"mercedes220SCabriolet1958Cream":4,"bmw507Roadster1959Silver":8,"lotus35F18Dimmer":4,"saleenS5SRaptorYellow":7,"vectorW8TwinTurbo1991Black":6,"scarabMkI1958BlueWhite":6,"saleenS1Red2020":4,"messerschmittKR200Red1956":4,"willysMB1945Green":3,"morganM3S2ThreeWheeler1936":4,"buickReatta1989Red":2,"plymouthValiantV200_1960White":2,"dodgeBrothersDC8Yellow1930":4,"mercuryColonyPark1983Blue":2,"saleenSRRacecarSpeedlab1996":4,"saleenS1CupRacecar2019Blue":4,"duesenberg1914RacerCream":9,"citroenDS21Pallas1972Green":2,"marmonSpeedsterRace1929Green":6,"fordMustangProjectDetroit2012Microsoft":5,"italjetVelocifero150Mint":2,"cunninghamC2R1951White":9,"amphicar770White1964":4,"sunbeamTalbot90MkIIARed1953":4,"ford1939CoupeChoppedPurple":6,"lincolnModelLDietrichPhaeton1928Yellow":6,"crosley1939ConvertibleSedanTeal":4,"fordModelAClosedCabPickup1929Yellow":4,"crosleyCC47FireTruckRed":3,"vwKarmannGhia1962Turquoise":2,"shelbyCobra427Roadster1965Blue":8,"lasalleSeries50ConvCoupe1940Maroon":6,"lincolnTouringCar1923Blue":6,"srtViperGTS2014Green":4,"triumphT140VBonnevilleCafeRacerRed":3,"chrysler300E1959Red":4,"fordHotRodTurbine1932":8,"velocetteKTT1936":6,"jaguarXJ6Series1Red1969":2,"bsaB27DeLuxe1927":4,"arielRedHunter1948":3,"buickRivieraWhiteLeMay1964":4,"royalEnfieldInterceptor1970":2,"packardClipper1946Black":4,"chrysler77Roadster1930BrownYellow":6,"crosleySkorpion1952Red":4,"kuzmaOffy1949Midget":4,"pontiacBonneville1963Gold":4,"audiTT2001Silver":2,"bsa441Victor1969":2,"franklin1930SeriesRedBlack":4,"camaroSS1969BlueBlack396":4,"rambler1960CustomWagonRed":4,"lasalle303Touring1927BlackGreen":6,"lincolnModel76H1947Yellow":5,"camaroRS1970sSplitBumperPurple":4,"americanBantam60DeluxeRoadster1939":4,"regal30Touring1909BlueGold":5,"hupmobileI326Sedan1933Tan":4,"chevronB2Racer1966Blue":4,"mazdaRX7FC1986Grey":2,"chevy3100Gold1954":4,"dodgeMeadowbrookCityOfRoses1954":4,"fordClubCabriolet1937Brown":4,"owenMagneticM25Touring1917":6,"chevroletSSR2004Red":2,"vwType2Camper1967":4,"pontiacCatalina1962Red":4,"deSotoCustom1946Cream":4,"oldsmobileToronado1976Tiffany":2,"chrysler300F1960White":4,"chryslerNewYorkerStRegis1956Pink":4,"cadillac1936SedanBlack":4,"chevroletMasterDeluxe1942BlackoutTan":3,"packardStandardEight1930Blue":4,"studebakerFlightHawk1956White":2,"essexSuperSix1930Black":4,"pontiacSolstice2006Black":2,"cadillacModelM1906White":5,"buickCentury1957Copper":4,"oldsmobile442Convertible1970Blue":4,"hudsonModelTwenty1909Red":6,"chevyImpala1959RedWhiteRoof":4,"oldsmobileClubSedan1947Cream":3,"fordDeluxeCabriolet1936Blue":4,"internationalMWAutoWagon1913":5,"packardTwelveConvertible1939Green":6,"buickSeries23Touring1923Black":4,"cadillacAllante1993Green":2,"oldsmobileFuturamic88Wagon1950Maroon":4,"hupmobileModel20Runabout1909Blue":5,"buickSkylarkGS1966Blue":4,"reoTheFifth1913Green":5,"fordFairlaneSkyliner1958WhiteYellow":4,"lincolnCapriConvertible1954Blue":4,"saleenS1CupRacecarWhiteRed2":4,"rrSilverCloud1955":5,"fordModelAPhaetonBlue1929":4,"mazdaRX7FB1983Red":2,"chevy1955ProStreetBlue":6,"toyotaCelsiorUCF10VIP":2,"cadillac1939Series61":6,"amcPacerBlue1976":2,"chevroletC15ACMP1943":4,"fordF155PCFDPumper1949":4,"mustangFoxDragBlue":2,"mercedes280SEW108Blue":2,"gmcSierraGrandeFallGuy":3,"mazdaRX8StreetlightRed":2,"lexusSC300Black":2,"nissanGTRHoloMagicX":5,"dodgeViperSRT10Red":3,"ferrari328GTSSimon":4,"fordM151A2Mutt":2,"deTomasoPanteraRed":4,"gmcVanduraATeamTribute":2,"chevrolet1937PickupModified":4,"nissanCedricY33VIP":2,"mercedesW114SedanBeige":2,"dodgeChargerHellcatMenace":4,"plymouthDeluxe1934Surf":4,"deloreanOrangeCustom":5,"mclarenArturaSimon":5,"kittTransAmReplicaPoco":3,"hondaOdysseyRB1VIP":2,"daihatsuMiraGinoSimon":2,"toyotaCelicaGTBlue":2,"mercury1951PurpleCustom":6,"mustangSVTCobraTerminatorConv":3,"dodgeChargerRT1969Orange":4,"fordCustomConv1949Maroon":5,"hondaCivic1200_1974Blue":2,"nissan300ZXConvertibleRed":2,"datsun280ZSilverBuilt":3,"datsunZOrangeStock":3,"datsun240ZYellowTurbo":4,"mercuryCougar1967BlackHood":4,"chevroletMaster1937HotRodFlames":6,"chevyImpalaSS1964RedConv":4,"chevyBelAir1957RedConv":4,"chevy210HandymanWagon1957Red":4,"chevy210Sedan1955Mint":4,"fordModel18RoadsterPickup1932Green":4,"chevyStyleline1952MintResto":6,"chevyImpalaSS1962RedWhite":4,"mustangHardtop1969Green":4,"mustang65RedHardtop":4,"pontiacFirebird400Blue1967":4,"chevyImpalaConv1958Seafoam":4,"plymouthRoadRunner1971Orange":3,"pontiacGrandPrixSTE1991Blue":2,"chevelleSS1967BlueConv":4,"corvetteC3MaroonPoco":3,"mgTD1953White":4,"chevelle1968GreenHardtop":4,"porsche911TurboLookBlackPoco":4,"lincolnContinental1964Tan":4,"fordEscortMk1TurboBlue":4,"fordThunderbird1965Tan":4,"fordDeluxeCoupe1940Red":6,"fordModelATudorRedPoco":6,"cosworthVega1975Black":2,"camaroRS1969Black350":4,"pontiacVenturaSJ1975Blue":4,"mustangIICobraIIWhite1978":2,"vwBeetleRatLookBareMetal":3,"chevyFleetlineLeadSledPink":5,"fordPickup1935DesperadosTurbo":6,"fordTBucketYellowFlames1927":6,"fordModelASedanBlack1929Original":4,"amcAMXBlue1968":4,"fordPhaetonGreenStreetRod1932":6,"fordDeluxeSedanBlackCorvette1940":6,"chevy3100TaskForce1957Turquoise":4,"pontiacBeaumont1966LightBlue":4,"chevyElCaminoSS454Black1972":3,"pontiacParisienne1965Black":4,"nissan240SXCoupeRed":2,"pontiacLeMans1973Green":2,"internationalC1Pickup1935Red":4,"packard250Convertible1951Cream":5,"fordTorinoGT1968Black":4,"mgbRoadsterGreen":2,"mgbGTBlue":2,"oldsmobile442Convertible1968Red":4,"mgf1996Black":2,"chevyVegaProStreetBlue":3,"mercuryCougarXR7FoxBody1980Champagne":2,"dodgeChargerSuperBee1971LimeGreen":3,"vwBeetle1965BlackChrome":2,"vwHerbie2WhiteTVIcon":2,"fargoBSeriesPickupMaroon":4,"corvetteC1_1961BlueWhite":4,"dodgeWC56CommandCar1942":4,"dodgePickup1940sFlames":4,"mgTF1953Cream":4,"mercuryMontclair1956Teal":4,"gmcSierraSquareBody4x4Black":2,"nashMetropolitan1954Turquoise":3,"pontiacChieftain1956Candy":4,"lincolnContinental1977Brown":2,"dodgeChallenger1971MatteBlack":4,"gmcC1500_1971Green":2,"oldsmobileCutlass1975Purple":2,"fordV8Cabriolet1934Black":4,"cadillacEldorado1976White":3,"chevySuburbanCarryall1956Aqua":4,"chevyNovaSS1966Red":4,"fordMaverick1970Green":2,"plymouthRoadRunner1969Red":4,"fordThunderbird1980Copper":2,"dodgeDemon170":5,"plymouthBarracuda1974":3,"mustangGT350HTribute":4,"mustangGT2003Grey":2,"huracanLP610Green":5,"leylandMokeGulf":2,"nissanGTRWidebodyRed":5,"nissan240SXConvertible":2,"lexusLC500ConvertibleRed":4,"camaroIROCZRed":2,"triumphTR3Maroon":4,"camaroZ28ConvertibleRed":2,"pontiacGTO1972Silver":3,"chevyElCaminoWhite":2,"plymouthCuda340Purple":4,"oldsmobileCutlassBlue":2,"fordTBucketRed":6,"fordF250BlueWhite":2,"pontiacGTO1965Teal":4,"toyotaSupraA80Black":4,"dodgeDartDemon1971":3,"cadillacFleetwood1958":4,"dodgeChargerRT1969":4,"transAm77Bandit":3,"buggyPsychedelicChrome":3,"meyersManxWhiteSurf":2,"shelbyGT500BlueSimon":4,"gmcTyphoonGreen":3,"buickRiviera1963":4,"renault9_1985":3,"infinitiEX35":1,"renaultLoganJairito":2,"buickEnvisionSTGrayReis":1,"porsche992GT3RSPurple":5,"ferrari296gtbRedShow":6,"mazdaRX7HanTokyoDrift":5,"ferrariDaytonaSP3":8,"nissanGTR":5,"lamboCountach":6,"mclaren720sLivery":6,"maseratiGhibliYellow":4,"corvetteC3BigBlock":4,"mclaren720sOrange":5,"ferrariRomaSpider":6,"corvetteC5Blue":2,"corvetteC4GreenConvertible":2,"corvetteC8StingrayConvertGray":4,"corvetteC2StingRay1965Green":4,"jaguarDType":9,"xk120":5,"ftype":4,"jmk2":4,"ah3000":4,"sprite":2,"rrCorniche":4,"bentleyT":2,"rrPhantom":4,"mp412c":5,"db7":2,"db9Silver":3,"amV8Volante":5,"amLagonda":4,"lagondaM45":6,"bentley45":8,"mgJ2":4,"db5":6,"ss1":6,"jensenInterceptorABFM2026":4,"miniCooper":2,"tvrWedge":2,"spitfire1500":2,"lotusSeven":2,"lotusElan":2,"tr6":2,"lotusElanPlus2":2,"lotusEmira":4,"lotusEmiraRed":4,"teslaRoadster":3,"lotusEmiraYellow":4,"lotusElise":2,"lotusEvoraS2011":3,"lotusEvoraGT410Sport2020":4,"lotusEvora":4,"lotusEvoraGT410Sport":4,"lotusEsprit":3,"mgKMagnette":6,"morrisMinor":3,"jaguarXType":2,"mga":3,"listerRacer":7,"miniCooperRace":2,"ah3000Simon":4,"miniSofa":2,"ginettaG4":2,"cartVisteon":5,"amVanquish":5,"porsche911CarreraRS27White2023":7,"rrPhantomAero":10,"porsche911redSWB":4,"teslaSemiAlpha":8,"fujiCabin5A":4,"porsche718RSK":8,"voisinTourer1925":8,"fordModelAWoody1931":6,"borisBikeMIB3":6,"ferrariSuperfastGhia":10,"indianSingle1905":5,"porsche917_30":9,"porsche935Brumos":8,"porsche935_2018":7,"zenvoTSRS":8,"teslaRoadster2":6,"porsche918":7,"porscheDesignP0001":8,"corvetteLeMans76":6,"batmobile1989":9,"cadillacPininf":7,"bugattiType57":10,"bugattiType57Cab":10,"delageD8Aerosport":10,"subaruSambar":2,"porsche356polar":6,"porsche996ArtCar":5,"acPropulsionTzero":6,"hondaS2000Suki":2,"benzPatentMotor":6,"alfaDiscoVolante":9,"mustangEleanor":5,"teslaRoadster2008":4,"arshamPorsche911":5,"mercuryMonterey":4,"nashHealey":5,"cisitalia202":7,"leMansSpecial":6,"deloreanBTTF":7,"granTorinoStarsky":4,"batcycleSidecar":6,"porsche356_1":10,"fordFalcon1963ConvertibleBlack":2,"lincolnContinental1961SuicideDoors":4,"fordThunderbird1966Mint":4,"plymouthFury1958Christine":6,"chryslerGhiaFalcon1955":10,"porsche356_2Gmund":8,"porsche550ClydeKwok":3,"kittTransAm":5,"herbie53Petersen":6,"mercerRaceabout":9,"lightningMcQueen":6,"dodgeStormZ250":8,"bumblebeeCamaroHero":8,"bumblebeeCamaro":2,"meyersManxThomasCrown":4,"jaguarXKRZao":2,"plymouthExplorerGhia":8,"mysteryMachineBedford":5,"bmwVisionEfficientDynamics":7,"fordDeuceRoadster1932":4,"harleyModelJ1919":4,"ferrari212225Barchetta":10,"fordGT40MkIII":9,"monocycleMIB3":6,"corvetteC1_1956":4,"indian101Scout1928":4,"triumphSpeedtwinCustom1952":5,"fordModelTCoupe":4,"tucker48Torpedo":9,"porsche356Continental1955":6,"sunbeamModel90_1928":4,"porsche993":4,"porsche356":4,"porsche911sc":3,"porsche914":2,"porsche911early":4,"ferrari308gts":4,"jeepCherokeeXJPoco":2,"chevyC10PocoBlue":4,"mgaYellowPoco":3,"corvetteC1_1957":4,"fordDeluxeCoupe1939":4,"mclarenMP412C":4,"bluesmobileMonaco":5,"nissan240Z":4,"chevyMasterEagle":4,"fordThunderbird":4,"fordModelT":3,"gazelleKitCar":4,"fordModelAHotRod":4,"datsun240ZBlanco":2,"datsun510grey":2,"fiat500classic":2,"mazdaRX7FD":2,"internationalCXT":5,"porsche992ghost9":5,"volvoP1800teal":4};
+const SCARCITY = {"bmw7G11MSportBlack2026":3,"ramTRXBlack2026":4,"maseratiQuattroporteV2005Silver":2,"chevroletAveo5TeamCanadaSilver":2,"fordMustangMachEGTBlack":4,"hyundaiGenesisCoupeWhiteA274UL":2,"ferrari599GTBFioranoBlack":5,"bmwAlpinaXB7Black":5,"buickSuperSedanet1948Black":5,"oldsmobileSuper88_1954LeadSled":5,"mercedesEClassEstateW212BlackRHD":2,"huracanPerformanteGreen":5,"toyotaSoarerZ20TwinTurboBlack1989":2,"teslaCyberquadForKidsOct2026":2,"nissanSkylineR34GTRWhite":4,"aventadorWidebodyMatteBlackToronto":7,"maseratiGranCabrioTrofeoBlackToronto":5,"ferrari458ItaliaBlackToronto":5,"audiRS6AvantSilverRoofbox":5,"ramDodge1500BlackSRTStripe":2,"challengerSRTHellcatBlackHalloween":4,"bentleyContinentalGTV8S2014Pearl":4,"jaguarFTypeRBlueSept2026":4,"jaguarETypeSeries2CoupeBronze1969":4,"corvairMonza1966Maroon":2,"chevyCaprice1993Maroon":2,"porscheGT4RSYellow2023":5,"mclaren600LTOrangeBurrard":5,"mercedesAMGGT63S4DoorMatteStripe":5,"mercedes280SLPagodaCream1970":4,"ducatiPanigaleV2Red":2,"ferrari612ScagliettiBlue":4,"bmwM5G90Red2025":5,"toyotaCrownPlatinumHybridMax2025":4,"ferrariPurosangueWhite":6,"challengerSRT8392InauguralWhite":3,"mustangBullitt2019Green":3,"suzukiCarryDA63TGreen":2,"nissanZRZ34Black":3,"ferrari12CilindriSpiderYellow":6,"bentleyFlyingSpurBlack":3,"lamborghiniTemerarioWhite":6,"dodgeRamVanIslandBarVan":2,"lotusEmiraFirstEditionBlue":4,"ferrariCaliforniaBlackGastown":4,"dodgeDurangoSRT392White":3,"mercedesGLS63AMGBlack":5,"meteor1956":2,"nissanJukeNismo":2,"porscheTaycanRoseGold":4,"smartFortwoOrcaFin":2,"audiEtronGTBlueGrey":4,"piaggioLibertyWhite":2,"mercedesSLwhiteR107":3,"monteCarloSS80sG":2,"porsche992CarreraSilverStripe":4,"pontiacBonnevilleAmbulance":2,"camaroZL1Black2026":3,"corvetteC3HotWheelsWrap":2,"mercedesG63BrabusSilver":5,"teslaModelXRed":5,"toyotaMR2AW11":2,"lucidAirTouringBlackGold":4,"fiat500CAbarthWhiteCabrio":2,"astonMartinDBX":5,"fordModelATruck":4,"mustang65Red":4,"suzukiVolusia":2,"uralSidecar":2,"audiQ8Etron":4,"amgG63White":5,"cobra427Green":4,"chevy3100Green":4,"porsche992BlackA38":5,"audiRS3Grey":4,"vwGolfGTIMk8":3,"smartFortwoYellow":2,"bentleyContGTS":5,"hondaCRVBC542J":2,"cadillacEscaladeGray":3,"kiaEV6Chameleon":3,"mustangGT5_0Blue":2,"jaguarSType":2,"dodgeChallengerBlack":2,"mercedesCLSBrabus":2,"bmwM2Comp":3,"nissanFigaroPink":2,"toyotaSupraA90":4,"lamborghiniUrusWhite":5,"bmwE90Bagged":2,"ramRebel":4,"cadillacEscaladeIQ":5,"mazdaMX5NDGray":2,"alfaSpider916":2,"mustangGT2018Red":2,"rivianR1T":4,"gmcHummerEVSUV":4,"subaruBRZ":2,"mercedesSL500R129":2,"nissanSkylineR33GTR":3,"porsche992GT3Weissach":5,"hotRodRedKalTire":6,"mercedesSLK280R171":2,"apriliaRS660LimitedEdition":2,"harleySoftailDeluxe":2,"hyundaiVelosterN":2,"astonMartinVantage2024":5,"maseratiLevanteWhite":3,"rrGhostBlackBadge":6,"fiat500Abarth":2,"hondaS2000AP2Silver":2,"chevyCapriceTaxi1978":2,"lincolnMarkVI1980":2,"oldsmobileDelta88_1982":2,"alfaStelvioBlue":3,"fiat500eBlack":3,"porschePanameraExecutive":4,"ferrariF8":6,"gs350":2,"charger":2,"aztek":2,"corvetteC6":2,"rrWraith":6,"wrxsti":2,"wrx":2,"rrSport":2,"astonVanquish":5,"ferrari296gtb":6,"hondaPrelude88":2,"vwHerbie":2,"corvetteC5":2,"chevyOBS":2,"teslaCybertruck":4,"miniCooperSRed":3,"fordGranTorino":2,"porsche992gts":5,"nissan350Z":2,"maseratiGT":3,"lambUrusS":6,"bmwI3":2,"bentleyBentayga":5,"ferrari488Spider":5,"rcmpFordPIU":3,"bluebirdSchoolBus":5,"fiat500cLounge":2,"porsche944red":2,"kiaEV5FIFA":3,"hondaVTX1800custom":3,"harleyDynaWideGlide":2,"kawasakiZX6Rpink":2,"mercedesSLK250white":2,"nissanGTRblue":5,"chevyCruzeLucas":2,"nissanSkylineR34":3,"ptCruiser707":2,"vwSciroccoR":2,"cadillacEscaladeBO":4,"lambRevuelto":6,"toyotaMR2":2,"hyundaiEquus":2,"sc430":2,"saab93":2,"mx5na":2,"vwScirocco":2,"toyotaSupraRace":4,"toyotaSupraUndefeated49":4,"renaultDauphine":2,"citroen2cv":3,"mercuryLeadSled":5,"piaggioApeColombia":2,"corvetteC3Orange":2,"rrSilverSpirit":2,"studebakerStarliner1954":3,"chevyMonteCarloss":2,"mercedesC63Black":5,"bmwE38":2,"spoonersTruck":2,"pierceFire":7,"lincolnLimo":4,"bmw230i":3,"chevyBelAir55":4,"ssJaguarReplica":6,"chryslerAirflow1934":6,"huracanSTO":6,"amgGTR":5,"nissanPao":2,"bentleyGTC":4,"alfaRomeo4C":4,"porsche911weissach":3,"aventadorLP700":6,"ferrari488gtb":5,"bmwI8":3,"monsterJamMegalodonBlue2022":6,"jensenInterceptor":4,"miniGroovy":2,"triumphTR7":2,"triumphHerald":2,"morrisTulipas":3,"citroen2cvGris":2,"aecRegentRTL":5,"camaroProMod":6,"hondaCRF50":2,"fordHotRod33":6,"fordModelA":4,"douglasTruck":4,"gallardoSpyder":5,"uralPatrol":2,"whiteGA1910Coupe":6,"whiteGB1910TownCar":6,"lasalle1930touring":6,"fordModelTBlack":4,"lincolnContinental40":6,"lincolnModelL1929":6,"ferrariSF90StradaleWhite":6,"mercuryCycloneGT1966":4,"dodgeChallengerBagged":3,"mclaren675LTwhite":6,"internationalKBwine":4,"cadillac1941conv":5,"pontiakFirebirdGreen":4,"suzukiSamuraiBlack":2,"jeepWranglerTactical":4,"dodgeDurangoHemi":3,"lamborghiniGallardoOrange":4,"huracanEvoSpyderPurple":5,"lucidAirPure":5,"bugattiType57VentouxBrownTan2008":8,"peugeot908HDiFAPLeMansSilver2008":7,"peugeotQuarkConceptGray2008":5,"peugeotH2OFireConceptRed2008":6,"peugeotTulipConceptRed2008":5,"batmobile1966TVReplica2007":6,"cadillacDragillac1960Gold2007":8,"hondaCivicSiEP3CustomOrange2007":3,"cadillacArtBarPink2007":4,"mercedesF125ConceptSilver2012":8,"audiUrbanConceptWhite2012":6,"fordEvosConceptRed2012":7,"kiaNaimoConceptGreen2012":6,"mazda2_2014":2,"kia_cerato":2,"mazda3_2015":2,"suzukiSCross":2,"mitsubishiMontero":2,"civicLX2022":2,"crv2025":3,"chevroletMasterDeluxe1939CoupeGreen":4,"chevyBelAirNomad1957RedWhite":4,"lincolnContinentalCabriolet1948Black":5,"oldsmobileHoliday1955CreamCoral":4,"hupmobileModelEEightSedan1928Maroon":4,"kaiserDragon1951MaroonGold":4,"internationalScout80TealWhite1962":2,"nortonCafeRacer1969Yellow":2,"cadillacSeries62Conv1947Black":5,"bentleyContinentalGT2003Navy":2,"rickmanTrailHodaka1970":2,"sunbeamModel9Sloper1927":4,"dodgeDartSwinger1973Copper":2,"cadillacSeries85_1937":6,"chevyMonteCarloEarnhardt3NASCAR":6,"owossoPulse1986Yellow":2,"lambrettaLI150_1960":2,"bmwIsetta300_1958":2,"fordGTHeritageGulf2006":6,"saleenS11ClayModel":6,"oldsmobileAerotechLT1992":7,"lolaA1GPTeamUSAUnserJr":5,"ferrariAmalfiTeal":6,"ferrari849TestarossaBlue":6,"soapBoxDerbySeattle1971":2,"lamborghiniHuracanSterrato2023":6,"pontiacFieroGT1988Red":2,"corvetteC1_1957LeMay":4,"corvetteBlackjackMule2014":6,"fordSuperDeluxeConv1947Maroon":4,"saleenS281ExtremeWidebody":5,"saleenS7Yellow2003":6,"mercedes230SLPagoda1967Green":4,"mercedes300SLGullwing1955Black":8,"fordGT40MkIV1967Red":10,"hurstOlds1972White":3,"studebakerAvanti1963White":4,"cord812Westchester1937Maroon":6,"mustangGTD2025White":6,"fiatTopolino500_1937Cream":4,"studebakerChampionStarlight1951Blue":3,"camaroFelton1981White":4,"mercedes280SE35Coupe1970Gold":6,"camaroKellyChallenge1984Blue":3,"crosleyMidgetRacer1949":3,"stutzBearcat1914Yellow":8,"mercedes220SCabriolet1958Cream":4,"bmw507Roadster1959Silver":8,"lotus35F18Dimmer":4,"saleenS5SRaptorYellow":7,"vectorW8TwinTurbo1991Black":6,"scarabMkI1958BlueWhite":6,"saleenS1Red2020":4,"messerschmittKR200Red1956":4,"willysMB1945Green":3,"morganM3S2ThreeWheeler1936":4,"buickReatta1989Red":2,"plymouthValiantV200_1960White":2,"dodgeBrothersDC8Yellow1930":4,"mercuryColonyPark1983Blue":2,"saleenSRRacecarSpeedlab1996":4,"saleenS1CupRacecar2019Blue":4,"duesenberg1914RacerCream":9,"citroenDS21Pallas1972Green":2,"marmonSpeedsterRace1929Green":6,"fordMustangProjectDetroit2012Microsoft":5,"italjetVelocifero150Mint":2,"cunninghamC2R1951White":9,"amphicar770White1964":4,"sunbeamTalbot90MkIIARed1953":4,"ford1939CoupeChoppedPurple":6,"lincolnModelLDietrichPhaeton1928Yellow":6,"crosley1939ConvertibleSedanTeal":4,"fordModelAClosedCabPickup1929Yellow":4,"crosleyCC47FireTruckRed":3,"vwKarmannGhia1962Turquoise":2,"shelbyCobra427Roadster1965Blue":8,"lasalleSeries50ConvCoupe1940Maroon":6,"lincolnTouringCar1923Blue":6,"srtViperGTS2014Green":4,"triumphT140VBonnevilleCafeRacerRed":3,"chrysler300E1959Red":4,"fordHotRodTurbine1932":8,"velocetteKTT1936":6,"jaguarXJ6Series1Red1969":2,"bsaB27DeLuxe1927":4,"arielRedHunter1948":3,"buickRivieraWhiteLeMay1964":4,"royalEnfieldInterceptor1970":2,"packardClipper1946Black":4,"chrysler77Roadster1930BrownYellow":6,"crosleySkorpion1952Red":4,"kuzmaOffy1949Midget":4,"pontiacBonneville1963Gold":4,"audiTT2001Silver":2,"bsa441Victor1969":2,"franklin1930SeriesRedBlack":4,"camaroSS1969BlueBlack396":4,"rambler1960CustomWagonRed":4,"lasalle303Touring1927BlackGreen":6,"lincolnModel76H1947Yellow":5,"camaroRS1970sSplitBumperPurple":4,"americanBantam60DeluxeRoadster1939":4,"regal30Touring1909BlueGold":5,"hupmobileI326Sedan1933Tan":4,"chevronB2Racer1966Blue":4,"mazdaRX7FC1986Grey":2,"chevy3100Gold1954":4,"dodgeMeadowbrookCityOfRoses1954":4,"fordClubCabriolet1937Brown":4,"owenMagneticM25Touring1917":6,"chevroletSSR2004Red":2,"vwType2Camper1967":4,"pontiacCatalina1962Red":4,"deSotoCustom1946Cream":4,"oldsmobileToronado1976Tiffany":2,"chrysler300F1960White":4,"chryslerNewYorkerStRegis1956Pink":4,"cadillac1936SedanBlack":4,"chevroletMasterDeluxe1942BlackoutTan":3,"packardStandardEight1930Blue":4,"studebakerFlightHawk1956White":2,"essexSuperSix1930Black":4,"pontiacSolstice2006Black":2,"cadillacModelM1906White":5,"buickCentury1957Copper":4,"oldsmobile442Convertible1970Blue":4,"hudsonModelTwenty1909Red":6,"chevyImpala1959RedWhiteRoof":4,"oldsmobileClubSedan1947Cream":3,"fordDeluxeCabriolet1936Blue":4,"internationalMWAutoWagon1913":5,"packardTwelveConvertible1939Green":6,"buickSeries23Touring1923Black":4,"cadillacAllante1993Green":2,"oldsmobileFuturamic88Wagon1950Maroon":4,"hupmobileModel20Runabout1909Blue":5,"buickSkylarkGS1966Blue":4,"reoTheFifth1913Green":5,"fordFairlaneSkyliner1958WhiteYellow":4,"lincolnCapriConvertible1954Blue":4,"saleenS1CupRacecarWhiteRed2":4,"rrSilverCloud1955":5,"fordModelAPhaetonBlue1929":4,"mazdaRX7FB1983Red":2,"chevy1955ProStreetBlue":6,"toyotaCelsiorUCF10VIP":2,"cadillac1939Series61":6,"amcPacerBlue1976":2,"chevroletC15ACMP1943":4,"fordF155PCFDPumper1949":4,"mustangFoxDragBlue":2,"mercedes280SEW108Blue":2,"gmcSierraGrandeFallGuy":3,"mazdaRX8StreetlightRed":2,"lexusSC300Black":2,"nissanGTRHoloMagicX":5,"dodgeViperSRT10Red":3,"ferrari328GTSSimon":4,"fordM151A2Mutt":2,"deTomasoPanteraRed":4,"gmcVanduraATeamTribute":2,"chevrolet1937PickupModified":4,"nissanCedricY33VIP":2,"mercedesW114SedanBeige":2,"dodgeChargerHellcatMenace":4,"plymouthDeluxe1934Surf":4,"deloreanOrangeCustom":5,"mclarenArturaSimon":5,"kittTransAmReplicaPoco":3,"hondaOdysseyRB1VIP":2,"daihatsuMiraGinoSimon":2,"toyotaCelicaGTBlue":2,"mercury1951PurpleCustom":6,"mustangSVTCobraTerminatorConv":3,"dodgeChargerRT1969Orange":4,"fordCustomConv1949Maroon":5,"hondaCivic1200_1974Blue":2,"nissan300ZXConvertibleRed":2,"datsun280ZSilverBuilt":3,"datsunZOrangeStock":3,"datsun240ZYellowTurbo":4,"mercuryCougar1967BlackHood":4,"chevroletMaster1937HotRodFlames":6,"chevyImpalaSS1964RedConv":4,"chevyBelAir1957RedConv":4,"chevy210HandymanWagon1957Red":4,"chevy210Sedan1955Mint":4,"fordModel18RoadsterPickup1932Green":4,"chevyStyleline1952MintResto":6,"chevyImpalaSS1962RedWhite":4,"mustangHardtop1969Green":4,"mustang65RedHardtop":4,"pontiacFirebird400Blue1967":4,"chevyImpalaConv1958Seafoam":4,"plymouthRoadRunner1971Orange":3,"pontiacGrandPrixSTE1991Blue":2,"chevelleSS1967BlueConv":4,"corvetteC3MaroonPoco":3,"mgTD1953White":4,"chevelle1968GreenHardtop":4,"porsche911TurboLookBlackPoco":4,"lincolnContinental1964Tan":4,"fordEscortMk1TurboBlue":4,"fordThunderbird1965Tan":4,"fordDeluxeCoupe1940Red":6,"fordModelATudorRedPoco":6,"cosworthVega1975Black":2,"camaroRS1969Black350":4,"pontiacVenturaSJ1975Blue":4,"mustangIICobraIIWhite1978":2,"vwBeetleRatLookBareMetal":3,"chevyFleetlineLeadSledPink":5,"fordPickup1935DesperadosTurbo":6,"fordTBucketYellowFlames1927":6,"fordModelASedanBlack1929Original":4,"amcAMXBlue1968":4,"fordPhaetonGreenStreetRod1932":6,"fordDeluxeSedanBlackCorvette1940":6,"chevy3100TaskForce1957Turquoise":4,"pontiacBeaumont1966LightBlue":4,"chevyElCaminoSS454Black1972":3,"pontiacParisienne1965Black":4,"nissan240SXCoupeRed":2,"pontiacLeMans1973Green":2,"internationalC1Pickup1935Red":4,"packard250Convertible1951Cream":5,"fordTorinoGT1968Black":4,"mgbRoadsterGreen":2,"mgbGTBlue":2,"oldsmobile442Convertible1968Red":4,"mgf1996Black":2,"chevyVegaProStreetBlue":3,"mercuryCougarXR7FoxBody1980Champagne":2,"dodgeChargerSuperBee1971LimeGreen":3,"vwBeetle1965BlackChrome":2,"vwHerbie2WhiteTVIcon":2,"fargoBSeriesPickupMaroon":4,"corvetteC1_1961BlueWhite":4,"dodgeWC56CommandCar1942":4,"dodgePickup1940sFlames":4,"mgTF1953Cream":4,"mercuryMontclair1956Teal":4,"gmcSierraSquareBody4x4Black":2,"nashMetropolitan1954Turquoise":3,"pontiacChieftain1956Candy":4,"lincolnContinental1977Brown":2,"dodgeChallenger1971MatteBlack":4,"gmcC1500_1971Green":2,"oldsmobileCutlass1975Purple":2,"fordV8Cabriolet1934Black":4,"cadillacEldorado1976White":3,"chevySuburbanCarryall1956Aqua":4,"chevyNovaSS1966Red":4,"fordMaverick1970Green":2,"plymouthRoadRunner1969Red":4,"fordThunderbird1980Copper":2,"dodgeDemon170":5,"plymouthBarracuda1974":3,"mustangGT350HTribute":4,"mustangGT2003Grey":2,"huracanLP610Green":5,"leylandMokeGulf":2,"nissanGTRWidebodyRed":5,"nissan240SXConvertible":2,"lexusLC500ConvertibleRed":4,"camaroIROCZRed":2,"triumphTR3Maroon":4,"camaroZ28ConvertibleRed":2,"pontiacGTO1972Silver":3,"chevyElCaminoWhite":2,"plymouthCuda340Purple":4,"oldsmobileCutlassBlue":2,"fordTBucketRed":6,"fordF250BlueWhite":2,"pontiacGTO1965Teal":4,"toyotaSupraA80Black":4,"dodgeDartDemon1971":3,"cadillacFleetwood1958":4,"dodgeChargerRT1969":4,"transAm77Bandit":3,"buggyPsychedelicChrome":3,"meyersManxWhiteSurf":2,"shelbyGT500BlueSimon":4,"gmcTyphoonGreen":3,"buickRiviera1963":4,"renault9_1985":3,"infinitiEX35":1,"renaultLoganJairito":2,"buickEnvisionSTGrayReis":1,"porsche992GT3RSPurple":5,"ferrari296gtbRedShow":6,"mazdaRX7HanTokyoDrift":5,"ferrariDaytonaSP3":8,"nissanGTR":5,"lamboCountach":6,"mclaren720sLivery":6,"maseratiGhibliYellow":4,"corvetteC3BigBlock":4,"mclaren720sOrange":5,"ferrariRomaSpider":6,"corvetteC5Blue":2,"corvetteC4GreenConvertible":2,"corvetteC8StingrayConvertGray":4,"corvetteC2StingRay1965Green":4,"jaguarDType":9,"xk120":5,"ftype":4,"jmk2":4,"ah3000":4,"sprite":2,"rrCorniche":4,"bentleyT":2,"rrPhantom":4,"mp412c":5,"db7":2,"db9Silver":3,"amV8Volante":5,"amLagonda":4,"lagondaM45":6,"bentley45":8,"mgJ2":4,"db5":6,"ss1":6,"jensenInterceptorABFM2026":4,"miniCooper":2,"tvrWedge":2,"spitfire1500":2,"lotusSeven":2,"lotusElan":2,"tr6":2,"lotusElanPlus2":2,"lotusEmira":4,"lotusEmiraRed":4,"teslaRoadster":3,"lotusEmiraYellow":4,"lotusElise":2,"lotusEvoraS2011":3,"lotusEvoraGT410Sport2020":4,"lotusEvora":4,"lotusEvoraGT410Sport":4,"lotusEsprit":3,"mgKMagnette":6,"morrisMinor":3,"jaguarXType":2,"mga":3,"listerRacer":7,"miniCooperRace":2,"ah3000Simon":4,"miniSofa":2,"ginettaG4":2,"cartVisteon":5,"amVanquish":5,"porsche911CarreraRS27White2023":7,"rrPhantomAero":10,"porsche911redSWB":4,"teslaSemiAlpha":8,"fujiCabin5A":4,"porsche718RSK":8,"voisinTourer1925":8,"fordModelAWoody1931":6,"borisBikeMIB3":6,"ferrariSuperfastGhia":10,"indianSingle1905":5,"porsche917_30":9,"porsche935Brumos":8,"porsche935_2018":7,"zenvoTSRS":8,"teslaRoadster2":6,"porsche918":7,"porscheDesignP0001":8,"corvetteLeMans76":6,"batmobile1989":9,"cadillacPininf":7,"bugattiType57":10,"bugattiType57Cab":10,"delageD8Aerosport":10,"subaruSambar":2,"porsche356polar":6,"porsche996ArtCar":5,"acPropulsionTzero":6,"hondaS2000Suki":2,"benzPatentMotor":6,"alfaDiscoVolante":9,"mustangEleanor":5,"teslaRoadster2008":4,"arshamPorsche911":5,"mercuryMonterey":4,"nashHealey":5,"cisitalia202":7,"leMansSpecial":6,"deloreanBTTF":7,"granTorinoStarsky":4,"batcycleSidecar":6,"porsche356_1":10,"fordFalcon1963ConvertibleBlack":2,"lincolnContinental1961SuicideDoors":4,"fordThunderbird1966Mint":4,"plymouthFury1958Christine":6,"chryslerGhiaFalcon1955":10,"porsche356_2Gmund":8,"porsche550ClydeKwok":3,"kittTransAm":5,"herbie53Petersen":6,"mercerRaceabout":9,"lightningMcQueen":6,"dodgeStormZ250":8,"bumblebeeCamaroHero":8,"bumblebeeCamaro":2,"meyersManxThomasCrown":4,"jaguarXKRZao":2,"plymouthExplorerGhia":8,"mysteryMachineBedford":5,"bmwVisionEfficientDynamics":7,"fordDeuceRoadster1932":4,"harleyModelJ1919":4,"ferrari212225Barchetta":10,"fordGT40MkIII":9,"monocycleMIB3":6,"corvetteC1_1956":4,"indian101Scout1928":4,"triumphSpeedtwinCustom1952":5,"fordModelTCoupe":4,"tucker48Torpedo":9,"porsche356Continental1955":6,"sunbeamModel90_1928":4,"porsche993":4,"porsche356":4,"porsche911sc":3,"porsche914":2,"porsche911early":4,"ferrari308gts":4,"jeepCherokeeXJPoco":2,"chevyC10PocoBlue":4,"mgaYellowPoco":3,"corvetteC1_1957":4,"fordDeluxeCoupe1939":4,"mclarenMP412C":4,"bluesmobileMonaco":5,"nissan240Z":4,"chevyMasterEagle":4,"fordThunderbird":4,"fordModelT":3,"gazelleKitCar":4,"fordModelAHotRod":4,"datsun240ZBlanco":2,"datsun510grey":2,"fiat500classic":2,"mazdaRX7FD":2,"internationalCXT":5,"porsche992ghost9":5,"volvoP1800teal":4};
 function scarcityOf(c){
   if(SCARCITY[c.id]!=null) return SCARCITY[c.id];
   const m=/\$([\d,]+)/.exec(c.priceCAD||''); const p=m?parseInt(m[1].replace(/,/g,'')):0;
@@ -8239,31 +8372,76 @@ function scarcityHtml(c){
   const n=scarcityOf(c),pos=((n-1)/9*100).toFixed(0);
   return `<div class="scar" title="Escasez ${n}/10 · ${scarcityLabel(n)}"><div class="scar-top"><span>Escasez · ${scarcityLabel(n)}</span><span class="scar-n">${n}<small>/10</small></span></div><div class="scar-bar"><i style="left:${pos}%"></i></div><div class="scar-ends"><span>Fácil de ver</span><span>Muy difícil</span></div></div>`;
 }
+function perfBarsHtml(c){
+  const hp=parseFloat(String(c.hp).replace(/,/g,''))||0, sp=parseFloat(String(c.topSpeed).replace(/,/g,''))||0;
+  const ph=Math.min(100,Math.sqrt(hp/2000)*100).toFixed(0), ps=Math.min(100,Math.sqrt(sp/400)*100).toFixed(0);
+  const row=(l,w,v)=>`<div class="perf-row"><span>${l}</span><div class="perf-track"><div style="width:${w}%"></div></div><b>${v}</b></div>`;
+  return `<div class="perf">${row('Potencia',ph,hp?hp+' hp':'—')}${row('Veloc.',ps,sp?sp+' km/h':'—')}</div>`;
+}
+const _TOP_EXCL=new Set(['teslaSemiAlpha','teslaRoadster2','batmobile1989','porscheDesignP0001','acPropulsionTzero','morrisTulipas','listerRacer']);
+const _TOPDEF={
+  velocidad:{label:'Velocidad',icon:'🏎️',dir:-1,val:c=>parseFloat(String(c.topSpeed).replace(/,/g,''))||0,fmt:c=>String(c.topSpeed)},
+  aceleracion:{label:'Aceleración',icon:'🚀',dir:1,val:c=>{const s=String(c.zero||'');if(/alcanza|N\/A/i.test(s))return 0;return parseFloat(s.replace('~','').replace(/,/g,'.'))||0},fmt:c=>String(c.zero)},
+  potencia:{label:'Potencia',icon:'⚡',dir:-1,val:c=>parseFloat(String(c.hp).replace(/,/g,''))||0,fmt:c=>c.hp+' hp'},
+  precio:{label:'Precio',icon:'💰',dir:-1,val:c=>{const m=[...String(c.priceCAD||'').matchAll(/\$([\d,]+)/g)].map(x=>parseInt(x[1].replace(/,/g,'')));return m.length?Math.max(...m):0},fmt:c=>String(c.priceCAD)}
+};
+function topLists(){
+  const all=getAllCars();const sig=all.length;
+  if(window._topC&&window._topC.sig===sig)return window._topC;
+  const seen=new Set();const cars=all.filter(c=>{if(seen.has(c.id)||_TOP_EXCL.has(c.id))return false;seen.add(c.id);return true});
+  const lists={},ranks={};
+  Object.keys(_TOPDEF).forEach(k=>{
+    const d=_TOPDEF[k];
+    const arr=cars.filter(c=>d.val(c)>0).sort((a,b)=>d.dir<0?d.val(b)-d.val(a):d.val(a)-d.val(b)).slice(0,10);
+    lists[k]=arr;arr.forEach((c,i)=>{(ranks[c.id]=ranks[c.id]||[]).push({k:k,rank:i+1})});
+  });
+  return window._topC={sig:sig,lists:lists,ranks:ranks};
+}
+function topBadgesHtml(c){
+  const r=topLists().ranks[c.id];if(!r||!r.length)return '';
+  return `<div class="topb">${r.map(x=>`<span class="topb-i"><i>Top 10</i> ${_TOPDEF[x.k].label} <b>#${x.rank}</b></span>`).join('')}</div>`;
+}
+function setTop10(k){window._top10Metric=k;renderTop10();}
+function renderTop10(){
+  active='top10';
+  const k=window._top10Metric||'potencia';const d=_TOPDEF[k];const arr=topLists().lists[k]||[];
+  const chips=Object.keys(_TOPDEF).map(x=>`<button class="t10-chip${x===k?' on':''}" onclick="setTop10('${x}')">${_TOPDEF[x].icon} ${_TOPDEF[x].label}</button>`).join('');
+  document.getElementById('body').innerHTML=
+    `<div class="month-hdr"><div class="month-title">🏆 Top 10</div><div class="month-recap">Los 10 autos del dashboard con mejor marca en cada categoría. Se actualiza solo cada vez que se agrega un carro.</div></div>`+
+    `<div class="t10-chips">${chips}</div>`+
+    `<div class="section-title">Top 10 en ${d.label.toLowerCase()}</div>`+
+    `<div class="cars-grid">${arr.map((c,i)=>`<div class="rank-wrap"><div class="rank-n">#${i+1}<span>${d.fmt(c)}</span></div>${carCard(c)}</div>`).join('')}</div>`;
+  document.querySelectorAll('.hw-tab').forEach(t=>t.classList.toggle('active',t.dataset.m==='top10'));
+  window.scrollTo({top:0});
+}
 function carCard(c){
   const src=IMGS[c.imgKey];
   const willLazyLoad=!src&&IMGS_HOME_SECTION[c.imgKey];
   const imgHtml=(src||willLazyLoad)
     ?`<img ${src?`src="${src}"`:''} data-imgkey="${c.imgKey}" alt="${c.make} ${c.model}" style="opacity:1;" />`
-    :`<div style="display:flex;flex-direction:column;align-items:center;gap:8px;"><i class="ti ti-car" style="font-size:2.8rem;color:#bbb;"></i><span style="font-size:0.8rem;letter-spacing:2px;color:#555;text-transform:uppercase;font-weight:700;">${c.make} ${c.model}</span></div>`;
+    :`<div style="display:flex;flex-direction:column;align-items:center;gap:8px;"><i class="ti ti-car" style="font-size:2.8rem;color:#777;"></i></div>`;
   const specs=Object.entries(c.specs).map(([k,v])=>`<div class="spec-row"><span class="spec-key">${k}</span><span class="spec-val">${v}</span></div>`).join('');
   const hls=c.highlights.map(h=>`<li>${h}</li>`).join('');
-  return `<div class="car-card${c.featured?' featured':''}" id="card-${c.id}">
+  return `<div class="car-card c2${c.featured?' featured':''}" id="card-${c.id}">
     <div class="car-img-wrap" onclick="openLB('${c.imgKey}','${c.make} ${c.model} · ${c.years}','${c.photoDate||''}')" title="Clic para ver foto completa">
       ${imgHtml}
-      ${c.photoDate?`<span class="photo-date"><i class="ti ti-calendar" aria-hidden="true"></i> ${c.photoDate}</span>`:''}
-      ${(src||willLazyLoad)?`<span class="zoom-hint"><i class="ti ti-zoom-in" aria-hidden="true"></i> Ver foto</span>`:''}
-    </div>
-    <div class="car-stripe"></div>
-    <div class="car-info">
-      <div class="car-make-row">${brandLogoHtml(c.make)}<div class="car-make-model"><span class="car-make">${c.make}${badgeHtml(c)}</span><div class="car-model">${c.model}</div></div></div>
-      <div class="car-year">${c.years}</div>
-      <div class="qs-grid">
-        <div class="qs"><div class="qs-val">${c.hp}</div><div class="qs-lbl">HP</div></div>
-        <div class="qs"><div class="qs-val">${c.topSpeed}</div><div class="qs-lbl">V-Max</div></div>
-        <div class="qs"><div class="qs-val">${c.zero}</div><div class="qs-lbl">0–100</div></div>
+      <div class="c2-grad"></div>
+      ${topBadgesHtml(c)}
+      <div class="c2-title">
+        <div class="c2-txt"><div class="c2-make-row"><span class="c2-make">${c.make}${badgeHtml(c)}</span><span class="c2-year">${c.years}</span></div>
+        <div class="c2-model">${c.model}</div></div>
+        ${brandLogoHtml(c.make)?`<div class="c2-logo">${brandLogoHtml(c.make)}</div>`:''}
       </div>
-      <div class="price-wrap"><span class="price-tag">Precio CA:</span><span class="price-val">${c.priceCAD}</span></div>
+    </div>
+    <div class="car-info c2-info">
+      <div class="c2-nums">
+        <div><b>${c.hp}</b><span>hp</span></div>
+        <div><b>${c.topSpeed}</b><span>v-max</span></div>
+        <div><b>${c.zero}</b><span>0–100</span></div>
+      </div>
+      ${perfBarsHtml(c)}
       ${scarcityHtml(c)}
+      <div class="c2-price"><span>${c.priceCAD}</span>${c.photoDate?`<span class="c2-date">${c.photoDate}</span>`:''}</div>
     </div>
     <button class="expand-btn" id="btn-${c.id}" onclick="toggle('${c.id}')">
       <i class="ti ti-chevron-down" aria-hidden="true"></i> Ver especificaciones
@@ -8288,41 +8466,26 @@ function featHero(c,label){
   const willLazyLoad=!src&&IMGS_HOME_SECTION[c.imgKey];
   const specs=Object.entries(c.specs).map(([k,v])=>`<div class="spec-row"><span class="spec-key">${k}</span><span class="spec-val">${v}</span></div>`).join('');
   const hls=c.highlights.map(h=>`<li>${h}</li>`).join('');
-  return `<div class="feat-hero" id="card-${c.id}">
-    <div class="feat-hero-card">
-      <div class="feat-hero-img" onclick="openLB('${c.imgKey}','${c.make} ${c.model} · ${c.years}','${c.photoDate||''}')" title="Ver foto completa">
-        ${(src||willLazyLoad)?`<img ${src?`src="${src}"`:''} data-imgkey="${c.imgKey}" alt="${c.make} ${c.model}" style="object-position:${c.heroPosition||'center 35%'};" />`:`<div style="display:flex;align-items:center;justify-content:center;height:100%;"><i class="ti ti-car" style="font-size:2.8rem;color:#bbb;"></i></div>`}
-        ${c.photoDate?`<span class="photo-date"><i class="ti ti-calendar"></i> ${c.photoDate}</span>`:''}
-        ${(src||willLazyLoad)?`<span class="zoom-hint"><i class="ti ti-zoom-in"></i> Ver foto</span>`:''}
-      </div>
+  const img=(src||willLazyLoad)?`<img ${src?`src="${src}"`:''} data-imgkey="${c.imgKey}" alt="${c.make} ${c.model}" />`:'';
+  return `<div class="hero-c hero-feat" id="card-${c.id}">
+    <div class="hero-l">
+      <div class="hero-kick">${label||'Destacado del mes'}</div>
+      <h1 class="hero-h">${c.model}</h1>
+      <div class="hero-sub">${c.make} · ${c.years}</div>
+      <div class="hero-stats"><div><b>${c.hp}</b><span>hp</span></div><div><b>${c.topSpeed}</b><span>v-max</span></div><div><b>${c.zero}</b><span>0–100</span></div></div>
+      <div class="hero-price">${c.priceCAD}</div>
+      <div class="hero-scar">${scarcityHtml(c)}</div>
     </div>
-    <div class="feat-hero-data">
-      <div class="car-stripe" style="margin:-1rem -1rem .75rem;"></div>
-      <div class="car-make-row">${brandLogoHtml(c.make)}<div class="car-make-model"><span class="car-make">${c.make}</span><div class="car-model">${c.model}</div></div></div>
-      <div class="car-year">${c.years}</div>
-      <div class="qs-grid">
-        <div class="qs"><div class="qs-val">${c.hp}</div><div class="qs-lbl">HP</div></div>
-        <div class="qs"><div class="qs-val">${c.topSpeed}</div><div class="qs-lbl">V-Max</div></div>
-        <div class="qs"><div class="qs-val">${c.zero}</div><div class="qs-lbl">0–100</div></div>
-      </div>
-      <div class="price-wrap"><span class="price-tag">Precio CA:</span><span class="price-val">${c.priceCAD}</span></div>
-      ${scarcityHtml(c)}
-    </div>
-    <button class="expand-btn" id="btn-${c.id}" onclick="toggle('${c.id}')" style="grid-column:1/-1;">
-      <i class="ti ti-chevron-down" aria-hidden="true"></i> Ver especificaciones
-    </button>
+    <div class="hero-r"><div class="hero-imgbox" onclick="openLB('${c.imgKey}','${c.make} ${c.model} · ${c.years}','${c.photoDate||''}')">${img}${topBadgesHtml(c)}${c.photoDate?`<span class="hero-date">${c.photoDate}</span>`:''}</div></div>
+    <div class="hero-review"><div class="hero-review-t">Reseña</div>${c.review||c.featuredReason}</div>
+    <button class="expand-btn" id="btn-${c.id}" onclick="toggle('${c.id}')" style="grid-column:1/-1;"><i class="ti ti-chevron-down" aria-hidden="true"></i> Ver especificaciones</button>
     <div class="car-details" id="det-${c.id}" style="grid-column:1/-1;">
       <div class="dtl-sec"><div class="dtl-title">Especificaciones técnicas</div>${specs}</div>
       <div class="dtl-sec"><div class="dtl-title">Datos destacados</div><ul class="hl-list">${hls}</ul></div>
       <div class="dtl-sec"><div class="dtl-title">¿Por qué es el destacado?</div><div class="feat-reason">${c.featuredReason}</div></div>
     </div>
-    <div class="feat-hero-info" style="grid-column:1/-1;">
-      <div class="feat-hero-label">⭐ ${label||'Destacado del mes'}</div>
-      <div class="feat-hero-review">${c.review||c.featuredReason}</div>
-    </div>
   </div>`;
 }
-
 function topStats(cars){
   const _PROTO=new Set(['teslaSemiAlpha','teslaRoadster2','batmobile1989','porscheDesignP0001','acPropulsionTzero','morrisTulipas','listerRacer']);
   cars=cars.filter(c=>!_PROTO.has(c.id));
@@ -8585,6 +8748,7 @@ function setActive(key, type, pushHistory=true){
   else if(type==='bodystyle-detail') renderBodyStyleDetail(key);
   else if(type==='hall-of-fame') renderHallOfFame();
   else if(type==='last-added') renderLastAdded();
+  else if(type==='top10') renderTop10();
   else renderMonth(key);
   updateBackBtn();
 }
@@ -8937,5 +9101,47 @@ function enableTabsScroll(){
 <script type="application/json" id="imgs-b64-2024-07">{}</script>
 <script type="application/json" id="imgs-b64-2021-09">{}</script>
 <script type="application/json" id="imgs-b64-2025-12">{}</script>
+<script id="hero-c-js2">
+window.addEventListener('load',function(){try{
+  var c=getAllCars().find(function(x){return x.id==='fordGT40MkIV1967Red'});
+  if(false){
+    var src=(typeof IMGS!=='undefined'&&IMGS[c.imgKey])||'';
+    var el=document.createElement('section');el.className='hero-c';
+    el.innerHTML='<div class="hero-l">'+
+     '<div class="hero-kick">Destacado · LeMay Museum</div>'+
+     '<h1 class="hero-h">'+c.model.replace(' ','<br>')+'</h1>'+
+     '<div class="hero-sub">'+c.make+' · '+c.years+' · Tacoma, WA</div>'+
+     '<div class="hero-stats"><div><b>'+c.hp+'</b><span>hp</span></div><div><b>'+c.topSpeed+'</b><span>v-max</span></div><div><b>'+c.zero+'</b><span>0–100</span></div></div>'+
+     '<div class="hero-price">'+c.priceCAD+'</div>'+
+     '<div class="hero-scar">'+scarcityHtml(c)+'</div></div>'+
+     '<div class="hero-r"><div class="hero-imgbox" onclick="openLB(\''+c.imgKey+'\',\''+c.make+' '+c.model+' · '+c.years+'\',\''+(c.photoDate||'')+'\')">'+(src?'<img src="'+src+'" alt="'+c.make+' '+c.model+'">':'')+'</div></div>';
+    var anchor=document.getElementById('global-top-stats');anchor.parentNode.insertBefore(el,anchor);
+  }
+  var sb=document.querySelector('.hw-sub');if(sb)sb.textContent='Daily Car Spotting Dashboard';
+  var si=document.getElementById('search-input');if(si)si.placeholder='Buscar marca, modelo, año…';
+  // tab "Este mes"
+  var keys=Object.keys(CARS).sort();var now=new Date();
+  var cur=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
+  var mk=CARS[cur]?cur:keys[keys.length-1];
+  var orig=window.renderTabs;
+  window.renderTabs=function(){orig.apply(this,arguments);var t=document.getElementById('tabs');
+    if(t&&!t.querySelector('[data-m="thismonth"]'))t.insertAdjacentHTML('afterbegin','<div class="hw-tab" data-m="thismonth" onclick="setActive(\''+mk+'\',\'month\');closeDrop()">Este mes</div>');
+    if(t&&!t.querySelector('[data-m="top10"]'))t.insertAdjacentHTML('beforeend','<div class="hw-tab hw-tab-special" data-m="top10" onclick="setActive(\'top10\',\'top10\');closeDrop()">🏆 Top 10</div>');
+    if(t&&!t.querySelector('[data-m="anios"]'))t.querySelector('[data-m="thismonth"]').insertAdjacentHTML('afterend','<div class="hw-tab hw-tab-drop" data-m="anios" onclick="toggleDrop(this,\'anios\')">Años <span class="drop-arrow">▾</span></div>');
+    if(typeof active!=='undefined'&&active===mk){var x=t.querySelector('[data-m="thismonth"]');if(x)x.classList.add('active');}
+    if(typeof active!=='undefined'&&CARS[active]){var y=t.querySelector('[data-m="anios"]');if(y)y.classList.add('active');}};
+  var origBD=window.buildDropItems;
+  window.buildDropItems=function(id){
+    if(id!=='anios')return origBD.apply(this,arguments);
+    var byYear={};Object.keys(CARS).filter(function(k){return /^\d{4}-\d{2}$/.test(k)}).forEach(function(k){var y=k.slice(0,4);(byYear[y]=byYear[y]||[]).push(k)});
+    return Object.keys(byYear).sort().reverse().map(function(y){
+      var tot=byYear[y].reduce(function(a,k){return a+CARS[k].cars.length},0);
+      return '<div class="drop-yr"><span>'+y+'</span><span>'+tot+'</span></div>'+byYear[y].sort().reverse().map(function(k){
+        return '<div class="drop-item'+(k===active?' drop-active':'')+'" onclick="setActive(\''+k+'\',\'month\');closeDrop()">'+CARS[k].label+'<span class="drop-pill">'+CARS[k].cars.length+'</span></div>'}).join('')}).join('');};
+  window.renderTabs();
+  var origSA=window.setActive;
+  window.setActive=function(key){var r=origSA.apply(this,arguments);var x=document.querySelector('[data-m="thismonth"]');if(x)x.classList.toggle('active',key===mk);return r};
+}catch(e){console.log(e)}});
+</script>
 </body>
 </html>
