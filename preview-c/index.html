@@ -272,6 +272,11 @@ html,body{background:var(--bg)!important;color:var(--txt)!important}
 .hero-btn:hover{background:#F5F200;color:#0B0B0D}
 .hw-logo,.section-title,.month-title,.car-model,.coll-title,.event-name{font-family:'Space Grotesk','Poppins',sans-serif!important}
 </style>
+<style id="perf-c">.perf{display:flex;flex-direction:column;gap:7px;margin:.2rem 0 .6rem}
+.perf-row{display:flex;align-items:center;gap:10px;font-size:.72rem;color:#8A8A94}
+.perf-row span{width:52px}.perf-track{flex:1;height:4px;background:#26262B;border-radius:2px}
+.perf-track div{height:4px;background:#F5F200;border-radius:2px}
+.perf-row b{width:70px;text-align:right;color:#F2F2F2;font-weight:600}</style>
 </head>
 <body>
 
@@ -8304,6 +8309,12 @@ function scarcityHtml(c){
   const n=scarcityOf(c),pos=((n-1)/9*100).toFixed(0);
   return `<div class="scar" title="Escasez ${n}/10 · ${scarcityLabel(n)}"><div class="scar-top"><span>Escasez · ${scarcityLabel(n)}</span><span class="scar-n">${n}<small>/10</small></span></div><div class="scar-bar"><i style="left:${pos}%"></i></div><div class="scar-ends"><span>Fácil de ver</span><span>Muy difícil</span></div></div>`;
 }
+function perfBarsHtml(c){
+  const hp=parseFloat(String(c.hp).replace(/,/g,''))||0, sp=parseFloat(String(c.topSpeed).replace(/,/g,''))||0;
+  const ph=Math.min(100,Math.sqrt(hp/2000)*100).toFixed(0), ps=Math.min(100,Math.sqrt(sp/400)*100).toFixed(0);
+  const row=(l,w,v)=>`<div class="perf-row"><span>${l}</span><div class="perf-track"><div style="width:${w}%"></div></div><b>${v}</b></div>`;
+  return `<div class="perf">${row('Potencia',ph,hp?hp+' hp':'—')}${row('Veloc.',ps,sp?sp+' km/h':'—')}</div>`;
+}
 function carCard(c){
   const src=IMGS[c.imgKey];
   const willLazyLoad=!src&&IMGS_HOME_SECTION[c.imgKey];
@@ -8327,6 +8338,7 @@ function carCard(c){
         <div class="qs"><div class="qs-val">${c.topSpeed}</div><div class="qs-lbl">V-Max</div></div>
         <div class="qs"><div class="qs-val">${c.zero}</div><div class="qs-lbl">0–100</div></div>
       </div>
+      ${perfBarsHtml(c)}
       <div class="price-wrap"><span class="price-tag">Precio CA:</span><span class="price-val">${c.priceCAD}</span></div>
       ${scarcityHtml(c)}
     </div>
