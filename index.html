@@ -8392,7 +8392,9 @@ function topLists(){
   const lists={},ranks={};
   Object.keys(_TOPDEF).forEach(k=>{
     const d=_TOPDEF[k];
-    const arr=cars.filter(c=>d.val(c)>0).sort((a,b)=>d.dir<0?d.val(b)-d.val(a):d.val(a)-d.val(b)).slice(0,10);
+    const order=[k].concat({velocidad:['aceleracion','potencia','precio'],aceleracion:['velocidad','potencia','precio'],potencia:['velocidad','aceleracion','precio'],precio:['velocidad','aceleracion','potencia']}[k]);
+    const cmp=(a,b)=>{for(const m of order){const dm=_TOPDEF[m];let x=dm.val(a),y=dm.val(b);if(dm.dir>0){if(!x)x=Infinity;if(!y)y=Infinity;}if(x!==y)return dm.dir<0?y-x:x-y;}return 0;};
+    const arr=cars.filter(c=>d.val(c)>0).sort(cmp).slice(0,10);
     lists[k]=arr;arr.forEach((c,i)=>{(ranks[c.id]=ranks[c.id]||[]).push({k:k,rank:i+1})});
   });
   return window._topC={sig:sig,lists:lists,ranks:ranks};
