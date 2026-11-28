@@ -8383,7 +8383,7 @@ const _TOPDEF={
   velocidad:{label:'Velocidad',icon:'🏎️',dir:-1,val:c=>parseFloat(String(c.topSpeed).replace(/,/g,''))||0,fmt:c=>String(c.topSpeed)},
   aceleracion:{label:'Aceleración',icon:'🚀',dir:1,val:c=>{const s=String(c.zero||'');if(/alcanza|N\/A/i.test(s))return 0;return parseFloat(s.replace('~','').replace(/,/g,'.'))||0},fmt:c=>String(c.zero)},
   potencia:{label:'Potencia',icon:'⚡',dir:-1,val:c=>parseFloat(String(c.hp).replace(/,/g,''))||0,fmt:c=>c.hp+' hp'},
-  precio:{label:'Precio',icon:'💰',dir:-1,val:c=>{const m=[...String(c.priceCAD||'').matchAll(/\$([\d,]+)/g)].map(x=>parseInt(x[1].replace(/,/g,'')));return m.length?Math.max(...m):0},fmt:c=>String(c.priceCAD)}
+  precio:{label:'Precio',icon:'💰',dir:-1,val:c=>{const t=String(c.priceCAD||'');const cop=/COP/i.test(t);const m=[...t.matchAll(/\$([\d.,]+)/g)].map(x=>parseInt(x[1].replace(/[.,]/g,''))/(cop?3000:1));return m.length?Math.max(...m):0},fmt:c=>String(c.priceCAD)}
 };
 function topLists(){
   const all=getAllCars();const sig=all.length;
