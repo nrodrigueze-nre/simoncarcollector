@@ -251,6 +251,24 @@
 
 <script>
 const IMGS = {
+  chevroletMasterDeluxe1939CoupeGreen: 'https://lh3.googleusercontent.com/pw/AP1GczNkSSqETmfe0Wj7CduJ1OdMQsMjDpvsGxsvbuEaOcLztURrDaE6mPifd3SgpcG_vjB-xZD3Ut7HIpoFafMDxClHFzpcbCy7JcCZ4GZK5IlyUlCEAsB5=w1200',
+  chevyBelAirNomad1957RedWhite: 'https://lh3.googleusercontent.com/pw/AP1GczNKXaHqvYULbXtdf5gU3fO6iHTVcAhIrBykUcx_2QctBHvwTLUdNIL3NwWEk7vur56CbmXtfjuA942Eo3Hk5he9fM27uVs0TB8X0cHwvk6gRmshjLTM=w1200',
+  monsterJamMegalodonBlue2022: 'https://lh3.googleusercontent.com/pw/AP1GczNIHn0TFypg-Oy0R6jzkxcd8--wlp3njxVy-DsQ5AmrgLA7dcBXKej1LUit0ctUBzFq-LkcSdSeTw1eUnIxnIJAyXfnWaJOUQjokqwMOmeY9xrLtbWX=w1200',
+  cadillacArtBarPink2007: 'https://lh3.googleusercontent.com/pw/AP1GczM0X9CHFhcV4gROTzkrQNlBPpmlDgd0z6tIIQ_EaKjA-4WOhD6-L2PPemN14H2RFKZrHnWMzPjkEHxbsvN4NwYQdvEAqhaKcWvKhUZPSJeEW0SZPCnV=w1200',
+  lincolnContinentalCabriolet1948Black: 'https://lh3.googleusercontent.com/pw/AP1GczM-a6Nw1qP72H8QArKEuq1ZSHtg4J1p4ChFdUajzz5kOFOXDJLr18rNuEM_MGggiwL8sf242WlroRnHuOnv9cZ6KaQEWxG4o3Weiyg0cbwcSj-GgxsZ=w1200',
+  hondaCivicSiEP3CustomOrange2007: 'https://lh3.googleusercontent.com/pw/AP1GczPKGBqeAoS5HBeodmAjqBc-ZGsh6MftV33TGg0v6NOsSWBukpvhlDcVP5Q0IrQOeo3hSrZK_e3IfMFh9q_fIZ2WMMfl2EhWhgmAAOGl-ewEr-VPaH72=w1200',
+  bugattiType57VentouxBrownTan2008: 'https://lh3.googleusercontent.com/pw/AP1GczOZP0q0j1v1tmPxjr635D37pV7KjeBwKVNxIdIzasSmOOTwqYwNg21oJjumTwMlVlKii8Kg0f3AmKiCco57yTcW3dwgdqpWtm0K4X2TW5CsWRymn8dw=w1200',
+  ramTRXBlack2026: 'https://lh3.googleusercontent.com/pw/AP1GczOf4laoXqCx2yJmmC4mCOdmAIDLhzB8SjGB8zXryrZNLJvjKBe946heg8dk2L7w68pJrNbECXDIlhFEcXSLR34Md9aHqHzbzU4vfXzAe6Ck4r1dbcyo=w1200',
+  oldsmobileHoliday1955CreamCoral: 'https://lh3.googleusercontent.com/pw/AP1GczP3i0G6hvpS_9Ymqc8T3MhMZzv9klNCdK7DE065poxakzMceCTPySxoZ2rL6_TEeEqNiYi9CCiWFCLO_H7kh_maKR-JAPuZ42jGZsTvVj2bLRr_z0BT=w1200',
+  hupmobileModelEEightSedan1928Maroon: 'https://lh3.googleusercontent.com/pw/AP1GczMSV_1maJygZIyJvU3vOfbw-_dFT1hBXpNpmjHQ1UKTkUlkvMFISoD6PC62QU6yKWNzVxlx1_KJjCNXGic4G959ohSre_DP0zJlFz0V6z1asE-amkjo=w1200',
+  porsche911CarreraRS27White2023: 'https://lh3.googleusercontent.com/pw/AP1GczMWD2JXg8hD4tEqNJHKxvsUL8VHmT4-mLKg473jkpkIQ7VGa3KEKsAKqpKF4sbDroxWpPkzNOop4qejQAha6XEPdR0NwkYEQWZcHVa9dVtEMDS-KLdc=w1200',
+  peugeotQuarkConceptGray2008: 'https://lh3.googleusercontent.com/pw/AP1GczPupEMtlWx5IrUmtJe6F7KDDn4nwLWPxGf6F8sXOOSpEGgbzm_Vbnj7m0a99y4JGGGshXJmf3bZz6_CgVPZsU4pIHXVtRwQvwEzWJzNZRfivfs-lNzt=w1200',
+  peugeot908HDiFAPLeMansSilver2008: 'https://lh3.googleusercontent.com/pw/AP1GczO-nxQkat5mYVEspnH4eFJdsV3J_eCizNI5lpUqf2s6IFV12ygvxX7KyXdSCit1UO1C0Fe1EctIYy5fWSqGzIWrt4dRXfuLqM29PRB-VwCGGkHNkfTH=w1200',
+  kaiserDragon1951MaroonGold: 'https://lh3.googleusercontent.com/pw/AP1GczN_5PNU6jBD0JiMRIgPA1Z393hWXbmCz8mPOD169r0GSddP4Duz9DTfBfXIn2nRbnomhK7kFIMuEvelC_da5uE53TAUv47qPo1dU_DTWIk-n0Tlr2mD=w1200',
+  bmw7G11MSportBlack2026: 'https://lh3.googleusercontent.com/pw/AP1GczPPZVIY7OD3hK3ob1q8GdCf_2uJfCd3NWHnHHw9cIjptLcuqAPOB2yBa2IPJz6_KweMIN42L6l_M3gkRWUmY-U9byVdmXE_xEGie08nBSpcwWFBFP-X=w1200',
+  peugeotH2OFireConceptRed2008: 'https://lh3.googleusercontent.com/pw/AP1GczNt9zBdxI3F_FUn7oGcUUv_BI6ZvyzPCLnTFuE_hsV0E2WW8Z5FOTeaTS-kq39ynuiZiBmuJbgbDgQQBX89T0GiBaBGiz-7X-ahkbrpL36G7E4SmI81=w1200',
+  cadillacDragillac1960Gold2007: 'https://lh3.googleusercontent.com/pw/AP1GczPGP_nvoDf5dpyoX4QEJaoggrHLf5gbogP1o9QURrkHHlRuf39G_dysqLHbN5EJp-sBLTbt3b-KAsaIYBcCr2E608NLaEIxSihYoHjkc_9wwZpZGK_R=w1200',
+  kiaNaimoConceptGreen2012: 'https://lh3.googleusercontent.com/pw/AP1GczNGhJ7xrLfXDL3X7AWUyldpfbfyFLMGwt_lEZETxB7mDrc5O7T6EFJ6rwxZ-E0L9u0Vhmfr01eFcu-vRW3j_RvCQZfzo0XHxBq-nkTE3rzMuXAqmdVW=w1200',
   fordEvosConceptRed2012: 'https://lh3.googleusercontent.com/pw/AP1GczPpOhmF3ymLk-IQiNegNrxCaCmlq4dqcOU6UNJB7J_VhtL_Wn5fHZqKzh3YZuwpt-eIFX9UQ04WGVRfwuJ1ojCrhtM4w2hKkcfQEOX89uqg9SrqWLs-=w1200',
   peugeotTulipConceptRed2008: 'https://lh3.googleusercontent.com/pw/AP1GczNcqxCBV84zqlB9hC6WlULjK_m2xFpojGtiAvdoUoFVJHyVx_WDC8MPRAr-yLETuK0Mxdj1QE-DMBdf0kbCTOXiPsgm4f-wo1canoSbMsWrP9OrGL1q=w1200',
   audiUrbanConceptWhite2012: 'https://lh3.googleusercontent.com/pw/AP1GczNsYsKozgo279MSfPlshN0NdzKtigEKYiZBrD_rIlmUO1aQLJPAYrOZrcVa5O2yJKU8CX0u4MX5LUSxTGu4oAKn6byHVcpUEYR2y7gwa7C0PBFb6oOh=w1200',
@@ -1056,7 +1074,23 @@ function renderIfReady(){ if(!rendered){ rendered=true; init(); } }
 document.addEventListener('DOMContentLoaded', renderIfReady);
 
 const CARS={
-    "2026-11":{label:"Noviembre 2026",recap:"Noviembre arranca con un Maserati Quattroporte V plateado de 2004-2012 estacionado en una calle del centro de Vancouver bajo hojas de otoño, con placa BC 238 MMM e interior en cuero crema — el primer sedán de Maserati y primer Quattroporte del dashboard, con diseño de Pininfarina y motor V8 de origen Ferrari. Le suma un Chevrolet Aveo5 plateado 'Team Canada Edition' (insignia olímpica 'Official Vehicle' confirmada) con placa BC XL3 36A en el estacionamiento de un centro comercial al atardecer — primer Aveo del dashboard y el contraste más grande del mes frente al Maserati —, además de un Ford Mustang Mach-E GT negro de 480 hp con placa BC PE914U fotografiado el 7 de noviembre frente a un mural en Coquitlam — primer Mach-E del dashboard —; el Maserati sigue como destacado por prestigio de marca y precio.",featured:"maseratiQuattroporteV2005Silver",cars:[{
+    "2026-11":{label:"Noviembre 2026",recap:"Noviembre arranca con un Maserati Quattroporte V plateado de 2004-2012 estacionado en una calle del centro de Vancouver bajo hojas de otoño, con placa BC 238 MMM e interior en cuero crema — el primer sedán de Maserati y primer Quattroporte del dashboard, con diseño de Pininfarina y motor V8 de origen Ferrari. Le suma un Chevrolet Aveo5 plateado 'Team Canada Edition' (insignia olímpica 'Official Vehicle' confirmada) con placa BC XL3 36A en el estacionamiento de un centro comercial al atardecer — primer Aveo del dashboard y el contraste más grande del mes frente al Maserati —, además de un Ford Mustang Mach-E GT negro de 480 hp con placa BC PE914U fotografiado el 7 de noviembre frente a un mural en Coquitlam — primer Mach-E del dashboard —, un BMW Serie 7 (G11) M Sport negro con baúl de techo, fotografiado el 22 de noviembre en un garaje techado, y una Ram 1500 TRX negra de 702 hp, vista el 18 de noviembre; el Maserati sigue como destacado por prestigio de marca y precio.",featured:"maseratiQuattroporteV2005Silver",cars:[{
+      id:"bmw7G11MSportBlack2026",make:"BMW",model:"Serie 7 (G11) – M Sport",years:"2016–2019",
+      photoDate:"22 de noviembre, 2026",photoTimestamp:20261122,featured:false,
+      featuredReason:"",
+      review:"Un BMW Serie 7 negro con paquete M Sport estacionado en un garaje techado, con barras y un baúl de techo Inno encima, un labio delantero negro con adhesivo Alpina y rines negros multirayos. Lleva el emblema M en la parrilla de doble riñón y placa de BC. Es la sexta generación del buque insignia de BMW, con faros LED angulares y la línea larga del sedán de lujo. A los lados hay un SUV oscuro y otros sedanes y SUV en las plazas vecinas.",
+      hp:445,topSpeed:"250 km/h",zero:"4.0 s",priceCAD:"$35,000–$60,000 CAD",badge:"",badgeLabel:"",imgKey:"bmw7G11MSportBlack2026",
+      specs:{"Motor":"V8 4.4L biturbo (750i xDrive)","Potencia":"445 hp / 480 lb-ft","Transmisión":"Automática 8 vel. ZF","Tracción":"AWD","0–100 km/h":"4.0 seg","Vel. máxima":"250 km/h (limitada)","Carrocería":"Sedán 4 puertas","Color":"Negro","Rines":"Negros multirayos","Extras":"Baúl y barras de techo Inno, labio delantero Alpina","Ubicación":"Estacionamiento techado, BC — 22 de noviembre de 2026"},
+      highlights:["Sexta generación del Serie 7, con carrocería de fibra de carbono en el chasis para bajar peso","Un V8 biturbo de 4.4 L lo lleva de 0 a 100 km/h en 4.0 s","El baúl de techo lo convierte en un sedán de viaje largo"]
+    },{
+      id:"ramTRXBlack2026",make:"Ram",model:"1500 TRX – Negro",years:"2021–2024",
+      photoDate:"18 de noviembre, 2026",photoTimestamp:20261118,featured:false,
+      featuredReason:"",
+      review:"Una Ram 1500 TRX negra estacionada entre árboles de otoño, con la toma de aire funcional en el capó, la parrilla en bloque con el nombre RAM, guardabarros anchos negros mate y neumáticos todoterreno sobre rines negros. La placa de BC XN 8555 va enmarcada por el concesionario Bannister Chilliwack Chrysler. Lleva estribos laterales y una tapa sobre la caja. A los lados hay un sedán gris y un SUV oscuro.",
+      hp:702,topSpeed:"190 km/h",zero:"4.5 s",priceCAD:"$95,000–$140,000 CAD",badge:"",badgeLabel:"",imgKey:"ramTRXBlack2026",
+      specs:{"Motor":"V8 6.2L HEMI sobrealimentado","Potencia":"702 hp / 650 lb-ft","Transmisión":"Automática 8 vel.","Tracción":"4x4","0–100 km/h":"4.5 seg","Vel. máxima":"190 km/h (limitada)","Carrocería":"Pickup 4 puertas (Crew Cab)","Color":"Negro","Rines":"Negros, con neumáticos todoterreno","Placa":"XN 8555 (BC)","Ubicación":"Estacionamiento, BC — 18 de noviembre de 2026"},
+      highlights:["Usa el motor del Hellcat, un V8 sobrealimentado de 6.2 L","Suspensión Bilstein de largo recorrido para correr por el desierto","Nacido para competir con la Ford F-150 Raptor R"]
+    },{
       id:"maseratiQuattroporteV2005Silver",make:"Maserati",model:"Quattroporte V",years:"2004–2012",
       photoDate:"12 de noviembre, 2026",photoTimestamp:20261112,featured:true,
       featuredReason:"Destacado de noviembre por ser el único hallazgo del mes y, además, un Maserati: escasez y prestigio de marca altos — el Quattroporte V con motor V8 de origen Ferrari y diseño de Pininfarina es el sedán de lujo más exclusivo de su generación.",
@@ -2791,6 +2825,15 @@ const CARS={
     specs:{"Motor":"I3 1.5L turbo + motor eléctrico (PHEV)","Potencia":"369 hp combinados / 420 lb-ft","Transmisión":"6 vel. (motor de gas) + reductora 2 vel. (motor eléctrico)","Tracción":"AWD","0–100 km/h":"4.4 seg","Vel. máxima":"250 km/h","Carrocería":"Coupé 2+2 puertas, fibra de carbono (CFRP)","Autonomía eléctrica":"29 km (modo 100% eléctrico)","Años de prod.":"2014–2020","Ubicación":"Vancouver, BC"},
     highlights:["Placa de concesionario 'The Ultimate BMW Dealer' — probablemente Brian Jessel BMW, uno de los distribuidores más conocidos de Vancouver","Carrocería de fibra de carbono reforzada (CFRP) — la misma tecnología que BMW usa en el i3, pensada para compensar el peso de la batería","Combina un motor de gas de 3 cilindros en el eje trasero con un motor eléctrico independiente en el eje delantero — tracción total sin un eje mecánico que los conecte","Hasta 29 km de autonomía 100% eléctrica antes de que entre el motor de gasolina","Descontinuado en 2020 sin sucesor directo — BMW nunca repitió la fórmula de este híbrido deportivo"]
   }]},
+  "2022-03":{label:"Marzo 2022",recap:"Un Monster Jam Megalodon fotografiado en plena arena de tierra: un monster truck con carrocería de tiburón azul grisáceo, aletas, ojos que se iluminan y una boca de dientes sobre las llantas gigantes.",cars:[{
+    id:"monsterJamMegalodonBlue2022",make:"Monster Jam",model:"Megalodon",years:"2016–presente",
+    photoDate:"19 de marzo, 2022",photoTimestamp:20220319,featured:true,
+    featuredReason:"Único hallazgo de marzo de 2022: un monster truck de Monster Jam con carrocería de tiburón.",
+    review:"El Megalodon de Monster Jam, un monster truck con carrocería de tiburón azul grisáceo, fotografiado en la arena de tierra durante un show. Tiene aletas dorsales y laterales, ojos azules que se iluminan, una boca de dientes sobre la rueda delantera y el nombre 'Megalodon' pintado en el costado. Detrás se ven las rampas azules de la arena y un cubo con el logo de Monster Jam.",
+    hp:1500,topSpeed:"110 km/h",zero:"~7.0 s",priceCAD:"$300,000–$500,000 CAD",badge:"",badgeLabel:"",imgKey:"monsterJamMegalodonBlue2022",
+    specs:{"Categoría":"Monster Jam","Motor":"V8 supercargado 540 ci (8.8L)","Potencia":"1,500 hp","Transmisión":"Automática 2 vel.","Tracción":"4x4","0–100 km/h":"~7.0 seg","Vel. máxima":"110 km/h","Llantas":"66 pulgadas de alto","Carrocería":"Fibra de vidrio con forma de tiburón","Color":"Azul grisáceo","Ubicación":"Arena de Monster Jam · 19 de marzo de 2022"},
+    highlights:["Las llantas miden 66 pulgadas, más altas que una persona promedio","Los ojos del tiburón se iluminan en azul durante el show","El nombre viene del megalodón, el tiburón prehistórico más grande conocido"]
+  }]},
   "2022-04":{label:"Abril 2022",recap:"7 hallazgos en dos jornadas: un Citroën 2CV6 con placa francesa importado directo de Francia, y un día repleto en un car meet de clásicos (Jensen Interceptor destacado, TR7, Triumph Herald, Mini 'Groovy'). Cierra con la familia en un Morris Minor oxidado entre tulipanes.",cars:[{
     id:"jensenInterceptor",make:"Jensen",model:"Interceptor III",years:"1966–1976",
     photoDate:"24 de abril, 2022",photoTimestamp:20220424,featured:true,
@@ -3093,28 +3136,86 @@ const CARS={
     specs:{"Motor":"Doble motor AC síncrono (delantero + trasero)","Potencia":"480 hp / 686 lb-ft","Transmisión":"Reductora de 1 velocidad","Tracción":"AWD","0–100 km/h":"3.8 seg","Vel. máxima":"225 km/h","Carrocería":"Sedán 4 puertas, techo panorámico de cristal","Autonomía":"410 millas (660 km) EPA","Años de prod.":"2023–presente (trim Pure)","Ubicación":"Parqueadero, Washington, EE.UU."},
     highlights:["El Lucid Air fue diseñado por Peter Rawlinson, ex ingeniero jefe del Tesla Model S, y ganó el premio 'World Luxury Car' en 2023","Motores del tamaño de una sandía liberan espacio interior — el Air tiene una de las cajuelas delanteras (frunk) más grandes de cualquier eléctrico","Versión Pure AWD: 480hp combinados y hasta 410 millas (660 km) de autonomía EPA — el trim de entrada de la gama Air","Arquitectura de 900 voltios: carga hasta ~300 km de autonomía en unos 12 minutos en un cargador rápido"]
   }]},
-  "2008-09":{label:"Septiembre 2008",recap:"Peugeot Tulip, el concept eléctrico de 1995 para compartir en la ciudad, visto en París con un peluche de león al volante.",cars:[{
-    id:"peugeotTulipConceptRed2008",make:"Peugeot",model:"Tulip Concept",years:"1995",
+  "2008-09":{label:"Septiembre 2008",recap:"Hallazgos en París: un Bugatti Type 57 Ventoux de los años 30 con adhesivo de Audemars Piguet, y cuatro Peugeot: el prototipo de Le Mans 908 HDi FAP, el H2O de bomberos con celda de combustible, el Quark de hidrógeno y el Tulip eléctrico de 1995. El Bugatti es el destacado.",cars:[{
+    id:"bugattiType57VentouxBrownTan2008",make:"Bugatti",model:"Type 57 Ventoux",years:"1934–1939",
     photoDate:"19 de septiembre, 2008",photoTimestamp:20080919,featured:true,
-    featuredReason:"Único hallazgo de septiembre 2008 — el Peugeot Tulip, un concept eléctrico urbano de 1995.",
+    featuredReason:"El Bugatti Type 57 Ventoux gana por prestigio de marca y de historia: un coupé de los años 30 diseñado por Jean Bugatti, por encima de los cuatro Peugeot del mes.",
+    review:"Un Bugatti Type 57 Ventoux bicolor, marrón oscuro abajo y dorado arriba, con rejillas laterales en el capó, ruedas de rayos y guardabarros traseros cubiertos, avanzando por una calle empedrada de París. Lleva un adhesivo de 'Audemars Piguet' en el cuarto trasero. Alrededor hay peatones cruzando, un semáforo en rojo, árboles de otoño y los carteles de la zona de la avenida George V.",
+    hp:135,topSpeed:"150 km/h",zero:"~16 s",priceCAD:"$450,000–$1,100,000 CAD",badge:"",badgeLabel:"",imgKey:"bugattiType57VentouxBrownTan2008",
+    specs:{"Motor":"I8 3.3L DOHC de aspiración natural","Potencia":"135 hp","Transmisión":"Manual 4 vel.","Tracción":"RWD","0–100 km/h":"~16 seg","Vel. máxima":"150 km/h","Carrocería":"Coupé de 2 puertas y 4 plazas","Color":"Marrón y dorado","Diseñador":"Jean Bugatti","Generación":"Type 57 (1934–1939)","Ubicación":"París, Francia","En la foto":"Coupé en marcha por una calle empedrada, con adhesivo Audemars Piguet"},
+    highlights:["Diseñado por Jean Bugatti, hijo de Ettore, el creador de la marca","Los guardabarros traseros cubiertos dan su línea aerodinámica de los años 30","Lleva el motor de ocho cilindros con doble árbol de levas en cabeza del Type 57"]
+  },{
+
+    id:"peugeot908HDiFAPLeMansSilver2008",make:"Peugeot",model:"908 HDi FAP",years:"2007–2010",
+    photoDate:"19 de septiembre, 2008",photoTimestamp:20080919,featured:false,
+    featuredReason:"",
+    review:"Un Peugeot 908 gris plata visto de frente, con 'PEUGEOT' sobre el parabrisas, faros dobles en los extremos de las alas delanteras, tomas de aire sobre las ruedas y un gran alerón trasero negro. Está sobre una plataforma redonda blanca con detalles verde lima, dentro de una tienda de Peugeot en París. Detrás, un empleado de camisa blanca y corbata morada y varios clientes caminan entre estantes con molinillos de café.",
+    hp:700,topSpeed:"330 km/h",zero:"2.9 s",priceCAD:"$1,500,000–$3,500,000 CAD",badge:"",badgeLabel:"",imgKey:"peugeot908HDiFAPLeMansSilver2008",
+    specs:{"Motor":"V12 5.5L HDi biturbo diésel","Potencia":"700 hp / 1,200 Nm","Transmisión":"Secuencial 6 vel.","Tracción":"RWD","0–100 km/h":"2.9 seg","Vel. máxima":"330 km/h","Peso":"925 kg","Carrocería":"Prototipo LMP1 de cabina cerrada","Filtro":"Filtro de partículas FAP","Ubicación":"París, Francia","En la foto":"Frente del prototipo gris plata sobre una plataforma en una tienda de Peugeot"},
+    highlights:["Ganó las 24 Horas de Le Mans de 2009, la primera victoria de Peugeot en la carrera desde 1993","Un V12 diésel con filtro de partículas FAP, raro entre los prototipos de resistencia","Su nariz con dos alas laterales independientes marca el diseño del 908"]
+  },{
+    id:"peugeotQuarkConceptGray2008",make:"Peugeot",model:"Quark Concept",years:"2004",
+    photoDate:"19 de septiembre, 2008",photoTimestamp:20080919,featured:false,
+    featuredReason:"",
+    review:"Un Peugeot Quark gris con reflejos turquesa visto de frente, con el león de Peugeot sobre una parrilla de panal, faros de lentes redondas y el nombre 'QUARK' en amarillo sobre el paragolpes plateado. Es un cuatriciclo concept con manubrio de moto, parabrisas bajo y grandes neumáticos con dibujo en V sobre cada rueda. Está sobre una plataforma blanca con luz verde, delante de un panel verde lima.",
+    hp:38,topSpeed:"110 km/h",zero:"~25 s",priceCAD:"$80,000–$200,000 CAD",badge:"",badgeLabel:"",imgKey:"peugeotQuarkConceptGray2008",
+    specs:{"Motor":"4 motores eléctricos en las ruedas, alimentados por celda de combustible de hidrógeno","Potencia":"38 hp (28 kW)","Transmisión":"Directa","Tracción":"4x4","0–100 km/h":"~25 seg","Vel. máxima":"110 km/h","Peso":"450 kg","Largo":"2.38 m","Carrocería":"Cuatriciclo concept con manubrio","Generación":"Concept (2004)","Ubicación":"París, Francia","En la foto":"Frente del cuatriciclo gris sobre una plataforma con luz verde"},
+    highlights:["Un motor eléctrico en cada rueda, de 7 kW y 100 Nm cada uno","Pasa de 0 a 50 km/h en 6.5 s","Presentado en el Salón de París de 2004"]
+  },{
+    id:"peugeotH2OFireConceptRed2008",make:"Peugeot",model:"H2O Concept – Bomberos",years:"2002",
+    photoDate:"19 de septiembre, 2008",photoTimestamp:20080919,featured:false,
+    featuredReason:"",
+    review:"Un Peugeot H2O rojo de bomberos, con escalera de aluminio y luces azules en el techo, expuesto en una vitrina de París con fondo verde lima. En la puerta lleva el escudo H2O y la franja 'Fuel Cell', y al frente la placa 'H2O' sobre el parachoques. Es un concept presentado en 2002 que genera su electricidad con una celda de combustible y solo emite vapor de agua, con faros delanteros angulares y rines de aluminio de aspas.",
+    hp:60,topSpeed:"110 km/h",zero:"~20 s",priceCAD:"$150,000–$350,000 CAD",badge:"",badgeLabel:"",imgKey:"peugeotH2OFireConceptRed2008",
+    specs:{"Motor":"Eléctrico, alimentado por celda de combustible","Potencia":"60 hp","Transmisión":"Directa","Tracción":"Delantera","0–100 km/h":"~20 seg","Vel. máxima":"110 km/h","Peso":"1,700 kg","Largo":"4.29 m","Carrocería":"Vehículo de bomberos de 2 plazas con escalera en el techo","Generación":"Concept (2002)","Ubicación":"París, Francia","En la foto":"Rojo de bomberos con escalera y luces azules en una vitrina"},
+    highlights:["Genera electricidad con una celda de combustible y solo emite agua","Cabina para dos bomberos, con escalera y luces de emergencia en el techo","Su nombre, H2O, es la fórmula del único residuo que produce"]
+  },{
+    id:"peugeotTulipConceptRed2008",make:"Peugeot",model:"Tulip Concept",years:"1995",
+    photoDate:"19 de septiembre, 2008",photoTimestamp:20080919,featured:false,
+    featuredReason:"",
     review:"Un Peugeot Tulip rojo visto desde atrás, con el león de Peugeot en la tapa trasera y un gran peluche de león sentado en la cabina. Presentado en 1995, el nombre viene de Transport Urbain Libre Individuel et Public: un biplaza eléctrico de solo 2.1 metros pensado para compartir en la ciudad. La foto está tomada dentro de una tienda en París, con visitantes y vitrinas de autos en miniatura al fondo.",
     hp:13,topSpeed:"70 km/h",zero:"~8 s (0–70 km/h)",priceCAD:"$60,000–$150,000 CAD",badge:"",badgeLabel:"",imgKey:"peugeotTulipConceptRed2008",
     specs:{"Motor":"Eléctrico, 9.6 kW","Potencia":"13 hp","Transmisión":"Directa","Tracción":"Delantera","0–100 km/h":"No alcanza (máx. 70 km/h)","Vel. máxima":"70 km/h","Autonomía":"80 km","Largo":"2.1 m","Carrocería":"Biplaza urbano para car sharing","Generación":"Concept (1995)","Ubicación":"París, Francia","En la foto":"Vista trasera con peluche de león en la cabina"},
     highlights:["Tulip viene de Transport Urbain Libre Individuel et Public, un sistema de autos eléctricos compartidos para la ciudad","Mide solo 2.1 metros de largo","Existió también con la insignia de Citroën"]
   }]},
-  "2007-01":{label:"Enero 2007",recap:"Batmobile de la serie de TV de 1966 en una feria de Las Vegas, con el cartel del Batmobile de Hot Wheels detrás.",cars:[{
+  "2007-01":{label:"Enero 2007",recap:"Tres hallazgos en ferias de Las Vegas: el Batmobile de la serie de TV de 1966, con el cartel del Batmobile de Hot Wheels detrás, un Cadillac 1960 custom dorado y un Honda Civic Si custom con pintura tribal naranja, los dos últimos en pabellones de audio. El Batmobile es el destacado.",cars:[{
     id:"batmobile1966TVReplica2007",make:"Chevrolet",model:"Batmobile 1966 (serie de TV)",years:"1966",
     photoDate:"9 de enero, 2007",photoTimestamp:20070109,featured:true,
-    featuredReason:"Único hallazgo de enero 2007 — el Batmobile de la serie de TV de 1966 de Adam West.",
+    featuredReason:"El Batmobile de la serie de TV de 1966 de Adam West, un ícono histórico de la televisión, supera al Cadillac custom por prestigio e historia.",
     review:"El Batmobile de la serie de TV de Batman de 1966, negro con los bordes naranja fluorescente que lo hicieron famoso, expuesto en una feria de Las Vegas. Detrás se ve un cartel del Batmobile de Hot Wheels, y varias personas se acercan a mirar la cabina con sus dos parabrisas de burbuja. Es el diseño de George Barris sobre el prototipo Lincoln Futura de 1955, con aletas traseras de murciélago, el emblema del murciélago en los costados y rines cromados.",
     hp:335,topSpeed:"190 km/h",zero:"7.2 s",priceCAD:"$30,000–$70,000 CAD",badge:"",badgeLabel:"",imgKey:"batmobile1966TVReplica2007",
     specs:{"Base":"Ford Galaxie 1966 (chasis y mecánica de la réplica)","Motor":"V8 390 ci","Potencia":"335 hp","Transmisión":"Automática 3 vel.","Tracción":"RWD","0–100 km/h":"7.2 seg","Vel. máxima":"190 km/h","Carrocería":"Roadster de fibra de vidrio estilo Barris, doble parabrisas de burbuja","Generación":"Batmobile TV 1966","Ubicación":"Las Vegas, NV","En la foto":"Exhibido con cartel del Batmobile de Hot Wheels al fondo"},
     highlights:["Diseñado por George Barris a partir del Lincoln Futura de 1955, el concept que ya había aparecido en el cine","Los bordes naranja fluorescente delinean toda la carrocería y son la firma visual del Batmobile de la serie","Cabina abierta con dos parabrisas de burbuja y tubos de escape tipo cohete en la parte trasera"]
+  },{
+    id:"cadillacDragillac1960Gold2007",make:"Cadillac",model:"Dragillac – Convertible 1960 Custom",years:"1960",
+    photoDate:"9 de enero, 2007",photoTimestamp:20070109,featured:false,
+    featuredReason:"",
+    review:"Un Cadillac convertible de 1960 dorado metálico, tan bajo que casi roza el piso, con la puerta y la tapa del maletero abiertas para mostrar un interior blanco y gris. Está en un pabellón de audio para autos, con carteles de Directed, Polk Audio y Orion al fondo, y varias personas caminando entre los stands. Es una preparación custom conocida como 'Dragillac', con manijas rasuradas, rines cromados de diez rayos y la parrilla cromada de aletas del modelo original.",
+    hp:325,topSpeed:"180 km/h",zero:"~9 s",priceCAD:"$150,000–$350,000 CAD",badge:"",badgeLabel:"",imgKey:"cadillacDragillac1960Gold2007",
+    specs:{"Base":"Cadillac 1960 convertible","Motor":"V8 6.4L (390 ci)","Potencia":"325 hp","Transmisión":"Automática","Tracción":"RWD","0–100 km/h":"~9 seg","Vel. máxima":"180 km/h","Carrocería":"Convertible custom, suspensión bajada, manijas rasuradas","Generación":"Cadillac 1960 (Dragillac custom)","Ubicación":"Las Vegas, NV","En la foto":"Dorado metálico con puerta y maletero abiertos en un pabellón de audio"},
+    highlights:["Pintura dorada metálica y suspensión tan baja que la carrocería casi toca el suelo","Las aletas traseras de 1960 se conservan y se exhiben con el maletero abierto","Rines cromados de diez rayos y parrilla cromada de aletas"]
+  },{
+    id:"hondaCivicSiEP3CustomOrange2007",make:"Honda",model:"Civic Si (EP3) – Custom",years:"2002–2005",
+    photoDate:"9 de enero, 2007",photoTimestamp:20070109,featured:false,
+    featuredReason:"",
+    review:"Un Honda Civic Si hatchback pintado en naranja metálico con espirales blancas de estilo tribal por toda la carrocería, con la puerta delantera y el portón trasero abiertos. Lleva rines cromados enormes, suspensión bajada, una pantalla pequeña en el paragolpes delantero e interior naranja y blanco. Está en un pabellón de audio con cajas de bocinas apiladas en las paredes, un hombre con bufanda mirando y una mujer sentada a la derecha.",
+    hp:160,topSpeed:"200 km/h",zero:"~8 s",priceCAD:"$25,000–$60,000 CAD",badge:"",badgeLabel:"",imgKey:"hondaCivicSiEP3CustomOrange2007",
+    specs:{"Base":"Honda Civic Si hatchback 2002–2005","Motor":"I4 2.0L i-VTEC (K20A3)","Potencia":"160 hp / 132 lb-ft","Transmisión":"Manual 5 vel.","Tracción":"FWD","0–100 km/h":"~8 seg","Vel. máxima":"200 km/h","Carrocería":"Hatchback 3 puertas, pintura tribal naranja y blanco","Rines":"Cromados de gran diámetro","Generación":"Civic 7ª generación (EP3)","Ubicación":"Las Vegas, NV","En la foto":"Naranja con espirales blancas, puerta y portón abiertos en un pabellón de audio"},
+    highlights:["El motor K20 de 2.0 L tiene el sistema i-VTEC y gira hasta unas 7,000 rpm","La pintura de espirales cubre toda la carrocería, incluido el interior del portón","Una pantalla en el paragolpes delantero forma parte de la preparación de audio y video"]
   }]},
-  "2012-01":{label:"Enero 2012",recap:"Tres concepts fotografiados en Las Vegas el 12 de enero de 2012: el Mercedes-Benz F 125!, de celda de combustible y puertas alas de gaviota; el Audi Urban Concept, un biplaza eléctrico ultraligero; y el Ford Evos, un fastback híbrido enchufable de cuatro puertas alas de gaviota. El F 125! es el destacado.",cars:[{
+  "2007-11":{label:"Noviembre 2007",recap:"Un Cadillac Art Bar rosa fotografiado bajo la lluvia en Río de Janeiro: un Cadillac de los años 50 alargado y convertido en bar móvil, con tucanes, loros y frutas pintados en los costados.",cars:[{
+    id:"cadillacArtBarPink2007",make:"Cadillac",model:"Art Bar (bar móvil custom)",years:"Años 50",
+    photoDate:"12 de noviembre, 2007",photoTimestamp:20071112,featured:true,
+    featuredReason:"Único hallazgo de noviembre de 2007: un Cadillac clásico alargado y convertido en bar móvil.",
+    review:"Un Cadillac clásico de los años 50 alargado y convertido en el Cadillac Art Bar, un bar móvil asociado a Roberto Trajano en Brasil. Está pintado en rosa fucsia con techo negro y decorado con tucanes, loros, flores, frutas y copas de cóctel, con el logo 'Cadillac Art Bar' sobre la salpicadera trasera y un adhesivo de la Prefeitura en la puerta. Lleva sobre la cajuela las estructuras y sombrillas del bar, y fue fotografiado bajo una fuerte lluvia en un estacionamiento techado.",
+    hp:160,topSpeed:"130 km/h",zero:"~14.0 s",priceCAD:"$30,000–$70,000 CAD",badge:"",badgeLabel:"",imgKey:"cadillacArtBarPink2007",
+    specs:{"Base":"Cadillac de los años 50 alargado","Motor":"V8 OHV","Potencia":"160 hp","Transmisión":"Automática","Tracción":"RWD","0–100 km/h":"~14.0 seg","Vel. máxima":"130 km/h","Carrocería":"Coupé alargado convertido en bar móvil","Color":"Rosa fucsia, techo negro","Decoración":"Tucanes, loros, flores y frutas tropicales","Ubicación":"Brasil · 12 de noviembre de 2007"},
+    highlights:["Funciona como bar móvil con estructuras y sombrillas sobre la cajuela","Su decoración tropical incluye tucanes, loros, frutas y copas de cóctel","El logo 'Cadillac Art Bar' aparece sobre la salpicadera trasera"]
+  }]},
+  "2012-01":{label:"Enero 2012",recap:"Cuatro concepts fotografiados en Las Vegas el 12 de enero de 2012: el Mercedes-Benz F 125!, de celda de combustible y puertas alas de gaviota; el Audi Urban Concept, un biplaza eléctrico ultraligero; el Ford Evos, un fastback híbrido enchufable; y el Kia Naimo, un crossover eléctrico verde menta. El F 125! es el destacado.",cars:[{
     id:"mercedesF125ConceptSilver2012",make:"Mercedes-Benz",model:"F 125! Concept",years:"2011",
     photoDate:"12 de enero, 2012",photoTimestamp:20120112,featured:true,
-    featuredReason:"Único hallazgo de enero 2012 — el concept F 125! de Mercedes-Benz, un prototipo de investigación con puertas alas de gaviota.",
+    featuredReason:"El concept F 125! de Mercedes-Benz, un prototipo de investigación con puertas alas de gaviota, gana por prestigio de marca entre los concepts de enero 2012.",
     review:"Un Mercedes-Benz F 125! en plata con interiores azul oscuro y detalles dorados en los rines, expuesto con ambas puertas alas de gaviota abiertas sobre una plataforma blanca. Presentado en el Salón de Fráncfort de 2011 como visión de lo que sería un buque insignia de Mercedes en 2025, combina una celda de combustible de hidrógeno con una batería de litio-azufre enchufable. Al fondo se ve la pantalla del stand y, a la izquierda, un cupé blanco de la marca.",
     hp:231,topSpeed:"220 km/h",zero:"4.9 s",priceCAD:"$1,500,000–$3,000,000 CAD",badge:"",badgeLabel:"",imgKey:"mercedesF125ConceptSilver2012",
     specs:{"Motor":"Eléctrico, celda de combustible + batería litio-azufre enchufable","Potencia":"231 hp (170 kW)","Transmisión":"Directa, 1 velocidad","Tracción":"Delantera/Trasera según configuración del concept","0–100 km/h":"4.9 seg","Vel. máxima":"220 km/h","Autonomía":"Hasta 1,000 km","Carrocería":"Cupé 4 plazas, puertas alas de gaviota","Generación":"Concept (2011)","Ubicación":"Las Vegas, NV","En la foto":"Concept con ambas puertas abiertas en exhibición"},
@@ -3135,6 +3236,14 @@ const CARS={
     hp:188,topSpeed:"150 km/h",zero:"~9 s",priceCAD:"$400,000–$900,000 CAD",badge:"",badgeLabel:"",imgKey:"fordEvosConceptRed2012",
     specs:{"Motor":"Híbrido enchufable de potencia dividida, 2.0L Atkinson + motor eléctrico","Potencia":"188 hp (sistema combinado)","Transmisión":"Automática CVT","Tracción":"Delantera","0–100 km/h":"~9 seg","Vel. máxima":"150 km/h","Autonomía":"Más de 800 km (híbrido)","Carrocería":"Fastback 4 plazas, cuatro puertas alas de gaviota","Generación":"Concept (2011)","Ubicación":"Las Vegas, NV","En la foto":"Concept rojo con las cuatro puertas abiertas ante el público"},
     highlights:["Primer ejemplo del lenguaje de diseño global de Ford, presentado en Fráncfort 2011","Cuatro puertas alas de gaviota que se abren hacia arriba","Ford le atribuyó más de 800 km de autonomía combinada"]
+  },{
+    id:"kiaNaimoConceptGreen2012",make:"Kia",model:"Naimo Concept",years:"2011",
+    photoDate:"12 de enero, 2012",photoTimestamp:20120112,featured:false,
+    featuredReason:"",
+    review:"Un Kia Naimo verde menta con la puerta abierta, expuesto en un stand de tecnología con carteles de Mint y Thinkware al fondo y un cristal protector delante. Es un crossover subcompacto eléctrico de 2011 con interior color crema, faros de cuatro lentes en cada lado y una rejilla frontal de puntos luminosos. En la puerta se lee el nombre 'naimo'. Detrás se alcanza a ver otro concept blanco con detalles amarillos.",
+    hp:107,topSpeed:"150 km/h",zero:"~11 s",priceCAD:"$150,000–$400,000 CAD",badge:"",badgeLabel:"",imgKey:"kiaNaimoConceptGreen2012",
+    specs:{"Motor":"Eléctrico, 80 kW","Potencia":"107 hp","Transmisión":"Directa, 1 velocidad","Tracción":"Delantera","0–100 km/h":"~11 seg","Vel. máxima":"150 km/h","Batería":"27 kWh de ion-litio polímero, bajo el piso del maletero","Autonomía":"200 km","Carrocería":"Crossover subcompacto de 5 puertas y 4 plazas, puertas traseras de apertura inversa","Generación":"Concept (2011)","Ubicación":"Las Vegas, NV","En la foto":"Concept verde menta con la puerta abierta en un stand de tecnología"},
+    highlights:["Presentado en el Salón de Seúl de 2011","Batería de 27 kWh bajo el piso del maletero, con unos 200 km de autonomía","Cada faro lleva cuatro lentes y la parrilla es una matriz de puntos luminosos"]
   }]},
   "nuestros-autos":{label:"Nuestros Autos",recap:"Desde el Mazda 2 (primer auto propio, Bogotá 2014) hasta el Kia Cerato, el Mazda 3, el Suzuki S-Cross, el Mitsubishi Montero Sport, y ya en Canadá, el Honda Civic y el Honda CR-V comprado en Westwood Honda en 2025. Siete autos, dos países, una década de vida familiar sobre ruedas.",cars:[{
     id:"mazda2_2014",make:"Mazda",model:"2 Sport",years:"2012–2014",
@@ -3201,7 +3310,7 @@ const COLLECTIONS={
   "autos-divertidos":{
     label:"Autos Divertidos",
     description:"Los hallazgos más extravagantes, raros o simplemente imposibles de ignorar. Estos autos hacen sonreír.",
-    carIds:["teslaCyberquadForKidsOct2026","aztek","sprite","sc430","miniSofa","cartVisteon","citroen2cv","spoonersTruck","vwHerbie","lincolnLimo","miniGroovy","pierceFire","subaruSambar","porsche356polar","jeepWranglerTactical","porsche996ArtCar","hondaS2000Suki","mustangEleanor","arshamPorsche911","deloreanBTTF","granTorinoStarsky","batcycleSidecar","kittTransAm","herbie53Petersen","lightningMcQueen","bumblebeeCamaro","pontiacBonnevilleAmbulance","leylandMokeGulf","smartFortwoOrcaFin"],
+    carIds:["teslaCyberquadForKidsOct2026","aztek","sprite","sc430","miniSofa","cartVisteon","citroen2cv","spoonersTruck","vwHerbie","lincolnLimo","miniGroovy","pierceFire","subaruSambar","porsche356polar","jeepWranglerTactical","porsche996ArtCar","hondaS2000Suki","mustangEleanor","arshamPorsche911","deloreanBTTF","granTorinoStarsky","batcycleSidecar","kittTransAm","herbie53Petersen","lightningMcQueen","bumblebeeCamaro","pontiacBonnevilleAmbulance","leylandMokeGulf","smartFortwoOrcaFin","hondaCivicSiEP3CustomOrange2007","cadillacArtBarPink2007","monsterJamMegalodonBlue2022"],
     featuredId:"porsche356polar"
   },
   "series-peliculas":{
@@ -3219,7 +3328,7 @@ const COLLECTIONS={
 
 // Orden real de inserción al dashboard (más reciente primero) — NO es orden por fecha de foto.
 // Se mantiene manualmente: cada auto nuevo se agrega al INICIO y se recorta a 10.
-const LAST_ADDED = ["fordEvosConceptRed2012","peugeotTulipConceptRed2008","audiUrbanConceptWhite2012","batmobile1966TVReplica2007","mercedesF125ConceptSilver2012","lincolnCapriConvertible1954Blue","fordFairlaneSkyliner1958WhiteYellow","reoTheFifth1913Green","buickSkylarkGS1966Blue","hupmobileModel20Runabout1909Blue"];
+const LAST_ADDED = ["chevroletMasterDeluxe1939CoupeGreen","chevyBelAirNomad1957RedWhite","monsterJamMegalodonBlue2022","cadillacArtBarPink2007","lincolnContinentalCabriolet1948Black","hondaCivicSiEP3CustomOrange2007","bugattiType57VentouxBrownTan2008","ramTRXBlack2026","oldsmobileHoliday1955CreamCoral","hupmobileModelEEightSedan1928Maroon"];
 
 
 const GENERATIONS = {
@@ -3237,6 +3346,26 @@ const GENERATIONS = {
     label: "Batmobile",
     description: "Dos Batmobiles de épocas distintas: el de la serie de TV de 1966, de estilo Barris con bordes naranja, y el de Tim Burton de 1989 (Batman y Batman Returns) sobre base Impala 1967.",
     carIds: ["batmobile1966TVReplica2007","batmobile1989"]
+  },
+  "bmw-serie-7": {
+    label: "BMW Serie 7",
+    description: "El buque insignia de BMW en dos épocas: del E38 de los 90, con V8 atmosférico y elegancia sobria, al G11 de 2016, con V8 biturbo, tracción total y tecnología de lujo.",
+    carIds: ["bmwE38","bmw7G11MSportBlack2026"]
+  },
+  "ram-1500": {
+    label: "Ram 1500",
+    description: "La pickup de Ram en dos épocas: la Ram 1500 de 2009-2012, con V8 HEMI de la generación anterior, y las versiones de la actual generación, desde la TRX de 702 hp hasta la Rebel off-road de 2025.",
+    carIds: ["ramDodge1500BlackSRTStripe","ramTRXBlack2026","ramRebel"]
+  },
+  "honda-civic": {
+    label: "Honda Civic",
+    description: "Cuatro décadas del compacto de Honda: el Civic 1200 de 1973, el Civic Si EP3 de 2002 con motor i-VTEC, y el Civic Sedan LX de la generación actual.",
+    carIds: ["hondaCivic1200_1974Blue","hondaCivicSiEP3CustomOrange2007","civicLX2022"]
+  },
+  "chevrolet-master-deluxe": {
+    label: "Chevrolet Master / Master Deluxe",
+    description: "Tres años del Master Deluxe de preguerra: el hot rod de 1937-1938, el coupé de 1939 con parrilla vertical y el 'Blackout' de 1942, el último de Chevrolet antes de que la producción civil se detuviera.",
+    carIds: ["chevroletMaster1937HotRodFlames","chevroletMasterDeluxe1939CoupeGreen","chevroletMasterDeluxe1942BlackoutTan"]
   },
   "oldsmobile-88": {
     label: "Oldsmobile 88",
@@ -3260,8 +3389,8 @@ const GENERATIONS = {
   },
   "lincoln-continental": {
     label: "Lincoln Continental",
-    description: "Tres épocas del sedán insignia de Lincoln: el Continental Cabriolet de 1939-1941 que lo inició, el de 'puertas suicidas' de 1961-1963 y el gran sedán de lujo de 1977-1979, de capó larguísimo y parrilla estilo Rolls-Royce.",
-    carIds: ["lincolnContinental40","lincolnContinental1961SuicideDoors","lincolnContinental1977Brown"]
+    description: "Cuatro épocas del insignia de Lincoln: el Continental Cabriolet de 1939-1941 que lo inició, el Cabriolet de posguerra de 1948, el de 'puertas suicidas' de 1961-1963 y el gran sedán de lujo de 1977-1979, de capó larguísimo y parrilla estilo Rolls-Royce.",
+    carIds: ["lincolnContinental40","lincolnContinentalCabriolet1948Black","lincolnContinental1961SuicideDoors","lincolnContinental1977Brown"]
   },
   "chevrolet-el-camino": {
     label: "Chevrolet El Camino",
@@ -3371,7 +3500,7 @@ const GENERATIONS = {
   "porsche-911": {
     label: "Porsche 911",
     description: "Seis décadas del deportivo más longevo del mundo — de la primera generación de 1965 al 992 más reciente, con siete ejemplares de la era 992 actual.",
-    carIds: ["porsche911early","porsche914","porsche911sc","porsche911weissach","porsche993","porsche992ghost9","porsche992gts","porsche992CarreraSilverStripe","porsche992BlackA38","porsche992GT3Weissach","porsche992GT3RSPurple"]
+    carIds: ["porsche911early","porsche914","porsche911CarreraRS27White2023","porsche911sc","porsche911weissach","porsche993","porsche992ghost9","porsche992gts","porsche992CarreraSilverStripe","porsche992BlackA38","porsche992GT3Weissach","porsche992GT3RSPurple"]
   },
   "ford-model-t-a": {
     label: "Ford Model T / Model A",
@@ -3394,9 +3523,9 @@ const GENERATIONS = {
     carIds: ["cadillac1941conv","cadillacPininf","cadillacFleetwood1958"]
   },
   "bugatti-type-57": {
-    label: "Bugatti Type 57C",
-    description: "Las dos carrocerías más codiciadas de la familia Type 57 — el Atalante coupé y el Cabriolet descapotable.",
-    carIds: ["bugattiType57","bugattiType57Cab"]
+    label: "Bugatti Type 57",
+    description: "Tres carrocerías de la familia Type 57 de los años 30 — el Ventoux, un coupé de dos puertas y cuatro plazas, el Atalante coupé y el Cabriolet descapotable.",
+    carIds: ["bugattiType57VentouxBrownTan2008","bugattiType57","bugattiType57Cab"]
   },
   "citroen-2cv": {
     label: "Citroën 2CV",
@@ -3508,12 +3637,60 @@ const GENERATIONS = {
 const EVENTS={
   "lemay-museum-2026":{
     label:"LeMay America's Car Museum 2026",
-    recap:"Primera visita de la familia al LeMay America's Car Museum en Tacoma, WA, uno de los museos de autos más grandes de Norteamérica. 136 piezas con más de un siglo de historia, desde un Cadillac Model M de 1906 y un Ford GT40 Mk IV de 1967 hasta un Mustang GTD 2025, con varias piezas de Saleen, autos de carreras, microcars y clásicos de preguerra. El Ford GT40 Mk IV sigue como destacado.",
+    recap:"Primera visita de la familia al LeMay America's Car Museum en Tacoma, WA, uno de los museos de autos más grandes de Norteamérica. 142 piezas con más de un siglo de historia, desde un Cadillac Model M de 1906 y un Ford GT40 Mk IV de 1967 hasta un Mustang GTD 2025, con varias piezas de Saleen, autos de carreras, microcars y clásicos de preguerra. El Ford GT40 Mk IV sigue como destacado.",
     date:"12 de septiembre, 2026",
     timestamp:202609,
     location:"LeMay America's Car Museum · Tacoma, WA",
     description:"El LeMay America's Car Museum, fundado con la colección personal de Harold LeMay (una de las más grandes del mundo, con más de 3,000 vehículos en su punto máximo), es hoy uno de los museos automotrices más grandes de Norteamérica. Un nuevo capítulo para la familia, fuera de las rutas habituales de Vancouver y Coquitlam.",
     cars:[{
+      id:"chevroletMasterDeluxe1939CoupeGreen",make:"Chevrolet",model:"Master Deluxe Coupé 2 puertas",years:"1939",
+      photoDate:"12 de septiembre, 2026",photoTimestamp:20260912,featured:false,
+      featuredReason:"",
+      review:"Un Chevrolet Master Deluxe 1939 verde oscuro, coupé de 2 puertas, exhibido en el LeMay America's Car Museum con la placa '1939 Chevrolet, Master Deluxe 2 Door Coupe'. Tiene la parrilla vertical cromada de barras finas, los faros integrados en las salpicaderas, las ranuras laterales del capó con filetes rojos y llantas de cara blanca. Está en el garaje del museo junto a un cupé crema de capota negra y un Pontiac dorado.",
+      hp:85,topSpeed:"110 km/h",zero:"~22.0 s",priceCAD:"$25,000–$50,000 CAD",badge:"",badgeLabel:"",imgKey:"chevroletMasterDeluxe1939CoupeGreen",
+      specs:{"Motor":"I6 216 ci (3.5L)","Potencia":"85 hp","Transmisión":"Manual 3 vel.","Tracción":"RWD","0–100 km/h":"~22.0 seg","Vel. máxima":"110 km/h","Carrocería":"Coupé 2 puertas","Color":"Verde oscuro, llantas de cara blanca","Fabricante":"Chevrolet, Detroit, MI","Ubicación":"LeMay America's Car Museum, Tacoma, WA"},
+      highlights:["El Master Deluxe de 1939 estrenó la parrilla vertical y los faros integrados que definieron el diseño de Chevrolet antes de la guerra","Su motor de seis cilindros en línea fue el corazón de Chevrolet durante décadas","Las llantas de cara blanca eran un acabado de moda en los autos de lujo de la época"]
+    },{
+      id:"chevyBelAirNomad1957RedWhite",make:"Chevrolet",model:"Bel Air Nomad",years:"1957",
+      photoDate:"12 de septiembre, 2026",photoTimestamp:20260912,featured:false,
+      featuredReason:"",
+      review:"Un Chevrolet Bel Air Nomad 1957 rojo con techo blanco, exhibido en el LeMay America's Car Museum con la placa '1957 Chevrolet Bel Air Nomad, 2-Door Station Wagon'. Lleva rotulación de America's Automotive Trust, State Farm y el Detroit Auto Show en las puertas y el capó. Conserva las aletas traseras cromadas, la moldura lateral que se ensancha hacia atrás, los faros dobles, los parachoques con 'bullets' y el interior rojo con volante de dos rayos.",
+      hp:220,topSpeed:"170 km/h",zero:"~10.0 s",priceCAD:"$90,000–$160,000 CAD",badge:"",badgeLabel:"",imgKey:"chevyBelAirNomad1957RedWhite",
+      specs:{"Motor":"V8 283 ci (4.6L)","Potencia":"220 hp","Transmisión":"Automática Powerglide 2 vel.","Tracción":"RWD","0–100 km/h":"~10.0 seg","Vel. máxima":"170 km/h","Carrocería":"Station wagon 2 puertas","Color":"Rojo, techo blanco, interior rojo","Fabricante":"Chevrolet, Detroit, MI","Años de prod.":"1955–1957","Ubicación":"LeMay America's Car Museum, Tacoma, WA"},
+      highlights:["El Nomad era la versión más deportiva y cara de la familia de station wagons de Chevrolet en 1957","Sus ventanillas traseras inclinadas y el techo con nervaduras lo distinguen de cualquier otro wagon de la época","Hoy es uno de los Chevrolet de los años 50 más buscados por coleccionistas"]
+    },{
+      id:"lincolnContinentalCabriolet1948Black",make:"Lincoln",model:"Continental Cabriolet",years:"1948",
+      photoDate:"12 de septiembre, 2026",photoTimestamp:20260912,featured:false,
+      featuredReason:"",
+      review:"Un Lincoln Continental Cabriolet 1948 negro con capota de lona negra, exhibido en el LeMay America's Car Museum con su placa del museo al frente. Conserva la silueta larga y baja del Continental de preguerra, con el capó larguísimo, las salpicaderas redondeadas y la parrilla vertical cromada, y suma los faros integrados y la carrocería más ancha de la posguerra. Fue el último año del Continental original, con el motor V12 de 292 pulgadas cúbicas que Lincoln retiró en 1948.",
+      hp:125,topSpeed:"150 km/h",zero:"~15.0 s",priceCAD:"$90,000–$180,000 CAD",badge:"",badgeLabel:"",imgKey:"lincolnContinentalCabriolet1948Black",
+      specs:{"Motor":"V12 L-head 292 ci (4.8L)","Potencia":"125 hp","Transmisión":"Manual 3 vel.","Tracción":"RWD","0–100 km/h":"~15.0 seg","Vel. máxima":"150 km/h","Carrocería":"Cabriolet 2 puertas","Color":"Negro, capota negra","Años de prod.":"1946–1948 (segunda época del Continental)","Fabricante":"Lincoln, Dearborn, MI","Ubicación":"LeMay America's Car Museum, Tacoma, WA"},
+      highlights:["1948 fue el último año del V12 Lincoln y del Continental original, que volvió en 1956 como una marca aparte","Comparte el chasis y el V12 con el Lincoln Model 76H amarillo del mismo museo, pero lleva el nombre y el acabado de lujo Continental","Es el eslabón entre el Cabriolet de 1939–1941 y el Continental de 'puertas suicidas' de 1961"]
+    },{
+      id:"oldsmobileHoliday1955CreamCoral",make:"Oldsmobile",model:"Holiday Hardtop (Ninety-Eight)",years:"1955",
+      photoDate:"12 de septiembre, 2026",photoTimestamp:20260912,featured:false,
+      featuredReason:"",
+      review:"Un Oldsmobile Holiday Hardtop de 1955 en crema y coral, con el emblema 'Holiday' en cursiva sobre la salpicadera, el ornamento 'cohete' en el capó y la parrilla cromada de dientes que envuelve el frente. Tiene llantas de cara blanca con borde coral, volante rojo y techo crema. Está en el garaje del LeMay America's Car Museum, con una placa del museo en el parachoques y un sedán turquesa y otros clásicos estacionados a los lados.",
+      hp:202,topSpeed:"160 km/h",zero:"~11.5 s",priceCAD:"$35,000–$70,000 CAD",badge:"",badgeLabel:"",imgKey:"oldsmobileHoliday1955CreamCoral",
+      specs:{"Motor":"V8 324 ci (5.3L) Rocket","Potencia":"202 hp","Transmisión":"Automática Hydra-Matic 4 vel.","Tracción":"RWD","0–100 km/h":"~11.5 seg","Vel. máxima":"160 km/h","Carrocería":"Hardtop 2 puertas sin pilar central","Color":"Crema con laterales coral","Fabricante":"Oldsmobile, Lansing, MI","Ubicación":"LeMay America's Car Museum, Tacoma, WA"},
+      highlights:["'Holiday' era el nombre de GM para el hardtop sin pilar central, que daba aspecto de convertible con techo rígido","El motor Rocket V8 fue la base de la imagen deportiva de Oldsmobile en los años 50","La bicolor crema y coral con llantas de cara blanca de borde coral era una combinación de moda en 1955"]
+    },{
+      id:"hupmobileModelEEightSedan1928Maroon",make:"Hupmobile",model:"Model E Eight Sedan",years:"1928",
+      photoDate:"12 de septiembre, 2026",photoTimestamp:20260912,featured:false,
+      featuredReason:"",
+      review:"Un Hupmobile Eight de 1928 granate con guardabarros negros, llantas de cara blanca con rayos de madera y techo negro, exhibido en el LeMay America's Car Museum. El cartel del museo lo identifica como '1928 Hupmobile Model E 4 Door Sedan'. Lleva el emblema 'Hupmobile Eight' sobre el radiador, un adorno alado con medidor de temperatura en el tapón, dos grandes faros cromados y estribos a los lados. Detrás se ve un clásico azul oscuro con capota beige.",
+      hp:80,topSpeed:"105 km/h",zero:"~28 s",priceCAD:"$25,000–$55,000 CAD",badge:"",badgeLabel:"",imgKey:"hupmobileModelEEightSedan1928Maroon",
+      specs:{"Motor":"I8 de cabeza plana (Hupmobile Eight)","Potencia":"80 hp","Transmisión":"Manual 3 vel.","Tracción":"RWD","0–100 km/h":"~28 seg","Vel. máxima":"105 km/h","Carrocería":"Sedán 4 puertas con estribos y ruedas de rayos de madera","Color":"Granate con guardabarros negros","Fabricante":"Hupmobile, Detroit, MI","Ubicación":"LeMay America's Car Museum, Tacoma, WA"},
+      highlights:["Un motor de ocho cilindros en línea, poco común en un sedán de precio medio de los años 20","El adorno del radiador integra un medidor de temperatura con alas","Ruedas de rayos de madera pintados, típicas de la época previa a las ruedas de acero"]
+    },{
+      id:"kaiserDragon1951MaroonGold",make:"Kaiser",model:"Dragon",years:"1951–1953",
+      photoDate:"12 de septiembre, 2026",photoTimestamp:20260912,featured:false,
+      featuredReason:"",
+      review:"Un Kaiser Dragon granate con techo de vinilo dorado de patrón bambú, molduras laterales doradas, llantas de cara blanca y volante color crema, expuesto en el garaje de concreto del museo. La placa dice 'DRAGON2' y el nombre 'Kaiser Dragon' va en cursiva dorada sobre la salpicadera. A un lado se ve un camión militar verde y, en el borde derecho, otro clásico amarillo, con un cartel informativo en primer plano.",
+      hp:115,topSpeed:"140 km/h",zero:"~19 s",priceCAD:"$55,000–$110,000 CAD",badge:"",badgeLabel:"",imgKey:"kaiserDragon1951MaroonGold",
+      specs:{"Motor":"L6 3.7L (226 ci) Continental de cabeza plana","Potencia":"115 hp","Transmisión":"Manual 3 vel. con overdrive","Tracción":"RWD","0–100 km/h":"~19 seg","Vel. máxima":"140 km/h","Carrocería":"Sedán 4 puertas","Color":"Granate con techo de vinilo dorado","Placa":"DRAGON2","Ubicación":"LeMay America's Car Museum, Tacoma, WA"},
+      highlights:["Versión de lujo del Kaiser, con techo de vinilo de patrón bambú y tapicería exclusiva","Kaiser-Frazer fue uno de los pocos fabricantes independientes que compitieron con Detroit tras la guerra","Los emblemas dorados en el capó y la salpicadera lo distinguen de los Kaiser básicos"]
+    },{
       id:"internationalScout80TealWhite1962",make:"International",model:"Harvester Scout 80",years:"1962",
       photoDate:"12 de septiembre, 2026",photoTimestamp:20260912,featured:false,
       featuredReason:"",
@@ -6827,6 +7004,14 @@ const EVENTS={
     location:"Petersen Automotive Museum · Los Ángeles, CA",
     description:"El Petersen Automotive Museum en Los Ángeles es uno de los museos de autos más importantes del mundo, con colecciones permanentes y rotativas de clásicos, prototipos y conceptos icónicos de la historia automotriz.",
     cars:[{
+      id:"porsche911CarreraRS27White2023",make:"Porsche",model:"911 Carrera RS 2.7",years:"1972–1973",
+      photoDate:"15 de septiembre, 2023",photoTimestamp:20230915,featured:false,
+      featuredReason:"",
+      review:"Un Porsche 911 Carrera RS 2.7 blanco con la inscripción 'Carrera' en azul sobre la puerta y rines Fuchs azules, exhibido dentro de una vitrina gigante con el marco rojo y amarillo y el logo de Matchbox. Se ve el alerón trasero pequeño, la línea baja de la carrocería y los parachoques delgados. En el cristal se refleja una pantalla con un clásico verde, y a la derecha asoma un cartel naranja de oferta.",
+      hp:210,topSpeed:"245 km/h",zero:"5.8 s",priceCAD:"$800,000–$1,600,000 CAD",badge:"",badgeLabel:"",imgKey:"porsche911CarreraRS27White2023",
+      specs:{"Motor":"Flat-6 2.7L refrigerado por aire","Potencia":"210 hp / 255 Nm","Transmisión":"Manual 5 vel.","Tracción":"RWD (motor trasero)","0–100 km/h":"5.8 seg","Vel. máxima":"245 km/h","Peso":"1,075 kg","Carrocería":"Coupé 2 puertas con alerón trasero","Generación":"911 (1972–1973)","Ubicación":"Petersen Automotive Museum, Los Ángeles, CA","En la foto":"Blanco con franja azul 'Carrera' y rines Fuchs azules en una vitrina de Matchbox"},
+      highlights:["Pesa unos 1,075 kg, casi 100 kg menos que el 911 S, gracias a láminas más delgadas y vidrio más fino","Su alerón trasero se bautizó 'ducktail', cola de pato","Porsche fabricó 1,580 unidades para homologarlo en competición"]
+    },{
       id:"rrPhantomAero",make:"Rolls-Royce",model:"Phantom I – Aerodynamic Coupé",years:"1925",
       photoDate:"15 de septiembre, 2023",photoTimestamp:20230915,featured:false,
       featuredReason:"",
